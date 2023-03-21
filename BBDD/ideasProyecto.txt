@@ -1,0 +1,14 @@
+-Repositorio (que funcione para todos y cambios)
+-Diseñar accesos pantalla principal
+-Diferencias usuarios gratis y de pago
+	usuarios no registrados, no acceso
+	usuarios registrados gratis, acceso a contenido hacendado + demos gratis (algunas)
+	usuario registrado pago, todo acceso
+-Otros
+-----------------------------
+Contador de películas independientes (dónde enlazar)
+usuario-género-opción de 4 elecciones.
+logros conseguidos revisar
+Accesos-tiempo-preguntar para enlazar con contadores
+Usuario_has_Contenido-visualizado-Primary key para enlazar?
+amigos-Incluir? Es muy complicado de aplicar?
