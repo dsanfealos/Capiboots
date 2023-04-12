@@ -28,6 +28,9 @@ public class UsuarioCtrl {
 
     @GetMapping("/registro")
     public String registro(Model modelo){
+
+        modelo.addAttribute("titulo", "Acceso exitoso");
         return "registro";
     }
+
 }

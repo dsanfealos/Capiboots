@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Entity
 @Table(name="usuarios")
 @Getter
@@ -13,11 +15,42 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-    private String usuario;
+
+    @EmbeddedId
+    @GeneratedValue
+    private IdsUsuarios id;
+
     @Column(columnDefinition = "VARCHAR(100)")
     private String clave;
+
+    private Date fechaAlta;
+
+
+    private Integer edad;
+
+    private Byte genero;
+
+    @Column(columnDefinition = "VARCHAR(60)")
+    private String correo;
+
+    private String pais;
+
+    @Column(columnDefinition = "VARCHAR(225)")
+    private String avatar;
+
+    private Long amigo;
+
+    private Boolean borrar_amigo;
+
+    private Boolean suscripcion;
+
+    private Boolean cancelar_suscripcion;
+
+    private Boolean control_parental;
+
+    private Boolean editar_perfil;
+
+    @Column(columnDefinition = "VARCHAR(225)")
+    private String soporte;
 }
+

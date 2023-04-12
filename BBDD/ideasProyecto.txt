@@ -12,3 +12,5 @@ logros conseguidos revisar
 Accesos-tiempo-preguntar para enlazar con contadores
 Usuario_has_Contenido-visualizado-Primary key para enlazar?
 amigos-Incluir? Es muy complicado de aplicar?
+--------------------------------
+Cómo organizar las plantillas en carpetas (todas en la misma o en diferentes)
