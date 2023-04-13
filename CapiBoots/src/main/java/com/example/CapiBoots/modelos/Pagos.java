@@ -22,11 +22,16 @@ public class Pagos {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private Long idPagador;
+    @ManyToOne
+    @JoinColumn(name = "idPagador", nullable = false)
+    private Usuario idPagador;
 
     private Float importe;
 
-    private Long medio;
+    @ManyToOne
+    @JoinColumn(name = "idMedio")
+    private Medio medio;
 
+    @Column(name = "fecha")
     private LocalDateTime fecha;
 }

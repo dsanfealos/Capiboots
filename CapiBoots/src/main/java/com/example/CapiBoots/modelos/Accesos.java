@@ -21,10 +21,15 @@ public class Accesos{
     @Convert(converter = TimeConverter.class)
     protected LocalDateTime fecha;
 
-    private Long idUsuario;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario", nullable = false)
+    private Usuario idUsuario;
 
+//    @ManyToOne
+//    @JoinColumn(name = "idContenido", nullable = false)
     private Long idContenido;
 
+    @Column(name = "fin")
     private LocalDateTime fin;
 
 }

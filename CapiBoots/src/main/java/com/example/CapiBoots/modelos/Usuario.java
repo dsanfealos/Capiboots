@@ -16,41 +16,54 @@ import java.sql.Date;
 @AllArgsConstructor
 public class Usuario {
 
-    @EmbeddedId
-    @GeneratedValue
-    private IdsUsuarios id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-    @Column(columnDefinition = "VARCHAR(100)")
+    @Column(name = "nombre_usuario", unique = true, nullable = false)
+    private String nombre_usuario;
+
+    @Column(name = "clave", columnDefinition = "VARCHAR(100)")
     private String clave;
 
+    @Column(name = "fechaAlta")
     private Date fechaAlta;
 
-
+    @Column(name = "edad")
     private Integer edad;
 
+    @Column(name = "genero")
     private Byte genero;
 
-    @Column(columnDefinition = "VARCHAR(60)")
+    @Column(name = "correo", columnDefinition = "VARCHAR(60)")
     private String correo;
 
+    @Column(name = "pais")
     private String pais;
 
-    @Column(columnDefinition = "VARCHAR(225)")
+    @Column(name = "avatar", columnDefinition = "VARCHAR(225)")
     private String avatar;
 
+    @Column(name = "amigo")
     private Long amigo;
 
+    @Column(name = "borrar_amigo")
     private Boolean borrar_amigo;
 
+    @Column(name = "suscripcion")
     private Boolean suscripcion;
 
+    @Column(name = "cancelar_suscripcion")
     private Boolean cancelar_suscripcion;
 
+    @Column(name = "control_parental")
     private Boolean control_parental;
 
+    @Column(name = "editar_perfil")
     private Boolean editar_perfil;
 
-    @Column(columnDefinition = "VARCHAR(225)")
+    @Column(name = "soporte", columnDefinition = "VARCHAR(225)")
     private String soporte;
 }
 
