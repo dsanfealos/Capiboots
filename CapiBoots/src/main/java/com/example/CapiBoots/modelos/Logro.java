@@ -21,10 +21,10 @@ public class Logro {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "descripcion", nullable = false)
+    @Column(name = "descripcion", nullable = false,columnDefinition = "VARCHAR(200)")
     private String descripcion;
-
-    @Column(name = "idcontenido", nullable = false)
+   // @ManyToOne
+    //@JoinColumn(name = "idcontenido", nullable = false)
     private long idContenido;
 
     @Column(name = "tipologro", nullable = false)
