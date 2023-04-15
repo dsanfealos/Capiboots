@@ -24,10 +24,10 @@ public class Temporada {
     @Column(name = "descripcion")
     private String descripcion;
 
-   // @ManyToOne
-    //@JoinColumn(name = "idSerie")
-    private Long serie;
-
-
+    /*
+    @ManyToOne
+    @JoinColumn(name = "idSerie")
+    private Serie serie;
+    */
 
 }
