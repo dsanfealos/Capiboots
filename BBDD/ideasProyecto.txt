@@ -15,3 +15,13 @@ amigos-Incluir? Es muy complicado de aplicar?
 --------------------------------
 Cómo organizar las plantillas en carpetas (todas en la misma o en diferentes)
 Preguntar por qué en previsualizar funciona el css y al ejecutar la app no
+
+-reposiorios, servicios
+-Se devuelve index.html cuando se escribe la ruta de la web sin requisitos (Capiboots.com en lugar de Capiboots.com/inicio)
+-No hacer url anidadas
+-contrl
+	-Usuario
+		-registro, login, inicio, desplegables del perfil etc
+
+	-Medios
+		-navegación principal
