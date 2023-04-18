@@ -5,7 +5,7 @@ import com.example.CapiBoots.modelos.Comentarios;
 import java.util.List;
 
 public interface ifxComentariosSrvc {
-        public Comentarios buscaNombre(String nombre);
+        public Comentarios buscaId(Long id);
         List<Comentarios> listaCom();
 
 }

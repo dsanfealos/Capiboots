@@ -7,9 +7,10 @@ import java.util.List;
 
 public class ComentariosSrvcImpls implements ifxComentariosSrvc {
     public ComentariosRepositorio comentrepo;
+
     @Override
-    public Comentarios buscaNombre(String nombre) {
-        return null;
+    public Comentarios buscaId(Long id) {
+        return comentrepo.findById(id).orElse(null);
     }
 
     @Override

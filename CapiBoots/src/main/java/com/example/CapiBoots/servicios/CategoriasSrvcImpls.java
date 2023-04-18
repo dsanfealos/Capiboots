@@ -8,8 +8,8 @@ import java.util.List;
 public class CategoriasSrvcImpls implements ifxCategoriasSrvc {
     public CategoriasRepositorios catrepo;
     @Override
-    public Categorias buscaNombre(String nombre) {
-        return null;
+    public Categorias buscaId(Long id) {
+        return catrepo.findById(id).orElse(null);
     }
     @Override
     public List<Categorias> listaCat() {
