@@ -21,11 +21,11 @@ public class Comentarios {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    //@ManyToOne
-    //@JoinColumn(name= "idContenido")
-    private Long idContenido;
+    @ManyToOne
+    @JoinColumn(name= "idContenido")
+    private Contenidos idContenido;
 
-    @Column(name = "texto",columnDefinition = "TEXT(300)")
+    @Column(name = "texto",columnDefinition = "TEXT", length = 300)
     private String texto;
 
     @Column(name ="idTipo",columnDefinition = "INT")

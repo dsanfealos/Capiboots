@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
-@Table(name="Categorías")
+@Table(name="Categorias")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,12 +22,15 @@ public class Categorias {
     private Long id;
     @Column(name="nombre")
     private String nombre;
-    //@ManyToOne
-    //@JoinColumn(name="idMadre", nullable = false)
-    private Long idmadre;
-    @Column(name="Descripción", columnDefinition = "TEXT(1024)")
+    @ManyToOne
+    @JoinColumn(name="idMadre", nullable = false)
+    private Categorias idmadre;
+    @Column(name="Descripcion", columnDefinition = "TEXT", length = 1024)
     private String descripcion;
-    @Column(name="Imágen", columnDefinition = "VARCHAR(100)")
+    @Column(name="Imagen", columnDefinition = "VARCHAR(100)")
     private String imagen;
+
+    @ManyToMany(mappedBy = "categorias")
+    private List<Contenidos> contenidos;
 
 }

@@ -1,5 +1,6 @@
 package com.example.CapiBoots.modelos;
 
+import com.example.CapiBoots.modelos.metodos.TimeConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,19 +18,20 @@ import java.time.LocalDateTime;
 public class Accesos{
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "fecha_inicio", nullable = false)
     @Convert(converter = TimeConverter.class)
-    protected LocalDateTime fecha;
+    protected LocalDateTime fecha_inicio;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
     private Usuario idUsuario;
 
-//    @ManyToOne
-//    @JoinColumn(name = "idContenido", nullable = false)
-    private Long idContenido;
+    @ManyToOne
+    @JoinColumn(name = "idContenido", nullable = false)
+    private Contenidos idContenido;
 
-    @Column(name = "fin")
-    private LocalDateTime fin;
+    @Convert(converter = TimeConverter.class)
+    @Column(name = "fecha_fin", columnDefinition = "DATETIME(6)")
+    private LocalDateTime fecha_fin;
 
 }
