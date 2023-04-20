@@ -17,5 +17,11 @@ public class LogroCtrl {
             modelo.addAttribute("titulo", "Logros");
             return "Logros";
         }
+
+        @GetMapping("/listaLogro")
+        public String listaLogro(Model modelo) {
+            modelo.addAttribute("listaLogro", logroSrvc.listaLogro());
+            return "listaLogro";
+        }
     }
     }
