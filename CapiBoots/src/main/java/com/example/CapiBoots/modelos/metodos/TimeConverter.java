@@ -1,4 +1,4 @@
-package com.example.CapiBoots.modelos;
+package com.example.CapiBoots.modelos.metodos;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

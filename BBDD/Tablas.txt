@@ -1,1 +1,6 @@
-Tablas a preparar:
+Explicación tablas:
+
+	Series y Temporadas - 	Para series: Tal cual suena, y en contenido se dice el capítulo individual.
+
+				Para películas y libros: Serie sería la saga, Temporada sería sólo 1 y el contenido serían los apítulos (partes) de dicha saga.
+				(esto es opcional y se puede quitar el agrupar en sagas los libros y pelis)

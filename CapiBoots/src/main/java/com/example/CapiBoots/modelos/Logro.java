@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
-@Table(name="logros")
+@Table(name="logro")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,13 +25,16 @@ public class Logro {
 
     @Column(name = "descripcion", nullable = false,columnDefinition = "VARCHAR(200)")
     private String descripcion;
-   // @ManyToOne
-    //@JoinColumn(name = "idcontenido", nullable = false)
-    private long idContenido;
+    @ManyToOne
+    @JoinColumn(name = "idcontenido", nullable = false)
+    private Contenidos idContenido;
 
     @Column(name = "tipologro", nullable = false)
     private String tipoLogro;
 
     @Column(name = "minimo", nullable = false)
     private int minimo;
+
+    @ManyToMany(mappedBy = "logros")
+    private List<Usuario> usuarios;
 }

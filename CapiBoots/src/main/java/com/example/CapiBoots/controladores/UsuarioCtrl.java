@@ -2,13 +2,11 @@ package com.example.CapiBoots.controladores;
 
 import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.repositorios.UsuarioRepositorio;
+import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 
 import java.util.Optional;
@@ -17,13 +15,13 @@ import java.util.Optional;
 //@RequestMapping("/version1")
 public class UsuarioCtrl {
 
-//    @Autowired
-//    private UsuarioSrvc ususrvc;
+    @Autowired
+    private UsuarioSrvcImpls usuSrvc;
 
-    @GetMapping("")
+    @GetMapping({"","/"})
     public String inicio(Model modelo) {
         modelo.addAttribute("titulo", "Página de inicio de relaciones N:M");
-        return "index";
+        return "inicio";
     }
 
     @GetMapping("/acceso")
@@ -37,23 +35,20 @@ public class UsuarioCtrl {
         String texto = "Hola " + usu + " tu clave es " + clave + ".";
         modelo.addAttribute("texto", texto);
 
-        return"exitoLogin";
+        return"exitoLogin";    }
+
+
+    @GetMapping("/listausus")
+    public String listaUsus(Model modelo){
+        modelo.addAttribute("listausuarios", usuSrvc.listaUsus());
+        return "listausus";
     }
 
-//    @PostMapping("/acceso")
-//    public String PostAcceso(Model modelo, @RequestParam("usuario") String usu, @RequestParam("clave") String clave){
-//        Optional<Usuario> usuario;
-//        ususrvc.buscan(usu);
-//        if (usuario !== null){
-//            return "siquiente pantalla";
-//        }
-//        if (usuario.get().getClave() == clave){
-//
-//        }
-//        // Verificar que el usuario existe y entrega lña clave correcta
-//        modelo.addAttribute("titulo", "Acceso exitoso");
-//        return "accedido";
-//    }
+    @GetMapping("/usuario-id")
+    public String UsuPorId(@PathVariable Long id, Model modelo){
+        modelo.addAttribute("idusu", usuSrvc.buscaId(id));
+        return "usuario";   //Buscar en búsqueda con el filtro de "Usuarios"
+    }
 
     @GetMapping("/registro")
     public String Registro(Model modelo){
@@ -76,9 +71,23 @@ public class UsuarioCtrl {
         return "suscripcion";
     }
 
-    @GetMapping("/listamigos")
+    @GetMapping("/lista-amigos")
     public String ListaAmigos (Model modelo) {
+        modelo.addAttribute("titulo", "Lista de amigos");
         return "listaAmigos";
     }
+
+    @GetMapping("/ajustes")
+    public String Ajustes(Model modelo) {
+        modelo.addAttribute("titulo", "Ajustes");
+        return "ajustes";
+    }
+    @GetMapping("/logros")
+    public String Logros(Model modelo) {
+        modelo.addAttribute("titulo", "Logros");
+        return "logros";
+    }
+
+
 
 }
