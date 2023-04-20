@@ -21,7 +21,7 @@ public class TemporadaCtrl {
 
     @GetMapping("/temporada-id")
     public String seriePorId (@PathVariable Long id, Model modelo){
-        modelo.addAttribute("serie_id",tempoSrvc.buscaId(id));
+        modelo.addAttribute("temporada_id",tempoSrvc.buscaId(id));
         return "listatempo";    //Usar búsqueda con el nombre obtenido por la id
     }
 

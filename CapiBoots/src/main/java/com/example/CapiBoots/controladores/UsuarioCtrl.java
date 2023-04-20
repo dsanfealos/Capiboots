@@ -18,7 +18,7 @@ public class UsuarioCtrl {
     @Autowired
     private UsuarioSrvcImpls usuSrvc;
 
-    @GetMapping("")
+    @GetMapping({"","/"})
     public String inicio(Model modelo) {
         modelo.addAttribute("titulo", "Página de inicio de relaciones N:M");
         return "inicio";
@@ -71,9 +71,21 @@ public class UsuarioCtrl {
         return "suscripcion";
     }
 
-    @GetMapping("/listamigos")
+    @GetMapping("/lista-amigos")
     public String ListaAmigos (Model modelo) {
+        modelo.addAttribute("titulo", "Lista de amigos");
         return "listaAmigos";
+    }
+
+    @GetMapping("/ajustes")
+    public String Ajustes(Model modelo) {
+        modelo.addAttribute("titulo", "Ajustes");
+        return "ajustes";
+    }
+    @GetMapping("/logros")
+    public String Logros(Model modelo) {
+        modelo.addAttribute("titulo", "Logros");
+        return "logros";
     }
 
 
