@@ -25,7 +25,7 @@ public class Categorias {
     @ManyToOne
     @JoinColumn(name="idMadre", nullable = false)
     private Categorias idmadre;
-    @Column(name="Descripcion", columnDefinition = "TEXT", length = 1024)
+    @Column(name="descripcion", columnDefinition = "TEXT", length = 1024)
     private String descripcion;
     @Column(name="imagen", columnDefinition = "VARCHAR(100)")
     private String imagen;
