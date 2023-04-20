@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="Categorías")
+@Table(name="Categorias")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,9 +23,9 @@ public class Categorias {
     //@ManyToOne
     //@JoinColumn(name="idMadre", nullable = false)
     private Long idmadre;
-    @Column(name="Descripción", columnDefinition = "TEXT(1024)")
+    @Column(name="descripcion", columnDefinition = "TEXT", length = 1024)
     private String descripcion;
-    @Column(name="Imágen", columnDefinition = "VARCHAR(100)")
+    @Column(name="imagen", columnDefinition = "VARCHAR(100)")
     private String imagen;
 
 }
