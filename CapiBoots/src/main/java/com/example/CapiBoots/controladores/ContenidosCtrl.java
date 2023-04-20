@@ -43,14 +43,6 @@ public class ContenidosCtrl {
             modelo.addAttribute("listaCont", contenidosSrvc.listaCont());
             return "listaCont";
         }
-
-
-
-
-
-
-
-
         @GetMapping ("/showbox")
         public String Showbox(Model modelo){
             modelo.addAttribute("titulo", "Showbox");
