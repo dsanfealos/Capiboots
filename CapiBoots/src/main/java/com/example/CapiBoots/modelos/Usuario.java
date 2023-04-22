@@ -77,6 +77,16 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "id_logro"))
     private List<Logro> logros;
 
+    @ManyToMany // Many to Many entre Usuarios y Logros
+    @JoinTable(
+            name = "seguimientos",
+            joinColumns = @JoinColumn(name = "id_seguidor"),
+            inverseJoinColumns = @JoinColumn(name = "id_seguido"))
+    private List<Usuario> seguidos;
+
+    @ManyToMany(mappedBy = "seguidos")
+    private List<Usuario> seguidores;
+
     //Crear Many to Many de seguidos y seguidores
 }
 

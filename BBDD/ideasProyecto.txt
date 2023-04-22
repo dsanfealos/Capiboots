@@ -28,11 +28,22 @@ Preguntar por qué en previsualizar funciona el css y al ejecutar la app no
 
 --------------------------------------------------
 
-Preguntar por fecth en el @ManytOne
--Preguntar por el @Json
--Preguntar OneToMany
--TimeConverter
+Preguntar por fecth en el @ManytOne	V
+-Preguntar por el @Json	No nos hacefalta V
+-Preguntar OneToMany	V
+-TimeConverter	V
 -Controladores de todo? Cómo llenamos?
--@Service
--Controlador pagos, a qué redirige (plataforma de pago)?
--Mirar grabación y buscar qué era tabla Series y Temporadas
+-Controlador pagos, a qué redirige (plataforma de pago)?	Una pantallita de pago aceptado		V
+-Mirar grabación y buscar qué era tabla Series y Temporadas	V
+------------------------------------------
+-Login
+-DTO
+-Springboot+WebSockets+stomp para notificaciones en tiempo real.
+youtube.com/watch?v=_PEPaWFs064
+youtube.com/watch?v=GykDyG0ELms
+Para colocar en internet usar capa gratuita aws
+-Mirar la parte de Test
+-Mirar Relaciones
+-Buscar por paabras clave(keyword)
+-Buscar por filtros
+-Pulir listas

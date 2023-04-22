@@ -9,14 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
-//@RequestMapping("/version1")
+//@RequestMapping("/usuario")
 public class UsuarioCtrl {
 
     @Autowired
     private UsuarioSrvcImpls usuSrvc;
+
+
 
     @GetMapping({"","/"})
     public String inicio(Model modelo) {
@@ -41,6 +44,12 @@ public class UsuarioCtrl {
     @GetMapping("/listausus")
     public String listaUsus(Model modelo){
         modelo.addAttribute("listausuarios", usuSrvc.listaUsus());
+        return "listausus";
+    }
+    @GetMapping("/buscarusus")
+    public String buscarUsus(@PathVariable String keyword , Model modelo){
+        List<Usuario> listausu = usuSrvc.buscaUsus(keyword);
+        modelo.addAttribute("listausuarios", listausu);
         return "listausus";
     }
 
@@ -87,6 +96,41 @@ public class UsuarioCtrl {
         modelo.addAttribute("titulo", "Logros");
         return "logros";
     }
+
+    //Crear, Guardar, Borrar y Editar
+
+    @GetMapping("/usuario/nuevo-usuario")
+    public String nuevoUsu(Model modelo){
+        modelo.addAttribute("usuario", new Usuario());
+//        modelo.addAttribute("fragmentName", "fragment-customer-form");
+        return "nuevo-usuario";
+    }
+
+    @PostMapping("/usuario/guardar")
+    public String guardar(Usuario usu){
+        usuSrvc.guardar(usu);
+        return "redirect:/listausus";
+    }
+
+    @GetMapping("/usuario/borrar/{id}")
+    public String borrar(@PathVariable Long id){
+        usuSrvc.borrar(id);
+        return "redirect:/listausus";
+    }
+
+    @GetMapping("/usuario/editar/{id}")
+    public String editar(@PathVariable Long id, Model modelo){
+        Optional<Usuario> usuOpt = usuSrvc.buscaId(id);
+        if(usuOpt.isPresent()){
+            modelo.addAttribute("usuario", usuOpt.get());
+        }
+        else{
+            // Si el cliente no existe, redirigir a una página de error o mostrar un mensaje de error
+            return "error";
+        }
+        return "nuevo-usuario";
+    }
+
 
 
 
