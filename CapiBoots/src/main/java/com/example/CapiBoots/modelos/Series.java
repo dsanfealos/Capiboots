@@ -22,6 +22,6 @@ import lombok.Setter;
     @Column(name ="nombre",columnDefinition = "VARCHAR(45)")
     private String nombre;
 
-    @Column(name= "descripción",columnDefinition = "VARCHAR(225)")
-    private String descripción;
+    @Column(name= "descripcion",columnDefinition = "VARCHAR(225)")
+    private String descripcion;
 }
