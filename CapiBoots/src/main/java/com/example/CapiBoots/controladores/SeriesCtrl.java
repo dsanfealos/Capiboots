@@ -2,15 +2,17 @@ package com.example.CapiBoots.controladores;
 
 import com.example.CapiBoots.modelos.Series;
 import com.example.CapiBoots.modelos.Usuario;
-import com.example.CapiBoots.servicios.PagosSrvcImpls;
+import com.example.CapiBoots.repositorios.SeriesRepositorio;
 import com.example.CapiBoots.servicios.SeriesSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -19,17 +21,27 @@ public class SeriesCtrl {
     @Autowired
     public SeriesSrvcImpls serieSrvc;
 
+    @Autowired
+    public SeriesRepositorio seriesrepo;
 
+    //Listas de Series
     @GetMapping("/lista-series")
     public String listaSeries (Model modelo){
         modelo.addAttribute("listaseries",serieSrvc.listaSeri());
-        return "listaseries"; //Usar búsqueda con el filtro "series" activado
+        return "/listas/listaseries"; //Usar búsqueda con el filtro "series" activado
+    }
+
+    @GetMapping("/buscarseri")
+    public String buscarSeri(@Param("keyword") String keyword , Model modelo){
+        List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
+        modelo.addAttribute("buscaseries", buscaseri);
+        return "/listas/listaseries";
     }
 
     @GetMapping("/series-id")
     public String seriePorId (@PathVariable Long id, Model modelo){
         modelo.addAttribute("serie_id",serieSrvc.buscaId(id));
-        return "listaseries";    //Usar búsqueda con el nombre obtenido por la id
+        return "/listas/listaseries";    //Usar búsqueda con el nombre obtenido por la id
     }
 
     //Crear, Guardar, Borrar y Editar
@@ -37,8 +49,7 @@ public class SeriesCtrl {
     @GetMapping("/serie/nueva-serie")
     public String nuevoUsu(Model modelo){
         modelo.addAttribute("serie", new Series());
-//        modelo.addAttribute("fragmentName", "fragment-customer-form");
-        return "nueva-serie";
+        return "/forms/nueva-serie";
     }
 
     @PostMapping("/serie/guardar")
@@ -60,10 +71,10 @@ public class SeriesCtrl {
             modelo.addAttribute("serie", seriOpt.get());
         }
         else{
-            // Si el cliente no existe, redirigir a una página de error o mostrar un mensaje de error
+            // Si no existe, redirigir a una página de error o mostrar un mensaje de error
             return "error";
         }
-        return "nueva-serie";
+        return "/forms/nueva-serie";
     }
 
 }

@@ -21,11 +21,10 @@ public class SeriesSrvcImpls implements ifxSeriesSrvc{
 
     @Override
     public List<Series> buscaSeri(String keyword) {
-//        if (keyword != null) {
-//            return serierepo.buscarTodos(keyword);
-//        }
-//        return serierepo.findAll();
-        return null;
+        if (keyword != null) {
+            return serierepo.buscarTodos(keyword);
+        }
+        return serierepo.findAll();
     }
 
     @Override
