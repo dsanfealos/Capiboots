@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,9 +31,10 @@ public class Pagos {
     private Float importe;
 
     @ManyToOne
-    @JoinColumn(name = "idMedio")
+    @JoinColumn(name = "idMedio", nullable = false)
     private Medio medio;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha")
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 }

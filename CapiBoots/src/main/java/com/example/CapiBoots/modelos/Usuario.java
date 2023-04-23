@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="usuarios")
@@ -27,8 +30,9 @@ public class Usuario {
     @Column(name = "clave", columnDefinition = "VARCHAR(100)")
     private String clave;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fechaAlta")
-    private Date fechaAlta;
+    private LocalDate fechaAlta;
 
     @Column(name = "edad")
     private Integer edad;
@@ -65,5 +69,24 @@ public class Usuario {
 
     @Column(name = "soporte", columnDefinition = "VARCHAR(225)")
     private String soporte;
+
+    @ManyToMany // Many to Many entre Usuarios y Logros
+    @JoinTable(
+            name = "usuarios_logros",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_logro"))
+    private List<Logro> logros;
+
+    @ManyToMany // Many to Many entre Usuarios y Logros
+    @JoinTable(
+            name = "seguimientos",
+            joinColumns = @JoinColumn(name = "id_seguidor"),
+            inverseJoinColumns = @JoinColumn(name = "id_seguido"))
+    private List<Usuario> seguidos;
+
+    @ManyToMany(mappedBy = "seguidos")
+    private List<Usuario> seguidores;
+
+    //Crear Many to Many de seguidos y seguidores
 }
 
