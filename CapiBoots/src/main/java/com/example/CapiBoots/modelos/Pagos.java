@@ -25,13 +25,13 @@ public class Pagos {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "idPagador", nullable = false)
+    @JoinColumn(name = "idPagador", nullable = true)
     private Usuario idPagador;
 
     private Float importe;
 
     @ManyToOne
-    @JoinColumn(name = "idMedio", nullable = false)
+    @JoinColumn(name = "idMedio", nullable = true)
     private Medio medio;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
