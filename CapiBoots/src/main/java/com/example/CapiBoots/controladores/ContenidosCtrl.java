@@ -50,19 +50,16 @@ public class ContenidosCtrl {
         }
         @GetMapping("/bookbox")
         public String bookbox(Model modelo){
-
             modelo.addAttribute("titulo","BookBox");
             return "bookbox";
         }
         @GetMapping("/showboox")
         public String showbox(Model modelo){
-
             modelo.addAttribute("titulo","Showbox");
             return "showbox";
         }
         @GetMapping("/favoritos")
         public String favoritos(Model modelo){
-
             modelo.addAttribute("titulo","Favoritos");
             return "favoritos";
         }
@@ -71,10 +68,8 @@ public class ContenidosCtrl {
 
             @GetMapping("/busqueda")
             public String busqueda(Model modelo){
-
                 return "busqueda";
             }
         }
     }
-
-    }
+}
