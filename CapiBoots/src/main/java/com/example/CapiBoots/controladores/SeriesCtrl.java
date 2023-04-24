@@ -1,7 +1,6 @@
 package com.example.CapiBoots.controladores;
 
 import com.example.CapiBoots.modelos.Series;
-import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.repositorios.SeriesRepositorio;
 import com.example.CapiBoots.servicios.SeriesSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,33 +20,31 @@ public class SeriesCtrl {
     @Autowired
     public SeriesSrvcImpls serieSrvc;
 
-    @Autowired
-    public SeriesRepositorio seriesrepo;
 
     //Listas de Series
     @GetMapping("/lista-series")
     public String listaSeries (Model modelo){
         modelo.addAttribute("listaseries",serieSrvc.listaSeri());
-        return "/listas/listaseries"; //Usar búsqueda con el filtro "series" activado
+        return "/listas/lista-series"; //Usar búsqueda con el filtro "series" activado
     }
 
     @GetMapping("/buscarseri")
     public String buscarSeri(@Param("keyword") String keyword , Model modelo){
         List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
         modelo.addAttribute("buscaseries", buscaseri);
-        return "/listas/listaseries";
+        return "/listas/lista-series";
     }
 
     @GetMapping("/series-id")
     public String seriePorId (@PathVariable Long id, Model modelo){
         modelo.addAttribute("serie_id",serieSrvc.buscaId(id));
-        return "/listas/listaseries";    //Usar búsqueda con el nombre obtenido por la id
+        return "/listas/lista-series";    //Usar búsqueda con el nombre obtenido por la id
     }
 
     //Crear, Guardar, Borrar y Editar
 
     @GetMapping("/serie/nueva-serie")
-    public String nuevoUsu(Model modelo){
+    public String nuevo(Model modelo){
         modelo.addAttribute("serie", new Series());
         return "/forms/nueva-serie";
     }

@@ -21,10 +21,16 @@
 <body>
 <div class="container mt-3">
   <h2>Usuario Nuevecito</h2>
+
+  <!--Formulario de creación-->
+  <!--En action (Lo que se activa al darle al botón tipo "submit") ponemos la url del controlador que queremos activar,
+  y en object ponemos el objeto definido en ese método (basado en
+  el modelo que queremos)-->
   <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post">
     <input type="hidden" th:field="*{id}">
     <div class="form-group">
       <label for="nombre">Nombre de usuario:</label>
+      <!--Atentos a poner "text" o "number" en el tipo según necesitemos-->
       <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre_usuario}" required>
     </div>
 

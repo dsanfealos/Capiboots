@@ -19,6 +19,7 @@ public class SeriesSrvcImpls implements ifxSeriesSrvc{
         return serierepo.findById(id);
     }
 
+    //Buscador por palabra clave
     @Override
     public List<Series> buscaSeri(String keyword) {
         if (keyword != null) {
@@ -27,16 +28,13 @@ public class SeriesSrvcImpls implements ifxSeriesSrvc{
         return serierepo.findAll();
     }
 
+    //Listar
     @Override
     public List<Series> listaSeri() {
         return serierepo.findAll();
     }
 
-    //Crear, Guardar, Borrar y Editar
-    @Override
-    public Series nuevo(Series seri) {
-        return null;
-    }
+    //Guardar y Borrar porque Crear/Editar se definen en el controlador.
 
     @Override
     public Series guardar(Series seri) {
@@ -47,8 +45,4 @@ public class SeriesSrvcImpls implements ifxSeriesSrvc{
         serierepo.deleteById(id);
     }
 
-    @Override
-    public Series editar(Series seri) {
-        return null;
-    }
 }

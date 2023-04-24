@@ -36,14 +36,14 @@ Preguntar por fecth en el @ManytOne	V
 -Controlador pagos, a qué redirige (plataforma de pago)?	Una pantallita de pago aceptado		V
 -Mirar grabación y buscar qué era tabla Series y Temporadas	V
 ------------------------------------------
--Login (Lo enseña Alejandro el martes)
--DTO
+-Login 									(Lo enseña Alejandro)
+-DTO									(Lo enseña Alejandro)
 -Springboot+WebSockets+stomp para notificaciones en tiempo real.
 youtube.com/watch?v=_PEPaWFs064  (Notificaciones para logros)
 youtube.com/watch?v=GykDyG0ELms  (Reproductor streaming)
 Para colocar en internet usar capa gratuita aws
 -Mirar la parte de Test
--Mirar Relaciones
--Buscar por palabras clave(keyword)		(Preguntar)
+-Mirar Relaciones							V
+-Buscar por palabras clave(keyword)					(Preguntar)
 -Buscar por filtros
 -Pulir listas								V	(Crear, guardar, editar, borrar y rutas funcionan)

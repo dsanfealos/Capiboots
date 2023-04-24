@@ -1,10 +1,3 @@
-<!--
-  Created by CPL.
-  User: Carlos
-  Date: 13/04/2023
-  Time: 18:45
-  To change this template use File | Settings | File Templates | JSP Bootstrap 5.
--->
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -22,31 +15,35 @@
   <!-- Estilos personalizados -->
   <link href="" type="text/css" rel="stylesheet">
 
-  <title>Lista de Usuarios</title>
+  <title>Lista de Temporadas</title>
 </head>
 <body>
 <div>
-  <h1>Lista de Usuarios</h1>
+  <h1>Lista de Temporadas</h1>
 
-  <a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>
+  <!--Crear-->
+  <a th:href="@{/temporada/nueva-temporada}">Crear nueva temporada</a>
 
+  <!--Lista-->
   <br><br><br>
   <table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Nombre de usuario</th>
-        <th>Edad</th>
+      <th>ID</th>
+      <th>Nombre de temporada</th>
+      <th>Descripción</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="usuario : ${listausuarios}">
-      <td th:text="${usuario.id}">ID</td>
-      <td th:text="${usuario.nombre_usuario}">Name</td>
-      <td th:text="${usuario.edad}">Age</td>
+    <tr th:each="temporada : ${listatemporadas}">
+      <td th:text="${temporada.id}">Id</td>
+      <td th:text="${temporada.nombre}">Nombre</td>
+      <td th:text="${temporada.descripcion}">Descripción</td>
       <td>
-        <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>
-        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Borrar</a>
+        <!--Editar y Borrar-->
+        <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
+        <a class="btn btn-outline-primary" th:href="@{/temporada/editar/{id}(id=${temporada.id})}">Editar</a>
+        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/temporada/borrar/{id}(id=${temporada.id})}">Borrar</a>
       </td>
 
     </tr>

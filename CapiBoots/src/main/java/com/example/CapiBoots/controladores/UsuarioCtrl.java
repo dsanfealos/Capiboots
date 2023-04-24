@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-//@RequestMapping("/usuario")
 public class UsuarioCtrl {
 
     @Autowired
@@ -80,16 +79,16 @@ public class UsuarioCtrl {
     }
 
     //Listas de Usuarios
-    @GetMapping("/listausus")
+    @GetMapping("/lista-usuarios")
     public String listaUsus(Model modelo){
         modelo.addAttribute("listausuarios", usuSrvc.listaUsus());
-        return "/listas/listausus";
+        return "/listas/lista-usus";
     }
     @GetMapping("/buscarusus")
     public String buscarUsus(@PathVariable String keyword , Model modelo){
         List<Usuario> buscausu = usuSrvc.buscaUsus(keyword);
         modelo.addAttribute("buscausuarios", buscausu);
-        return "/listas/listausus";
+        return "/listas/lista-usus";
     }
 
     @GetMapping("/lista-amigos")
@@ -101,7 +100,7 @@ public class UsuarioCtrl {
     //Crear, Guardar, Borrar y Editar
 
     @GetMapping("/usuario/nuevo-usuario")
-    public String nuevoUsu(Model modelo){
+    public String nuevo(Model modelo){
         modelo.addAttribute("usuario", new Usuario());
         return "/forms/nuevo-usuario";
     }
@@ -109,13 +108,13 @@ public class UsuarioCtrl {
     @PostMapping("/usuario/guardar")
     public String guardar(Usuario usu){
         usuSrvc.guardar(usu);
-        return "redirect:/listausus";
+        return "redirect:/lista-usus";
     }
 
     @GetMapping("/usuario/borrar/{id}")
     public String borrar(@PathVariable Long id){
         usuSrvc.borrar(id);
-        return "redirect:/listausus";
+        return "redirect:/lista-usus";
     }
 
     @GetMapping("/usuario/editar/{id}")
