@@ -6,19 +6,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SeriesSrvcImpls implements ifxSeriesSrvc{
 
     @Autowired
     public SeriesRepositorio serierepo;
+
     @Override
-    public Series buscaId(Long id) {
-        return serierepo.findById(id).orElse(null);
+    public Optional<Series> buscaId(Long id) {
+        return serierepo.findById(id);
     }
 
+    //Buscador por palabra clave
+    @Override
+    public List<Series> buscaSeri(String keyword) {
+        if (keyword != null) {
+            return serierepo.buscarTodos(keyword);
+        }
+        return serierepo.findAll();
+    }
+
+    //Listar
     @Override
     public List<Series> listaSeri() {
         return serierepo.findAll();
     }
+
+    //Guardar y Borrar porque Crear/Editar se definen en el controlador.
+
+    @Override
+    public Series guardar(Series seri) {
+        return serierepo.save(seri);
+    }
+
+    public void borrar(Long id) {
+        serierepo.deleteById(id);
+    }
+
 }

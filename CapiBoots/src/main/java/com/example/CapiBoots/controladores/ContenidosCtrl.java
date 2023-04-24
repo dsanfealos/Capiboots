@@ -1,23 +1,18 @@
 package com.example.CapiBoots.controladores;
 
 import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
 public class ContenidosCtrl {
-    @Controller
-    @RequestMapping("/contenidos")
-    public class ContenidoCtrl {
 
+        @Autowired
         private ContenidosSrvcImpls contenidosSrvc;
 
-        @GetMapping ({"", "/"})
-        public String contenidos(Model modelo){
-            modelo.addAttribute("titulo", "contenidos");
-            return "contenidos";
-        }
         @GetMapping ("/guardarContenido")
         public String guardarContenido(Model modelo){
             modelo.addAttribute("guardarContenidos", contenidosSrvc.guardarContenido());
@@ -50,16 +45,19 @@ public class ContenidosCtrl {
         }
         @GetMapping("/bookbox")
         public String bookbox(Model modelo){
+
             modelo.addAttribute("titulo","BookBox");
             return "bookbox";
         }
-        @GetMapping("/showboox")
+        @GetMapping("/moviebox")
         public String showbox(Model modelo){
-            modelo.addAttribute("titulo","Showbox");
-            return "showbox";
+
+            modelo.addAttribute("titulo","Moviebox");
+            return "moviebox";
         }
         @GetMapping("/favoritos")
         public String favoritos(Model modelo){
+
             modelo.addAttribute("titulo","Favoritos");
             return "favoritos";
         }
@@ -68,8 +66,10 @@ public class ContenidosCtrl {
 
             @GetMapping("/busqueda")
             public String busqueda(Model modelo){
+
                 return "busqueda";
             }
         }
+
+
     }
-}

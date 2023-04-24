@@ -1,22 +1,22 @@
 package com.example.CapiBoots.controladores;
 
 import com.example.CapiBoots.modelos.Usuario;
-import com.example.CapiBoots.repositorios.UsuarioRepositorio;
 import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
-//@RequestMapping("/version1")
 public class UsuarioCtrl {
 
     @Autowired
     private UsuarioSrvcImpls usuSrvc;
+
+
 
     @GetMapping({"","/"})
     public String inicio(Model modelo) {
@@ -24,6 +24,7 @@ public class UsuarioCtrl {
         return "inicio";
     }
 
+    //Login
     @GetMapping("/acceso")
     public String Acceso(Model modelo) {
         modelo.addAttribute("titulo", "Página de acceso");
@@ -36,13 +37,6 @@ public class UsuarioCtrl {
         modelo.addAttribute("texto", texto);
 
         return"exitoLogin";    }
-
-
-    @GetMapping("/listausus")
-    public String listaUsus(Model modelo){
-        modelo.addAttribute("listausuarios", usuSrvc.listaUsus());
-        return "listausus";
-    }
 
     @GetMapping("/usuario-id")
     public String UsuPorId(@PathVariable Long id, Model modelo){
@@ -62,6 +56,7 @@ public class UsuarioCtrl {
         return "exito";
     }
 
+    //Desplegable Perfil
     @GetMapping("/suscripcion")
     public String Suscripcion (Model modelo) {
         // Buscar el registro en la BBDD
@@ -71,22 +66,70 @@ public class UsuarioCtrl {
         return "suscripcion";
     }
 
+    @GetMapping("/ajustes")
+    public String Ajustes(Model modelo) {
+        modelo.addAttribute("titulo", "Ajustes");
+        return "ajustes";
+    }
+
+    @GetMapping("/logros")
+    public String Logros(Model modelo) {
+        modelo.addAttribute("titulo", "Logros");
+        return "logros";
+    }
+
+    //Listas de Usuarios
+    @GetMapping("/lista-usuarios")
+    public String listaUsus(Model modelo){
+        modelo.addAttribute("listausuarios", usuSrvc.listaUsus());
+        return "/listas/lista-usus";
+    }
+    @GetMapping("/buscarusus")
+    public String buscarUsus(@PathVariable String keyword , Model modelo){
+        List<Usuario> buscausu = usuSrvc.buscaUsus(keyword);
+        modelo.addAttribute("buscausuarios", buscausu);
+        return "/listas/lista-usus";
+    }
+
     @GetMapping("/lista-amigos")
     public String ListaAmigos (Model modelo) {
         modelo.addAttribute("titulo", "Lista de amigos");
         return "listaAmigos";
     }
 
-    @GetMapping("/ajustes")
-    public String Ajustes(Model modelo) {
-        modelo.addAttribute("titulo", "Ajustes");
-        return "ajustes";
+    //Crear, Guardar, Borrar y Editar
+
+    @GetMapping("/usuario/nuevo-usuario")
+    public String nuevo(Model modelo){
+        modelo.addAttribute("usuario", new Usuario());
+        return "/forms/nuevo-usuario";
     }
-    @GetMapping("/logros")
-    public String Logros(Model modelo) {
-        modelo.addAttribute("titulo", "Logros");
-        return "logros";
+
+    @PostMapping("/usuario/guardar")
+    public String guardar(Usuario usu){
+        usuSrvc.guardar(usu);
+        return "redirect:/lista-usus";
     }
+
+    @GetMapping("/usuario/borrar/{id}")
+    public String borrar(@PathVariable Long id){
+        usuSrvc.borrar(id);
+        return "redirect:/lista-usus";
+    }
+
+    @GetMapping("/usuario/editar/{id}")
+    public String editar(@PathVariable Long id, Model modelo){
+        Optional<Usuario> usuOpt = usuSrvc.buscaId(id);
+        if(usuOpt.isPresent()){
+            modelo.addAttribute("usuario", usuOpt.get());
+        }
+        else{
+            // Si no existe, redirigir a una página de error o mostrar un mensaje de error
+            return "error";
+        }
+        return "/forms/nuevo-usuario";
+    }
+
 
 
 

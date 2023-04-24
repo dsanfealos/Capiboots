@@ -28,8 +28,8 @@ public class Comentarios {
     @Column(name = "texto",columnDefinition = "TEXT", length = 300)
     private String texto;
 
-    @Column(name ="idTipo",columnDefinition = "INT")
-    private Integer idTipo;
+    @Column(name ="TipoSpoiler")
+    private Byte tipoSpo;
 
 
 }
