@@ -23,10 +23,10 @@ public class Contenidos {
     @Column(name="nombre", columnDefinition = "VARCHAR(225)")
     private String nombre;
     @ManyToOne
-    @JoinColumn(name="idserie", nullable = false)
+    @JoinColumn(name="idserie", nullable = true)
     private Series idserie;
     @ManyToOne
-    @JoinColumn(name="idtemporada", nullable = false)
+    @JoinColumn(name="idtemporada", nullable = true)
     private Temporada idtemporada;
     @Column(name="FechaAlta")
     private Date fechaAlta;

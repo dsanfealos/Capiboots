@@ -1,11 +1,16 @@
 package com.example.CapiBoots.controladores;
 
+import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Optional;
 
 @Controller
 public class ContenidosCtrl {
@@ -32,11 +37,6 @@ public class ContenidosCtrl {
         public String buscarContenido(Model modelo){
             modelo.addAttribute("buscarContenidos", contenidosSrvc.buscarContenido());
             return "buscarContenidos";
-        }
-        @GetMapping ("/listaCont")
-        public String listaCont(Model modelo){
-            modelo.addAttribute("listaCont", contenidosSrvc.listaCont());
-            return "listaCont";
         }
         @GetMapping ("/showbox")
         public String Showbox(Model modelo){
@@ -71,5 +71,37 @@ public class ContenidosCtrl {
             }
         }
 
+        //Lista de Usuarios
+        @GetMapping ("/contenido/lista-contenidos")
+        public String listaContenidos(Model modelo){
+            modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
+            return "/listas/lista-contenidos";
+        }
+        //Crear, guardar, borrar y editar
+    @GetMapping("/contenido/nuevo-contenido")
+    public String crearContenido(Model modelo) {
+        modelo.addAttribute("contenido", new Contenidos());
+        return "/forms/nuevo-contenido";
+    }
+    @PostMapping ("/contenido/guardar")
+    public String guardarContenido(Contenidos contenido) {
+        contenidosSrvc.guardar(contenido);
+        return "redirect:/contenido/lista-contenidos";
+    }
+    @GetMapping("/contenido/borrar/{id}")
+    public String borrarContenido(@PathVariable Long id) {
+        contenidosSrvc.borrar(id);
+        return "redirect:/contenido/lista-contenidos";
+    }
+    @GetMapping("/contenido/editar/{id}")
+    public String editarContenido(@PathVariable Long id, Model modelo) {
+        Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
+        if (contOptional.isPresent()) {
+            modelo.addAttribute("contenido", contOptional.get());
+        } else {
+            return "error";
+        }
+        return "forms/nuevo-contenido";
+    }
 
     }
