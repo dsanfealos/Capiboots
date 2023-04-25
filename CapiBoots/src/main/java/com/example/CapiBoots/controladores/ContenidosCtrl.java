@@ -71,7 +71,7 @@ public class ContenidosCtrl {
             }
         }
 
-        //Lista de Usuarios
+        //Lista de contenidos
         @GetMapping ("/contenido/lista-contenidos")
         public String listaContenidos(Model modelo){
             modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
