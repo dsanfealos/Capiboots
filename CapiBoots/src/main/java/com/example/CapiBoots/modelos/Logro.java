@@ -26,7 +26,7 @@ public class Logro {
     @Column(name = "descripcion", nullable = false,columnDefinition = "VARCHAR(200)")
     private String descripcion;
     @ManyToOne
-    @JoinColumn(name = "idcontenido", nullable = false)
+    @JoinColumn(name = "idcontenido", nullable = true)
     private Contenidos idContenido;
 
     @Column(name = "tipologro", nullable = false)
