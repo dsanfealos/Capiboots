@@ -1,10 +1,3 @@
-<!--
-  Created by CPL.
-  User: Carlos
-  Date: 13/04/2023
-  Time: 18:45
-  To change this template use File | Settings | File Templates | JSP Bootstrap 5.
--->
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -14,6 +7,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nueva Serie</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,38 +16,34 @@
   <!-- Estilos personalizados -->
   <link href="" type="text/css" rel="stylesheet">
 
-  <title>Lista de Usuarios</title>
+  <title>Nueva Serie</title>
 </head>
 <body>
-<div>
-  <h1>Lista de Usuarios</h1>
+<div class="container mt-3">
+  <h2>Serie Nueva</h2>
 
-  <a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>
+  <!--Formulario de creación-->
+  <!--En action (Lo que se activa al darle al botón tipo "submit") ponemos la url del controlador que queremos activar,
+  y en object ponemos el objeto definido en ese método (basado en
+  el modelo que queremos)-->
+  <form th:action="@{/serie/guardar}" th:object="${serie}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <!--Atentos a poner "text" o "number" en el tipo según necesitemos-->
+      <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" required>
+    </div>
 
-  <br><br><br>
-  <table class="table">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Edad</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="usuario : ${listausuarios}">
-      <td th:text="${usuario.id}">ID</td>
-      <td th:text="${usuario.nombre_usuario}">Name</td>
-      <td th:text="${usuario.edad}">Age</td>
-      <td>
-        <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>
-        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Borrar</a>
-      </td>
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <input type="text" class="form-control" id="descripcion" name="descripcion" th:field="*{descripcion}" required>
+    </div>
 
-    </tr>
-    </tbody>
-  </table>
+    <button type="submit" class="btn btn-primary">Guardar</button>
 
+  </form>
 </div>
+
 
 
 <!-- Optional JavaScript -->

@@ -11,12 +11,8 @@ public interface ifxSeriesSrvc {
     List<Series> buscaSeri(String keyword);
     List<Series> listaSeri();
 
-    //Crear, Guardar, Borrar y Editar
-
-    public Series nuevo(Series seri);
+    //Guardar porque Borrar requiere un método void y Crear/Editar se definen en el controlador.
 
     public Series guardar(Series seri);
-
-    public Series editar(Series seri);
 
 }

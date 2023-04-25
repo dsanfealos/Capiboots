@@ -20,6 +20,7 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
         return usurepo.findById(id);
     }
 
+    //Buscador por palabra clave
     @Override
     public List<Usuario> buscaUsus(String keyword) {
         if (keyword != null) {
@@ -28,17 +29,13 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
         return usurepo.findAll();
     }
 
+    //Listar
     @Override
     public List<Usuario> listaUsus() {
         return usurepo.findAll();
     }
 
-    //Crear, Guardar, Borrar y Editar
-    @Override
-    public Usuario nuevo(Usuario user) {
-
-        return null;
-    }
+    //Guardar y Borrar porque Crear/Editar se definen en el controlador.
 
     @Override
     public Usuario guardar(Usuario user) {
@@ -48,12 +45,5 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
     public void borrar(Long id) {
         usurepo.deleteById(id);
     }
-
-    @Override
-    public Usuario editar(Usuario user) {
-
-        return null;
-    }
-
 
 }

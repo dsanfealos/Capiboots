@@ -19,32 +19,50 @@
 </head>
 <body>
 <div>
-  <h1>Lista de Series</h1>
+  <div>
+    <h1>Lista de Series</h1>
+    <br>
+    <a th:href="@{/serie/nueva-serie}">Crear nueva serie</a>
+  </div>
 
-  <a th:href="@{/serie/nueva-serie}">Crear nueva serie</a>
+  <br>
 
+  <div>
+    <form th:action="@{/buscarseri}">
+      Filter:
+      <input type="text" name="keyword" required/>
+      &nbsp;
+      <input type="submit" value="Search"/>
+      &nbsp;
+      <input type="button" value="Clear"/>
+    </form>
+  </div>
+
+
+  <div>
   <br><br><br>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Descripción</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="serie : ${listaseries}">
-      <td th:text="${serie.id}">ID</td>
-      <td th:text="${serie.nombre}">Nombre</td>
-      <td th:text="${serie.descripcion}">Descripción</td>
-      <td>
-        <a class="btn btn-outline-primary" th:href="@{/serie/editar/{id}(id=${serie.id})}">Editar</a>
-        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/serie/borrar/{id}(id=${serie.id})}">Borrar</a>
-      </td>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="serie : ${listaseries}">
+        <td th:text="${serie.id}">ID</td>
+        <td th:text="${serie.nombre}">Nombre</td>
+        <td th:text="${serie.descripcion}">Descripción</td>
+        <td>
+          <a class="btn btn-outline-primary" th:href="@{/serie/editar/{id}(id=${serie.id})}">Editar</a>
+          <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/serie/borrar/{id}(id=${serie.id})}">Borrar</a>
+        </td>
 
-    </tr>
-    </tbody>
-  </table>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
 </div>
 

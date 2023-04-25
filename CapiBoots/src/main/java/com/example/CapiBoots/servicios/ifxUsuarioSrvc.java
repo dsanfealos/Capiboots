@@ -11,12 +11,7 @@ public interface ifxUsuarioSrvc {
     List<Usuario> buscaUsus(String keyword);
     List<Usuario> listaUsus();
 
-    //Crear, Guardar, Borrar y Editar
-
-    public Usuario nuevo(Usuario user);
+    //Guardar porque Borrar requiere un método void y Crear/Editar se definen en el controlador.
 
     public Usuario guardar(Usuario user);
-
-
-    public Usuario editar(Usuario user);
 }
