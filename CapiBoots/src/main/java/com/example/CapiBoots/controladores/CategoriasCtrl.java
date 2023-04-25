@@ -29,7 +29,7 @@ public class CategoriasCtrl {
     }
 
     //lista
-    @GetMapping("/lista-categortias")
+    @GetMapping("/lista-categorias")
     public String listacategorias(Model modelo) {
         modelo.addAttribute("listacategorias", catSrvc.listaCat());
         return "/listas/lista-cat";
