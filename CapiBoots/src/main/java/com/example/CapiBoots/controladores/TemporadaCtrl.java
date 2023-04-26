@@ -56,7 +56,7 @@ public class TemporadaCtrl {
     public String editar(@PathVariable Long id, Model modelo){
         Optional<Temporada> tempoOpt = tempoSrvc.buscaId(id);
         if(tempoOpt.isPresent()){
-            modelo.addAttribute("serie", tempoOpt.get());
+            modelo.addAttribute("temporada", tempoOpt.get());
         }
         else{
             // Si no existe, redirigir a una página de error o mostrar un mensaje de error
