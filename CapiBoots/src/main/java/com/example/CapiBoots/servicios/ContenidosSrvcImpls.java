@@ -50,6 +50,7 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
     public Contenidos guardar(Contenidos contenido) {
         return contenidoRepo.save(contenido);
     }
+
     //Borrar
     public void borrar(Long id){
         contenidoRepo.deleteById(id);

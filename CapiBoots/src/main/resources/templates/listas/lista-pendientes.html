@@ -33,37 +33,23 @@
   <table class="table">
     <thead>
     <tr>
-      <th>ID</th>
-      <th>Nombre de usuario</th>
-      <th>Edad</th>
-      <th>Género</th>
-      <th>Género</th>
-      <th>Correo</th>
-      <th>País</th>
+      <th>Inicio</th>
+      <th>Fin</th>
+      <th>Contenido</th>
+
     </tr>
     </thead>
     <tbody>
-    <tr th:each="usuario : ${listausuarios}">
-      <td th:text="${usuario.id}">Id</td>
-      <td th:text="${usuario.nombre_usuario}"></td>
-      <td th:text="${usuario.edad}"></td>
-      <td th:text="${usuario.genero}"></td>
-      <td th:switch="${usuario.genero}">
+    <tr th:each="pendiente : ${pendientes}">
+      <td th:text="${pendiente.getfecha_inicio}">Id</td>
+      <td th:text="${pendiente.getFecha_fin}"></td>
+      <td th:text="${pendiente.getidContenido}"></td>
 
-        <p th.case="0"> Hombre</p>
-        <p th.case="1"> Mujer</p>
-        <p th.case="2"> Otro</p>
-        <p th.case="3"> NA</p>
-        <p th.case="'*'"> NA*</p>
-
-      </td>
-      <td th:text="${usuario.correo}">Correo</td>
-      <td th:text="${usuario.pais}">País</td>
       <td>
         <!--Editar y Borrar-->
         <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
-        <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>
-        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Borrar</a>
+
+        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Quitar de la lista</a>
       </td>
 
     </tr>

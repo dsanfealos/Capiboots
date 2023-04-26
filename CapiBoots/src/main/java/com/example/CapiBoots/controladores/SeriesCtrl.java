@@ -31,7 +31,7 @@ public class SeriesCtrl {
     @GetMapping("/buscarseri")
     public String buscarSeri(@Param("keyword") String keyword , Model modelo){
         List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
-        modelo.addAttribute("buscaseries", buscaseri);
+        modelo.addAttribute("listaseries", buscaseri);
         return "/listas/lista-series";
     }
 

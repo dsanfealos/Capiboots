@@ -5,6 +5,7 @@ import com.example.CapiBoots.repositorios.SeriesRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +23,10 @@ public class SeriesSrvcImpls implements ifxSeriesSrvc{
     //Buscador por palabra clave
     @Override
     public List<Series> buscaSeri(String keyword) {
+        List<Series> lista = new ArrayList<>();
         if (keyword != null) {
-            return serierepo.buscarTodos(keyword);
+            lista = serierepo.buscarTodos(keyword);
+            return lista;
         }
         return serierepo.findAll();
     }

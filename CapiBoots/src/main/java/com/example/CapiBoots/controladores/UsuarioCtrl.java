@@ -1,6 +1,8 @@
 package com.example.CapiBoots.controladores;
 
+import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Usuario;
+import com.example.CapiBoots.servicios.AccesosSrvcImpls;
 import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +18,17 @@ public class UsuarioCtrl {
     @Autowired
     private UsuarioSrvcImpls usuSrvc;
 
+    @Autowired
+    private AccesosSrvcImpls accessSrvc;
+
 
 
     @GetMapping({"","/"})
     public String inicio(Model modelo) {
+        List<Contenidos> pdtes = accessSrvc.buscaPendientes(2L);
+        modelo.addAttribute("pendientes", pdtes);
         modelo.addAttribute("titulo", "Página de inicio de relaciones N:M");
-        return "inicio";
+        return "/inicio";
     }
 
     //Login
