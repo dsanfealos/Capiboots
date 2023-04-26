@@ -28,7 +28,7 @@ public class UsuarioCtrl {
     @GetMapping("/acceso")
     public String Acceso(Model modelo) {
         modelo.addAttribute("titulo", "Página de acceso");
-        return "login";
+        return "/administrarUsuario/login";
     }
 
     @PostMapping("/acceso")
@@ -36,7 +36,7 @@ public class UsuarioCtrl {
         String texto = "Hola " + usu + " tu clave es " + clave + ".";
         modelo.addAttribute("texto", texto);
 
-        return"exitoLogin";    }
+        return"/administrarUsuario/exitoLogin";    }
 
     @GetMapping("/usuario-id")
     public String UsuPorId(@PathVariable Long id, Model modelo){
@@ -48,7 +48,7 @@ public class UsuarioCtrl {
     public String Registro(Model modelo){
         modelo.addAttribute("titulo", "CapiBoots");
         modelo.addAttribute("titulo2", "Esta es mi aplicación CapiBoots");
-        return "registro";
+        return "/administrarUsuario/registro";
     }
 
     @PostMapping("/registro")
@@ -63,19 +63,19 @@ public class UsuarioCtrl {
         // colocar los datos en el parámetro que pasas a la vista de Thymeleaf
         modelo.addAttribute("titulo", "Estás viendo tus datos de suscripción");
         // devuelve el archivo html con la vista
-        return "suscripcion";
+        return "/administrarUsuario/suscripcion";
     }
 
     @GetMapping("/ajustes")
     public String Ajustes(Model modelo) {
         modelo.addAttribute("titulo", "Ajustes");
-        return "ajustes";
+        return "/administrarUsuario/ajustes";
     }
 
     @GetMapping("/logros")
     public String Logros(Model modelo) {
         modelo.addAttribute("titulo", "Logros");
-        return "logros";
+        return "/administrarUsuario/logros";
     }
 
     //Listas de Usuarios
@@ -108,13 +108,13 @@ public class UsuarioCtrl {
     @PostMapping("/usuario/guardar")
     public String guardar(Usuario usu){
         usuSrvc.guardar(usu);
-        return "redirect:/lista-usus";
+        return "redirect:/lista-usuarios";
     }
 
     @GetMapping("/usuario/borrar/{id}")
     public String borrar(@PathVariable Long id){
         usuSrvc.borrar(id);
-        return "redirect:/lista-usus";
+        return "redirect:/lista-usuarios";
     }
 
     @GetMapping("/usuario/editar/{id}")

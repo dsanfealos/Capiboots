@@ -19,6 +19,10 @@
 </head>
 <body>
 <div>
+
+  <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+  <br>
+
   <h1>Lista de Usuarios</h1>
 
   <!--Crear-->
@@ -29,16 +33,22 @@
   <table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Nombre de usuario</th>
-        <th>Edad</th>
+      <th>ID</th>
+      <th>Nombre de usuario</th>
+      <th>Edad</th>
+      <th>Género</th>
+      <th>Correo</th>
+      <th>País</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="usuario : ${listausuarios}">
-      <td th:text="${usuario.id}">ID</td>
-      <td th:text="${usuario.nombre_usuario}">Name</td>
-      <td th:text="${usuario.edad}">Age</td>
+      <td th:text="${usuario.id}">Id</td>
+      <td th:text="${usuario.nombre_usuario}">Nombre</td>
+      <td th:text="${usuario.edad}">Edad</td>
+      <td th:text="${usuario.genero}">Género</td>
+      <td th:text="${usuario.correo}">Correo</td>
+      <td th:text="${usuario.pais}">País</td>
       <td>
         <!--Editar y Borrar-->
         <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
