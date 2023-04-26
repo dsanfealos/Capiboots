@@ -22,8 +22,8 @@ public class Comentarios {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name= "idContenido")
-    private Contenidos idContenido;
+    @JoinColumn(name= "idComentario")
+    private Comentarios idComentario;
 
     @Column(name = "texto",columnDefinition = "TEXT", length = 300)
     private String texto;
