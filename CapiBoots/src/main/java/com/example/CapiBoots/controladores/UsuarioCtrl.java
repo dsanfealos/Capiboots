@@ -23,15 +23,20 @@ public class UsuarioCtrl {
 
 
 
-    @GetMapping({"","/"})
+    /*@GetMapping({"","/"})
     public String inicio(Model modelo) {
 //        List<Contenidos> pdtes = accessSrvc.buscaPendientes(2L);
 //        modelo.addAttribute("pendientes", pdtes);
         modelo.addAttribute("titulo", "Página de inicio de relaciones N:M");
         return "/inicio";
     }
-
+    */
     //Login
+    @GetMapping("/home")
+    public String Home(Model modelo) {
+        modelo.addAttribute("titulo", "Home");
+        return "/home";
+    }
     @GetMapping("/acceso")
     public String Acceso(Model modelo) {
         modelo.addAttribute("titulo", "Página de acceso");
