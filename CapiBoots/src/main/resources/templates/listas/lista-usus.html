@@ -23,7 +23,10 @@
   <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
   <br>
 
-  <h1>Lista de Usuarios</h1>
+  <a class="navbar-brand" th:href="@{/lista-usuarios}" style="font-size: 38px; color: black; font-weight: bold">
+    <span>Lista de Usuarios</span>
+  </a>
+  <br>
 
   <!--Crear-->
   <a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>
@@ -50,11 +53,10 @@
       <td th:text="${usuario.genero}"></td>
       <td th:switch="${usuario.genero}">
 
-        <p th.case="0"> Hombre</p>
-        <p th.case="1"> Mujer</p>
-        <p th.case="2"> Otro</p>
-        <p th.case="3"> NA</p>
-        <p th.case="'*'"> NA*</p>
+        <p th:case="0"> Hombre</p>
+        <p th:case="1"> Mujer</p>
+        <p th:case="2"> Otro</p>
+        <p th:case="3"> NA</p>
 
       </td>
       <td th:text="${usuario.correo}">Correo</td>

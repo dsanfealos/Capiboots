@@ -25,8 +25,8 @@ public class UsuarioCtrl {
 
     @GetMapping({"","/"})
     public String inicio(Model modelo) {
-        List<Contenidos> pdtes = accessSrvc.buscaPendientes(2L);
-        modelo.addAttribute("pendientes", pdtes);
+//        List<Contenidos> pdtes = accessSrvc.buscaPendientes(2L);
+//        modelo.addAttribute("pendientes", pdtes);
         modelo.addAttribute("titulo", "Página de inicio de relaciones N:M");
         return "/inicio";
     }
@@ -101,7 +101,7 @@ public class UsuarioCtrl {
     @GetMapping("/lista-amigos")
     public String ListaAmigos (Model modelo) {
         modelo.addAttribute("titulo", "Lista de amigos");
-        return "listaAmigos";
+        return "/administrarUsuario/listaAmigos";
     }
 
     //Crear, Guardar, Borrar y Editar

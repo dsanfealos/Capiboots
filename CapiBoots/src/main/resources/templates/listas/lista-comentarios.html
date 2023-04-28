@@ -19,9 +19,12 @@
 </head>
 <body>
 <div>
-  <h1> Lista de Comentarios</h1>
+  <a class="navbar-brand" th:href="@{/comentarios/lista-comentarios}" style="font-size: 38px; color: black; font-weight: bold">
+    <span>Lista de Comentarios</span>
+  </a>
+  <br>
   <!--Crear-->
-  <a th:href="@{/comentario/nuevo-comentario}">Crear</a>
+  <a th:href="@{/comentarios/nuevo-comentario}">Crear</a>
 
   <!--Listar-->
   <br><br><br>

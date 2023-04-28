@@ -44,6 +44,16 @@ youtube.com/watch?v=GykDyG0ELms  (Reproductor streaming)
 Para colocar en internet usar capa gratuita aws
 -Mirar la parte de Test
 -Mirar Relaciones							V
+-Pulir listas								V	(Crear, guardar, editar, borrar y rutas funcionan)
+--------------------------
 -Buscar por palabras clave(keyword)					(Preguntar)
 -Buscar por filtros
--Pulir listas								V	(Crear, guardar, editar, borrar y rutas funcionan)
+-¿Qué falta?
+-género pasar de números a nombres
+-¿contraseña escrita como código largo?
+------------------------------------
+-Seguir viendo debe funcionar
+-Novedades debe funcionar
+-Arreglar visualización inicio
+-inicio debe ser prelogin
+-El actual inicio debe ser home

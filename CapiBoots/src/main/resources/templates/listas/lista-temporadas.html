@@ -23,7 +23,10 @@
   <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
   <br>
 
-  <h1>Lista de Temporadas</h1>
+  <a class="navbar-brand" th:href="@{/lista-temporadas}" style="font-size: 38px; color: black; font-weight: bold">
+    <span>Lista de Temporadas</span>
+  </a>
+  <br>
 
   <!--Crear-->
   <a th:href="@{/temporada/nueva-temporada}">Crear nueva temporada</a>
