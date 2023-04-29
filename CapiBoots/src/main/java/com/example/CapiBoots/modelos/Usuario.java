@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -82,11 +83,19 @@ public class Usuario {
             name = "seguimientos",
             joinColumns = @JoinColumn(name = "id_seguidor"),
             inverseJoinColumns = @JoinColumn(name = "id_seguido"))
+
+
     private List<Usuario> seguidos;
 
+    //Crear Many to Many de seguidos y seguidores
     @ManyToMany(mappedBy = "seguidos")
     private List<Usuario> seguidores;
 
-    //Crear Many to Many de seguidos y seguidores
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinTable(
+            name="usuarios_roles",
+            joinColumns={@JoinColumn(name="USUARIO_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="ROL_ID", referencedColumnName="ID")})
+    private List<Rol> roles = new ArrayList<>();
 }
 

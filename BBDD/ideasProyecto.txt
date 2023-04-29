@@ -57,7 +57,6 @@ Para colocar en internet usar capa gratuita aws
 -Seguir viendo debe funcionar	(Karim)
 -Novedades debe funcionar	(Karim)
 -Arreglar visualización inicio	(Rocío)
--inicio debe ser prelogin	(Rocío)
--El actual inicio debe ser home	(Rocío)
+-inicio debe ser prelogin y el actual inicio debe ser home	(Rocío)
 -Subir proyecto a dominio web 	(Mireia)
 -Preguntar a Alejandro por tests
