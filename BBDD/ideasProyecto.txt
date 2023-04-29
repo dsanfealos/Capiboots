@@ -61,3 +61,4 @@ Para colocar en internet usar capa gratuita aws
 -El actual inicio debe ser home	(Rocío)
 -Subir proyecto a dominio web 	(Mireia)
 -Preguntar a Alejandro por tests
+-Aplicar buscador a búsqueda y filtros
