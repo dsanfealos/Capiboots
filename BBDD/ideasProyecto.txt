@@ -52,8 +52,12 @@ Para colocar en internet usar capa gratuita aws
 -género pasar de números a nombres
 -¿contraseña escrita como código largo?
 ------------------------------------
--Seguir viendo debe funcionar
--Novedades debe funcionar
--Arreglar visualización inicio
--inicio debe ser prelogin
--El actual inicio debe ser home
+-OneToMany (Sanfe)
+-Seguridad login (Sanfe)
+-Seguir viendo debe funcionar	(Karim)
+-Novedades debe funcionar	(Karim)
+-Arreglar visualización inicio	(Rocío)
+-inicio debe ser prelogin	(Rocío)
+-El actual inicio debe ser home	(Rocío)
+-Subir proyecto a dominio web 	(Mireia)
+-Preguntar a Alejandro por tests
