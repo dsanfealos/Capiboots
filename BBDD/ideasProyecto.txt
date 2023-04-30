@@ -53,7 +53,7 @@ Para colocar en internet usar capa gratuita aws
 -¿contraseña escrita como código largo?
 ------------------------------------
 -OneToMany (Sanfe)
--Seguridad login (Sanfe)
+-Seguridad login (Sanfe)		------(Comprobar si es necesaria la clase UserDetailsServiceImpl
 -Seguir viendo debe funcionar	(Karim)
 -Novedades debe funcionar	(Karim)
 -Arreglar visualización inicio	(Rocío)
