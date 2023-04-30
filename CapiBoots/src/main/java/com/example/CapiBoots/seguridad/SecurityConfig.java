@@ -34,6 +34,8 @@ public class SecurityConfig {
         return authProvider;
     }
 
+    //TODO Aplicar el .csrf().disable(); al http si los th dejan de funcionar.
+    //TODO aplicar las direcciones de pantallas a este método
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http

@@ -97,5 +97,8 @@ public class Usuario {
             joinColumns={@JoinColumn(name="USUARIO_ID", referencedColumnName="ID")},
             inverseJoinColumns={@JoinColumn(name="ROL_ID", referencedColumnName="ID")})
     private List<Rol> roles = new ArrayList<>();
+
+    @Column(name = "token_restaurar_contra")
+    private String tokenRestaurarContra;
 }
 

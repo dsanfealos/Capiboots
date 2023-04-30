@@ -59,12 +59,12 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
-                            <li><a class="dropdown-item" href="/suscripcion">Suscripción</a></li>
-                            <li><a class="dropdown-item" href="/logros">Logros</a></li>
-                            <li><a class="dropdown-item" href="/ajustes">Ajustes</a></li>
-                            <li><a class="dropdown-item" href="/lista-amigos">Lista de Amigos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/suscripcion}">Suscripción</a></li>
+                            <li><a class="dropdown-item" th:href="@{/logros}">Logros</a></li>
+                            <li><a class="dropdown-item" th:href="@{/ajustes}">Ajustes</a></li>
+                            <li><a class="dropdown-item" th:href="@{/lista-amigos}">Lista de Amigos</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/acceso">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a></li>
                         </ul>
 
 

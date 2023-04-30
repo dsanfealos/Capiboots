@@ -1,5 +1,6 @@
 package com.example.CapiBoots.controladores;
 
+import com.example.CapiBoots.dto.UsuarioDto;
 import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.servicios.AccesosSrvcImpls;
@@ -118,8 +119,8 @@ public class UsuarioCtrl {
     }
 
     @PostMapping("/usuario/guardar")
-    public String guardar(Usuario usu){
-        usuSrvc.guardar(usu);
+    public String guardar(UsuarioDto usuDto){
+        usuSrvc.guardar(usuDto);
         return "redirect:/lista-usuarios";
     }
 
@@ -142,6 +143,19 @@ public class UsuarioCtrl {
         return "/forms/nuevo-usuario";
     }
 
+    //Seguridad
+
+    //Pantalla que sale si se hace login como administrador
+    @GetMapping("/admin")
+    public String showAdminPage() {
+        return "admin";
+    }
+
+    //Pantalla que sale si se hace login como usuario
+    @GetMapping("/user")
+    public String showUserPage() {
+        return "user";
+    }
 
 
 

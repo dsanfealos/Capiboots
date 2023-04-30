@@ -19,6 +19,9 @@ public class UsuarioDto {
     @NotEmpty(message = "Es necesario escribir el nombre de usuario")
     private String nombre_usuario;
 
+    @NotEmpty
+    private String clave;
+
     private Integer edad;
 
     private Byte genero;
