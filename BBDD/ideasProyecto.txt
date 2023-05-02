@@ -60,3 +60,6 @@ Para colocar en internet usar capa gratuita aws
 -inicio debe ser prelogin y el actual inicio debe ser home	(Rocío)
 -Subir proyecto a dominio web 	(Mireia)
 -Preguntar a Alejandro por tests
+--------------------------------------------------
+- Marcar como novedades
+- 
