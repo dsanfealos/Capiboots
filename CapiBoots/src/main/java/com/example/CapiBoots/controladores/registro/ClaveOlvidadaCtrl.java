@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 @Controller
 public class ClaveOlvidadaCtrl {
 
-    @Autowired
+
     private JavaMailSender mailSender;
 
     @Autowired
