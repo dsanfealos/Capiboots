@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class UsuarioCtrl {
 
 
 
-    @GetMapping({"","/"})
+    @GetMapping({"","/inicio"})
     public String inicio(Model modelo) {
 //        List<Contenidos> pdtes = accessSrvc.buscaPendientes(2L);
 //        modelo.addAttribute("pendientes", pdtes);
@@ -155,6 +156,12 @@ public class UsuarioCtrl {
     @GetMapping("/user")
     public String showUserPage() {
         return "user";
+    }
+
+    //Validación cuando se ha hecho login
+    @GetMapping("/")
+    String index(Principal principal) {
+        return principal != null ? "moviebox" : "inicio";
     }
 
 

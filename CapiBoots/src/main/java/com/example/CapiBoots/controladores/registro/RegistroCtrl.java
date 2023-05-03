@@ -25,7 +25,7 @@ public class RegistroCtrl {
         // Creamos Usuario con su etiqueta
         UsuarioDto usu = new UsuarioDto();
         model.addAttribute("user", usu);
-        return "register";
+        return "/administrarUsuario/registro";
     }
 
 
@@ -34,18 +34,18 @@ public class RegistroCtrl {
     public String registration(@Valid @ModelAttribute("user") UsuarioDto userDto, BindingResult result,
                                Model model){
         //Busca si existe un usuario con el mismo nombre que hemos introducido
-        Usuario existingUser = usuSrvc.buscaPorNombre(userDto.getNombre_usuario());
+        Usuario existingUser = usuSrvc.buscaPorCorreo(userDto.getCorreo());
 
         //Si existe un usuario con el mismo nombre, salta un aviso
-        if(existingUser != null && existingUser.getNombre_usuario() != null && !existingUser.getNombre_usuario().isEmpty()){
-            result.rejectValue("nombre", null,
+        if(existingUser != null && existingUser.getCorreo() != null && !existingUser.getCorreo().isEmpty()){
+            result.rejectValue("correo", null,
                     "Ya existe un usuario con ese nombre");
         }
 
         //Si hay algún error, recargamos la página de registro y declaramos otro userDto
         if(result.hasErrors()){
             model.addAttribute("user", userDto);
-            return "/register";
+            return "/administrarUsuario/registro";
         }
 
         //Guardamos el usuario si se han cumplido las condiciones

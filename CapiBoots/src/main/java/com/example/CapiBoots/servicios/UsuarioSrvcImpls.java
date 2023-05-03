@@ -29,8 +29,12 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
     }
 
     @Override
-    public Usuario buscaPorNombre(String nombre) {
-        return usurepo.findByName(nombre);
+    public Usuario buscaPorNombre(String nombre_usuario) {
+        return usurepo.findByNombreUsuario(nombre_usuario);
+    }
+
+    public Usuario buscaPorCorreo(String correo) {
+        return usurepo.findByCorreo(correo);
     }
 
 
@@ -59,7 +63,7 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
 
         //Guarda los datos del Dto en la entidad Usuario, codificando la clave y asignando un rol.
         Usuario user = new Usuario();
-        user.setNombre_usuario(userDto.getNombre_usuario());
+        user.setNombreUsuario(userDto.getNombre_usuario());
         user.setEdad(userDto.getEdad());
         user.setGenero(userDto.getGenero());
         user.setCorreo(userDto.getCorreo());
@@ -107,23 +111,23 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
 
     private UsuarioDto mapToUserDto(Usuario usuario){
         UsuarioDto usuarioDto = new UsuarioDto();
-        usuarioDto.setNombre_usuario(usuario.getNombre_usuario());
+        usuarioDto.setNombre_usuario(usuario.getNombreUsuario());
         usuarioDto.setCorreo(usuario.getCorreo());
         return usuarioDto;
     }
 
     //Añade un rol al nuevo usuario si no lo tiene ya
     private Rol addRoleIfNotExists(){
-        Rol rol = new Rol();
-        rol.setName(defaultUserRole);
-        return roleRepository.save(rol);
+        Rol role = new Rol();
+        role.setName(defaultUserRole);
+        return roleRepository.save(role);
     }
 
     //Restaurar Contraseña olvidada
-    public void updateResetPasswordToken(String token, String nombre) throws UsernameNotFoundException {
+    public void updateResetPasswordToken(String token, String nombre_usuario) throws UsernameNotFoundException {
 
         //Encuentra al usuario por su nombre de usuario (único)
-        Usuario user = userRepository.findByName(nombre);
+        Usuario user = userRepository.findByNombreUsuario(nombre_usuario);
         //Si el usuario existe, aplica un token al usuario
         //para cambiar la clave más tarde y guarda de nuevo al
         //usuario con el token listo para ser usado
@@ -131,13 +135,13 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
             user.setTokenRestaurarContra(token);
             userRepository.save(user);
         } else {
-            throw new UsernameNotFoundException("Could not find any user with the email " + nombre);
+            throw new UsernameNotFoundException("Could not find any user with the email " + nombre_usuario);
         }
     }
 
 
     public Usuario getByRestaurarContra(String token) {
-        return userRepository.findByRestaurarContra(token);
+        return userRepository.findByTokenRestaurarContra(token);
     }
 
     public void updatePassword(Usuario user, String nuevaClave) {

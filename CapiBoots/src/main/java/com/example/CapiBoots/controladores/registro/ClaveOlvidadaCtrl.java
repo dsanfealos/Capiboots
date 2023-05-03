@@ -97,7 +97,7 @@ public class ClaveOlvidadaCtrl {
     //Comprobación del token antes de reenviarse al formulario correspondiente
     @GetMapping("/reset_password")
     public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
-        //Encuetra al usuario por el token
+        //Encuentra al usuario por el token
         Usuario user = userService.getByRestaurarContra(token);
         model.addAttribute("token", token);
 
