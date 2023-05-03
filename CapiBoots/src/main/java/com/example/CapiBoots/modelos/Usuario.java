@@ -26,7 +26,7 @@ public class Usuario {
     private Long id;
 
     @Column(name = "nombre_usuario", unique = true, nullable = false)
-    private String nombre_usuario;
+    private String nombreUsuario;
 
     @Column(name = "clave", columnDefinition = "VARCHAR(100)")
     private String clave;

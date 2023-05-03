@@ -47,7 +47,8 @@ public class SecurityConfig {
                         .requestMatchers("/index","/","").permitAll()
                         .requestMatchers("/webjars/**", "/js/**","/css/**","/img/**","/fonts/**","/favicon.ico").permitAll()
                         .requestMatchers("*css", "*js").permitAll()
-                        .requestMatchers("/registro/**","/forgot_password" ,"/reset_password","/signup", "/inicio","/error", "/login").permitAll()
+                        .requestMatchers("/registro/**", "/register/**","/forgot_password" ,"/reset_password","/signup", "/inicio","/error", "/login", "/login/**").permitAll()
+                        .requestMatchers("/template_menus/**", "/template_inicio/**", "/template_home/**").permitAll()
                         //Peticiones asociadas a las notificaciones y conexiones websocket
                         .requestMatchers("/gs-guide-websocket/**").permitAll()
                         // Peticiones permitidas sólo para usuarios con rol ADMIN
@@ -55,7 +56,7 @@ public class SecurityConfig {
                         .requestMatchers("/users").hasRole("ADMIN")
 
                         // Peticiones permitidas sólo para usuarios autenticados
-                        .requestMatchers("/chat","/videos","/files/**","/upload","/userFiles/**","/databasefiles/**").authenticated()
+                        .requestMatchers("/chat","/videos","/favoritos" ,"/moviebox","/files/**","/upload","/userFiles/**","/databasefiles/**").authenticated()
                         .requestMatchers("/uploadUserFileToDatabase","/uploadUserFileToFileSystem","/uploadToFileSystem","/uploadToDatabase").authenticated()
 
 
