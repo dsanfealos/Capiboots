@@ -28,9 +28,13 @@
       <input type="text" class="form-control" id="texto" name = "texto"  th:field ="*{texto}" required>
     </div>
 
-    <div class ="form-group">
-      <label for="tipoSpo">tipoSpo</label>
-      <input type="number" class="form-control" id="tipoSpo" name = "tipoSpo"  th:field ="*{tipoSpo}" required>
+    <div class="form-group">
+      <label for="spoiler">Spoiler</label>
+      <select class="form-control" id="spoiler" name="spoiler" th:field="*{tipoSpo}" required>
+        <option value="0">No Spoiler</option>
+        <option value="1">Spoiler</option>
+
+      </select>
     </div>
 
     <!--<div class ="form-group">

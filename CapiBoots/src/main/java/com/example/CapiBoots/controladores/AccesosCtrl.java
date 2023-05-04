@@ -27,8 +27,8 @@ public class AccesosCtrl {
     }
 
     @GetMapping("/lista-pendientes/{id}")
-    public String listaPdtes(@PathVariable Long usu, Model modelo){
-       modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(usu));
+    public String listaPdtes(@PathVariable Long id, Model modelo){
+       modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
        return "/listas/lista-pendientes";
     }
 }

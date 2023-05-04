@@ -15,84 +15,96 @@ import java.util.Optional;
 @Controller
 public class ContenidosCtrl {
 
-        @Autowired
-        private ContenidosSrvcImpls contenidosSrvc;
+    @Autowired
+    private ContenidosSrvcImpls contenidosSrvc;
 
-        @GetMapping ("/guardarContenido")
-        public String guardarContenido(Model modelo){
-            modelo.addAttribute("guardarContenidos", contenidosSrvc.guardarContenido());
-            return "guardarContenidos";
-        }
-        @GetMapping ("/eliminarContenido")
-        public String eliminarContenido(Model modelo){
-            modelo.addAttribute("eliminarContenidos", contenidosSrvc.eliminarContenido());
-            return "eliminarContenidos";
-        }
-        @GetMapping ("/actualizarContenido")
-        public String actualizarContenido(Model modelo){
-            modelo.addAttribute("actualizarContenidos", contenidosSrvc.actualizarContenido());
-            return "actualizarContenidos";
-        }
-        @GetMapping ("/buscarContenido")
-        public String buscarContenido(Model modelo){
-            modelo.addAttribute("buscarContenidos", contenidosSrvc.buscarContenido());
-            return "buscarContenidos";
-        }
-        @GetMapping ("/showbox")
-        public String Showbox(Model modelo){
-            modelo.addAttribute("titulo", "Showbox");
-            return "Showbox";
-        }
-        @GetMapping("/bookbox")
-        public String bookbox(Model modelo){
+    @GetMapping("/guardarContenido")
+    public String guardarContenido(Model modelo) {
+        modelo.addAttribute("guardarContenidos", contenidosSrvc.guardarContenido());
+        return "guardarContenidos";
+    }
 
-            modelo.addAttribute("titulo","BookBox");
-            return "bookbox";
-        }
-        @GetMapping("/moviebox")
-        public String showbox(Model modelo){
+    @GetMapping("/eliminarContenido")
+    public String eliminarContenido(Model modelo) {
+        modelo.addAttribute("eliminarContenidos", contenidosSrvc.eliminarContenido());
+        return "eliminarContenidos";
+    }
 
-            modelo.addAttribute("titulo","Moviebox");
-            return "moviebox";
-        }
-        @GetMapping("/favoritos")
-        public String favoritos(Model modelo){
+    @GetMapping("/actualizarContenido")
+    public String actualizarContenido(Model modelo) {
+        modelo.addAttribute("actualizarContenidos", contenidosSrvc.actualizarContenido());
+        return "actualizarContenidos";
+    }
 
-            modelo.addAttribute("titulo","Favoritos");
-            return "favoritos";
-        }
-        @Controller
-        public class BusquedaCtrl {
+    @GetMapping("/buscarContenido")
+    public String buscarContenido(Model modelo) {
+        modelo.addAttribute("buscarContenidos", contenidosSrvc.buscarContenido());
+        return "buscarContenidos";
+    }
 
-            @GetMapping("/busqueda")
-            public String busqueda(Model modelo){
+    @GetMapping("/showbox")
+    public String Showbox(Model modelo) {
+        modelo.addAttribute("titulo", "Showbox");
+        return "Showbox";
+    }
 
-                return "busqueda";
-            }
-        }
+    @GetMapping("/bookbox")
+    public String bookbox(Model modelo) {
 
-        //Lista de contenidos
-        @GetMapping ("/contenido/lista-contenidos")
-        public String listaContenidos(Model modelo){
-            modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
-            return "/listas/lista-contenidos";
+        modelo.addAttribute("titulo", "BookBox");
+        return "bookbox";
+    }
+
+    @GetMapping("/moviebox")
+    public String showbox(Model modelo) {
+
+        modelo.addAttribute("titulo", "Moviebox");
+        return "moviebox";
+    }
+
+    @GetMapping("/favoritos")
+    public String favoritos(Model modelo) {
+
+        modelo.addAttribute("titulo", "Favoritos");
+        return "favoritos";
+    }
+
+    @Controller
+    public class BusquedaCtrl {
+
+        @GetMapping("/busqueda")
+        public String busqueda(Model modelo) {
+
+            return "busqueda";
         }
-        //Crear, guardar, borrar y editar
+    }
+
+    //Lista de contenidos
+    @GetMapping("/contenido/lista-contenidos")
+    public String listaContenidos(Model modelo) {
+        modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
+        return "/listas/lista-contenidos";
+    }
+
+    //Crear, guardar, borrar y editar
     @GetMapping("/contenido/nuevo-contenido")
     public String crearContenido(Model modelo) {
         modelo.addAttribute("contenido", new Contenidos());
         return "/forms/nuevo-contenido";
     }
-    @PostMapping ("/contenido/guardar")
+
+    @PostMapping("/contenido/guardar")
     public String guardarContenido(Contenidos contenido) {
         contenidosSrvc.guardar(contenido);
         return "redirect:/contenido/lista-contenidos";
     }
+
     @GetMapping("/contenido/borrar/{id}")
     public String borrarContenido(@PathVariable Long id) {
         contenidosSrvc.borrar(id);
         return "redirect:/contenido/lista-contenidos";
     }
+
     @GetMapping("/contenido/editar/{id}")
     public String editarContenido(@PathVariable Long id, Model modelo) {
         Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
@@ -103,5 +115,17 @@ public class ContenidosCtrl {
         }
         return "forms/nuevo-contenido";
     }
-
+    @GetMapping("/contenido/lista-pendientes")
+    public String listaPendientes(Model modelo) {
+        modelo.addAttribute("listaPendientes", contenidosSrvc.listaPend());
+        return "/listas/lista-pendientes";
     }
+    // Marcar como visualizado
+    @GetMapping("/pendientes/{id}")
+    public String pendientes(@PathVariable Long id, Model modelo) {
+        modelo.addAttribute("pendientes", contenidosSrvc.pendientes(id));
+        return "redirect:/contenido/lista-contenidos";
+    }
+
+
+}
