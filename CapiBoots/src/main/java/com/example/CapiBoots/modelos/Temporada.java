@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name="temporada")
 @Getter
@@ -29,5 +31,7 @@ public class Temporada {
     @JoinColumn(name = "idSerie")
     private Series serie;
 
+    @OneToMany(mappedBy = "idtemporada", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Contenidos> contenidos;
 
 }

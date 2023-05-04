@@ -38,7 +38,13 @@ public class Contenidos {
             inverseJoinColumns = @JoinColumn(name = "id_categoria"))
     private List<Categorias> categorias;
 
+    @OneToMany(mappedBy = "idContenido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Logro> logros;
 
+    @OneToMany(mappedBy = "idContenido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Comentarios> comentarios;
 
+    @OneToMany(mappedBy = "idContenido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Accesos> accesos;
 
 }

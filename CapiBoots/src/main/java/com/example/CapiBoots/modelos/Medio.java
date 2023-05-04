@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name="medio")
 @Getter
@@ -24,4 +26,6 @@ public class Medio {
     @Column(columnDefinition = "VARCHAR(150)")
     private String nombre_completo;
 
+    @OneToMany(mappedBy = "medio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Pagos> pagos;
 }

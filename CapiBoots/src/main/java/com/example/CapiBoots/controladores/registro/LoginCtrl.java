@@ -18,4 +18,11 @@ public class LoginCtrl {
         model.addAttribute("loginError", true);
         return "/administrarUsuario/login";
     }
+
+    //Logout
+    @GetMapping("/login?logout")
+    public String logout(){
+
+        return "/administrarUsuario/login";
+    }
 }

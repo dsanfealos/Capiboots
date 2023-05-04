@@ -48,7 +48,7 @@
     <tbody>
     <tr th:each="usuario : ${listausuarios}">
       <td th:text="${usuario.id}">Id</td> <!--Se llama directamente a la función de un objeto sin haberlo definido antes con ${objeto.función}-->
-      <td th:text="${usuario.nombre_usuario}"></td>
+      <td th:text="${usuario.nombreUsuario}"></td>
       <td th:text="${usuario.edad}"></td>
       <td th:text="${usuario.genero}"></td>
       <td th:switch="${usuario.genero}">
