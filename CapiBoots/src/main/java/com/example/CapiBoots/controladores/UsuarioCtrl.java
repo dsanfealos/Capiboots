@@ -32,6 +32,11 @@ public class UsuarioCtrl {
     }
 
     //Login
+    @GetMapping("/home")
+    public String Home(Model modelo) {
+        modelo.addAttribute("titulo", "Home");
+        return "/home";
+    }
     @GetMapping("/acceso")
     public String Acceso(Model modelo) {
         modelo.addAttribute("titulo", "Página de acceso");
