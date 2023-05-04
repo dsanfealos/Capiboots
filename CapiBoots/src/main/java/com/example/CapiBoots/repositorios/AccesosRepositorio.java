@@ -12,4 +12,7 @@ public interface AccesosRepositorio extends JpaRepository<Accesos, Long> {
 
     @Query("SELECT a FROM Accesos a WHERE a.idUsuario=?1 AND NOT a.terminado")
     List<Contenidos> buscarPendientes(Long usu);
+
+    @Query("SELECT a FROM Accesos a WHERE a.idUsuario=?1 AND a.idContenido=?2")
+    List<Contenidos> buscarAccesos(Long usu, Long contenido);
 }

@@ -49,6 +49,9 @@ public class SecurityConfig {
                         .requestMatchers("*css", "*js").permitAll()
                         .requestMatchers("/registro/**", "/register/**","/forgot_password" ,"/reset_password","/signup", "/error", "/login", "/login/**").permitAll()
                         .requestMatchers("/template_menus/**", "/template_inicio/**", "/template_home/**").permitAll()
+                        .requestMatchers("/reproducir/**").permitAll()
+                        .requestMatchers("/empieza/**").permitAll()
+                        .requestMatchers("/termina/**").permitAll()
                         //Peticiones asociadas a las notificaciones y conexiones websocket
                         .requestMatchers("/gs-guide-websocket/**").permitAll()
                         // Peticiones permitidas sólo para usuarios con rol ADMIN

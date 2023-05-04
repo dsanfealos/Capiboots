@@ -67,20 +67,27 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
 
    //Pendientes
     //TODO: Introducir String en direccion href
-    public String pendientes (Long id){
-        Contenidos contNuevo = new Contenidos();
-        buscarContenidoId(id);
-        String urlPendiente;
+    public Optional<Long> pendientes (Long id){
+        //Contenidos contNuevo = new Contenidos();
+        //buscarContenidoId(id);
+        // Como utilizamos el operador ternario (también llamado Edison) y utilizamos Optional (que puede ser nulo),
+        // podemos reducir las siguientes líneas a una sola
+        /*
+        Optional urlPendiente;
         if (contEmpezado(true) && contTerminado(false)) {
             urlPendiente = "http://localhost:8080/pendientes" + id;
         } else {
              urlPendiente = null;
         }
         return urlPendiente;
+        */
+        return Optional.ofNullable(contEmpezado(true) && contTerminado(false) ? id : null);
     }
 
     //Campos extra
     public Boolean contEmpezado(boolean a) {
+
+
         return a;
     }
     public Boolean contTerminado(boolean b) {
