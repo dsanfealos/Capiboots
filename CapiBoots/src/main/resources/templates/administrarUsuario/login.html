@@ -24,8 +24,9 @@
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-5">
-					<div class="login-wrap p-4 p-md-5">
+				<div class="col-md-9 col-lg-7">
+					<div class="card">
+						<div class="login-wrap p-4 p-md-5">
 						<!--<div th:if="${param.error}">
 							<div class="alert alert-danger">Invalid Email or Password</div>
 						</div>
@@ -38,38 +39,47 @@
 						</div>
 						<h3 class="text-center mb-4">Inicia sesión en tu cuenta</h3>
 						<br>
-						<form th:action="@{/login}" class="form-horizontal" th:method="post">
-							<div class="form-group">
-								<label class="control-label">Nombre de Usuario:</label>
-								<br>
-								<input type="text" id="username" name="username" class="form-control rounded-left" placeholder="..." required>
-							</div>
-							<br>
-							<div class="form-group d-flex">
-								<label class="control-label">Contraseña:</label>
-								<br>
-								<input type="password" id="password" name="password" class="form-control rounded-left" placeholder="..." required>
-							</div>
-							<br>
-							<!--<div class="form-group d-md-flex">
-								<div class="w-50">
-									<label class="checkbox-wrap checkbox-primary">Remember Me
-										<input type="checkbox" checked>
-										<span class="checkmark"></span>
-									</label>
+						<div style="width: 400px" class="mx-auto">
+							<form th:action="@{/login}" class="form" th:method="post">
+								<div class="form-group">
+									<label for="username" class="control-label">Nombre de Usuario:</label>
+									<br>
+									<!--Escribimos "username" en el id y name para que SecurityConfig lo reconozca-->
+									<input type="text" id="username" name="username" class="form-control rounded-left" placeholder="..." required>
 								</div>
 								<br>
-							</div>-->
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Iniciar Sesión</button>
-								&nbsp;&nbsp;
-								<span>
-									<button><a th:href="@{/register}">Registrarse</a></button>
-								</span>
-							</div>
-							<a th:href="@{/forgot_password}">He olvidado mi contraseña</a>
-						</form>
+								<div class="form-group">
+									<div>
+										<label for="password" class="control-label">Contraseña:</label>
+									</div>
+									<br>
+									<!--Escribimos "password" en el id y name para que SecurityConfig lo reconozca-->
+									<div>
+										<input type="password" id="password" name="password" class="form-control rounded-left" placeholder="..." required>
+									</div>
+								</div>
+								<br>
+								<!--<div class="form-group d-md-flex">
+									<div class="w-50">
+										<label class="checkbox-wrap checkbox-primary">Remember Me
+											<input type="checkbox" checked>
+											<span class="checkmark"></span>
+										</label>
+									</div>
+									<br>
+								</div>-->
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Iniciar Sesión</button>
+									&nbsp;&nbsp;
+									<span>
+										<button><a th:href="@{/register}">Registrarse</a></button>
+									</span>
+								</div>
+								<a th:href="@{/forgot_password}">He olvidado mi contraseña</a>
+							</form>
+						</div>
 						<br>
+					</div>
 					</div>
 				</div>
 			</div>

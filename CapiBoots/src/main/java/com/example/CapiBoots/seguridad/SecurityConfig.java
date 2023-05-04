@@ -44,19 +44,20 @@ public class SecurityConfig {
                         //Plantillas de html a los que el usuario puede o no acceder
 
                         // Peticiones permitidas para todos los usuarios
-                        .requestMatchers("/index","/","").permitAll()
+                        .requestMatchers("/inicio","/","").permitAll()
                         .requestMatchers("/webjars/**", "/js/**","/css/**","/img/**","/fonts/**","/favicon.ico").permitAll()
                         .requestMatchers("*css", "*js").permitAll()
-                        .requestMatchers("/registro/**", "/register/**","/forgot_password" ,"/reset_password","/signup", "/inicio","/error", "/login", "/login/**").permitAll()
+                        .requestMatchers("/registro/**", "/register/**","/forgot_password" ,"/reset_password","/signup", "/error", "/login", "/login/**").permitAll()
                         .requestMatchers("/template_menus/**", "/template_inicio/**", "/template_home/**").permitAll()
                         //Peticiones asociadas a las notificaciones y conexiones websocket
                         .requestMatchers("/gs-guide-websocket/**").permitAll()
                         // Peticiones permitidas sólo para usuarios con rol ADMIN
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/users").hasRole("ADMIN")
+                        .requestMatchers("/admin/**","/nuevo-usuario","/nuevo-logro","/nuevo-contenido","/nuevo-comentario","/nueva-temporada","/nueva-serie","/nueva-categoria").hasRole("ADMIN")
+                        .requestMatchers("/lista-usuarios","/lista-series","/lista-temporadas","/lista-categorias","/lista-comentarios","/lista-contenidos","/lista-logro").hasRole("ADMIN")
 
                         // Peticiones permitidas sólo para usuarios autenticados
                         .requestMatchers("/chat","/videos","/favoritos" ,"/moviebox","/files/**","/upload","/userFiles/**","/databasefiles/**").authenticated()
+                        .requestMatchers("/showbox","/bookbox", "/home", "/favoritos","/ajustes","/logros","/suscripcion","/forms/**","/busqueda").authenticated()
                         .requestMatchers("/uploadUserFileToDatabase","/uploadUserFileToFileSystem","/uploadToFileSystem","/uploadToDatabase").authenticated()
 
 
