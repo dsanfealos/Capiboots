@@ -17,12 +17,29 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- Estilos personalizados -->
-    <link href="reproductor.css" type="text/css" rel="stylesheet">
+    <link href="/template_menus/css/reproductor.css" type="text/css" rel="stylesheet">
 
     <title>Reproductor</title>
 </head>
 <body>
-
+    <!--
+        todo lo siguiente se puede escribir mediante
+    .container>.row>(.col>button.btn.btn-primary[type="button"]{Empezar})+(.col>button.btn.btn-secondary[type="button"]{Terminar})
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a th:href="'/empieza/' + ${contenido}">
+                    <button type="button" class="btn btn-primary">Empezar</button>
+                </a>
+            </div>
+            <div class="col">
+                <a th:href="'/termina/' + ${id}">
+                    <button class="btn btn-secondary" type="button" >Terminar</button>
+                </a>
+            </div>
+        </div>
+    </div>
 
 <!-- Optional JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
