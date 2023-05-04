@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name="Series")
 @Getter
@@ -24,4 +26,10 @@ import lombok.Setter;
 
     @Column(name= "descripcion",columnDefinition = "VARCHAR(225)")
     private String descripcion;
+
+    @OneToMany(mappedBy = "idserie", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Contenidos> contenidos;
+
+    @OneToMany(mappedBy = "serie", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Temporada> temporadas;
 }

@@ -1,5 +1,6 @@
 package com.example.CapiBoots.controladores;
 
+import com.example.CapiBoots.dto.UsuarioDto;
 import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.servicios.AccesosSrvcImpls;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +25,7 @@ public class UsuarioCtrl {
 
 
 
-    @GetMapping({"","/"})
+    @GetMapping({"","/inicio"})
     public String inicio(Model modelo) {
 //        List<Contenidos> pdtes = accessSrvc.buscaPendientes(2L);
 //        modelo.addAttribute("pendientes", pdtes);
@@ -113,8 +115,8 @@ public class UsuarioCtrl {
     }
 
     @PostMapping("/usuario/guardar")
-    public String guardar(Usuario usu){
-        usuSrvc.guardar(usu);
+    public String guardar(UsuarioDto usuDto){
+        usuSrvc.guardar(usuDto);
         return "redirect:/lista-usuarios";
     }
 
@@ -137,6 +139,25 @@ public class UsuarioCtrl {
         return "/forms/nuevo-usuario";
     }
 
+    //Seguridad
+
+    //Pantalla que sale si se hace login como administrador
+    @GetMapping("/admin")
+    public String showAdminPage() {
+        return "admin";
+    }
+
+    //Pantalla que sale si se hace login como usuario
+    @GetMapping("/user")
+    public String showUserPage() {
+        return "user";
+    }
+
+    //Validación cuando se ha hecho login
+    @GetMapping("/")
+    String index(Principal principal) {
+        return principal != null ? "moviebox" : "inicio";
+    }
 
 
 
