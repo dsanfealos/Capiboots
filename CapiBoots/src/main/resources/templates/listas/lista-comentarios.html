@@ -41,7 +41,13 @@
     <tr th:each="comentario : ${listaComentarios}">
       <th th:text="${comentario.id}"></th>
       <td th:text="${comentario.texto}"></td>
-      <td th:text="${comentario.tipoSpo}"></td>
+      <td th:switch="${comentario.tipoSpo}">
+
+        <p th:case="0"> No Spoiler</p>
+        <p th:case="1"> Spoiler</p>
+
+
+      </td>
 
       <!--<td th:text="${contenido.fechaAlta}"></td>-->
 

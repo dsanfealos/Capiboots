@@ -17,4 +17,6 @@ public interface ifxContenidosSrvc {
     List<Contenidos> listaCont();
 
     public Contenidos guardar(Contenidos contenido);
+
+    Object listaNovedades();
 }

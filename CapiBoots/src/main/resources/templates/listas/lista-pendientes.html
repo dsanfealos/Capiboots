@@ -15,7 +15,7 @@
   <!-- Estilos personalizados -->
   <link href="" type="text/css" rel="stylesheet">
 
-  <title>Lista de Usuarios</title>
+  <title>Pendientes</title>
 </head>
 <body>
 <div>
@@ -23,33 +23,31 @@
   <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
   <br>
 
-  <h1>Lista de Usuarios</h1>
+  <h1>Series pendientes</h1>
 
-  <!--Crear-->
-  <a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>
+<!--  &lt;!&ndash;Crear&ndash;&gt;-->
+<!--  <a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>-->
 
   <!--Lista-->
   <br><br><br>
   <table class="table">
     <thead>
     <tr>
-      <th>Inicio</th>
-      <th>Fin</th>
-      <th>Contenido</th>
+      <th>Temporada</th>
+      <th>Nombre de la serie</th>
 
     </tr>
     </thead>
     <tbody>
     <tr th:each="pendiente : ${pendientes}">
-      <td th:text="${pendiente.getfecha_inicio}">Id</td>
-      <td th:text="${pendiente.getFecha_fin}"></td>
-      <td th:text="${pendiente.getidContenido}"></td>
+      <td th:text="${pendiente.temporada}">Id</td>
+      <td th:text="${pendiente.nombreSerie}"></td>
 
       <td>
         <!--Editar y Borrar-->
         <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
 
-        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Quitar de la lista</a>
+        <a onclick="return confirm('¿Quieres continuar?')" class="btn btn-outline-danger" th:href="@{/lista-pendientes/{id}(id=${pendiente.id})}">Ver serie</a>
       </td>
 
     </tr>

@@ -22,6 +22,8 @@ public class Contenidos {
     private Long id;
     @Column(name="nombre", columnDefinition = "VARCHAR(225)")
     private String nombre;
+    @Column(name="descripcion", columnDefinition = "VARCHAR(225)")
+    private String descripcion;
     @ManyToOne
     @JoinColumn(name="idserie", nullable = true)
     private Series idserie;
@@ -37,6 +39,9 @@ public class Contenidos {
             joinColumns = @JoinColumn(name = "id_contenido"),
             inverseJoinColumns = @JoinColumn(name = "id_categoria"))
     private List<Categorias> categorias;
+
+
+
 
 
 

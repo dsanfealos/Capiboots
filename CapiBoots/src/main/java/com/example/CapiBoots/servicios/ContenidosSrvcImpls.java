@@ -51,8 +51,39 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
         return contenidoRepo.save(contenido);
     }
 
+    @Override
+    public Object listaNovedades() {
+        return null;
+    }
+
     //Borrar
     public void borrar(Long id){
         contenidoRepo.deleteById(id);
+    }
+
+    public Object listaPend() {
+        return null;
+    }
+
+   //Pendientes
+    //TODO: Introducir String en direccion href
+    public String pendientes (Long id){
+        Contenidos contNuevo = new Contenidos();
+        buscarContenidoId(id);
+        String urlPendiente;
+        if (contEmpezado(true) && contTerminado(false)) {
+            urlPendiente = "http://localhost:8080/pendientes" + id;
+        } else {
+             urlPendiente = null;
+        }
+        return urlPendiente;
+    }
+
+    //Campos extra
+    public Boolean contEmpezado(boolean a) {
+        return a;
+    }
+    public Boolean contTerminado(boolean b) {
+        return b;
     }
 }
