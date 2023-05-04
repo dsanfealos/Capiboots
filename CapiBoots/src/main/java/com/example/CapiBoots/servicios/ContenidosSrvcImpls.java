@@ -1,6 +1,8 @@
 package com.example.CapiBoots.servicios;
 
+import com.example.CapiBoots.modelos.Categorias;
 import com.example.CapiBoots.modelos.Contenidos;
+import com.example.CapiBoots.repositorios.CategoriasRepositorios;
 import com.example.CapiBoots.repositorios.ContenidosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,9 @@ import java.util.Optional;
 public class ContenidosSrvcImpls implements ifxContenidosSrvc{
     @Autowired
     public ContenidosRepositorio contenidoRepo;
+
+    @Autowired
+    public CategoriasRepositorios catRepo;
 
     @Override
     public Optional<Contenidos> buscarContenidoId(Long id) {
@@ -82,6 +87,21 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
         return urlPendiente;
         */
         return Optional.ofNullable(contEmpezado(true) && contTerminado(false) ? id : null);
+    }
+
+    //Novedades
+    public Contenidos novedades (Contenidos contNuevo){
+        //Buscamos la categoría novedades
+        Categorias cat2 = catRepo.findByNombre("Novedades");
+        //Creamos una lista de categorías
+        List<Categorias> cat;
+        //Asignamos las categorías actuales del contenido a esta lista vacía
+        cat = contNuevo.getCategorias();
+        //Añadimos la categoría Novedades a esta lista
+        cat.add(cat2);
+        //Asignamos la lista ampliada a la lista de categorías del contenido nuevo
+        contNuevo.setCategorias(cat);
+        return contNuevo;
     }
 
     //Campos extra
