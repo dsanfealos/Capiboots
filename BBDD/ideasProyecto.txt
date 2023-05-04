@@ -52,8 +52,15 @@ Para colocar en internet usar capa gratuita aws
 -género pasar de números a nombres
 -¿contraseña escrita como código largo?
 ------------------------------------
--Seguir viendo debe funcionar
--Novedades debe funcionar
--Arreglar visualización inicio
--inicio debe ser prelogin
--El actual inicio debe ser home
+-OneToMany (Sanfe)
+-Seguridad login (Sanfe)		------(Comprobar si es necesaria la clase UserDetailsServiceImpl
+-Seguir viendo debe funcionar	(Karim)
+-Novedades debe funcionar	(Karim)
+-Arreglar visualización inicio	(Rocío)
+-inicio debe ser prelogin y el actual inicio debe ser home	(Rocío)
+-Subir proyecto a dominio web 	(Mireia)
+--------------------------------------------------
+- Marcar como novedades
+- Test para Ctrl(con carpeta ctrl y todos los métodos en cada ctrl)
+	-Crear un objeto de ejemplo para ejecturar una copia del método objetivo
+- Test para servicios

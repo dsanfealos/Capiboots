@@ -8,24 +8,24 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * The type Role.
+ */
 @Entity
-@Table(name="medio")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Medio {
-
+@Table(name="roles")
+public class Rol
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    private String tipo;
+    @Column(nullable=false, unique=true)
+    private String name;
 
-    @Column(columnDefinition = "VARCHAR(150)")
-    private String nombre_completo;
-
-    @OneToMany(mappedBy = "medio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Pagos> pagos;
+    @ManyToMany(mappedBy="roles")
+    private List<Usuario> usuarios;
 }

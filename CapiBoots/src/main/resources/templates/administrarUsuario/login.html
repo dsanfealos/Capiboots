@@ -10,57 +10,82 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<link rel="stylesheet" href="/template_inicio/css/inicio.css">
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
   </head>
   <body>
+
   <section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Login #08</h2>
+					<h2 class="heading-section">Acceso a Capiboots</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-5">
-					<div class="login-wrap p-4 p-md-5">
+				<div class="col-md-9 col-lg-7">
+					<div class="card">
+						<div class="login-wrap p-4 p-md-5">
+						<!--<div th:if="${param.error}">
+							<div class="alert alert-danger">Invalid Email or Password</div>
+						</div>
+						<div th:if="${param.logout}">
+							<div class="alert alert-success"> Has hecho logout.</div>
+						</div>-->
+
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="fa fa-user-o"></span>
 						</div>
-						<h3 class="text-center mb-4">Have an account?</h3>
-						<form action="/acceso" class="login-form" method="POST">
-							<div class="form-group">
-								<input type="text" class="form-control rounded-left" placeholder="Username" required>
-							</div>
-							<div class="form-group d-flex">
-								<input type="password" class="form-control rounded-left" placeholder="Password" required>
-							</div>
-							<div class="form-group d-md-flex">
-								<div class="w-50">
-									<label class="checkbox-wrap checkbox-primary">Remember Me
-										<input type="checkbox" checked>
-										<span class="checkmark"></span>
-									</label>
-								</div>
-								<div class="w-50 text-md-right">
-									<a href="#">Forgot Password</a>
-								</div>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Get Started</button>
-							</div>
-						</form>
+						<h3 class="text-center mb-4">Inicia sesión en tu cuenta</h3>
 						<br>
-						<a th:href="@{/registro}">Registrarse</a>
+						<div style="width: 400px" class="mx-auto">
+							<form th:action="@{/login}" class="form" th:method="post">
+								<div class="form-group">
+									<label for="username" class="control-label">Nombre de Usuario:</label>
+									<br>
+									<!--Escribimos "username" en el id y name para que SecurityConfig lo reconozca-->
+									<input type="text" id="username" name="username" class="form-control rounded-left" placeholder="..." required>
+								</div>
+								<br>
+								<div class="form-group">
+									<div>
+										<label for="password" class="control-label">Contraseña:</label>
+									</div>
+									<br>
+									<!--Escribimos "password" en el id y name para que SecurityConfig lo reconozca-->
+									<div>
+										<input type="password" id="password" name="password" class="form-control rounded-left" placeholder="..." required>
+									</div>
+								</div>
+								<br>
+								<!--<div class="form-group d-md-flex">
+									<div class="w-50">
+										<label class="checkbox-wrap checkbox-primary">Remember Me
+											<input type="checkbox" checked>
+											<span class="checkmark"></span>
+										</label>
+									</div>
+									<br>
+								</div>-->
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Iniciar Sesión</button>
+									&nbsp;&nbsp;
+									<span>
+										<button><a th:href="@{/register}">Registrarse</a></button>
+									</span>
+								</div>
+								<a th:href="@{/forgot_password}">He olvidado mi contraseña</a>
+							</form>
+						</div>
+						<br>
+					</div>
 					</div>
 				</div>
 			</div>
 		</div>
   </section>
-  <script src="/template_inicio/js/scripts.js"></script>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+<!--  <script src="/template_inicio/js/scripts.js"></script>-->
   </body>
 </html>
 

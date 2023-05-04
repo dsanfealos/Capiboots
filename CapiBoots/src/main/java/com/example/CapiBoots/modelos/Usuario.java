@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,7 +26,7 @@ public class Usuario {
     private Long id;
 
     @Column(name = "nombre_usuario", unique = true, nullable = false)
-    private String nombre_usuario;
+    private String nombreUsuario;
 
     @Column(name = "clave", columnDefinition = "VARCHAR(100)")
     private String clave;
@@ -82,11 +83,28 @@ public class Usuario {
             name = "seguimientos",
             joinColumns = @JoinColumn(name = "id_seguidor"),
             inverseJoinColumns = @JoinColumn(name = "id_seguido"))
+
+
     private List<Usuario> seguidos;
 
+    //Crear Many to Many de seguidos y seguidores
     @ManyToMany(mappedBy = "seguidos")
     private List<Usuario> seguidores;
 
-    //Crear Many to Many de seguidos y seguidores
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinTable(
+            name="usuarios_roles",
+            joinColumns={@JoinColumn(name="USUARIO_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="ROL_ID", referencedColumnName="ID")})
+    private List<Rol> roles = new ArrayList<>();
+
+    @Column(name = "token_restaurar_contra")
+    private String tokenRestaurarContra;
+
+    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Accesos> accesos;
+
+    @OneToMany(mappedBy = "idPagador", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Pagos> pagos;
 }
 

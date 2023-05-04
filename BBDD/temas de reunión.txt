@@ -1,0 +1,5 @@
+-tareas
+-¿Borrar indeeeex?
+-¿Agrupar templates?
+-JIRA
+-¿Main controler o mantener todo en UsuarioCtrl?
