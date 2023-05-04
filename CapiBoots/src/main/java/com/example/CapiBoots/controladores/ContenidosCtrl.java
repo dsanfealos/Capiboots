@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
 
@@ -41,7 +40,7 @@ public class ContenidosCtrl {
         @GetMapping ("/showbox")
         public String Showbox(Model modelo){
             modelo.addAttribute("titulo", "Showbox");
-            return "Showbox";
+            return "moviebox";
         }
         @GetMapping("/bookbox")
         public String bookbox(Model modelo){
