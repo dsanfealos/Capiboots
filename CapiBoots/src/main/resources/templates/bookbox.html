@@ -16,60 +16,11 @@
         <link href="/template_menus/css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
+
+    <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
         <!-- Navigation-->
 
-        <nav th:fragment="navegacion" class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
 
-                <a class="navbar-brand" href="/">
-
-                    <!--<span style="margin-left: -85px; margin-right: 50px;color: #fffffe;">CAPIBOOTS</span>-->
-
-                    <a href="tu_pagina.html"><img src="assets/img/tt.jpg" alt=""></a>
-
-                    <img src="/template_menus/assets/logos/CAPIBOOTS.PNG/" alt="Descripción de la imagen" style="width: 220px; height: 50px; margin-left: -130px;"></a></li>
-
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item" ><a class="nav-link active" aria-current="page"  style="margin-left: 70px;" href="/">Inicio</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="/bookbox">Bookbox</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="/moviebox">MovieBox</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="/showbox">ShowBox</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="/favoritos">Favoritos</a></li>
-                    </ul>
-                </div>
-
-                <ul  class="nav navbar ms-auto">
-
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" >
-
-                        <button class="btn btn-outline-light" type="submit">Buscar</button>
-                    </form>
-                    <div class="dropdown">
-                        <a class="nav-link dropdown-toggle text-white" role="button" id="perfilDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: -150px;">
-                            Perfil
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
-                            <li><a class="dropdown-item" href="/suscripcion">Suscripción</a></li>
-                            <li><a class="dropdown-item" href="/logros">Logros</a></li>
-                            <li><a class="dropdown-item" href="/ajustes">Ajustes</a></li>
-                            <li><a class="dropdown-item" href="/lista-amigos">Lista de Amigos</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/acceso">Cerrar sesión</a></li>
-                        </ul>
-
-
-                    </div>
-                </ul>
-            </div>
-
-        </nav>
         <!-- Header-->
         <header class="masthead text-center text-white">
             <div class="masthead-content">
