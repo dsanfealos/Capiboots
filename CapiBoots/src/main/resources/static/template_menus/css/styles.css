@@ -11012,3 +11012,92 @@ picture p {
   padding: 5px 50px; /* añade 10px de padding izquierdo y derecho */
   margin-right: 20px;
 }
+
+#sidebar {
+  position: fixed;
+  height: 15%;
+  width: 10%;
+  left: 0;
+  margin-left: 10%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#sidebar li {
+  margin-bottom: 10px;
+}
+
+#sidebar a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#sidebar a:hover {
+  color: #666;
+}
+
+#sidebar.open {
+  transform: translateX(0);
+}
+
+#content {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  #sidebar {
+    transform: translateX(-200px);
+  }
+
+  #sidebar.open {
+    transform: translateX(0);
+  }
+
+  #content {
+    margin-left: 0;
+  }
+}
+
+#bookInfo table {
+  margin-left: 10%;
+}
+
+#bookInfo h1 {
+  margin-left: 10%;
+}
+
+#newBookForm h1{
+  margin-left: 10%;
+}
+
+#newBookForm label{
+  margin-left: 10%;
+}
+
+#newBookForm textarea{
+  margin-left: 10%;
+}
+
+#newBookForm input{
+  margin-left: 10%;
+}
+
+#newBookForm button{
+  margin-left: 10%;
+}
+
+#newBookForm span{
+  margin-left: 10%;
+}

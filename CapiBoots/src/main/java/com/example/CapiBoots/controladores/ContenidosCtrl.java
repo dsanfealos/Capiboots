@@ -79,6 +79,32 @@ public class ContenidosCtrl {
 
     }
 
+    @GetMapping("/gestion/libros")
+    public String gestionLibros(Model modelo) {
+
+        modelo.addAttribute("titulo", "GestionLibros");
+        return "gestionLibros";
+
+    }
+
+    @GetMapping("/gestion/pelis")
+    public String gestionPelis(Model modelo) {
+
+        modelo.addAttribute("titulo", "GestionPelis");
+        return "gestionPelis";
+
+    }
+
+    @GetMapping("/gestion/series")
+    public String gestionSeries(Model modelo) {
+
+        modelo.addAttribute("titulo", "GestionSeries");
+        return "gestionSeries";
+
+    }
+
+    //---------------------------------
+
     @Controller
     public class BusquedaCtrl {
 

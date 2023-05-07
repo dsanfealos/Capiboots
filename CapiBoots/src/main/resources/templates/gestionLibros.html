@@ -7,6 +7,7 @@
     <meta name="author" content="" />
     <title>BookBox</title>
     <link rel="icon" type="image/x-icon" href="/template_menus/assets/logos/favicon3.png" />
+    
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -76,6 +77,8 @@
 
 </nav>
 
+
+
 <div id="sidebar">
     <ul>
         <li><a href="/gestion/libros">Libros</a></li>
@@ -86,12 +89,71 @@
     </ul>
 </div>
 
+<div id="bookInfo" class="container mt-4">
+    <h1>Libros dados de alta</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>The Great Gatsby</td>
+                <td>The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>To Kill a Mockingbird</td>
+                <td>The story of a young girl's experience with racial injustice in a small Alabama town.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Pride and Prejudice</td>
+                <td>A novel of manners that follows the romantic exploits of the Bennet family.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>1984</td>
+                <td>A dystopian novel set in a totalitarian society, where citizens are under constant surveillance.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
+<div id="newBookForm" class="container mt-4">
+    <h1>Añadir nuevo libro</h1>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/uploadToDatabase}">
+        <div class="form-group">
+            <label for="book-id">Book ID:</label>
+            <input type="text" class="form-control" id="book-id" placeholder="Enter book ID">
+        </div>
+        <div class="form-group">
+            <label for="book-title">Title:</label>
+            <input type="text" class="form-control" id="book-title" placeholder="Enter book title">
+        </div>
+        <div class="form-group">
+            <label for="book-description">Description:</label>
+            <textarea class="form-control" id="book-description" rows="3"></textarea>
+        </div>
+        <div class="card-body">
+            <span class="card-title h5">Subir archivo a la base de datos</span>
+            <div class="input-group mb-3">
+                <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/template_menus/js/scripts.js"></script>
-
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
