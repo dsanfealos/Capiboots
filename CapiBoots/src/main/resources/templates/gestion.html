@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>BookBox</title>
+    <link rel="icon" type="image/x-icon" href="/template_menus/assets/logos/favicon3.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/template_menus/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body id="page-top">
+<!-- Navigation-->
+
+<nav th:fragment="navegacion" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+
+        <a class="navbar-brand" href="/">
+
+            <!--<span style="margin-left: -85px; margin-right: 50px;color: #fffffe;">CAPIBOOTS</span>-->
+
+            <a href="tu_pagina.html"><img src="assets/img/tt.jpg" alt=""></a>
+
+            <img src="/template_menus/assets/logos/CAPIBOOTS.PNG/" alt="Descripción de la imagen" style="width: 220px; height: 50px; margin-left: -130px;"></a></li>
+
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" ><a class="nav-link active" aria-current="page"  style="margin-left: 70px; href="/">Inicio</a></li>
+                <li class="nav-item" ><a class="nav-link" href="/bookbox">Bookbox</a></li>
+                <li class="nav-item" ><a class="nav-link" href="/moviebox">MovieBox</a></li>
+                <li class="nav-item" ><a class="nav-link" href="/showbox">ShowBox</a></li>
+                <li class="nav-item" ><a class="nav-link" href="/favoritos">Favoritos</a></li>
+                <li class="nav-item" ><a class="nav-link" href="/gestion">Gestion</a></li>
+            </ul>
+        </div>
+
+        <ul  class="nav navbar ms-auto">
+
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" >
+
+                <button class="btn btn-outline-light" type="submit">Buscar</button>
+            </form>
+            <div class="dropdown">
+                <a class="nav-link dropdown-toggle text-white" role="button" id="perfilDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: -150px;">
+                    Perfil
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
+                    <li><a class="dropdown-item" href="/suscripcion">Suscripción</a></li>
+                    <li><a class="dropdown-item" href="/logros">Logros</a></li>
+                    <li><a class="dropdown-item" href="/ajustes">Ajustes</a></li>
+                    <li><a class="dropdown-item" href="/lista-amigos">Lista de Amigos</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/acceso">Cerrar sesión</a></li>
+                </ul>
+
+
+            </div>
+        </ul>
+    </div>
+
+</nav>
+
+</ul>
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item dropdown">
+        <div style="text-align: center;">
+            <h1> Gestión de archivos Capiboots</h1>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Opciones
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Opción 1</a></li>
+                <li><a class="dropdown-item" href="#">Opción 2</a></li>
+                <li><a class="dropdown-item" href="#">Opción 3</a></li>
+            </ul>
+    </li>
+</ul>
+</div>
+
+
+
+<!-- <div class="card mt-3">
+     <div style="text-align: center;">
+     <h1> Gestión de archivos Capiboots</h1>
+
+     <div class="card-body">
+
+         <div id="mySidenav" class="sidenav">
+             <a href="#">Libros</a>
+             <a href="#">Películas</a>
+             <a href="#">Series</a>
+
+         </div>
+         <!--    <span class="card-title h5">Subir archivo al FileSystem</span>
+             <form method="POST" enctype="multipart/form-data" th:action="@{/uploadToFileSystem}">
+                 <div class="input-group mb-3">
+                     <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                 </div>
+                 <button type="submit" class="btn btn-primary">Subir</button>
+             </form>-->
+</div>
+</div>
+
+<!-- Footer-->
+<!-- <footer class="py-5 bg-black">
+     <div class="container px-5"><p class="m-0 text-center text-white small">Capiboots &copy; 2023</p></div>
+ </footer>
+ <!-- Bootstrap core JS-->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/template_menus/js/scripts.js"></script>
+
+
+</body>
+</html>

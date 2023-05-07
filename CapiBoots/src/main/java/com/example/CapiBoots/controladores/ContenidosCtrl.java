@@ -70,6 +70,15 @@ public class ContenidosCtrl {
         return "favoritos";
     }
 
+    //ADMINISTRADOR//
+    @GetMapping("/gestion")
+    public String gestion(Model modelo) {
+
+        modelo.addAttribute("titulo", "Gestion");
+        return "gestion";
+
+    }
+
     @Controller
     public class BusquedaCtrl {
 
