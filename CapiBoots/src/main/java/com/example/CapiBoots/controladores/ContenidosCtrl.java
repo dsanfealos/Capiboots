@@ -89,14 +89,14 @@ public class ContenidosCtrl {
     }
 
     //Filtro de Categorías
-    @GetMapping("/busqueda")
-    public String filtroCat(@Param("keyword") String keyword, Model modelo) {
-
-        List<Contenidos> buscacont = contenidosSrvc.filtroCategoria(keyword);
-        modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
-        modelo.addAttribute("listaContenidos", buscacont);
-        return "busqueda";
-    }
+//    @GetMapping("/busqueda/categoria")
+//    public String filtroCat(@Param("keyword") String keyword, Model modelo) {
+//
+//        List<Contenidos> buscacont = contenidosSrvc.filtroCategoria(keyword);
+//        modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
+//        modelo.addAttribute("listaContenidos", buscacont);
+//        return "busqueda";
+//    }
 
 
 
