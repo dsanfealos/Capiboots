@@ -48,7 +48,7 @@ public class SecurityConfig {
                         .requestMatchers("/webjars/**", "/js/**","/css/**","/img/**","/fonts/**","/favicon.ico").permitAll()
                         .requestMatchers("*css", "*js").permitAll()
                         .requestMatchers("/registro/**", "/register/**","/forgot_password" ,"/reset_password","/signup", "/error", "/login", "/login/**").permitAll()
-                        .requestMatchers("/template_menus/**", "/template_inicio/**", "/template_home/**").permitAll()
+                        .requestMatchers("/template_menus/**", "/template_inicio/**", "/template_home/**", "/videos/**").permitAll()
                         .requestMatchers("/reproducir/**").permitAll()
                         .requestMatchers("/empieza/**").permitAll()
                         .requestMatchers("/termina/**").permitAll()
