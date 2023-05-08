@@ -2,11 +2,13 @@ package com.example.CapiBoots.servicios;
 
 import com.example.CapiBoots.modelos.Categorias;
 import com.example.CapiBoots.modelos.Contenidos;
+import com.example.CapiBoots.modelos.Series;
 import com.example.CapiBoots.repositorios.CategoriasRepositorios;
 import com.example.CapiBoots.repositorios.ContenidosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +70,27 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
 
     public Object listaPend() {
         return null;
+    }
+
+    //Búsqueda
+
+    @Override
+    public List<Contenidos> buscaCont(String keyword) {
+        List<Contenidos> lista = new ArrayList<>();
+        if (keyword != null) {
+            lista = contenidoRepo.buscarTodos(keyword);
+            return lista;
+        }
+        return contenidoRepo.findAll();
+    }
+
+    public List<Contenidos> filtroCategoria(String keyword) {
+        List<Contenidos> lista = new ArrayList<>();
+        if (keyword != null) {
+            lista = contenidoRepo.buscarPorCat(keyword);
+            return lista;
+        }
+        return contenidoRepo.findAll();
     }
 
    //Pendientes

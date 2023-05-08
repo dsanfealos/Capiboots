@@ -49,8 +49,8 @@
                 </div>
                 <ul  class="nav navbar ms-auto">
 
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                    <form class="d-flex" th:action="@{/busqueda}">
+                        <input class="form-control me-2" type="search" name="keyword" placeholder="Buscar" aria-label="Buscar">
                         <button class="btn btn-outline-light" type="submit">Buscar</button>
                     </form>
                     <div class="dropdown">
@@ -161,11 +161,6 @@
                             <div class="col-2">
                                 <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
                                     Series
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Usuarios
                                 </button>
                             </div>
 

@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.builder.Builder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name="usuarios")
@@ -106,5 +108,7 @@ public class Usuario {
 
     @OneToMany(mappedBy = "idPagador", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Pagos> pagos;
+
+
 }
 

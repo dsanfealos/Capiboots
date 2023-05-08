@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -34,54 +37,59 @@
                     </div>
                 </div>
                 <div class="col-lg-6 m-5">
-                    <!--Nombre-->
-                    <div class="form-group col-3">
-                        <label for="nombreUsuario">Nombre de Usuario</label>
-                        <input type="text" class="form-control" id="nombreUsuario" placeholder="NombreUsuario" disabled="disabled">
-                    </div>
 
-                    <!--Correo-->
-                    <div class="col-5">
-                        <label for="inputCorreo">Correo</label>
-                        <input type="text" class="form-control" id="inputCorreo" placeholder="Correo" disabled="disabled">
-                    </div>
+                        <!--Nombre-->
+                        <div class="form-group col-3">
+                            <label for="nombreUsuario">Nombre de Usuario</label>
+                            <span sec:authentication ="name"></span>
+                            <br>
+                            Roles: <span sec:authentication ="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+                            <input type="text" class="form-control" id="nombreUsuario" placeholder="NombreUsuario" disabled="disabled">
+                        </div>
 
-                    <!--Género-->
-                    <div class="form-group col-3">
-                        <label for="genero">Género</label>
-                        <input type="text" class="form-control" id="genero" placeholder="Género" disabled="disabled">
-                    </div>
+                        <!--Correo-->
+                        <div class="col-5">
+                            <label for="inputCorreo">Correo</label>
+                            <input type="text" class="form-control" id="inputCorreo" placeholder="Correo" disabled="disabled">
+                        </div>
 
-                    <!--Edad-->
-                    <div class="form-group col-1">
-                        <label for="edad">Edad</label>
-                        <input type="text" class="form-control" id="edad" placeholder="Edad" disabled="disabled">
-                    </div>
+                        <!--Género-->
+                        <div class="form-group col-3">
+                            <label for="genero">Género</label>
+                            <input type="text" class="form-control" id="genero" placeholder="Género" disabled="disabled">
+                        </div>
 
-                    <!--País-->
-                    <div class="form-group col-2">
-                        <label for="pais">País</label>
-                        <input type="text" class="form-control" id="pais" placeholder="País" disabled="disabled">
-                    </div>
+                        <!--Edad-->
+                        <div class="form-group col-1">
+                            <label for="edad">Edad</label>
+                            <input type="text" class="form-control" id="edad" placeholder="Edad" disabled="disabled">
+                        </div>
 
-                    <!--Idioma-->
-                    <div class="col-3">
-                        <label for="inputState">Idioma</label>
-                        <select id="inputState" class="form-control">
-                            <option selected="">Español</option>
-                            <option>Inglés</option>
-                        </select>
-                    </div>
+                        <!--País-->
+                        <div class="form-group col-2">
+                            <label for="pais">País</label>
+                            <input type="text" class="form-control" id="pais" placeholder="País" disabled="disabled">
+                        </div>
 
-                    <div class="form-group col-md-5">
-                        <div class="row">
-                            <div class="col-9">&nbsp;</div>
-                            <div class="col-3">
-                                <br>
-                                <a class="btn btn-outline-primary">Editar</a>
+                        <!--Idioma-->
+                        <div class="col-3">
+                            <label for="inputState">Idioma</label>
+                            <select id="inputState" class="form-control">
+                                <option selected="">Español</option>
+                                <option>Inglés</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <div class="row">
+                                <div class="col-9">&nbsp;</div>
+                                <div class="col-3">
+                                    <br>
+                                    <a class="btn btn-outline-primary">Editar</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
 
                     <!--                    <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>-->
                 </div>

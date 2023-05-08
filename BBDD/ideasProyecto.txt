@@ -64,3 +64,6 @@ Para colocar en internet usar capa gratuita aws
 - Test para Ctrl(con carpeta ctrl y todos los métodos en cada ctrl)
 	-Crear un objeto de ejemplo para ejecturar una copia del método objetivo
 - Test para servicios
+--------------------------------------------
+organizar categorías por id madre?
+paginación

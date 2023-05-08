@@ -56,11 +56,11 @@
             <div class="card-header">
                 <h2 class="text-center">Registro de usuario</h2>
             </div>
-            <!--<div th:if="${param.success}">
+            <div th:if="${param.success}">
                 <div class="alert alert-info">
                     Te has registrado correctamente!
                 </div>
-            </div>-->
+            </div>
 
             <div class="card-body">
                 <form method="post" role="form" th:action="@{/register/save}" th:object="${user}">

@@ -71,6 +71,7 @@ public class UsuarioCtrl {
     @GetMapping("/ajustes")
     public String Ajustes(Model modelo) {
         modelo.addAttribute("titulo", "Ajustes");
+        modelo.addAttribute("usuario", new Usuario());
         return "/administrarUsuario/ajustes";
     }
 
@@ -151,7 +152,4 @@ public class UsuarioCtrl {
     String index(Principal principal) {
         return principal != null ? "home" : "inicio";
     }
-
-
-
 }
