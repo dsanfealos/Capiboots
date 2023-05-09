@@ -14,7 +14,15 @@ public class CustomUserDetails extends Usuario implements UserDetails {
 
     private String username;
     private String password;
+
     private String name;
+//    private String email;
+
+//    private Byte gender;
+//
+//    private Integer age;
+//
+//    private String country;
     private Collection<? extends GrantedAuthority> authorities;
 
     /**
@@ -29,6 +37,10 @@ public class CustomUserDetails extends Usuario implements UserDetails {
         this.username = username;
         this.password = password;
         this.name = name;
+//        this.email = email;
+//        this.gender = gender;
+//        this.age = age;
+//        this.country = country;
         this.authorities = authorities;
     }
 
@@ -52,6 +64,19 @@ public class CustomUserDetails extends Usuario implements UserDetails {
         return this.username;
     }
 
+
+//
+//    public Byte getGender() {
+//        return gender;
+//    }
+//
+//    public Integer getAge() {
+//        return age;
+//    }
+//
+//    public String getCountry() {
+//        return country;
+//    }
 
     @Override
     public boolean isAccountNonExpired() {

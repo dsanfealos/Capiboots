@@ -57,11 +57,13 @@ public class SecurityConfig {
                         // Peticiones permitidas sólo para usuarios con rol ADMIN
                         .requestMatchers("/admin/**","/nuevo-usuario","/nuevo-logro","/nuevo-contenido","/nuevo-comentario","/nueva-temporada","/nueva-serie","/nueva-categoria").hasRole("ADMIN")
                         .requestMatchers("/lista-usuarios","/lista-series","/lista-temporadas","/lista-categorias","/lista-comentarios","/lista-contenidos","/lista-logro").hasRole("ADMIN")
+                        .requestMatchers("/usuario/**").hasRole("ADMIN")
 
                         // Peticiones permitidas sólo para usuarios autenticados
                         .requestMatchers("/chat","/videos","/favoritos" ,"/moviebox","/files/**","/upload","/userFiles/**","/databasefiles/**").authenticated()
                         .requestMatchers("/showbox","/bookbox", "/home", "/favoritos","/ajustes","/logros","/suscripcion","/forms/**","/busqueda","/busqueda/**").authenticated()
                         .requestMatchers("/uploadUserFileToDatabase","/uploadUserFileToFileSystem","/uploadToFileSystem","/uploadToDatabase").authenticated()
+                        .requestMatchers("/ajustes/**").authenticated()
 
 
 

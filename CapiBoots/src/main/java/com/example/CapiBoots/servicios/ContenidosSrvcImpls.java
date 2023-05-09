@@ -113,7 +113,7 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
     }
 
     //Novedades
-    public Contenidos novedades (Contenidos contNuevo){
+    public Contenidos novedades (Contenidos contNuevo) throws InterruptedException {
         //Buscamos la categoría novedades
         Categorias cat2 = catRepo.findByNombre("Novedades");
         //Creamos una lista de categorías
@@ -124,6 +124,10 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
         cat.add(cat2);
         //Asignamos la lista ampliada a la lista de categorías del contenido nuevo
         contNuevo.setCategorias(cat);
+        //Esperamos 7 días (60480 segundos)
+        Thread.sleep(60480000);
+        //Quitamos la categoría novedades del contenido
+
         return contNuevo;
     }
 

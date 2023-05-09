@@ -41,10 +41,7 @@
                         <!--Nombre-->
                         <div class="form-group col-3">
                             <label>Nombre de Usuario: </label>
-                            <br>
-                            <div class="card">
-                                <span sec:authentication ="name"></span>
-                            </div>
+                            <input type="text" class="form-control" id="nombre" th:placeholder="${usuario.nombreUsuario}" disabled="disabled">
                             Roles: <br>
                             <div class="card">
                                 <span sec:authentication ="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
@@ -53,26 +50,32 @@
 
                         <!--Correo-->
                         <div class="col-5">
-                            <label for="inputCorreo">Correo</label>
-                            <input type="text" class="form-control" id="inputCorreo" placeholder="Correo" disabled="disabled">
+                            <label for="inputCorreo">Correo:</label>
+                            <input type="text" class="form-control" id="inputCorreo" th:placeholder="${usuario.correo}" disabled="disabled">
                         </div>
 
                         <!--Género-->
                         <div class="form-group col-3">
                             <label for="genero">Género</label>
-                            <input type="text" class="form-control" id="genero" placeholder="Género" disabled="disabled">
+                            <div class="card" style="background-color: lightgrey; opacity: 70%;" id="ifGenero" name="ifGenero" th:switch="${usuario.genero}">
+                                <p th:case="0"> Hombre</p>
+                                <p th:case="1"> Mujer</p>
+                                <p class="px-2 py-1" th:case="2"> Otro</p>
+                                <p th:case="3"> NA</p>
+                            </div>
+                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">
                         </div>
 
                         <!--Edad-->
                         <div class="form-group col-1">
                             <label for="edad">Edad</label>
-                            <input type="text" class="form-control" id="edad" placeholder="Edad" disabled="disabled">
+                            <input type="text" class="form-control" id="edad" th:placeholder="${usuario.edad}" disabled="disabled">
                         </div>
 
                         <!--País-->
                         <div class="form-group col-2">
                             <label for="pais">País</label>
-                            <input type="text" class="form-control" id="pais" placeholder="País" disabled="disabled">
+                            <input type="text" class="form-control" id="pais" th:placeholder="${usuario.pais}" disabled="disabled">
                         </div>
 
                         <!--Idioma-->
@@ -89,13 +92,12 @@
                                 <div class="col-9">&nbsp;</div>
                                 <div class="col-3">
                                     <br>
-                                    <a class="btn btn-outline-primary">Editar</a>
+                                    <a class="btn btn-outline-primary" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>
                                 </div>
                             </div>
                         </div>
 
 
-                    <!--                    <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>-->
                 </div>
             </div>
         </section>
