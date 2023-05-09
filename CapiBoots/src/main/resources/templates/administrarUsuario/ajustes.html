@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -34,195 +37,71 @@
                     </div>
                 </div>
                 <div class="col-lg-6 m-5">
-                    <!--Nombre-->
-                    <div class="form-group col-3">
-                        <label for="nombreUsuario">Nombre de Usuario</label>
-                        <input type="text" class="form-control" id="nombreUsuario" placeholder="NombreUsuario" disabled="disabled">
-                    </div>
 
-                    <!--Correo-->
-                    <div class="col-5">
-                        <label for="inputCorreo">Correo</label>
-                        <input type="text" class="form-control" id="inputCorreo" placeholder="Correo" disabled="disabled">
-                    </div>
-
-                    <!--Género-->
-                    <div class="form-group col-3">
-                        <label for="genero">Género</label>
-                        <input type="text" class="form-control" id="genero" placeholder="Género" disabled="disabled">
-                    </div>
-
-                    <!--Edad-->
-                    <div class="form-group col-1">
-                        <label for="edad">Edad</label>
-                        <input type="text" class="form-control" id="edad" placeholder="Edad" disabled="disabled">
-                    </div>
-
-                    <!--País-->
-                    <div class="form-group col-2">
-                        <label for="pais">País</label>
-                        <input type="text" class="form-control" id="pais" placeholder="País" disabled="disabled">
-                    </div>
-
-                    <!--Idioma-->
-                    <div class="col-3">
-                        <label for="inputState">Idioma</label>
-                        <select id="inputState" class="form-control">
-                            <option selected="">Español</option>
-                            <option>Inglés</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-5">
-                        <div class="row">
-                            <div class="col-9">&nbsp;</div>
-                            <div class="col-3">
-                                <br>
-                                <a class="btn btn-outline-primary">Editar</a>
+                        <!--Nombre-->
+                        <div class="form-group col-3">
+                            <label>Nombre de Usuario: </label>
+                            <input type="text" class="form-control" id="nombre" th:placeholder="${usuario.nombreUsuario}" disabled="disabled">
+                            Roles: <br>
+                            <div class="card">
+                                <span sec:authentication ="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
                             </div>
                         </div>
-                    </div>
 
-                    <!--                    <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>-->
+                        <!--Correo-->
+                        <div class="col-5">
+                            <label for="inputCorreo">Correo:</label>
+                            <input type="text" class="form-control" id="inputCorreo" th:placeholder="${usuario.correo}" disabled="disabled">
+                        </div>
+
+                        <!--Género-->
+                        <div class="form-group col-3">
+                            <label for="genero">Género</label>
+                            <div class="card" style="background-color: lightgrey; opacity: 70%;" id="ifGenero" name="ifGenero" th:switch="${usuario.genero}">
+                                <p th:case="0"> Hombre</p>
+                                <p th:case="1"> Mujer</p>
+                                <p class="px-2 py-1" th:case="2"> Otro</p>
+                                <p th:case="3"> NA</p>
+                            </div>
+                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">
+                        </div>
+
+                        <!--Edad-->
+                        <div class="form-group col-1">
+                            <label for="edad">Edad</label>
+                            <input type="text" class="form-control" id="edad" th:placeholder="${usuario.edad}" disabled="disabled">
+                        </div>
+
+                        <!--País-->
+                        <div class="form-group col-2">
+                            <label for="pais">País</label>
+                            <input type="text" class="form-control" id="pais" th:placeholder="${usuario.pais}" disabled="disabled">
+                        </div>
+
+                        <!--Idioma-->
+                        <div class="col-3">
+                            <label for="inputState">Idioma</label>
+                            <select id="inputState" class="form-control">
+                                <option selected="">Español</option>
+                                <option>Inglés</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <div class="row">
+                                <div class="col-9">&nbsp;</div>
+                                <div class="col-3">
+                                    <br>
+                                    <a class="btn btn-outline-primary" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>
+                                </div>
+                            </div>
+                        </div>
+
+
                 </div>
             </div>
         </section>
 
-        <!-- Pricing section-->
-        <section class="bg-light py-5 border-bottom">
-            <div class="container px-5 my-5">
-                <div class="text-center mb-5">
-                    <h2 class="fw-bolder">En este menu de ajustes podrás seleccionar tu idioma de preferencia</h2>
-                    <p class="lead mb-0">   <i>Idiomas disponibles:</i></p>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <!-- selector idiomas-->
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <div class="mb-3">
-                                    <span class="display-4 fw-bold">Español</span>
-                                </div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2">
-                                        <i class="bi bi-check text-primary"></i>
-                                        <strong>Subtitulos disponibles</strong>
-                                    </li>
-
-                                  <!--  <li class="text-muted">
-                                        <i class="bi bi-x"></i>
-                                        Monthly status reports
-                                    </li> -->
-                                </ul>
-                                <div class="d-grid"><a class="btn btn-outline-primary" href="#!">Elegir idioma</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pricing card pro-->
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="card mb-5 mb-xl-0">
-                            <div class="card-body p-5">
-                                <div class="small text-uppercase fw-bold">
-                                </div>
-                                <div class="mb-3">
-                                    <span class="display-4 fw-bold">Inglés</span>
-
-                                </div>
-                                <ul class="list-unstyled mb-4">
-                                    <li class="mb-2">
-                                    <!--    <i class="bi bi-check text-primary"></i>
-                                        <strong>5 users</strong>-->
-                                    </li>
-                                    <li class="text-muted">
-                                        <i class="bi bi-x"></i>
-                                        Subtitulos no disponibles
-                                    </li>
-                                </ul>
-                                <div class="d-grid"><a class="btn btn-primary" href="#!">Elegir idioma</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact section-->
-        <section class="bg-light py-5">
-            <div class="container px-5 my-5 px-5">
-                <div class="text-center mb-5">
-                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                    <h2 class="fw-bolder">Get in touch</h2>
-                    <p class="lead mb-0">We'd love to hear from you</p>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

@@ -49,8 +49,8 @@
                 </div>
                 <ul  class="nav navbar ms-auto">
 
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                    <form class="d-flex" th:action="@{/busqueda}">
+                        <input class="form-control me-2" type="search" name="keyword" placeholder="Buscar" aria-label="Buscar">
                         <button class="btn btn-outline-light" type="submit">Buscar</button>
                     </form>
                     <div class="dropdown">
@@ -172,6 +172,7 @@
                                 </button>
                             </div>
                             </form>
+
 
                         </div>
                     </div>

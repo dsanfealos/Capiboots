@@ -1,6 +1,7 @@
 package com.example.CapiBoots.repositorios;
 
 import com.example.CapiBoots.modelos.Contenidos;
+import com.example.CapiBoots.modelos.Series;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

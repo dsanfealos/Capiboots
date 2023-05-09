@@ -22,6 +22,9 @@ public class ContenidosCtrl {
     @Autowired
     private ContenidosSrvcImpls contenidosSrvc;
 
+    @Autowired
+    private SeriesSrvcImpls serieSrvc;
+
     @GetMapping("/guardarContenido")
     public String guardarContenido(Model modelo) {
         modelo.addAttribute("guardarContenidos", contenidosSrvc.guardarContenido());
@@ -73,7 +76,7 @@ public class ContenidosCtrl {
         return "favoritos";
     }
 
-
+    //Búsqueda
 
         @GetMapping("/busqueda")
         public String busqueda(@Param("keyword") String keyword, Model modelo) {
