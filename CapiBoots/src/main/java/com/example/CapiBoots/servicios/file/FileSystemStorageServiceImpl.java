@@ -1,9 +1,9 @@
 package com.example.CapiBoots.servicios.file;
 
-
 import com.example.CapiBoots.controladores.file.FileController;
+import com.example.CapiBoots.modelos.FileInfo;
 import lombok.extern.log4j.Log4j2;
-import org.apache.tomcat.jni.FileInfo;
+
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @Log4j2
 public class FileSystemStorageServiceImpl implements FileSystemStorageService {
 
-    private final Path root = Paths.get("uploads");
+    private final Path root = Paths.get("videos");
 
 
     /**
@@ -69,26 +69,31 @@ public class FileSystemStorageServiceImpl implements FileSystemStorageService {
         }
     }
 
-    @Override
-    public void saveUserFile(MultipartFile file, Long userID) {
-        try {
-            Path userPath = this.root.resolve(userID.toString());
+//    @Override
+//    public void saveUserFile(MultipartFile file, Long userID) {
+//
+//    }
 
-            if(!Files.exists(userPath))
-            {
-                Files.createDirectories(userPath);
-            }
-            Files.copy(file.getInputStream(), this.root.resolve(userID  + "/" + file.getOriginalFilename()));
-
-        } catch (Exception e) {
-
-            if (e instanceof FileAlreadyExistsException) {
-                throw new RuntimeException("Ya existe un archivo con ese nombre.");
-            }
-
-            throw new RuntimeException(e.getMessage());
-        }
-    }
+//    @Override
+//    public void saveUserFile(MultipartFile file, Long userID) {
+//        try {
+//            Path userPath = this.root.resolve(userID.toString());
+//
+//            if(!Files.exists(userPath))
+//            {
+//                Files.createDirectories(userPath);
+//            }
+//            Files.copy(file.getInputStream(), this.root.resolve(userID  + "/" + file.getOriginalFilename()));
+//
+//        } catch (Exception e) {
+//
+//            if (e instanceof FileAlreadyExistsException) {
+//                throw new RuntimeException("Ya existe un archivo con ese nombre.");
+//            }
+//
+//            throw new RuntimeException(e.getMessage());
+//        }
+//    }
 
     /**
      * Carga el archivo con el nombre de archivo proporcionado del directorio de almacenamiento de archivos.

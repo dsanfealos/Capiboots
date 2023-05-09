@@ -14,7 +14,8 @@ FileSystemStorageService fileSystemStorageService;
 		SpringApplication.run(CapiBootsApplication.class, args);
 	}
 
-}
+
 @PostConstruct
-public void init() {fileSystemStorageService.init()}
+public void init() {fileSystemStorageService.init();
+	}
 }

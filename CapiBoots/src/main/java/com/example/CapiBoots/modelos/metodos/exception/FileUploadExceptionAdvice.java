@@ -1,6 +1,7 @@
 package com.example.CapiBoots.modelos.metodos.exception;
 
-import com.eoi.springwebsecurity.filemanagement.models.ResponseMessage;
+
+import com.example.CapiBoots.modelos.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

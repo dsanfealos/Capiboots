@@ -1,12 +1,14 @@
 package com.example.CapiBoots.controladores.file;
 
 
+import com.example.CapiBoots.modelos.FileInfo;
+import com.example.CapiBoots.modelos.FileDB;
 import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.servicios.file.DBFileStorageService;
 import com.example.CapiBoots.servicios.file.FileSystemStorageService;
 import com.example.CapiBoots.servicios.ifxUsuarioSrvc;
 import org.apache.catalina.User;
-import org.apache.tomcat.jni.FileInfo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -48,8 +50,8 @@ public class FileController {
     /**
      * Servicio de usuario utilizado por el controlador.
      */
-    @Autowired
-    private ifxUsuarioSrvc userService;
+ //   @Autowired
+  //  private ifxUsuarioSrvc userService;
 
     /**
      * Constructor de la clase que recibe el servicio de almacenamiento de archivos como parámetro.
@@ -82,13 +84,13 @@ public class FileController {
         List<FileInfo> dbFiles = dbFileStorageService.getAllFileInfos();
 //
   //      Obtenemos el nombre de usuario del objeto de autenticacion
-        String username = authentication.getName();
+    //    String username = authentication.getName();
  //        Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
-        Usuario user = userService.buscaPorNombre(username);
+  //      Usuario user = userService.buscaPorNombre(username);
 //
  //        Obtenemos todos los archivos asociados al usuario y almacenados en la base de datos
  //        Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
-        List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(user);
+       // List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(user);
 
   //       Agregamos las URLs de los archivos del servicio de almacenamiento predeterminado al modelo.
         model.addAttribute("files", files);
@@ -96,7 +98,7 @@ public class FileController {
    //      Agregamos los objetos FileInfo del servicio de almacenamiento de la base de datos al modelo.
         model.addAttribute("DBfiles", dbFiles);
 
-        model.addAttribute("dbUserFiles", dbUserFiles);
+    //    model.addAttribute("dbUserFiles", dbUserFiles);
 
 
  //        Devolvemos el nombre de la vista a la que se va a redirigir.
@@ -190,36 +192,37 @@ public class FileController {
      * @param authentication     objeto que representa la información de autenticación del usuario que realiza la solicitud
      * @return una cadena de texto con la vista redirigida
      */
-    @PostMapping("/uploadUserFileToDatabase")
-    public String uploadUserFileToDatabase(@RequestParam("file") MultipartFile file,
-                             RedirectAttributes redirectAttributes,
-                             Authentication authentication) {
+  //  @PostMapping("/uploadUserFileToDatabase")
+  //  public String uploadUserFileToDatabase(@RequestParam("file") MultipartFile file,
+                        //     RedirectAttributes redirectAttributes,
+                          //   Authentication authentication) {
 
-        String message = "";
-        try {
+     //   String message = "";
+      //  try {
   //          Obtenemos el nombre de usuario del objeto de autenticacion
-            String username = authentication.getName();
+       //     String username = authentication.getName();
     //         Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
-            User user = userService.findUserByEmail(username);
+       //     User user = userService.findUserByEmail(username);
+      //      User user = userService.findUserByEmail(username);
 
       //       Almacenamos el archivo del usuario en la base de datos
-            dbFileStorageService.storeUserFile(file,user);
+        //    dbFileStorageService.storeUserFile(file,user);
 
         //     Agregar mensaje a los atributos de la redirección
-            redirectAttributes.addFlashAttribute("message",
-                    "¡Archivo " + file.getOriginalFilename() + " cargado exitosamente a la base de datos!");
+     //       redirectAttributes.addFlashAttribute("message",
+        //            "¡Archivo " + file.getOriginalFilename() + " cargado exitosamente a la base de datos!");
 
           //   Redirigir a la lista de archivos
-            return "redirect:/files";
+          //  return "redirect:/files";
 
-        } catch (Exception e) {
+      //  } catch (Exception e) {
           //  Agregar mensaje de error a los atributos de la redirección
-            redirectAttributes.addFlashAttribute("errorMsg", e.getLocalizedMessage());
+        //    redirectAttributes.addFlashAttribute("errorMsg", e.getLocalizedMessage());
 
             //Redirigir a la página de error
-            return "error";
-        }
-    }
+         //   return "error";
+       // }
+ //   }
 
 
 
@@ -231,32 +234,32 @@ public class FileController {
      * @param authentication     la información de autenticación del usuario que está realizando la solicitud
      * @return el nombre de la vista a la que se va a redirigir
      */
-    @PostMapping("/uploadUserFileToFileSystem")
-    public String handleUserFileUpload(@RequestParam("file") MultipartFile file,
-                                       RedirectAttributes redirectAttributes,
-                                       Authentication authentication) {
-
- //        Obtenemos el nombre de usuario del usuario autenticado.
-        String username = authentication.getName();
+//    @PostMapping("/uploadUserFileToFileSystem")
+//    public String handleUserFileUpload(@RequestParam("file") MultipartFile file,
+//                                       RedirectAttributes redirectAttributes,
+//                                       Authentication authentication) {
 //
- //        Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
-        User user = userService.findUserByEmail(username);
-
-  //      Obtenemos el ID del usuario.
-       Long userId = user.getId();
-
-  //       Guardamos el archivo en el servicio de almacenamiento de archivos de usuario.
-        fileSystemStorageService.saveUserFile(file, userId);
-
-  //       Agregamos un mensaje de éxito a los atributos de redirección.
-        redirectAttributes.addFlashAttribute("message",
-                "¡Se ha subido correctamente el archivo de usuario " + file.getOriginalFilename() + "!");
-
-  //       Redirigimos al usuario a la vista que lista los archivos subidos al servidor.
-        return "redirect:/files";
-    }
+// //        Obtenemos el nombre de usuario del usuario autenticado.
+//        String username = authentication.getName();
+////
+// //        Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+//        User user = userService.findUserByEmail(username);
 //
+//  //      Obtenemos el ID del usuario.
+//       Long userId = user.getId();
 //
+//  //       Guardamos el archivo en el servicio de almacenamiento de archivos de usuario.
+//        fileSystemStorageService.saveUserFile(file, userId);
+//
+//  //       Agregamos un mensaje de éxito a los atributos de redirección.
+//        redirectAttributes.addFlashAttribute("message",
+//                "¡Se ha subido correctamente el archivo de usuario " + file.getOriginalFilename() + "!");
+//
+//  //       Redirigimos al usuario a la vista que lista los archivos subidos al servidor.
+//        return "redirect:/files";
+//    }
+////
+////
     /**
      * Método que se encarga de obtener el archivo de la base de datos con el id proporcionado.
      *
@@ -281,11 +284,11 @@ public class FileController {
      * @param id El identificador del archivo a eliminar.
      * @return La página de archivos después de eliminar el archivo.
      */
-    @GetMapping("/databasefiles/delete/{id}")
-    public String deleteFileDB(@PathVariable String id) {
-        dbFileStorageService.deleteFile(id);
-        return "redirect:/files";
-    }
+//    @GetMapping("/databasefiles/delete/{id}")
+//    public String deleteFileDB(@PathVariable String id) {
+//        dbFileStorageService.deleteFile(id);
+//        return "redirect:/files";
+//    }
 
 
     @GetMapping("/files/delete/{fileName}")
@@ -294,16 +297,16 @@ public class FileController {
         return "redirect:/files";
     }
 
-    @GetMapping("/databasefiles/desasociarUserFile/{id}")
-    public String deleteFileFromFileSystem(@PathVariable String id, Authentication authentication) {
- //        Obtenemos el nombre de usuario del usuario autenticado.
-        String username = authentication.getName();
- //        Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
-        User user = userService.findUserByEmail(username);
-
-        dbFileStorageService.desasociarUserFile(id, user);
-        return "redirect:/files";
-    }
+//    @GetMapping("/databasefiles/desasociarUserFile/{id}")
+//    public String deleteFileFromFileSystem(@PathVariable String id, Authentication authentication) {
+// //        Obtenemos el nombre de usuario del usuario autenticado.
+//        String username = authentication.getName();
+// //        Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+//        User user = userService.findUserByEmail(username);
+//
+//        dbFileStorageService.desasociarUserFile(id, user);
+//        return "redirect:/files";
+//    }
 
 
 

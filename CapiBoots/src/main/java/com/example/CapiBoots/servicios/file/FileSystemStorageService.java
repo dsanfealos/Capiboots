@@ -1,7 +1,7 @@
 package com.example.CapiBoots.servicios.file;
 
 
-import org.apache.tomcat.jni.FileInfo;
+import com.example.CapiBoots.modelos.FileInfo;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,7 +33,7 @@ public interface FileSystemStorageService {
      * @param file   the file
      * @param userID the user id
      */
-    void saveUserFile(MultipartFile file, Long userID);
+   // void saveUserFile(MultipartFile file, Long userID);
 
     /**
      * Carga el archivo con el nombre de archivo proporcionado desde el almacenamiento.

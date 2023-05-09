@@ -1,6 +1,6 @@
 package com.example.CapiBoots.modelos;
 
-import com.eoi.springwebsecurity.coreapp.entities.User;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class FileDB {
 
     /**
@@ -51,8 +51,8 @@ public class FileDB {
     @Column(name="data", nullable=false, columnDefinition="LONGBLOB")
     private byte[] data;
 
-    @ManyToMany(mappedBy="filesDB")
-    private List<User> users;
+//    @ManyToMany(mappedBy="filesDB")
+//    private List<User> users;
 
     public FileDB(String id, String fileName, String type, @NotEmpty byte[] data) {
         this.id = id;

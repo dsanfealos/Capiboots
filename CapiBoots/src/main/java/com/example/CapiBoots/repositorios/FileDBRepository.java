@@ -1,6 +1,7 @@
 package com.example.CapiBoots.repositorios;
 
-import com.eoi.springwebsecurity.filemanagement.entities.FileDB;
+
+import com.example.CapiBoots.modelos.FileDB;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

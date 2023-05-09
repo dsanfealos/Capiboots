@@ -1,11 +1,12 @@
 package com.example.CapiBoots.servicios.file;
 
 
-import com.example.CapiBoots.modelos.metodos.FileDB;
-import com.example.CapiBoots.repositorios.FileDBRepositorio;
+import com.example.CapiBoots.modelos.FileInfo;
+import com.example.CapiBoots.modelos.FileDB;
+import com.example.CapiBoots.repositorios.FileDBRepository;
 import com.example.CapiBoots.repositorios.UsuarioRepositorio;
 import org.apache.catalina.User;
-import org.apache.tomcat.jni.FileInfo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -24,7 +25,7 @@ import java.util.stream.Stream;
 public class DBFileStorageService {
 
     @Autowired
-    private FileDBRepositorio fileDBRepository;
+    private FileDBRepository fileDBRepository;
     @Autowired
     private UsuarioRepositorio userRepository;
 
@@ -55,25 +56,25 @@ public class DBFileStorageService {
      * @param file the file
      * @return the file db
      */
-    public FileDB storeUserFile(MultipartFile file, User user)  {
-
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        FileDB fileDB;
-        try {
-
-            fileDB = new FileDB(null,fileName, file.getContentType(), file.getBytes());
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        fileDB = fileDBRepository.save(fileDB);
-        user.getFilesDB().add(fileDB);
-        userRepository.save(user);
-
-        return fileDB;
-    }
+//    public FileDB storeUserFile(MultipartFile file, User user)  {
+//
+//        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+//        FileDB fileDB;
+//        try {
+//
+//            fileDB = new FileDB(null,fileName, file.getContentType(), file.getBytes());
+//
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        fileDB = fileDBRepository.save(fileDB);
+//        user.getFilesDB().add(fileDB);
+//        userRepository.save(user);
+//
+//        return fileDB;
+//    }
 
 
 
@@ -113,19 +114,19 @@ public class DBFileStorageService {
         }).collect(Collectors.toList());
     }
 
-    public List<FileInfo> getUserFileInfos(User user) {
-
-        return user.getFilesDB().stream().map(file -> {
-            FileInfo fileInfo = new FileInfo();
-            fileInfo.setFileName(file.getFileName());
-            fileInfo.setId(file.getId());
-            fileInfo.setUrl("/files/" + file.getId());
-            fileInfo.setType(file.getType());
-            fileInfo.setSize(file.getData().length);
-            return fileInfo;
-        }).collect(Collectors.toList());
-
-    }
+//    public List<FileInfo> getUserFileInfos(User user) {
+//
+//        return user.getFilesDB().stream().map(file -> {
+//            FileInfo fileInfo = new FileInfo();
+//            fileInfo.setFileName(file.getFileName());
+//            fileInfo.setId(file.getId());
+//            fileInfo.setUrl("/files/" + file.getId());
+//            fileInfo.setType(file.getType());
+//            fileInfo.setSize(file.getData().length);
+//            return fileInfo;
+//        }).collect(Collectors.toList());
+//
+//    }
 
 
 
@@ -134,19 +135,19 @@ public class DBFileStorageService {
      *
      * @param id the id
      */
-    public void deleteFile(String id) {
-        Optional<FileDB> file = fileDBRepository.findById(id);
-        if(file.isPresent()) {
-            FileDB fileOk =file.get();
-            fileOk.getUsers().clear();
-            fileOk = fileDBRepository.save(fileOk);
-            fileDBRepository.delete(fileOk);
-        }
-
-
-
-
-    }
+//    public void deleteFile(String id) {
+//        Optional<FileDB> file = fileDBRepository.findById(id);
+//        if(file.isPresent()) {
+//            FileDB fileOk =file.get();
+//            fileOk.getUsers().clear();
+//            fileOk = fileDBRepository.save(fileOk);
+//            fileDBRepository.delete(fileOk);
+//        }
+//
+//
+//
+//
+//    }
 
 
 
@@ -156,21 +157,21 @@ public class DBFileStorageService {
      * @param file the file
      *
      */
-    public void desasociarUserFile(String id, User user)  {
+//    public void desasociarUserFile(String id, User user)  {
+//
+//        Optional<FileDB> file = fileDBRepository.findById(id);
+//        if(file.isPresent())
+//        {
+//            user.getFilesDB().remove(file.get());
+//            userRepository.save(user);
+//        }
+//        else
+//        {
+//            throw new RuntimeException("El fichero no existe");
+//        }
 
-        Optional<FileDB> file = fileDBRepository.findById(id);
-        if(file.isPresent())
-        {
-            user.getFilesDB().remove(file.get());
-            userRepository.save(user);
-        }
-        else
-        {
-            throw new RuntimeException("El fichero no existe");
-        }
 
 
-
-    }
+ //   }
 
 }
