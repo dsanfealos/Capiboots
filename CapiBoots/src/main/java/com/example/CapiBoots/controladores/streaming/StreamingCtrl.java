@@ -1,3 +1,4 @@
+/*
 package com.example.CapiBoots.controladores.streaming;
 
 
@@ -24,13 +25,6 @@ public class StreamingCtrl {
 
     }
 
-
-
-
-
-
-
-
-
-
 }
+
+ */

@@ -1,3 +1,4 @@
+/*
 package com.example.CapiBoots.servicios.streaming;
 
 import com.example.CapiBoots.servicios.FileSystemStorageService;
@@ -24,3 +25,4 @@ public class StreamingSrvcImpls implements ifxStreamingSrvc {
 
     }
 }
+*/

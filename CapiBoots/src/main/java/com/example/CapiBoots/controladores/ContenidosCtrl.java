@@ -1,8 +1,11 @@
 package com.example.CapiBoots.controladores;
 
 import com.example.CapiBoots.modelos.Contenidos;
+import com.example.CapiBoots.modelos.Series;
 import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
+import com.example.CapiBoots.servicios.SeriesSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,15 +73,32 @@ public class ContenidosCtrl {
         return "favoritos";
     }
 
-    @Controller
-    public class BusquedaCtrl {
+
 
         @GetMapping("/busqueda")
-        public String busqueda(Model modelo) {
+        public String busqueda(@Param("keyword") String keyword, Model modelo) {
+
+            SeriesSrvcImpls serieSrvc = new SeriesSrvcImpls();
+            List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
+        List<Contenidos> buscacont = contenidosSrvc.buscaCont(keyword);
+        modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
+        modelo.addAttribute("listaseries", buscaseri);
+        modelo.addAttribute("listacontenidos", buscacont);
+
 
             return "busqueda";
         }
-    }
+
+        //Filtro de Categorias
+        @GetMapping("/busqueda/categoria")
+        public String filtroCat(@PathVariable ("keyword") String keyword, Model modelo) {
+
+            List<Contenidos> buscacont = contenidosSrvc.filtroCategoria(keyword);
+            modelo.addAttribute("listacontenidos", contenidosSrvc.listaCont());
+            modelo.addAttribute("listacontenidos", buscacont);
+            return "busqueda";
+        }
+
 
     //Lista de contenidos
     @GetMapping("/contenido/lista-contenidos")

@@ -1,6 +1,6 @@
 package com.example.CapiBoots;
 
-import com.example.CapiBoots.servicios.streaming.StreamingSrvcImpls;
+// import com.example.CapiBoots.servicios.streaming.StreamingSrvcImpls;
 import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,23 +15,24 @@ import reactor.core.publisher.Mono;
 @RestController
 public class CapiBootsApplication {
 
-	private StreamingSrvcImpls service;
+/*	private StreamingSrvcImpls service;
 
 @GetMapping (value = "/stream/{title}", produces = "video/mp4")
 public Mono<Resource> getVideos (@PathVariable String title, @RequestHeader ("Range") String range) {
 	System.out.println("range in bytes(): " + range);
 	return service.getVideo(title);
 
+}*/
+
+
+    public static void main(String[] args) {
+        SpringApplication.run(CapiBootsApplication.class, args);
+    }
 }
 
 
-	public static void main(String[] args) {
-		SpringApplication.run(CapiBootsApplication.class, args);
-	}
-
-
-	@PostConstruct
+	/* @PostConstruct
 	public void init(){
 	 		fileSystemStorageService.init();
 	}
-}
+}*/

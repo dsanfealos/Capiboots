@@ -19,4 +19,7 @@ public interface ifxContenidosSrvc {
     public Contenidos guardar(Contenidos contenido);
 
     Object listaNovedades();
+
+    //Búsqueda
+    List<Contenidos> buscaCont(String keyword);
 }

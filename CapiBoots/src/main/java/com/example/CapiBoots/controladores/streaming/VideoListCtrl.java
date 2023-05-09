@@ -1,3 +1,4 @@
+/*
 package com.example.CapiBoots.controladores.streaming;
 
 
@@ -19,4 +20,4 @@ public class VideoListCtrl {
         model.addAttribute("videos", videoFiles);
         return "videos";
     }
-}
+}*/
