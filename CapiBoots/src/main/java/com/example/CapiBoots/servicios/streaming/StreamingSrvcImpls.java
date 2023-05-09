@@ -1,7 +1,7 @@
-/*
+
 package com.example.CapiBoots.servicios.streaming;
 
-import com.example.CapiBoots.servicios.FileSystemStorageService;
+import com.example.CapiBoots.servicios.file.FileSystemStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.Resource;
@@ -25,4 +25,4 @@ public class StreamingSrvcImpls implements ifxStreamingSrvc {
 
     }
 }
-*/
+

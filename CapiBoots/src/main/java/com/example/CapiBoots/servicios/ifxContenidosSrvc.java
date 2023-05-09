@@ -22,6 +22,5 @@ public interface ifxContenidosSrvc {
 
     Object listaNovedades();
 
-    //Búsqueda
-    List<Contenidos> buscaCont(String keyword);
+
 }

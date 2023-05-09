@@ -81,7 +81,6 @@ public class ContenidosCtrl {
         @GetMapping("/busqueda")
         public String busqueda(@Param("keyword") String keyword, Model modelo) {
 
-            SeriesSrvcImpls serieSrvc = new SeriesSrvcImpls();
             List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
         List<Contenidos> buscacont = contenidosSrvc.buscaCont(keyword);
         modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
