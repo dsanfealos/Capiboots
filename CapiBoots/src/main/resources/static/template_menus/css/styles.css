@@ -11101,3 +11101,12 @@ picture p {
 #newBookForm span{
   margin-left: 10%;
 }
+
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+
+}
+
