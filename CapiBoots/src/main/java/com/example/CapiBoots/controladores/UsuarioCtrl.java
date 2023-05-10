@@ -74,8 +74,7 @@ public class UsuarioCtrl {
     public String Ajustes(Principal principal, Model modelo) {
         modelo.addAttribute("titulo", "Ajustes");
         String usuID = principal.getName();
-        Usuario user = new Usuario();
-        user = usuSrvc.buscaPorNombre(usuID);
+        Usuario user =  usuSrvc.buscaPorNombre(usuID);
         modelo.addAttribute("usuario",user);
         modelo.addAttribute("userID", usuID);
         return "/administrarUsuario/ajustes";

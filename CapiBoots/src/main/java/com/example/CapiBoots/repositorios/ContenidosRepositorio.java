@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ContenidosRepositorio extends JpaRepository<Contenidos, Long> {
 
-    @Query("SELECT c FROM Contenidos c WHERE c.nombre LIKE %?1% AND c.idserie IS NULL") //Para obtener libros y peliculas pero no capitulos de series
+    @Query("SELECT c FROM Contenidos c WHERE c.nombre LIKE %?1% AND c.idserie IS NULL")//Para obtener libros y películas pero no capítulos
     public List<Contenidos> buscarTodos(String keyword);
 
     //Busqueda por filtros

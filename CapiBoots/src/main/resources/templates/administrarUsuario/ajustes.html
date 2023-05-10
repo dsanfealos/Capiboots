@@ -56,14 +56,14 @@
 
                         <!--Género-->
                         <div class="form-group col-3">
-                            <label for="genero">Género</label>
+                            <label>Género</label>
                             <div class="card" style="background-color: lightgrey; opacity: 70%;" id="ifGenero" name="ifGenero" th:switch="${usuario.genero}">
                                 <p th:case="0"> Hombre</p>
                                 <p th:case="1"> Mujer</p>
                                 <p class="px-2 py-1" th:case="2"> Otro</p>
                                 <p th:case="3"> NA</p>
                             </div>
-                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">
+<!--                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">-->
                         </div>
 
                         <!--Edad-->
