@@ -8,12 +8,14 @@ import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.net.http.HttpResponse;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -74,5 +76,30 @@ public class AccesosCtrl {
                     accessSrvc.guardar(nuevoAcceso);
                 }
         );
+    }
+
+    @GetMapping("/terminar/{id}")
+    public String terminar(@PathVariable Long id, Principal ppal, Model modelo) {
+
+        // localizamos el usuario
+        String usuID = ppal.getName();
+        Usuario usu = usuSrvc.buscaPorNombre(usuID);
+        // buscar el último acceso del usuario al contenido
+        Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(),id);
+        accessSrvc.buscaUltimoAcceso(usu.getId(),id).ifPresentOrElse(
+                acc -> {
+                    acc.setFecha_fin(LocalDateTime.now());
+                    acc.setTerminado(Boolean.TRUE);
+                    //resp = new ResponseEntity<Void>(HttpStatus.OK);
+                    modelo.addAttribute("mensaje","El contenido ha sido marcado como terminado.");
+                    modelo.addAttribute("status","OK");
+
+                },
+                () -> {
+                    modelo.addAttribute("mensaje", "Contenido no hallado.");
+                    modelo.addAttribute("status","No hallado");
+                }
+        );
+        return "reproductor";
     }
 }
