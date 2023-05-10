@@ -5,9 +5,11 @@ import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.servicios.AccesosSrvcImpls;
 import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -69,8 +71,13 @@ public class UsuarioCtrl {
     }
 
     @GetMapping("/ajustes")
-    public String Ajustes(Model modelo) {
+    public String Ajustes(Principal principal, Model modelo) {
         modelo.addAttribute("titulo", "Ajustes");
+        String usuID = principal.getName();
+        Usuario user = new Usuario();
+        user = usuSrvc.buscaPorNombre(usuID);
+        modelo.addAttribute("usuario",user);
+        modelo.addAttribute("userID", usuID);
         return "/administrarUsuario/ajustes";
     }
 
@@ -108,9 +115,38 @@ public class UsuarioCtrl {
     }
 
     @PostMapping("/usuario/guardar")
-    public String guardar(UsuarioDto usuDto){
-        usuSrvc.guardar(usuDto);
+    public String guardar(Usuario usu){
+        usuSrvc.guardarUs(usu);
         return "redirect:/lista-usuarios";
+    }
+
+//    @PostMapping("/usuario/guardar")
+//    public String guardar(@Valid @ModelAttribute("usuario") UsuarioDto userDto, BindingResult result,
+//                               Model model){
+//        //Busca si existe un usuario con el mismo nombre que hemos introducido
+//        Usuario existingUser = usuSrvc.buscaPorCorreo(userDto.getCorreo());
+//
+//        //Si existe un usuario con el mismo nombre, salta un aviso
+//        if(existingUser != null && existingUser.getCorreo() != null && !existingUser.getCorreo().isEmpty()){
+//            result.rejectValue("correo", null,
+//                    "Ya existe un usuario con ese email");
+//        }
+//
+//        //Si hay algún error, recargamos la página de registro y declaramos otro userDto
+//        if(result.hasErrors()){
+//            model.addAttribute("usuario", userDto);
+//            return "/forms/nuevo-usuario";
+//        }
+//
+//        //Guardamos el usuario si se han cumplido las condiciones
+//        usuSrvc.guardar(userDto);
+//        return "redirect:/lista-usuarios";
+//    }
+
+    @PostMapping("/ajustes/guardar")
+    public String guardarAjustes(Usuario usu){
+        usuSrvc.guardarUs(usu);
+        return "redirect:/ajustes";
     }
 
     @GetMapping("/usuario/borrar/{id}")
@@ -123,13 +159,26 @@ public class UsuarioCtrl {
     public String editar(@PathVariable Long id, Model modelo){
         Optional<Usuario> usuOpt = usuSrvc.buscaId(id);
         if(usuOpt.isPresent()){
-            modelo.addAttribute("usuario", usuOpt.get());
+            modelo.addAttribute("usuario", usuOpt);
         }
         else{
             // Si no existe, redirigir a una página de error o mostrar un mensaje de error
             return "error";
         }
         return "/forms/nuevo-usuario";
+    }
+
+    @GetMapping("/ajustes/editar/{id}")
+    public String editarAjustes(@PathVariable Long id, Model modelo){
+        Optional<Usuario> usuOpt = usuSrvc.buscaId(id);
+        if(usuOpt.isPresent()){
+            modelo.addAttribute("usuario", usuOpt.get());
+        }
+        else{
+            // Si no existe, redirigir a una página de error o mostrar un mensaje de error
+            return "error";
+        }
+        return "/forms/editar-usuario-ajustes";
     }
 
     //Seguridad
@@ -151,7 +200,4 @@ public class UsuarioCtrl {
     String index(Principal principal) {
         return principal != null ? "home" : "inicio";
     }
-
-
-
 }

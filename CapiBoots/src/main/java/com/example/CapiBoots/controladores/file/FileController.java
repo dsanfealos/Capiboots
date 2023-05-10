@@ -50,8 +50,8 @@ public class FileController {
     /**
      * Servicio de usuario utilizado por el controlador.
      */
- //   @Autowired
-  //  private ifxUsuarioSrvc userService;
+    //   @Autowired
+    //  private ifxUsuarioSrvc userService;
 
     /**
      * Constructor de la clase que recibe el servicio de almacenamiento de archivos como parámetro.
@@ -75,33 +75,33 @@ public class FileController {
     @GetMapping("/files")
     public String listAllUploadedFiles(Model model,Authentication authentication) throws IOException {
 
- //        Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
-  //       Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        //        Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
+        //       Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
         List<FileInfo> files = fileSystemStorageService.loadAll();
 //
-  //       Obtenemos todos los archivos almacenados en el servicio de almacenamiento de la base de datos.
-  //       Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        //       Obtenemos todos los archivos almacenados en el servicio de almacenamiento de la base de datos.
+        //       Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
         List<FileInfo> dbFiles = dbFileStorageService.getAllFileInfos();
 //
-  //      Obtenemos el nombre de usuario del objeto de autenticacion
-    //    String username = authentication.getName();
- //        Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
-  //      Usuario user = userService.buscaPorNombre(username);
+        //      Obtenemos el nombre de usuario del objeto de autenticacion
+        //    String username = authentication.getName();
+        //        Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+        //      Usuario user = userService.buscaPorNombre(username);
 //
- //        Obtenemos todos los archivos asociados al usuario y almacenados en la base de datos
- //        Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
-       // List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(user);
+        //        Obtenemos todos los archivos asociados al usuario y almacenados en la base de datos
+        //        Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        // List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(user);
 
-  //       Agregamos las URLs de los archivos del servicio de almacenamiento predeterminado al modelo.
+        //       Agregamos las URLs de los archivos del servicio de almacenamiento predeterminado al modelo.
         model.addAttribute("files", files);
 
-   //      Agregamos los objetos FileInfo del servicio de almacenamiento de la base de datos al modelo.
+        //      Agregamos los objetos FileInfo del servicio de almacenamiento de la base de datos al modelo.
         model.addAttribute("DBfiles", dbFiles);
 
-    //    model.addAttribute("dbUserFiles", dbUserFiles);
+        //    model.addAttribute("dbUserFiles", dbUserFiles);
 
 
- //        Devolvemos el nombre de la vista a la que se va a redirigir.
+        //        Devolvemos el nombre de la vista a la que se va a redirigir.
         return "listFicheros";
     }
 
@@ -116,11 +116,11 @@ public class FileController {
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 
-  //       Cargamos el archivo como un recurso a través del servicio de almacenamiento predeterminado.
+        //       Cargamos el archivo como un recurso a través del servicio de almacenamiento predeterminado.
         Resource file = fileSystemStorageService.loadAsResource(filename);
 
-  //       Construimos una respuesta HTTP con el archivo a descargar en el cuerpo de la respuesta.
-  //       También establecemos el encabezado "Content-Disposition" con el nombre de archivo para indicar que se debe descargar.
+        //       Construimos una respuesta HTTP con el archivo a descargar en el cuerpo de la respuesta.
+        //       También establecemos el encabezado "Content-Disposition" con el nombre de archivo para indicar que se debe descargar.
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
@@ -137,14 +137,14 @@ public class FileController {
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
 
- //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
+        //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
         fileSystemStorageService.save(file);
 
- //        Agregamos un mensaje de éxito a los atributos de redirección.
+        //        Agregamos un mensaje de éxito a los atributos de redirección.
         redirectAttributes.addFlashAttribute("message",
                 "¡Se ha subido " + file.getOriginalFilename() + " correctamente!");
 
-  //       Redirigimos al usuario a la vista que lista los archivos subidos al servidor.
+        //       Redirigimos al usuario a la vista que lista los archivos subidos al servidor.
         return "redirect:/files";
     }
 
@@ -164,10 +164,10 @@ public class FileController {
 
         String message = "";
         try {
-  //           Almacenar el archivo en la base de datos
+            //           Almacenar el archivo en la base de datos
             dbFileStorageService.store(file);
 
- //            Agregar mensaje a los atributos de la redirección
+            //            Agregar mensaje a los atributos de la redirección
             redirectAttributes.addFlashAttribute("message",
                     "¡Archivo " + file.getOriginalFilename() + " cargado exitosamente a la base de datos!");
 
@@ -175,10 +175,10 @@ public class FileController {
             return "redirect:/files";
 
         } catch (Exception e) {
- //            Agregar mensaje de error a los atributos de la redirección
+            //            Agregar mensaje de error a los atributos de la redirección
             redirectAttributes.addFlashAttribute("errorMsg", e.getLocalizedMessage());
 
- //            Redirigir a la página de error
+            //            Redirigir a la página de error
             return "error";
         }
     }
@@ -192,37 +192,37 @@ public class FileController {
      * @param authentication     objeto que representa la información de autenticación del usuario que realiza la solicitud
      * @return una cadena de texto con la vista redirigida
      */
-  //  @PostMapping("/uploadUserFileToDatabase")
-  //  public String uploadUserFileToDatabase(@RequestParam("file") MultipartFile file,
-                        //     RedirectAttributes redirectAttributes,
-                          //   Authentication authentication) {
+    //  @PostMapping("/uploadUserFileToDatabase")
+    //  public String uploadUserFileToDatabase(@RequestParam("file") MultipartFile file,
+    //     RedirectAttributes redirectAttributes,
+    //   Authentication authentication) {
 
-     //   String message = "";
-      //  try {
-  //          Obtenemos el nombre de usuario del objeto de autenticacion
-       //     String username = authentication.getName();
+    //   String message = "";
+    //  try {
+    //          Obtenemos el nombre de usuario del objeto de autenticacion
+    //     String username = authentication.getName();
     //         Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
-       //     User user = userService.findUserByEmail(username);
-      //      User user = userService.findUserByEmail(username);
+    //     User user = userService.findUserByEmail(username);
+    //      User user = userService.findUserByEmail(username);
 
-      //       Almacenamos el archivo del usuario en la base de datos
-        //    dbFileStorageService.storeUserFile(file,user);
+    //       Almacenamos el archivo del usuario en la base de datos
+    //    dbFileStorageService.storeUserFile(file,user);
 
-        //     Agregar mensaje a los atributos de la redirección
-     //       redirectAttributes.addFlashAttribute("message",
-        //            "¡Archivo " + file.getOriginalFilename() + " cargado exitosamente a la base de datos!");
+    //     Agregar mensaje a los atributos de la redirección
+    //       redirectAttributes.addFlashAttribute("message",
+    //            "¡Archivo " + file.getOriginalFilename() + " cargado exitosamente a la base de datos!");
 
-          //   Redirigir a la lista de archivos
-          //  return "redirect:/files";
+    //   Redirigir a la lista de archivos
+    //  return "redirect:/files";
 
-      //  } catch (Exception e) {
-          //  Agregar mensaje de error a los atributos de la redirección
-        //    redirectAttributes.addFlashAttribute("errorMsg", e.getLocalizedMessage());
+    //  } catch (Exception e) {
+    //  Agregar mensaje de error a los atributos de la redirección
+    //    redirectAttributes.addFlashAttribute("errorMsg", e.getLocalizedMessage());
 
-            //Redirigir a la página de error
-         //   return "error";
-       // }
- //   }
+    //Redirigir a la página de error
+    //   return "error";
+    // }
+    //   }
 
 
 
@@ -268,10 +268,10 @@ public class FileController {
      */
     @GetMapping("/databasefiles/{id}")
     public ResponseEntity<byte[]> getDatabaseFile(@PathVariable String id) {
-  //       Obtiene el archivo de la base de datos utilizando el servicio correspondiente.
+        //       Obtiene el archivo de la base de datos utilizando el servicio correspondiente.
         FileDB fileDB = dbFileStorageService.getFile(id);
 
- //        Retorna un ResponseEntity con el archivo obtenido y las cabeceras necesarias para la descarga del archivo.
+        //        Retorna un ResponseEntity con el archivo obtenido y las cabeceras necesarias para la descarga del archivo.
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getFileName() + "\"")
                 .body(fileDB.getData());

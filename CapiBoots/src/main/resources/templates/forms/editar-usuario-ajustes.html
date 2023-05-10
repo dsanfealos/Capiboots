@@ -1,0 +1,226 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head th:fragment="head">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nuevo Usuario</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  <!-- Estilos personalizados -->
+  <link href="" type="text/css" rel="stylesheet">
+
+  <title>Nuevo Usuario</title>
+</head>
+<body>
+<div class="container mt-3">
+  <h2>Usuario Nuevecito</h2>
+
+  <!--Formulario de creación-->
+  <!--En action (Lo que se activa al darle al botón tipo "submit") ponemos la url del controlador que queremos activar,
+  y en object ponemos el objeto definido en ese método (basado en
+  el modelo que queremos)-->
+  <form th:action="@{/ajustes/guardar}" th:object="${usuario}" method="post"> <!--Se define el objeto con ${objeto}-->
+    <!--Id-->
+    <input type="hidden" th:field="*{id}">
+
+    <!--Nombre-->
+    <div class="form-group">
+      <label for="nombre">Nombre de usuario:</label>
+      <!--Atentos a poner "text" o "number" en el tipo según necesitemos-->
+      <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombreUsuario}" required>  <!--Se llama a la función del objeto con *{función}-->
+    </div>
+
+    <!--Clave-->
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <br>
+      <label class="text-danger" >Es necesario escribir una contraseña para editar tus datos</label>
+      <input type="password" class="form-control" id="password" name="password" th:field="*{clave}" required>
+    </div>
+
+    <!--Edad-->
+    <div class="form-group">
+      <label for="edad">Edad:</label>
+      <input type="number" class="form-control" id="edad" name="edad" th:field="*{edad}" required>
+    </div>
+
+    <!--Género-->
+    <div class="form-group">
+      <label for="genero">Género:</label>
+      <select class="form-control" id="genero" name="genero" th:field="*{genero}" required>
+        <option value="0">Hombre</option>
+        <option value="1">Mujer</option>
+        <option value="2">Otro</option>
+        <option value="3" selected="">N/A</option>
+      </select>
+    </div>
+
+    <!--Correo-->
+    <div class="form-group">
+      <label for="correo">Correo:</label>
+      <input type="email" class="form-control" id="correo" name="correo" th:field="*{correo}" required>
+    </div>
+
+    <!--País-->
+    <div class="form-group">
+      <label for="pais">País:</label>
+      <select type="text" class="form-control" id="pais" name="pais" th:field="*{pais}" required>
+        <option value="Afganistán">Afganistán</option>
+        <option value="Albania">Albania</option>
+        <option value="Alemania">Alemania</option>
+        <option value="Andorra">Andorra</option>
+        <option value="Angola">Angola</option>
+        <option value="Arabia Saudita">Arabia Saudita</option>
+        <option value="Argelia">Argelia</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Armenia">Armenia</option>
+        <option value="Australia">Australia</option>
+        <option value="Austria">Austria</option>
+        <option value="Azerbaiyán">Azerbaiyán</option>
+        <option value="Bahamas">Bahamas</option>
+        <option value="Bangladesh">Bangladesh</option>
+        <option value="Barbados">Barbados</option>
+        <option value="Belarús">Belarús</option>
+        <option value="Bélgica">Bélgica</option>
+        <option value="Bhután">Bhután</option>
+        <option value="Bolivia">Bolivia</option>
+        <option value="Bosnia">Bosnia</option>
+        <option value="Botswana">Botswana</option>
+        <option value="Brasil">Brasil</option>
+        <option value="Bulgaria">Bulgaria</option>
+        <option value="Cabo verde">Cabo verde</option>
+        <option value="Camboya">Camboya</option>
+        <option value="Canadá">Canadá</option>
+        <option value="Chad">Chad</option>
+        <option value="Chequia">Chequia</option>
+        <option value="Chile">Chile</option>
+        <option value="China">China</option>
+        <option value="Colombia">Colombia</option>
+        <option value="Congo">Congo</option>
+        <option value="Costa Rica">Costa Rica</option>
+        <option value="Croacia">Croacia</option>
+        <option value="Cuba">Cuba</option>
+        <option value="Dinamarca">Dinamarca</option>
+        <option value="Dominica">Dominica</option>
+        <option value="Ecuador">Ecuador</option>
+        <option value="Egipto">Egipto</option>
+        <option value="El Salvador">El Salvador</option>
+        <option value="Emiratos Árabes">Emiratos Árabes</option>
+        <option value="Eritrea">Eritrea</option>
+        <option value="Eslovaquia">Eslovaquia</option>
+        <option value="Eslovenia">Eslovenia</option>
+        <option value="España">España</option>
+        <option value="EEUU">EEUU</option>
+        <option value="Estonia">Estonia</option>
+        <option value="Eswatini">Eswatini</option>
+        <option value="Filipinas">Filipinas</option>
+        <option value="Finlandia">Finlandia</option>
+        <option value="Francia">Francia</option>
+        <option value="Gambia">Gambia</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Ghana">Ghana</option>
+        <option value="Grecia">Grecia</option>
+        <option value="Guatemala">Guatemala</option>
+        <option value="Guinea">Guinea</option>
+        <option value="Guinea Ec.">Guinea Ec.</option>
+        <option value="Guinea-Bissau">Guinea-Bissau</option>
+        <option value="Haití">Haití</option>
+        <option value="Honduras">Honduras</option>
+        <option value="Hungría">Hungría</option>
+        <option value="India">India</option>
+        <option value="Indonesia">Indonesia</option>
+        <option value="Irán">Irán</option>
+        <option value="Iraq">Iraq</option>
+        <option value="Irlanda">Irlanda</option>
+        <option value="Islandia">Islandia</option>
+        <option value="Israel">Israel</option>
+        <option value="Italia">Italia</option>
+        <option value="Jamaica">Jamaica</option>
+        <option value="Japón">Japón</option>
+        <option value="Jordania">Jordania</option>
+        <option value="Kazajstán">Kazajstán</option>
+        <option value="Kenya">Kenya</option>
+        <option value="Kirguistán">Kirguistán</option>
+        <option value="Kuwait">Kuwait</option>
+        <option value="Letonia">Letonia</option>
+        <option value="Líbano">Líbano</option>
+        <option value="Libia">Libia</option>
+        <option value="Lituania">Lituania</option>
+        <option value="Luxemburgo">Luxemburgo</option>
+        <option value="Madagascar">Madagascar</option>
+        <option value="Malasia">Malasia</option>
+        <option value="Malawi">Malawi</option>
+        <option value="Maldivas">Maldivas</option>
+        <option value="Malta">Malta</option>
+        <option value="Marruecos">Marruecos</option>
+        <option value="Mauritania">Mauritania</option>
+        <option value="México">México</option>
+        <option value="Mónaco">Mónaco</option>
+        <option value="Mongolia">Mongolia</option>
+        <option value="Montenegro">Montenegro</option>
+        <option value="Mozambique">Mozambique</option>
+        <option value="Namibia">Namibia</option>
+        <option value="Nepal">Nepal</option>
+        <option value="Nicaragua">Nicaragua</option>
+        <option value="Níger">Níger</option>
+        <option value="Nigeria">Nigeria</option>
+        <option value="Noruega">Noruega</option>
+        <option value="Nueva Zelanda">Nueva Zelanda</option>
+        <option value="Países Bajos">Países Bajos</option>
+        <option value="Pakistán">Pakistán</option>
+        <option value="Panamá">Panamá</option>
+        <option value="Paraguay">Paraguay</option>
+        <option value="Perú">Perú</option>
+        <option value="Polonia">Polonia</option>
+        <option value="Portugal">Portugal</option>
+        <option value="Reino Unido">Reino Unido</option>
+        <option value="República de Corea">República de Corea</option>
+        <option value="República Dominicana">República Dominicana</option>
+        <option value="República del Congo">República del Congo</option>
+        <option value="Rumanía">Rumanía</option>
+        <option value="Rusia">Rusia</option>
+        <option value="Senegal">Senegal</option>
+        <option value="Serbia">Serbia</option>
+        <option value="Singapur">Singapur</option>
+        <option value="Somalia">Somalia</option>
+        <option value="Sri Lanka">Sri Lanka</option>
+        <option value="Sudán">Sudán</option>
+        <option value="Suecia">Suecia</option>
+        <option value="Suiza">Suiza</option>
+        <option value="Tailandia">Tailandia</option>
+        <option value="Túnez">Túnez</option>
+        <option value="Turquía">Turquía</option>
+        <option value="Ucrania">Ucrania</option>
+        <option value="Uganda">Uganda</option>
+        <option value="Uruguay">Uruguay</option>
+        <option value="Venezuela">Venezuela</option>
+        <option value="Vietnam">Vietnam</option>
+        <option value="Yemen">Yemen</option>
+        <option value="Zambia">Zambia</option>
+        <option value="Zimbabwe">Zimbabwe</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+  </form>
+</div>
+
+
+
+<!-- Optional JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+</body>
+</html>
