@@ -3,6 +3,7 @@ package com.example.CapiBoots.repositorios;
 import com.example.CapiBoots.modelos.Accesos;
 import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Series;
+import com.example.CapiBoots.modelos.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,5 +15,6 @@ public interface AccesosRepositorio extends JpaRepository<Accesos, Long> {
     List<Contenidos> buscarPendientes(Long usu);
 
     @Query("SELECT a FROM Accesos a WHERE a.idUsuario=?1 AND a.idContenido=?2")
-    List<Contenidos> buscarAccesos(Long usu, Long contenido);
+    Accesos buscarAccesos(Long usu, Long contenido);
+
 }

@@ -58,6 +58,17 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
 
     //Guardar y Borrar porque Crear/Editar se definen en el controlador.
 
+    public Usuario guardarUs(Usuario user){
+        user.setClave(passwordEncoder.encode(user.getClave()));
+        Rol rol = roleRepository.findByName(defaultUserRole);
+
+        if(rol == null){
+            rol = addRoleIfNotExists();
+        }
+        user.setRoles(List.of(rol));
+        return usurepo.save(user);
+    }
+
 
     public void guardar(UsuarioDto userDto) {
 
