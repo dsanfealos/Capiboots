@@ -16,9 +16,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Accesos{
-
     @Id
-    @Column(name = "fecha_inicio", nullable = false, columnDefinition = "DATETIME default 'NOW()' ")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "fecha_inicio")
     @Convert(converter = TimeConverter.class)
     protected LocalDateTime fecha_inicio;
 
