@@ -11110,3 +11110,166 @@ picture p {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+.header-bg {
+  background-image: url('../assets/img/fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  padding: 70px 0;
+}
+
+
+.header-movie-poster {
+  position: relative;
+  top: 200px; /* Mueve la imagen hacia abajo 50px */
+  left: 20px; /* Mueve la imagen hacia la derecha 20px */
+}
+
+.header-movie-info {
+  color: white;
+  padding: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-movie-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  margin-left: 250px;
+}
+
+.header-movie-details {
+  margin: 20px 0;
+}
+
+.header-movie-genre-icon {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.header-movie-genre {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.header-movie-cast {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.header-movie-description {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 20px 0;
+}
+
+.header-movie-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  margin-left: 250px;
+}
+
+.btn-group {
+  margin-top: -50px;
+  margin-left: 300px;
+  margin-left: 250px;
+}
+
+.btn-primary {
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 15px 50px;
+  border-radius: 30px;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+.btn-secondary {
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 15px 50px;
+  border-radius: 30px;
+  margin-top: 30px;
+  color: white;
+  width: 220px; /* Ancho del botón rosa */
+}
+
+.btn-group .btn-secondary:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-group .btn-secondary:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group .dropdown-toggle::after {
+  display: none;
+}
+
+.btn-group .dropdown-menu {
+  margin-top: 0;
+  border-radius: 0 0 10px 10px;
+  padding: 0;
+  background-color: white;
+  border: none;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.btn-group .dropdown-item {
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 15px 50px;
+  border-radius: 0;
+  color: black;
+}
+
+.btn-group .dropdown-item:hover {
+  color: #ff6a00;
+  background-color: #f9f9f9;
+}
+
+.btn-group .dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+.btn:hover {
+  color: #ff00ff;
+  background-color: #fff;
+}
+
+.btn-secondary:hover {
+  color: #ff6a00;
+  background-color: #fff;
+}
+
+
+
+
+
+.grow{
+  transition: .5s, color .10s;
+  -webkit-transition: .5s, color .10s;
+  -moz-transition: .5s, color .10s;
+}
+.grow:hover{
+  transform: scale3d(1.5, 1.5, 0.3);
+  -webkit-transform: scale3d(1.5, 1.5, 0.3);
+  -moz-transform: scale3d(1.5, 1.5, 0.3);
+}
