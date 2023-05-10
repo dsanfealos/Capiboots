@@ -51,8 +51,6 @@
                         <li class="nav-item" ><a class="nav-link" href="/bookbox">Bookbox</a></li>
                         <li class="nav-item" ><a class="nav-link" href="/moviebox">MovieBox</a></li>
                         <li class="nav-item" ><a class="nav-link" href="/showbox">ShowBox</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="/favoritos">Favoritos</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="/gestion">Gestion</a></li>
                     </ul>
                 </div>
 
@@ -68,10 +66,7 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
-                            <li><a class="dropdown-item" th:href="@{/suscripcion}">Suscripción</a></li>
-                            <li><a class="dropdown-item" th:href="@{/logros}">Logros</a></li>
                             <li><a class="dropdown-item" th:href="@{/ajustes}">Ajustes</a></li>
-                            <li><a class="dropdown-item" th:href="@{/lista-amigos}">Lista de Amigos</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a></li>
                         </ul>
@@ -96,94 +91,92 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="row p-5">
-                            <form th:action="@{/busqueda/categoria}">
+                        <form th:action="@{/busqueda/categoria}">
+                            <div class="row p-5">
 
 
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Acción
-                                </button>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Acción
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Anime
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Ciencia Ficción
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Comedia
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Documental
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Drama
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Fantasía
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Infantil
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Misterio
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Romance
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Terror
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Thriller
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Libros
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Películas
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Series
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Usuarios
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Anime
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Ciencia Ficción
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Comedia
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Documental
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Drama
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Fantasía
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Infantil
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Misterio
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Romance
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Terror
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Thriller
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Libros
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Películas
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Series
-                                </button>
-                            </div>
-                            <div class="col-2">
-                                <button type="button" class="btn m-2 container-fluid" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: grey; background-color:black;" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                    Usuarios
-                                </button>
-                            </div>
-                            </form>
-
-
-                        </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary">Filtrar</button>

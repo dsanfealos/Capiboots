@@ -18,10 +18,10 @@ public class StreamingCtrl {
     @Autowired
     private ifxStreamingSrvc streamingService;
 
-    @GetMapping(value = "/stream/{title}", produces = "video/mp4")
-    public Mono<Resource> getVideo(@PathVariable String title, @RequestHeader(name = "Range", defaultValue = "bytes=0-50")String range) {
+    @GetMapping(value = "/stream/{id}", produces = "video/mp4")
+    public Mono<Resource> getVideo(@PathVariable String id, @RequestHeader(name = "Range", defaultValue = "bytes=0-50")String range) {
        log.info(range);
-        return streamingService.getVideo(title);
+        return streamingService.getVideo(id);
 
     }
 

@@ -27,48 +27,18 @@ public class UsuarioCtrl {
 
 
 
-    //Login
-
-    @GetMapping("/acceso")
-    public String Acceso(Model modelo) {
-        modelo.addAttribute("titulo", "Página de acceso");
-        return "/administrarUsuario/login";
-    }
-
-    @PostMapping("/acceso")
-    public String comprobarAcceso(Model modelo, @RequestParam("usuario") String usu, @RequestParam("clave") String clave){
-        String texto = "Hola " + usu + " tu clave es " + clave + ".";
-        modelo.addAttribute("texto", texto);
-
-        return"/administrarUsuario/exitoLogin";    }
-
     @GetMapping("/usuario-id")
     public String UsuPorId(@PathVariable Long id, Model modelo){
         modelo.addAttribute("idusu", usuSrvc.buscaId(id));
         return "usuario";   //Buscar en búsqueda con el filtro de "Usuarios"
     }
 
-    @GetMapping("/registro")
-    public String Registro(Model modelo){
-        modelo.addAttribute("titulo", "CapiBoots");
-        modelo.addAttribute("titulo2", "Esta es mi aplicación CapiBoots");
-        return "/administrarUsuario/registro";
-    }
 
-    @PostMapping("/registro")
-    public String alta(Model modelo){
-        return "exito";
-    }
+
+
 
     //Desplegable Perfil
-    @GetMapping("/suscripcion")
-    public String Suscripcion (Model modelo) {
-        // Buscar el registro en la BBDD
-        // colocar los datos en el parámetro que pasas a la vista de Thymeleaf
-        modelo.addAttribute("titulo", "Estás viendo tus datos de suscripción");
-        // devuelve el archivo html con la vista
-        return "/administrarUsuario/suscripcion";
-    }
+
 
     @GetMapping("/ajustes")
     public String Ajustes(Principal principal, Model modelo) {
@@ -80,11 +50,6 @@ public class UsuarioCtrl {
         return "/administrarUsuario/ajustes";
     }
 
-    @GetMapping("/logros")
-    public String Logros(Model modelo) {
-        modelo.addAttribute("titulo", "Logros");
-        return "/administrarUsuario/logros";
-    }
 
     //Listas de Usuarios
     @GetMapping("/lista-usuarios")
@@ -99,11 +64,7 @@ public class UsuarioCtrl {
         return "/listas/lista-usus";
     }
 
-    @GetMapping("/lista-amigos")
-    public String ListaAmigos (Model modelo) {
-        modelo.addAttribute("titulo", "Lista de amigos");
-        return "/administrarUsuario/listaAmigos";
-    }
+
 
     //Crear, Guardar, Borrar y Editar
 
@@ -180,19 +141,7 @@ public class UsuarioCtrl {
         return "/forms/editar-usuario-ajustes";
     }
 
-    //Seguridad
 
-    //Pantalla que sale si se hace login como administrador
-    @GetMapping("/admin")
-    public String showAdminPage() {
-        return "admin";
-    }
-
-    //Pantalla que sale si se hace login como usuario
-    @GetMapping("/user")
-    public String showUserPage() {
-        return "user";
-    }
 
     //Validación cuando se ha hecho login
     @GetMapping("/")
