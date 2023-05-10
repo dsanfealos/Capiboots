@@ -1,7 +1,9 @@
 package com.example.CapiBoots.controladores;
 
+import com.example.CapiBoots.modelos.Accesos;
 import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Series;
+import com.example.CapiBoots.servicios.AccesosSrvcImpls;
 import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
 import com.example.CapiBoots.servicios.SeriesSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +27,9 @@ public class ContenidosCtrl {
 
     @Autowired
     private SeriesSrvcImpls serieSrvc;
+
+    @Autowired
+    private AccesosSrvcImpls accesoSrvc;
 
     @GetMapping("/guardarContenido")
     public String guardarContenido(Model modelo) {
@@ -82,7 +88,6 @@ public class ContenidosCtrl {
     public String busqueda(@Param("keyword") String keyword, Model modelo) {
         List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
         List<Contenidos> buscacont = contenidosSrvc.buscaCont(keyword);
-        modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
         modelo.addAttribute("listaseries", buscaseri);
         modelo.addAttribute("listaContenidos", buscacont);
         return "busqueda";
@@ -150,12 +155,20 @@ public class ContenidosCtrl {
 
     @GetMapping("/reproducir/{id}")
     public String reproducir(@PathVariable Long id, Model modelo) {
+        contenidosSrvc.buscarContenidoId(id);
         modelo.addAttribute("contenido", id);
         return "reproductor";
     }
 
     @GetMapping("/empieza/{id}")
-    public void empezar(@PathVariable Long id){
+    public void empezar(@PathVariable Long usuid, @PathVariable Long contid){
+        Accesos acceso = accesoSrvc.buscaIdUsuAndIdCont(usuid, contid);
+
+        if (acceso != null){
+            acceso.setFecha_inicio(LocalDateTime.now());
+            Accesos acc = new Accesos();
+            accesoSrvc.guardar(acc);
+        }
         // buscamos los contenidos accedidos por el usuario. Este dato debe devolverlo el servicio de contenidos o el de accesos
 
 
