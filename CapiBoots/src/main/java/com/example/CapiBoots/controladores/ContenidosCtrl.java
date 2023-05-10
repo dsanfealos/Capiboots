@@ -83,15 +83,14 @@ public class ContenidosCtrl {
 
             List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
         List<Contenidos> buscacont = contenidosSrvc.buscaCont(keyword);
-        modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
         modelo.addAttribute("listaseries", buscaseri);
-        modelo.addAttribute("listacontenidos", buscacont);
+        modelo.addAttribute("listaContenidos", buscacont);
 
 
             return "busqueda";
         }
 
-        //Filtro de Categorias
+       /* //Filtro de Categorias
         @GetMapping("/busqueda/categoria")
         public String filtroCat(@PathVariable ("keyword") String keyword, Model modelo) {
 
@@ -99,7 +98,7 @@ public class ContenidosCtrl {
             modelo.addAttribute("listacontenidos", contenidosSrvc.listaCont());
             modelo.addAttribute("listacontenidos", buscacont);
             return "busqueda";
-        }
+        }*/
 
 
     //Lista de contenidos

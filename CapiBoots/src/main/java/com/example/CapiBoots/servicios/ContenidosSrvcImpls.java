@@ -82,14 +82,14 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
     }
         return contenidoRepo.findAll();
     }
-    public List<Contenidos> filtroCategoria (String keyword){
+   /* public List<Contenidos> filtroCategoria (String keyword){
         List<Contenidos> lista = new ArrayList<>();
         if (keyword != null) {
             lista = contenidoRepo.buscarPorCat(keyword);
             return lista;
         }
         return contenidoRepo.findAll();
-    }
+    }*/
 
    //Pendientes
     //TODO: Introducir String en direccion href

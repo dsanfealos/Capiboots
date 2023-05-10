@@ -13,8 +13,8 @@ public interface ContenidosRepositorio extends JpaRepository<Contenidos, Long> {
     public List<Contenidos> buscarTodos(String keyword);
 
     //Busqueda por filtros
-    @Query("SELECT c FROM Contenidos c JOIN c.categorias cat WHERE cat.nombre LIKE %?1%")
-    public List<Contenidos> buscarPorCat(String keyword);
+   // @Query("SELECT c FROM Contenidos c JOIN c.categorias cat WHERE cat.nombre LIKE %?1%")
+    // public List<Contenidos> buscarPorCat(String keyword);
 
 
 
