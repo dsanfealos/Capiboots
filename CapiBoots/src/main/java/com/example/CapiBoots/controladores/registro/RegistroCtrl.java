@@ -39,7 +39,7 @@ public class RegistroCtrl {
         //Si existe un usuario con el mismo nombre, salta un aviso
         if(existingUser != null && existingUser.getCorreo() != null && !existingUser.getCorreo().isEmpty()){
             result.rejectValue("correo", null,
-                    "Ya existe un usuario con ese nombre");
+                    "Ya existe un usuario con ese email");
         }
 
         //Si hay algún error, recargamos la página de registro y declaramos otro userDto
