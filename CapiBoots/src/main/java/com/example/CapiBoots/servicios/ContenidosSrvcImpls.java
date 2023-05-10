@@ -123,7 +123,7 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
         //Asignamos la lista ampliada a la lista de categorías del contenido nuevo
         contNuevo.setCategorias(cat);
         //Esperamos 7 días (60480 segundos)
-        Thread.sleep(60480000);
+
         //Quitamos la categoría novedades del contenido
 
         return contNuevo;

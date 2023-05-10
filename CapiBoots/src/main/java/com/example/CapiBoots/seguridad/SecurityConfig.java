@@ -34,8 +34,7 @@ public class SecurityConfig {
         return authProvider;
     }
 
-    //TODO Aplicar el .csrf().disable(); al http si los th dejan de funcionar.
-    //TODO aplicar las direcciones de pantallas a este método
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -70,8 +69,7 @@ public class SecurityConfig {
                         //Aceptar a todos los usuarios para stream de videos
                         .requestMatchers("/stream/**").authenticated()
 
-                        // Peticiones permitidas sólo para usuarios autenticados con rol USER
-                        .requestMatchers("/user/**").hasRole("USER")
+
                 ).formLogin(
                         form -> form
                                 .loginPage("/login") // Establece la ruta a la página de inicio de sesión
