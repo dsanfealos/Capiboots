@@ -21,21 +21,22 @@ public class Accesos{
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "fecha_inicio")
+    @Column(name = "fecha_inicio", columnDefinition = "DEFAULT CURRENT_DATE()")
     @Convert(converter = TimeConverter.class)
     protected LocalDateTime fecha_inicio;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
-    private Usuario idUsuario;
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "idContenido", nullable = false)
-    private Contenidos idContenido;
+    private Contenidos contenido;
 
     @Convert(converter = TimeConverter.class)
     @Column(name = "fecha_fin", columnDefinition = "DATETIME")
     private LocalDateTime fecha_fin;
 
+    @Column(columnDefinition = "DEFAULT false")
     private Boolean terminado=false;
 }

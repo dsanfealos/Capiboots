@@ -25,17 +25,11 @@ public class UsuarioCtrl {
     @Autowired
     private AccesosSrvcImpls accessSrvc;
 
-
-
     @GetMapping("/usuario-id")
     public String UsuPorId(@PathVariable Long id, Model modelo){
         modelo.addAttribute("idusu", usuSrvc.buscaId(id));
         return "usuario";   //Buscar en búsqueda con el filtro de "Usuarios"
     }
-
-
-
-
 
     //Desplegable Perfil
 

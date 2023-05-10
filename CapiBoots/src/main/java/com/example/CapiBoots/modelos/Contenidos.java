@@ -30,8 +30,10 @@ public class Contenidos {
     @ManyToOne
     @JoinColumn(name="idtemporada", nullable = true)
     private Temporada idtemporada;
-    @Column(name="FechaAlta")
+    @Column(name="FechaAlta", columnDefinition = "DEFAULT CURRENT_DATE()")
     private Date fechaAlta;
+    @Column(columnDefinition = "default true")
+    private Boolean novedad;
 
     @ManyToMany // Many to Many entre Contenidos y Categorias
     @JoinTable(
@@ -46,7 +48,7 @@ public class Contenidos {
     @OneToMany(mappedBy = "idContenido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comentarios> comentarios;
 
-    @OneToMany(mappedBy = "idContenido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contenido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Accesos> accesos;
 
 

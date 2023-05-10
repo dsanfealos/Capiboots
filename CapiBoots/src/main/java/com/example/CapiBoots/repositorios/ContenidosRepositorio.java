@@ -22,4 +22,8 @@ public interface ContenidosRepositorio extends JpaRepository<Contenidos, Long> {
 
 
 
+
+    // Seleccionamos todos los contenidos que tienen  la propiedad "novedad" a true y tiene más de 7 días
+    @Query("UPDATE Contenidos c SET c.novedad = false WHERE c.novedad AND c.fechaAlta < CURRENT_DATE - 7")
+    void quitaNovedades ();
 }
