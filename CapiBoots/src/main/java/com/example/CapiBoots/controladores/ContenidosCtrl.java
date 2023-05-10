@@ -114,15 +114,15 @@ public class ContenidosCtrl {
 
     @Controller
     public class BusquedaCtrl {
-    //Búsqueda
+        //Búsqueda
 
         @GetMapping("/busqueda")
         public String busqueda(@Param("keyword") String keyword, Model modelo) {
 
             List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
-        List<Contenidos> buscacont = contenidosSrvc.buscaCont(keyword);
-        modelo.addAttribute("listaseries", buscaseri);
-        modelo.addAttribute("listaContenidos", buscacont);
+            List<Contenidos> buscacont = contenidosSrvc.buscaCont(keyword);
+            modelo.addAttribute("listaseries", buscaseri);
+            modelo.addAttribute("listaContenidos", buscacont);
 
 
             return "busqueda";
@@ -139,82 +139,85 @@ public class ContenidosCtrl {
         }*/
 
 
-    //Lista de contenidos
-    @GetMapping("/contenido/lista-contenidos")
-    public String listaContenidos(Model modelo) {
-        modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
-        return "/listas/lista-contenidos";
-    }
-
-    //Crear, guardar, borrar y editar
-    @GetMapping("/contenido/nuevo-contenido")
-    public String crearContenido(Model modelo) {
-        modelo.addAttribute("contenido", new Contenidos());
-        return "/forms/nuevo-contenido";
-    }
-
-    @PostMapping("/contenido/guardar")
-    public String guardarContenido(Contenidos contenido) {
-        contenidosSrvc.guardar(contenido);
-        return "redirect:/contenido/lista-contenidos";
-    }
-
-    @GetMapping("/contenido/borrar/{id}")
-    public String borrarContenido(@PathVariable Long id) {
-        contenidosSrvc.borrar(id);
-        return "redirect:/contenido/lista-contenidos";
-    }
-
-    @GetMapping("/contenido/editar/{id}")
-    public String editarContenido(@PathVariable Long id, Model modelo) {
-        Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
-        if (contOptional.isPresent()) {
-            modelo.addAttribute("contenido", contOptional.get());
-        } else {
-            return "error";
+        //Lista de contenidos
+        @GetMapping("/contenido/lista-contenidos")
+        public String listaContenidos(Model modelo) {
+            modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
+            return "/listas/lista-contenidos";
         }
-        return "forms/nuevo-contenido";
-    }
-    @GetMapping("/contenido/lista-pendientes")
-    public String listaPendientes(Model modelo) {
-        modelo.addAttribute("listaPendientes", contenidosSrvc.listaPend());
-        return "/listas/lista-pendientes";
-    }
-    // Marcar como visualizado
-    @GetMapping("/pendientes/{id}")
-    public String pendientes(@PathVariable Long id, Model modelo) {
-        modelo.addAttribute("pendientes", contenidosSrvc.pendientes(id));
-        return "redirect:/contenido/lista-contenidos";
-    }
 
-    @GetMapping("/reproducir/{id}")
-    public String reproducir(@PathVariable Long id, Model modelo) {
-        modelo.addAttribute("contenido", id);
-        return "reproductor";
-    }
+        //Crear, guardar, borrar y editar
+        @GetMapping("/contenido/nuevo-contenido")
+        public String crearContenido(Model modelo) {
+            modelo.addAttribute("contenido", new Contenidos());
+            return "/forms/nuevo-contenido";
+        }
 
-    @GetMapping("/empieza/{id}")
-    public void empezar(@PathVariable Long id){
-        // buscamos los contenidos accedidos por el usuario. Este dato debe devolverlo el servicio de contenidos o el de accesos
+        @PostMapping("/contenido/guardar")
+        public String guardarContenido(Contenidos contenido) {
+            contenidosSrvc.guardar(contenido);
+            return "redirect:/contenido/lista-contenidos";
+        }
+
+        @GetMapping("/contenido/borrar/{id}")
+        public String borrarContenido(@PathVariable Long id) {
+            contenidosSrvc.borrar(id);
+            return "redirect:/contenido/lista-contenidos";
+        }
+
+        @GetMapping("/contenido/editar/{id}")
+        public String editarContenido(@PathVariable Long id, Model modelo) {
+            Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
+            if (contOptional.isPresent()) {
+                modelo.addAttribute("contenido", contOptional.get());
+            } else {
+                return "error";
+            }
+            return "forms/nuevo-contenido";
+        }
+
+        @GetMapping("/contenido/lista-pendientes")
+        public String listaPendientes(Model modelo) {
+            modelo.addAttribute("listaPendientes", contenidosSrvc.listaPend());
+            return "/listas/lista-pendientes";
+        }
+
+        // Marcar como visualizado
+        @GetMapping("/pendientes/{id}")
+        public String pendientes(@PathVariable Long id, Model modelo) {
+            modelo.addAttribute("pendientes", contenidosSrvc.pendientes(id));
+            return "redirect:/contenido/lista-contenidos";
+        }
+
+        @GetMapping("/reproducir/{id}")
+        public String reproducir(@PathVariable Long id, Model modelo) {
+            modelo.addAttribute("contenido", id);
+            return "reproductor";
+        }
+
+        @GetMapping("/empieza/{id}")
+        public void empezar(@PathVariable Long id) {
+            // buscamos los contenidos accedidos por el usuario. Este dato debe devolverlo el servicio de contenidos o el de accesos
 
 
-        // Si existe un acceso, significa que el contenido ya lo empezó a ver el usuario. Entonces...
+            // Si existe un acceso, significa que el contenido ya lo empezó a ver el usuario. Entonces...
 
-        //      Si hay fecha de fin, el contenido se terminó y significa que empieza a verlo de nuevo
-        //          -> borramos la fecha de fin
-        //          -> ponemso a fecha de incio a now()
-        //      Si NO hay fecha de fin, aún no ha terminado de verlo y podemos o bien poner la fecha de inicio a now(), o bien no tocarla y return
-        //
-        // Si NO existe acceso, creamos un nuevo registro con la fecha de inicio a now() y la fecha de fin a nulo
+            //      Si hay fecha de fin, el contenido se terminó y significa que empieza a verlo de nuevo
+            //          -> borramos la fecha de fin
+            //          -> ponemso a fecha de incio a now()
+            //      Si NO hay fecha de fin, aún no ha terminado de verlo y podemos o bien poner la fecha de inicio a now(), o bien no tocarla y return
+            //
+            // Si NO existe acceso, creamos un nuevo registro con la fecha de inicio a now() y la fecha de fin a nulo
 
-        // return
+            // return
 
-        //List<Contenidos> contenidosAccedidos =
-        //System.out.println("empieza el id: " + id);
-    }
+            //List<Contenidos> contenidosAccedidos =
+            //System.out.println("empieza el id: " + id);
+        }
 
-    @GetMapping("/termina/{id}")
-    public void terminar(@PathVariable Long id){
-        System.out.println("termina el id: " + id);
+        @GetMapping("/termina/{id}")
+        public void terminar(@PathVariable Long id) {
+            System.out.println("termina el id: " + id);
+        }
     }
 }
