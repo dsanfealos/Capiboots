@@ -8,10 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AccesosSrvcImpls implements ifxAccesosSrvc{
     @Autowired
     public AccesosRepositorio accessrepo;
+
     @Override
     public Accesos buscaId(Long id) {
         return accessrepo.findById(id).orElse(null);
@@ -21,16 +24,23 @@ public class AccesosSrvcImpls implements ifxAccesosSrvc{
         return accessrepo.save(acceso);
     }
 
-    public Accesos buscaIdUsuAndIdCont(Long usu, Long cont){
-        return accessrepo.buscarAccesos(usu, cont);
+    // Devuelve el último acceso de un usuario a un contenido
+    public Optional<Accesos> buscaUltimoAcceso(Long usu, Long cont){
+        // obtenemos la lista de todos los accesos del usuario al contenido indicado
+        List<Accesos> lista = accessrepo.buscarAccesos(usu, cont);
+        // Obtenemos el último de la lista como Optional, ya que puede no existir (y ser nulo)
+        Optional<Accesos> ult = Optional.ofNullable(lista.get(lista.size()-1));
+        return ult;
     }
+
     @Override
-    public List<Accesos> listaAcces() {
-        return accessrepo.findAll();
+    public Optional<List<Accesos>> listaAcces() {
+        return Optional.ofNullable(accessrepo.findAll());
     }
 
     @Override
     public List<Contenidos> buscaPendientes(Long usu) {
         return accessrepo.buscarPendientes(usu);
     }
+
 }
