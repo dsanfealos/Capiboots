@@ -197,5 +197,10 @@ public class ContenidosCtrl {
         return "reproductor";
     }
 
+    @GetMapping("/contenido/{id}")
+    public String contPpal (Model modelo){
+        return "contenido";
+    }
+
 
 }
