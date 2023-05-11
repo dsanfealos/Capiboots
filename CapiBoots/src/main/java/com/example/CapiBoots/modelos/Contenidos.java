@@ -32,7 +32,7 @@ public class Contenidos {
     private Temporada idtemporada;
     @Column(name="FechaAlta", columnDefinition = "DEFAULT CURRENT_DATE()")
     private Date fechaAlta;
-    @Column(columnDefinition = "default true")
+    @Column(columnDefinition = "boolean default true")
     private Boolean novedad;
 
     @ManyToMany // Many to Many entre Contenidos y Categorias

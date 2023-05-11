@@ -50,7 +50,7 @@ public class AccesosCtrl {
        return "/listas/lista-pendientes";
     }
 
-    @GetMapping("/empezar/{id]")
+    @GetMapping("/empezar/{id}")
     @ResponseStatus(value = HttpStatus.OK)  // indica que la respuesta tendrá un status OK y no hay que devolver nada
     public void empezar(@PathVariable Long id, Principal principal, Model modelo){
         String usuID = principal.getName();
@@ -92,7 +92,7 @@ public class AccesosCtrl {
                     acc.setTerminado(Boolean.TRUE);
                     //resp = new ResponseEntity<Void>(HttpStatus.OK);
                     modelo.addAttribute("mensaje","El contenido ha sido marcado como terminado.");
-                    modelo.addAttribute("status","OK");
+                    modelo.addAttribute("status","OK"); //TODO Preguntar si esto requiere guardar como en /empezar/{id}
 
                 },
                 () -> {

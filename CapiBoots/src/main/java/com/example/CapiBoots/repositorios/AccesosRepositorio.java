@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public interface AccesosRepositorio extends JpaRepository<Accesos, Long> {
 
-    @Query("SELECT a.contenido FROM Accesos a WHERE a.usuario=?1 AND NOT a.terminado")
+    @Query("SELECT a.contenido FROM Accesos a WHERE a.usuario=?1 AND NOT a.terminado")  //TODO Preguntar si NOT a.terminado es igual a a.terminado = FALSE
     List<Contenidos> buscarPendientes(Long usu);
 
     @Query("SELECT a.contenido FROM Accesos a WHERE a.usuario.id=?1 AND a.contenido.id=?2 ORDER BY a.id")
