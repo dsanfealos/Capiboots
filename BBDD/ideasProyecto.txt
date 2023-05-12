@@ -70,3 +70,4 @@ Para colocar en internet usar capa gratuita aws
 - Test para servicios
 --------------------------------------------
 -Confluence o hacer power point normal
+-Estructura Tests Ejemplo
