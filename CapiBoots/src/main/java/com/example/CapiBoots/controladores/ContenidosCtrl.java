@@ -198,7 +198,9 @@ public class ContenidosCtrl {
     }
 
     @GetMapping("/contenido/{id}")
-    public String contPpal (Model modelo){
+    public String contPpal (@PathVariable Long id, Model modelo){
+        contenidosSrvc.buscarContenidoId(id);
+        modelo.addAttribute("contenido", id);
         return "contenido";
     }
 

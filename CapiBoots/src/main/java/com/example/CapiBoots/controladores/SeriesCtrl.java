@@ -74,4 +74,11 @@ public class SeriesCtrl {
         return "/forms/nueva-serie";
     }
 
+    @GetMapping("/serie/{id}")
+    public String seriePpal (@PathVariable Long id, Model modelo){
+        serieSrvc.buscaId(id);
+        modelo.addAttribute("serie", id);
+        return "contenido";
+    }
+
 }
