@@ -35,6 +35,15 @@ public class Contenidos {
     @Column(columnDefinition = "boolean default true")
     private Boolean novedad;
 
+    @Column(name="imagen_logo", columnDefinition = "VARCHAR(225)")
+    private String imagenLogo;
+
+    @Column(name="imagen_fondo", columnDefinition = "VARCHAR(225)")
+    private String imagenFondo;
+
+    @Column(name="ruta_video", columnDefinition = "VARCHAR(225)")
+    private String rutaVideo;
+
     @ManyToMany // Many to Many entre Contenidos y Categorias
     @JoinTable(
             name = "contenidos_categorias",

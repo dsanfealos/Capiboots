@@ -103,7 +103,7 @@ public class ContenidosCtrl {
     public String gestionPelis(Model modelo) {
 
         modelo.addAttribute("titulo", "GestionPelis");
-        return "gestionPelis";
+        return "pruebaGestion";
 
     }
 
@@ -194,13 +194,19 @@ public class ContenidosCtrl {
     public String reproducir(@PathVariable Long id, Model modelo) {
         contenidosSrvc.buscarContenidoId(id);
         modelo.addAttribute("contenido", id);
-        return "reproductor";
+        return "vistaReproductor";
     }
 
     @GetMapping("/contenido/{id}")
     public String contPpal (@PathVariable Long id, Model modelo){
-        contenidosSrvc.buscarContenidoId(id);
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            modelo.addAttribute("cont", cont1);
+        }
         modelo.addAttribute("contenido", id);
+
         return "contenido";
     }
 

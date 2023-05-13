@@ -1,5 +1,6 @@
 package com.example.CapiBoots.controladores;
 
+import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Series;
 import com.example.CapiBoots.repositorios.SeriesRepositorio;
 import com.example.CapiBoots.servicios.SeriesSrvcImpls;
@@ -76,9 +77,14 @@ public class SeriesCtrl {
 
     @GetMapping("/serie/{id}")
     public String seriePpal (@PathVariable Long id, Model modelo){
-        serieSrvc.buscaId(id);
+        Optional<Series> seri = serieSrvc.buscaId(id);
+
+        if (seri.isPresent()){
+            Series seri1 = seri.get();
+            modelo.addAttribute("seri", seri1);
+        }
         modelo.addAttribute("serie", id);
-        return "contenido";
+        return "contenido-serie";
     }
 
 }
