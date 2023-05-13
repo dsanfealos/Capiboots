@@ -33,7 +33,7 @@ public interface FileSystemStorageService {
      * @param file   the file
      * @param userID the user id
      */
-    // void saveUserFile(MultipartFile file, Long userID);
+   // void saveUserFile(MultipartFile file, Long userID);
 
     /**
      * Carga el archivo con el nombre de archivo proporcionado desde el almacenamiento.
@@ -77,5 +77,6 @@ public interface FileSystemStorageService {
      */
     List<FileInfo> loadAllByFileType(String fileType);
 }
+
 
 

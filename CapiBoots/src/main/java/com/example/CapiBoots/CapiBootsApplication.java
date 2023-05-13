@@ -8,14 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CapiBootsApplication {
-    @Autowired
-    FileSystemStorageService fileSystemStorageService;
-    public static void main(String[] args) {
-        SpringApplication.run(CapiBootsApplication.class, args);
-    }
+@Autowired
+FileSystemStorageService fileSystemStorageService;
+	public static void main(String[] args) {
+		SpringApplication.run(CapiBootsApplication.class, args);
+	}
 
 
-    @PostConstruct
-    public void init() {fileSystemStorageService.init();
-    }
+@PostConstruct
+public void init() {fileSystemStorageService.init();
+	}
 }

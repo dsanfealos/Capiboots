@@ -27,13 +27,7 @@
             <div class="row gx-3 justify-content-center">
                 <div class="col-lg-2">
                     <div>
-                        <img src="/template_menus/assets/CapiBoots_icon.jpg" height="300" alt="No tienes imagen de perfil o no es posible encontrarla."/>
-                    </div>
-                    <br>
-                    <div class="border border-danger border-3 bg-opacity-50 bg-dark" style="border-radius: 10px;">
-                        <h5>Fecha de alta:</h5>
-                        <h5>Suscripción:</h5>
-                        <h5>Fin de suscripción:</h5>
+                        <img src="/template_menus/assets/series/OnePiece.jpg" height="300" alt="No tienes imagen de perfil o no es posible encontrarla."/>
                     </div>
                 </div>
                 <div class="col-lg-6 m-5">
@@ -56,14 +50,14 @@
 
                         <!--Género-->
                         <div class="form-group col-3">
-                            <label for="genero">Género</label>
+                            <label>Género</label>
                             <div class="card" style="background-color: lightgrey; opacity: 70%;" id="ifGenero" name="ifGenero" th:switch="${usuario.genero}">
                                 <p th:case="0"> Hombre</p>
                                 <p th:case="1"> Mujer</p>
                                 <p class="px-2 py-1" th:case="2"> Otro</p>
                                 <p th:case="3"> NA</p>
                             </div>
-                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">
+<!--                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">-->
                         </div>
 
                         <!--Edad-->

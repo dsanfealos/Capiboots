@@ -46,6 +46,8 @@
         <!--Editar y Borrar-->
         <!--En href escribimos el link del metodo del controlador que queremos que se ejecute-->
         <a class="btn btn-primary" th:href="@{/contenido/editar/{id}(id=${contenido.id})}" >Editar</a>
+        <!---Subir Archivo-->
+        <a class="btn btn-success" th:href="@{/contenido/nuevo-contenido/subir-archivo/{id}(id=${contenido.id})}" >Subir Archivo</a>
         <a onclick="return confirm('¿Estás seguro de que quieres borrar el contenido?')"
            class="btn btn-outline-danger" th:href="@{/contenido/borrar/{id}(id=${contenido.id})}">Borrar</a>
       </td>

@@ -1,5 +1,6 @@
 package com.example.CapiBoots.modelos.metodos.exception;
 
+
 import com.example.CapiBoots.modelos.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

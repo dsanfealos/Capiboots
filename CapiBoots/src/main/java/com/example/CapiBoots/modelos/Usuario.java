@@ -103,7 +103,7 @@ public class Usuario {
     @Column(name = "token_restaurar_contra")
     private String tokenRestaurarContra;
 
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Accesos> accesos;
 
     @OneToMany(mappedBy = "idPagador", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

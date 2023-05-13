@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @Log4j2
 public class FileSystemStorageServiceImpl implements FileSystemStorageService {
 
-    private final Path root = Paths.get("videos");
+    private final Path root = Paths.get("src/main/resources/static/contenidos");
 
 
     /**
@@ -173,12 +173,12 @@ public class FileSystemStorageServiceImpl implements FileSystemStorageService {
 
     @Override
     public void deleteFile(String filename) {
-        try {
-            Path file = root.resolve(filename);
-            Files.delete(file);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+            try {
+                Path file = root.resolve(filename);
+                Files.delete(file);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
     }
 
 

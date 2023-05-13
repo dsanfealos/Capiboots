@@ -1,7 +1,9 @@
 package com.example.CapiBoots.controladores;
 
+import com.example.CapiBoots.modelos.Accesos;
 import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Series;
+import com.example.CapiBoots.servicios.AccesosSrvcImpls;
 import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
 import com.example.CapiBoots.servicios.SeriesSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +27,9 @@ public class ContenidosCtrl {
 
     @Autowired
     private SeriesSrvcImpls serieSrvc;
+
+    @Autowired
+    private AccesosSrvcImpls accesoSrvc;
 
     @GetMapping("/guardarContenido")
     public String guardarContenido(Model modelo) {
@@ -76,19 +82,52 @@ public class ContenidosCtrl {
         return "favoritos";
     }
 
-    //Búsqueda
+    //ADMINISTRADOR//
+    @GetMapping("/gestion")
+    public String gestion(Model modelo) {
 
-        @GetMapping("/busqueda")
-        public String busqueda(@Param("keyword") String keyword, Model modelo) {
+        modelo.addAttribute("titulo", "Gestion");
+        return "gestion";
 
-            List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
+    }
+
+    @GetMapping("/gestion/libros")
+    public String gestionLibros(Model modelo) {
+
+        modelo.addAttribute("titulo", "GestionLibros");
+        return "gestionLibros";
+
+    }
+
+    @GetMapping("/gestion/pelis")
+    public String gestionPelis(Model modelo) {
+
+        modelo.addAttribute("titulo", "GestionPelis");
+        return "pruebaGestion";
+
+    }
+
+    @GetMapping("/gestion/series")
+    public String gestionSeries(Model modelo) {
+
+        modelo.addAttribute("titulo", "GestionSeries");
+        return "gestionSeries";
+
+    }
+
+
+    //---------------------------------
+
+        //Búsqueda
+
+    @GetMapping("/busqueda")
+    public String busqueda(@Param("keyword") String keyword, Model modelo) {
+        List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
         List<Contenidos> buscacont = contenidosSrvc.buscaCont(keyword);
         modelo.addAttribute("listaseries", buscaseri);
         modelo.addAttribute("listaContenidos", buscacont);
-
-
-            return "busqueda";
-        }
+        return "busqueda";
+    }
 
        /* //Filtro de Categorias
         @GetMapping("/busqueda/categoria")
@@ -137,11 +176,13 @@ public class ContenidosCtrl {
         }
         return "forms/nuevo-contenido";
     }
+
     @GetMapping("/contenido/lista-pendientes")
     public String listaPendientes(Model modelo) {
         modelo.addAttribute("listaPendientes", contenidosSrvc.listaPend());
         return "/listas/lista-pendientes";
     }
+
     // Marcar como visualizado
     @GetMapping("/pendientes/{id}")
     public String pendientes(@PathVariable Long id, Model modelo) {
@@ -151,32 +192,23 @@ public class ContenidosCtrl {
 
     @GetMapping("/reproducir/{id}")
     public String reproducir(@PathVariable Long id, Model modelo) {
+        contenidosSrvc.buscarContenidoId(id);
         modelo.addAttribute("contenido", id);
-        return "reproductor";
+        return "vistaReproductor";
     }
 
-    @GetMapping("/empieza/{id}")
-    public void empezar(@PathVariable Long id){
-        // buscamos los contenidos accedidos por el usuario. Este dato debe devolverlo el servicio de contenidos o el de accesos
+    @GetMapping("/contenido/{id}")
+    public String contPpal (@PathVariable Long id, Model modelo){
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
 
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            modelo.addAttribute("cont", cont1);
+        }
+        modelo.addAttribute("contenido", id);
 
-        // Si existe un acceso, significa que el contenido ya lo empezó a ver el usuario. Entonces...
-
-        //      Si hay fecha de fin, el contenido se terminó y significa que empieza a verlo de nuevo
-        //          -> borramos la fecha de fin
-        //          -> ponemso a fecha de incio a now()
-        //      Si NO hay fecha de fin, aún no ha terminado de verlo y podemos o bien poner la fecha de inicio a now(), o bien no tocarla y return
-        //
-        // Si NO existe acceso, creamos un nuevo registro con la fecha de inicio a now() y la fecha de fin a nulo
-
-        // return
-
-        //List<Contenidos> contenidosAccedidos =
-        //System.out.println("empieza el id: " + id);
+        return "contenido";
     }
 
-    @GetMapping("/termina/{id}")
-    public void terminar(@PathVariable Long id){
-        System.out.println("termina el id: " + id);
-    }
+
 }

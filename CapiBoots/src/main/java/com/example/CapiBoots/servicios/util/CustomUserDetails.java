@@ -15,14 +15,14 @@ public class CustomUserDetails extends Usuario implements UserDetails {
     private String username;
     private String password;
 
-    private String name;
-//    private String email;
+//    private String name;
+    private String email;
 
-//    private Byte gender;
-//
-//    private Integer age;
-//
-//    private String country;
+    private Byte gender;
+
+    private Integer age;
+
+    private String country;
     private Collection<? extends GrantedAuthority> authorities;
 
     /**
@@ -33,14 +33,14 @@ public class CustomUserDetails extends Usuario implements UserDetails {
      * @param name        the name
      * @param authorities the authorities
      */
-    public CustomUserDetails(String username, String password, String name, Collection<? extends GrantedAuthority> authorities) {
+    public CustomUserDetails(String username, String password, String email, Byte gender, Integer age, String country, Collection<? extends GrantedAuthority> authorities) {
         this.username = username;
         this.password = password;
-        this.name = name;
-//        this.email = email;
-//        this.gender = gender;
-//        this.age = age;
-//        this.country = country;
+//        this.name = name;
+        this.email = email;
+        this.gender = gender;
+        this.age = age;
+        this.country = country;
         this.authorities = authorities;
     }
 
@@ -80,24 +80,24 @@ public class CustomUserDetails extends Usuario implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

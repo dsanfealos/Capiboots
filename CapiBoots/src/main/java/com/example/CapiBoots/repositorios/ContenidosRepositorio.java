@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ContenidosRepositorio extends JpaRepository<Contenidos, Long> {
 
-    @Query("SELECT c FROM Contenidos c WHERE c.nombre LIKE %?1% AND c.idserie IS NULL") //Para obtener libros y peliculas pero no capitulos de series
+    @Query("SELECT c FROM Contenidos c WHERE c.nombre LIKE %?1% AND c.idserie IS NULL")//Para obtener libros y películas pero no capítulos
     public List<Contenidos> buscarTodos(String keyword);
 
     //Busqueda por filtros
@@ -17,9 +17,8 @@ public interface ContenidosRepositorio extends JpaRepository<Contenidos, Long> {
     // public List<Contenidos> buscarPorCat(String keyword);
 
 
-
-
-
-
-
+    //Novedades
+    // Seleccionamos todos los contenidos que tienen  la propiedad "novedad" a true y tiene más de 7 días
+    @Query("UPDATE Contenidos c SET c.novedad = false WHERE c.novedad AND c.fechaAlta < CURRENT_DATE - 7")
+    void quitaNovedades ();
 }

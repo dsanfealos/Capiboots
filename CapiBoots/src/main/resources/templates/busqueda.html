@@ -65,7 +65,8 @@
                     <div class="row">
                         <div class="col-3 p-3" th:each="contenido : ${listaContenidos}">
                             <div class="card">
-                                <a href="#!">
+                                <a th:href="@{/contenido/{id}(id=${contenido.id})}">
+                                    <div th:text="${contenido.id}" hidden="hidden"></div>
                                     <div th:text="${contenido.nombre}"></div>
                                 </a>
                             </div>
@@ -75,7 +76,8 @@
                     <div class="row">
                         <div class="col-3 p-3" th:each="serie : ${listaseries}">
                             <div class="card">
-                                <a href="#!">
+                                <a th:href="@{/serie/{id}(id=${serie.id})}">
+                                    <div th:text="${serie.id}" hidden="hidden"></div>
                                     <div th:text="${serie.nombre}"></div>
                                 </a>
                             </div>
