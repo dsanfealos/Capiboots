@@ -158,8 +158,13 @@ public class ContenidosCtrl {
 
     //Crear, guardar, borrar y editar
     @GetMapping("/contenido/nuevo-contenido")
-    public String crearContenido(Model modelo) {
-        modelo.addAttribute("contenido", new Contenidos());
+    public String crearContenido(Model modelo) throws InterruptedException {
+        //Creamos contenido base
+        Contenidos con0 = new Contenidos();
+        //Creamos otro contenido para darle novedades como activo
+        Contenidos cont = contenidosSrvc.novedades(con0);
+        //Usamos un cont con novedades activo para crear contenido
+        modelo.addAttribute("contenido", cont);
         return "/forms/nuevo-contenido";
     }
 
