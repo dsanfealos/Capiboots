@@ -206,7 +206,12 @@ public class ContenidosCtrl {
 
     @GetMapping("/reproducir/{id}")
     public String reproducir(@PathVariable Long id, Model modelo) {
-        contenidosSrvc.buscarContenidoId(id);
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            modelo.addAttribute("cont", cont1);
+        }
         modelo.addAttribute("contenido", id);
         return "vistaReproductor";
     }
