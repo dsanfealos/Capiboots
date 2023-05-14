@@ -82,14 +82,14 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
     }
         return contenidoRepo.findAll();
     }
-   /* public List<Contenidos> filtroCategoria (String keyword){
+   public List<Contenidos> filtroCategoria (String keyword){
         List<Contenidos> lista = new ArrayList<>();
         if (keyword != null) {
             lista = contenidoRepo.buscarPorCat(keyword);
             return lista;
         }
         return contenidoRepo.findAll();
-    }*/
+    }
 
    //Pendientes
     //TODO: Introducir String en direccion href
@@ -122,9 +122,6 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
         cat.add(cat2);
         //Asignamos la lista ampliada a la lista de categorías del contenido nuevo
         contNuevo.setCategorias(cat);
-        //Esperamos 7 días (60480 segundos)
-
-        //Quitamos la categoría novedades del contenido
 
         return contNuevo;
     }

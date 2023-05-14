@@ -38,16 +38,21 @@ public class AccesosCtrl {
         modelo.addAttribute("listaaccesos", accessSrvc.listaAcces());
         return "lista-accesos";
     }
-    @GetMapping("/acceso-id")
+    @GetMapping("/acceso/{id}")
     public String accesoId (@PathVariable Long id, Model modelo){
         modelo.addAttribute("acceso_id", accessSrvc.buscaId(id));
-        return "acceso-id";
+        return "/listas/lista-pendientes";
     }
 
     @GetMapping("/lista-pendientes/{id}")
     public String listaPdtes(@PathVariable Long id, Model modelo){
        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
        return "/listas/lista-pendientes";
+    }
+    @GetMapping("/movieboxp/{id}")
+    public String pendMovie(@PathVariable Long id, Model modelo){
+        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
+        return "/moviebox";
     }
 
     @GetMapping("/empezar/{id}")

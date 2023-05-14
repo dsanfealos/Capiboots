@@ -158,6 +158,24 @@ public class FileController {
 
         return "forms/subir-contenido";
     }
+    @PostMapping("/contenido/nuevo-contenido/subir-logo/{id}")
+    public String subirLogo(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
+
+        Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
+        if (contOptional.isPresent()) {
+            Contenidos cont1 = contOptional.get();
+            modelo.addAttribute("contenido", cont1);
+            cont1.setImagenLogo("/videos/" + file.getOriginalFilename());
+            contenidosSrvc.guardar(cont1);
+        } else {
+            return "error";
+        }
+        //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
+        fileSystemStorageService.save(file);
+
+
+        return "forms/subir-contenido";
+    }
     @PostMapping("/contenido/nuevo-contenido/subir-fondo/{id}")
     public String subirFondo(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
 
@@ -165,7 +183,7 @@ public class FileController {
         if (contOptional.isPresent()) {
             Contenidos cont1 = contOptional.get();
             modelo.addAttribute("contenido", cont1);
-            cont1.setRutaVideo("background-image: url('/videos/" + file.getOriginalFilename() + "');");
+            cont1.setImagenFondo("background-image: url('/videos/" + file.getOriginalFilename() + "');");
             contenidosSrvc.guardar(cont1);
         } else {
             return "error";

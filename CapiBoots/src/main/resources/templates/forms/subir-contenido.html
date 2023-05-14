@@ -45,7 +45,7 @@
     <!-- Subir imagen logo -->
     <div class="form-group">
       <span class="card-title h5">Subir imagen logo al FileSystem</span>
-      <form method="POST" enctype="multipart/form-data" th:action="@{/contenido/nuevo-contenido/uploadToFileSystem/{id}(id=${contenido.id})}">
+      <form method="POST" enctype="multipart/form-data" th:action="@{/contenido/nuevo-contenido/subir-logo/{id}(id=${contenido.id})}">
         <div class="input-group mb-3">
           <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
         </div>

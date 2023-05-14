@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @Log4j2
 public class FileSystemStorageServiceImpl implements FileSystemStorageService {
 
-    private final Path root = Paths.get("src/main/resources/static/contenidos");
+    private final Path root = Paths.get("src/main/resources/static/videos");
 
 
     /**

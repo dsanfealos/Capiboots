@@ -33,21 +33,21 @@
   <table class="table">
     <thead>
     <tr>
-      <th>Temporada</th>
-      <th>Nombre de la serie</th>
+      <th>Id</th>
+      <th>Nombre del contenido pendiente</th>
 
     </tr>
     </thead>
     <tbody>
     <tr th:each="pendiente : ${pendientes}">
-      <td th:text="${pendiente.temporada}">Id</td>
-      <td th:text="${pendiente.nombreSerie}"></td>
+      <td th:text="${pendiente.id}">Id</td>
+      <td th:text="${pendiente.nombre}"></td>
 
       <td>
         <!--Editar y Borrar-->
         <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
 
-        <a onclick="return confirm('¿Quieres continuar?')" class="btn btn-outline-danger" th:href="@{/lista-pendientes/{id}(id=${pendiente.id})}">Ver serie</a>
+        <a onclick="return confirm('¿Quieres continuar?')" class="btn btn-outline-danger" th:href="@{/contenido/{id}(id=${pendiente.id})}">Ver serie</a>
       </td>
 
     </tr>

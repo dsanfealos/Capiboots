@@ -32,8 +32,6 @@ public class UsuarioCtrl {
     }
 
     //Desplegable Perfil
-
-
     @GetMapping("/ajustes")
     public String Ajustes(Principal principal, Model modelo) {
         modelo.addAttribute("titulo", "Ajustes");

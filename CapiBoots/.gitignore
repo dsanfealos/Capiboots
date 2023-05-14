@@ -20,7 +20,6 @@ target/
 *.iml
 *.ipr
 /src/main/resources/static/videos/**
-
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
