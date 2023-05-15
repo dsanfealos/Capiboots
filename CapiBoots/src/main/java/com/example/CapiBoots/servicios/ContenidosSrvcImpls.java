@@ -112,17 +112,10 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
 
     //Novedades
     public Contenidos novedades (Contenidos contNuevo) throws InterruptedException {
-        //Buscamos la categoría novedades
-//        Categorias cat2 = catRepo.findByNombre("Novedades");
-//        //Creamos una lista de categorías
-//        List<Categorias> cat;
-//        //Asignamos las categorías actuales del contenido a esta lista vacía
-//        cat = contNuevo.getCategorias();
-//        //Añadimos la categoría Novedades a esta lista
-//        cat.add(cat2);
-        //Asignamos la lista ampliada a la lista de categorías del contenido nuevo
+
         contNuevo.setNovedad(true);
-        contenidoRepo.save(contNuevo);
+        System.out.println("He llegado" + contNuevo.getNovedad());
+//        contenidoRepo.save(contNuevo);
         return contNuevo;
     }
 

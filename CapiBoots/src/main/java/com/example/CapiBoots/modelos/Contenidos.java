@@ -32,8 +32,8 @@ public class Contenidos {
     private Temporada idtemporada;
     @Column(name="FechaAlta", columnDefinition = "DEFAULT CURRENT_DATE()")
     private Date fechaAlta;
-    @Column(columnDefinition = "boolean default true")
-    private Boolean novedad;
+    @Column(columnDefinition = "default 1")
+    private Boolean novedad = true;
 
     @Column(name="imagen_logo", columnDefinition = "VARCHAR(225)")
     private String imagenLogo;
