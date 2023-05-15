@@ -61,3 +61,15 @@ XXX-Subir archivos (Rocío)(Excepto File)
 	-Enseñar en vivo la app para explicar lo expuesto.
 
 609309828
+
+5º
+-M-Hasta Objetivos
+-S-Cronograma+Repos
+-K-JAVA+BBDD
+-R-HTML+CSS+BOOTSRTAP
+
+-M-Publicación
+-K-Test código
+-S-Test-Debug
+-R-Publicidad+Redes
+-M-Conclusiones+Implementaciones futuras(aparte)
