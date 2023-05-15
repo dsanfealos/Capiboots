@@ -213,7 +213,19 @@ public class ContenidosCtrl {
             modelo.addAttribute("cont", cont1);
         }
         modelo.addAttribute("contenido", id);
-        return "vistaReproductor";
+        return "vistaReproductorPeliculas";
+    }
+
+    @GetMapping("/reproducir-s/{id}")
+    public String reproducirSeries(@PathVariable Long id, Model modelo) {
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            modelo.addAttribute("cont", cont1);
+        }
+        modelo.addAttribute("contenido", id);
+        return "vistaReproductorSerie";
     }
 
     @GetMapping("/reproducir-l/{id}")
