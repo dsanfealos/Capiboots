@@ -62,7 +62,7 @@ public class SecurityConfig {
                         .requestMatchers("/chat","/videos","/favoritos" ,"/moviebox","/files/**","/upload","/userFiles/**","/databasefiles/**").authenticated()
                         .requestMatchers("/showbox","/bookbox", "/home", "/favoritos","/ajustes","/logros","/suscripcion","/forms/**","/busqueda", "/gestion", "/gestion/**","/busqueda/**" ).authenticated()
                         .requestMatchers("/uploadUserFileToDatabase","/uploadUserFileToFileSystem","/uploadToFileSystem","/uploadToDatabase").authenticated()
-                        .requestMatchers("/ajustes/**","/contenido/**").authenticated()
+                        .requestMatchers("/ajustes/**","/contenido/**","/serie/**","/lista-pendientes/**","/acceso/**","/movieboxp/**").authenticated()
 
 
 

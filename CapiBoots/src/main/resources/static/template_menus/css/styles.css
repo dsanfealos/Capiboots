@@ -11121,13 +11121,15 @@ picture p {
 
 
 
+/*
 .header-bg {
-  background-image: url('/template_menus/assets/contenido/fondo.jpg');
+  !*background-image: url('/template_menus/assets/contenido/fondo.jpg');*!
   background-size: cover;
   background-position: center;
   height: 600px;
   padding: 70px 0;
 }
+*/
 
 
 .header-movie-poster {

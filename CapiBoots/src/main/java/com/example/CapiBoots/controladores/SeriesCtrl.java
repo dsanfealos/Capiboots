@@ -1,5 +1,6 @@
 package com.example.CapiBoots.controladores;
 
+import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Series;
 import com.example.CapiBoots.repositorios.SeriesRepositorio;
 import com.example.CapiBoots.servicios.SeriesSrvcImpls;
@@ -72,6 +73,18 @@ public class SeriesCtrl {
             return "error";
         }
         return "/forms/nueva-serie";
+    }
+
+    @GetMapping("/serie/{id}")
+    public String seriePpal (@PathVariable Long id, Model modelo){
+        Optional<Series> seri = serieSrvc.buscaId(id);
+
+        if (seri.isPresent()){
+            Series seri1 = seri.get();
+            modelo.addAttribute("seri", seri1);
+        }
+        modelo.addAttribute("serie", id);
+        return "contenido-serie";
     }
 
 }
