@@ -1,6 +1,5 @@
-package com.example.CapiBoots.controladores;
+package com.example.CapiBoots.controladoresTest;
 
-import com.example.CapiBoots.modelos.Accesos;
 import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Series;
 import com.example.CapiBoots.modelos.Usuario;
@@ -15,15 +14,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class ContenidosCtrl {
+public class ContenidosCtrlTest {
 
     @Autowired
     private ContenidosSrvcImpls contenidosSrvc;
@@ -170,6 +167,7 @@ public class ContenidosCtrl {
 
     @PostMapping("/contenido/guardar")
     public String guardarContenido(Contenidos contenido) {
+//        contenido.setNovedad(true);
         contenidosSrvc.guardar(contenido);
         return "redirect:/contenido/lista-contenidos";
     }
@@ -213,31 +211,7 @@ public class ContenidosCtrl {
             modelo.addAttribute("cont", cont1);
         }
         modelo.addAttribute("contenido", id);
-        return "vistaReproductorPeliculas";
-    }
-
-    @GetMapping("/reproducir-s/{id}")
-    public String reproducirSeries(@PathVariable Long id, Model modelo) {
-        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
-
-        if (cont.isPresent()){
-            Contenidos cont1 = cont.get();
-            modelo.addAttribute("cont", cont1);
-        }
-        modelo.addAttribute("contenido", id);
-        return "vistaReproductorSerie";
-    }
-
-    @GetMapping("/reproducir-l/{id}")
-    public String reproducirLibros(@PathVariable Long id, Model modelo) {
-        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
-
-        if (cont.isPresent()){
-            Contenidos cont1 = cont.get();
-            modelo.addAttribute("cont", cont1);
-        }
-        modelo.addAttribute("contenido", id);
-        return "vistaReproductorLibros";
+        return "vistaReproductor";
     }
 
     @GetMapping("/contenido/{id}")
