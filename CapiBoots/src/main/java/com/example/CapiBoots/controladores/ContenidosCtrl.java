@@ -162,7 +162,7 @@ public class ContenidosCtrl {
     public String crearContenido(Model modelo) throws InterruptedException {
         //Creamos contenido base
         Contenidos cont = new Contenidos();
-        //Creamos otro contenido para darle novedades como activo
+        //Creamos otro contenido para darle novedades como botón activo
 
         //Usamos un cont con novedades activo para crear contenido
         modelo.addAttribute("contenido", cont);
