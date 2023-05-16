@@ -14,29 +14,19 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/template_menus/css/styles.css" rel="stylesheet" />
-        <style>
-            .header-bg {
-                background-size: cover;
-                background-position: center;
-                height: 600px;
-                padding: 70px 0;
-            }
-
-        </style>
     </head>
     <body id="page-top">
     <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
         <!-- Navigation-->
 
         <!-- Header-->
-    <header class="header-bg" th:style="${cont.imagenFondo}">   <!--Atento a que has cambiado cosas del CSS-->
+    <header class="header-bg">
         <div class="header-container">
             <div class="row">
                 <div class="col-md-6">
-                    <img class="header-movie-poster" th:src="${cont.imagenLogo}" alt="Portada de la película" style="width: 200px; height: 250px;">
-<!--                    <img class="header-movie-poster" src="/template_menus/assets/contenido/rocio.jpg" alt="Portada de la película" style="width: 200px; height: 250px;">-->
+                    <img class="header-movie-poster" src="/template_menus/assets/contenido/rocio.jpg" alt="Portada de la película" style="width: 200px; height: 250px;">
                     <div class="header-movie-info">
-                        <h1 class="header-movie-title" th:text="${cont.nombre}"></h1>
+                        <h1 class="header-movie-title" th:text="${seri.nombre}"></h1>
 <!--                        <h1 class="header-movie-title">Breaking Bad</h1>-->
                         <div class="header-movie-details">
                             <div class="btn-group">
@@ -68,7 +58,7 @@
                         <div class="p-5">
                             <h2> <i class="fas fa-info-circle"></i> Más información sobre el contenido </h2>
 
-                            <p th:text="${cont.descripcion}"></p>
+                            <p th:text="${seri.descripcion}"></p>
 <!--                            <p>Breaking Bad es una serie de televisión estadounidense creada y producida por Vince Gilligan. La trama gira en torno a Walter White, un profesor de química de secundaria que descubre que tiene cáncer de pulmón y decide fabricar metanfetamina para asegurar el futuro económico de su familia. La serie se desarrolla en Albuquerque, Nuevo México.</p>-->
                             <h4>Reparto</h4>
                             <ul>

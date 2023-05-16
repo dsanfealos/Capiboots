@@ -3,9 +3,11 @@ package com.example.CapiBoots.controladores;
 import com.example.CapiBoots.modelos.Accesos;
 import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.Series;
+import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.servicios.AccesosSrvcImpls;
 import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
 import com.example.CapiBoots.servicios.SeriesSrvcImpls;
+import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +32,10 @@ public class ContenidosCtrl {
     private SeriesSrvcImpls serieSrvc;
 
     @Autowired
-    private AccesosSrvcImpls accesoSrvc;
+    private AccesosSrvcImpls accessSrvc;
+
+    @Autowired
+    private UsuarioSrvcImpls usuSrvc;
 
     @GetMapping("/guardarContenido")
     public String guardarContenido(Model modelo) {
@@ -69,8 +75,12 @@ public class ContenidosCtrl {
     }
 
     @GetMapping("/moviebox")
-    public String showbox(Model modelo) {
-
+    public String showbox(Principal principal, Model modelo) {
+        String usuID = principal.getName();
+        Usuario user =  usuSrvc.buscaPorNombre(usuID);
+        Long id = user.getId();
+        modelo.addAttribute("novedades",accessSrvc.buscaPendientes(id));
+        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
         modelo.addAttribute("titulo", "Moviebox");
         return "moviebox";
     }
@@ -103,7 +113,7 @@ public class ContenidosCtrl {
     public String gestionPelis(Model modelo) {
 
         modelo.addAttribute("titulo", "GestionPelis");
-        return "gestionPelis";
+        return "pruebaGestion";
 
     }
 
@@ -118,7 +128,7 @@ public class ContenidosCtrl {
 
     //---------------------------------
 
-        //Búsqueda
+    //Búsqueda
 
     @GetMapping("/busqueda")
     public String busqueda(@Param("keyword") String keyword, Model modelo) {
@@ -129,15 +139,14 @@ public class ContenidosCtrl {
         return "busqueda";
     }
 
-       /* //Filtro de Categorias
-        @GetMapping("/busqueda/categoria")
-        public String filtroCat(@PathVariable ("keyword") String keyword, Model modelo) {
+    //Filtro de Categorias
+    @GetMapping("/busqueda/categoria")
+    public String filtroCat(@Param("keyword") String keyword, Model modelo) {
 
-            List<Contenidos> buscacont = contenidosSrvc.filtroCategoria(keyword);
-            modelo.addAttribute("listacontenidos", contenidosSrvc.listaCont());
-            modelo.addAttribute("listacontenidos", buscacont);
-            return "busqueda";
-        }*/
+        List<Contenidos> buscacont = contenidosSrvc.filtroCategoria(keyword);
+        modelo.addAttribute("listaContenidos", buscacont);
+        return "busqueda";
+    }
 
 
     //Lista de contenidos
@@ -149,8 +158,13 @@ public class ContenidosCtrl {
 
     //Crear, guardar, borrar y editar
     @GetMapping("/contenido/nuevo-contenido")
-    public String crearContenido(Model modelo) {
-        modelo.addAttribute("contenido", new Contenidos());
+    public String crearContenido(Model modelo) throws InterruptedException {
+        //Creamos contenido base
+        Contenidos cont = new Contenidos();
+        //Creamos otro contenido para darle novedades como activo
+
+        //Usamos un cont con novedades activo para crear contenido
+        modelo.addAttribute("contenido", cont);
         return "/forms/nuevo-contenido";
     }
 
@@ -192,13 +206,50 @@ public class ContenidosCtrl {
 
     @GetMapping("/reproducir/{id}")
     public String reproducir(@PathVariable Long id, Model modelo) {
-        contenidosSrvc.buscarContenidoId(id);
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            modelo.addAttribute("cont", cont1);
+        }
         modelo.addAttribute("contenido", id);
-        return "vistaReproductor";
+        return "vistaReproductorPeliculas";
+    }
+
+    @GetMapping("/reproducir-s/{id}")
+    public String reproducirSeries(@PathVariable Long id, Model modelo) {
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            modelo.addAttribute("cont", cont1);
+        }
+        modelo.addAttribute("contenido", id);
+        return "vistaReproductorSerie";
+    }
+
+    @GetMapping("/reproducir-l/{id}")
+    public String reproducirLibros(@PathVariable Long id, Model modelo) {
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            modelo.addAttribute("cont", cont1);
+        }
+        modelo.addAttribute("contenido", id);
+        return "vistaReproductorLibros";
     }
 
     @GetMapping("/contenido/{id}")
-    public String contPpal (Model modelo){
+    public String contPpal (@PathVariable Long id, Model modelo){
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            modelo.addAttribute("cont", cont1);
+        }
+        modelo.addAttribute("contenido", id);
+
         return "contenido";
     }
 

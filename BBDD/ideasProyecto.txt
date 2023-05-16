@@ -69,4 +69,5 @@ Para colocar en internet usar capa gratuita aws
 	-Crear un objeto de ejemplo para ejecturar una copia del método objetivo
 - Test para servicios
 --------------------------------------------
-paginación
+-Confluence o hacer power point normal
+-Estructura Tests Ejemplo

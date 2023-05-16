@@ -32,8 +32,17 @@ public class Contenidos {
     private Temporada idtemporada;
     @Column(name="FechaAlta", columnDefinition = "DEFAULT CURRENT_DATE()")
     private Date fechaAlta;
-    @Column(columnDefinition = "boolean default true")
-    private Boolean novedad;
+    @Column(columnDefinition = "default 1")
+    private Boolean novedad = true;
+
+    @Column(name="imagen_logo", columnDefinition = "VARCHAR(225)")
+    private String imagenLogo;
+
+    @Column(name="imagen_fondo", columnDefinition = "VARCHAR(225)")
+    private String imagenFondo;
+
+    @Column(name="ruta_video", columnDefinition = "VARCHAR(225)")
+    private String rutaVideo;
 
     @ManyToMany // Many to Many entre Contenidos y Categorias
     @JoinTable(

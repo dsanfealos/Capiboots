@@ -5261,7 +5261,7 @@ textarea.form-control-lg {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: var(--bs-modal-zindex);
+  z-index: 10;
   display: none;
   width: 100%;
   height: 100%;
@@ -5330,7 +5330,7 @@ textarea.form-control-lg {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: var(--bs-backdrop-zindex);
+  z-index: 5;
   width: 100vw;
   height: 100vh;
   background-color: var(--bs-backdrop-bg);
@@ -11136,13 +11136,15 @@ picture p {
 
 
 
+/*
 .header-bg {
-  background-image: url('/template_menus/assets/contenido/fondo.jpg');
+  !*background-image: url('/template_menus/assets/contenido/fondo.jpg');*!
   background-size: cover;
   background-position: center;
   height: 600px;
   padding: 70px 0;
 }
+*/
 
 
 .header-movie-poster {

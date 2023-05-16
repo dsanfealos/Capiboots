@@ -82,14 +82,14 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
     }
         return contenidoRepo.findAll();
     }
-   /* public List<Contenidos> filtroCategoria (String keyword){
+   public List<Contenidos> filtroCategoria (String keyword){
         List<Contenidos> lista = new ArrayList<>();
         if (keyword != null) {
             lista = contenidoRepo.buscarPorCat(keyword);
             return lista;
         }
         return contenidoRepo.findAll();
-    }*/
+    }
 
    //Pendientes
     //TODO: Introducir String en direccion href
@@ -112,20 +112,10 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
 
     //Novedades
     public Contenidos novedades (Contenidos contNuevo) throws InterruptedException {
-        //Buscamos la categoría novedades
-        Categorias cat2 = catRepo.findByNombre("Novedades");
-        //Creamos una lista de categorías
-        List<Categorias> cat;
-        //Asignamos las categorías actuales del contenido a esta lista vacía
-        cat = contNuevo.getCategorias();
-        //Añadimos la categoría Novedades a esta lista
-        cat.add(cat2);
-        //Asignamos la lista ampliada a la lista de categorías del contenido nuevo
-        contNuevo.setCategorias(cat);
-        //Esperamos 7 días (60480 segundos)
 
-        //Quitamos la categoría novedades del contenido
-
+        contNuevo.setNovedad(true);
+        System.out.println("He llegado" + contNuevo.getNovedad());
+//        contenidoRepo.save(contNuevo);
         return contNuevo;
     }
 

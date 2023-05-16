@@ -51,11 +51,10 @@
                         <!--Género-->
                         <div class="form-group col-3">
                             <label>Género</label>
-                            <div class="card" style="background-color: lightgrey; opacity: 70%;" id="ifGenero" name="ifGenero" th:switch="${usuario.genero}">
-                                <p th:case="0"> Hombre</p>
-                                <p th:case="1"> Mujer</p>
-                                <p class="px-2 py-1" th:case="2"> Otro</p>
-                                <p th:case="3"> NA</p>
+
+                            <div class="card">
+                                <input type="text" id="generoInput" name="generoInput" class="form-control" disabled="disabled"
+                                       th:placeholder="${usuario.genero == 0 ? 'Hombre' : usuario.genero == 1 ? 'Mujer' : usuario.genero == 2 ? 'Otro' : 'NA'}" />
                             </div>
 <!--                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">-->
                         </div>
@@ -70,15 +69,6 @@
                         <div class="form-group col-2">
                             <label for="pais">País</label>
                             <input type="text" class="form-control" id="pais" th:placeholder="${usuario.pais}" disabled="disabled">
-                        </div>
-
-                        <!--Idioma-->
-                        <div class="col-3">
-                            <label for="inputState">Idioma</label>
-                            <select id="inputState" class="form-control">
-                                <option selected="">Español</option>
-                                <option>Inglés</option>
-                            </select>
                         </div>
 
                         <div class="form-group col-md-5">

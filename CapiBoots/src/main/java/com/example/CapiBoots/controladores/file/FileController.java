@@ -1,9 +1,12 @@
 package com.example.CapiBoots.controladores.file;
 
 
+import com.example.CapiBoots.controladores.ContenidosCtrl;
+import com.example.CapiBoots.modelos.Contenidos;
 import com.example.CapiBoots.modelos.FileInfo;
 import com.example.CapiBoots.modelos.FileDB;
 import com.example.CapiBoots.modelos.Usuario;
+import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
 import com.example.CapiBoots.servicios.file.DBFileStorageService;
 import com.example.CapiBoots.servicios.file.FileSystemStorageService;
 import com.example.CapiBoots.servicios.ifxUsuarioSrvc;
@@ -23,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Controlador encargado de manejar la carga de archivos.
@@ -40,6 +44,9 @@ public class FileController {
      */
     @Autowired
     private FileSystemStorageService fileSystemStorageService;
+
+    @Autowired
+    private ContenidosSrvcImpls contenidosSrvc;
 
     /**
      * Servicio de almacenamiento de archivos en la base de datos utilizado por el controlador.
@@ -133,19 +140,71 @@ public class FileController {
      * @param redirectAttributes los atributos que se van a utilizar para pasar información entre solicitudes
      * @return el nombre de la vista a la que se va a redirigir
      */
-    @PostMapping("/uploadToFileSystem")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+    @PostMapping("/contenido/nuevo-contenido/uploadToFileSystem/{id}")
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
 
+        Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
+        if (contOptional.isPresent()) {
+            Contenidos cont1 = contOptional.get();
+            modelo.addAttribute("contenido", cont1);
+            cont1.setRutaVideo("/videos/" + file.getOriginalFilename());
+            contenidosSrvc.guardar(cont1);
+        } else {
+            return "error";
+        }
         //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
         fileSystemStorageService.save(file);
 
-        //        Agregamos un mensaje de éxito a los atributos de redirección.
-        redirectAttributes.addFlashAttribute("message",
-                "¡Se ha subido " + file.getOriginalFilename() + " correctamente!");
 
-        //       Redirigimos al usuario a la vista que lista los archivos subidos al servidor.
-        return "redirect:/files";
+        return "forms/subir-contenido";
+    }
+    @PostMapping("/contenido/nuevo-contenido/subir-logo/{id}")
+    public String subirLogo(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
+
+        Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
+        if (contOptional.isPresent()) {
+            Contenidos cont1 = contOptional.get();
+            modelo.addAttribute("contenido", cont1);
+            cont1.setImagenLogo("/videos/" + file.getOriginalFilename());
+            contenidosSrvc.guardar(cont1);
+        } else {
+            return "error";
+        }
+        //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
+        fileSystemStorageService.save(file);
+
+
+        return "forms/subir-contenido";
+    }
+    @PostMapping("/contenido/nuevo-contenido/subir-fondo/{id}")
+    public String subirFondo(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
+
+        Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
+        if (contOptional.isPresent()) {
+            Contenidos cont1 = contOptional.get();
+            modelo.addAttribute("contenido", cont1);
+            cont1.setImagenFondo("background-image: url('/videos/" + file.getOriginalFilename() + "');");
+            contenidosSrvc.guardar(cont1);
+        } else {
+            return "error";
+        }
+        //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
+        fileSystemStorageService.save(file);
+
+
+        return "forms/subir-contenido";
+    }
+
+    @GetMapping("/contenido/nuevo-contenido/subir-archivo/{id}")
+    public String subir(@PathVariable Long id, Model modelo){
+
+        Optional<Contenidos> contOptional = contenidosSrvc.buscarContenidoId(id);
+        if (contOptional.isPresent()) {
+            modelo.addAttribute("contenido", contOptional.get());
+        } else {
+            return "error";
+        }
+        return "forms/subir-contenido";
     }
 
 

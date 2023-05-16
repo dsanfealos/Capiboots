@@ -1,0 +1,75 @@
+1º
+
+-HTMLs de registro, login, y contraseña olvidada
+
+-Arreglar rutas y borrar tempaltes excepto inicio, home y menus
+
+-Hacer Seguridad
+
+
+2º
+
+
+-Ajustes y demás funciones individuales enfocadas al usuario en uso	(sanfe)
+-Filtros y búsqueda funcionales	(Sanfe)
+
+-Subir a internet la app	(Mireia)
+XXXXX-Notificaciones	(Mireia)
+
+XXX-Subir archivos (Rocío)(Excepto File)
+-Html de página del contenido concreto y hmtl del reproductor	(Rocío)
+
+-Llenar las BBDD (teniendo en cuenta foreign keys)	(Karim)
+-Aplicar streaming	(Karim)
+
+
+
+
+
+-----ListaAmigos
+-----Comentarios
+-----Logros
+------Contenido gratuito
+
+
+**********Quitar Favoritos,Logros,ListaAmigos y Suscripción
+
+
+
+3º
+-Novedades y Seguir viendo funcionales	(Sanfe)	XXXXXXXX
+-Enlace a contenido en búsqueda	(Sanfe)		HECHO
+
+-Subir contenidos a File	(Karim)		HECHO
+	-Meter campos en el nuevo-contenido (excepto novedad, id y fechaAlta)
+	-Rellenar BBDD con 2 libros, 2 pelis y 2 series T1
+	-Meter el reproductor en vistaReproductor.html (primero pelis, y luego avisas y series)
+
+-Aplicar streaming	(Karim)		HECHO
+
+-Preparar Visualizador de epub	(Rocío)
+-Html de página del contenido concreto y hmtl del reproductor	(Rocío)
+
+-Subir a internet la app	(Mireia)
+-Hacer Tests	(Mireia y Sanfe)
+
+
+4º
+
+-Preparar Presentación
+	-Mencionar retos.
+	-Enseñar en vivo la app para explicar lo expuesto.
+
+609309828
+
+5º
+-M-Hasta Objetivos
+-S-Cronograma+Repos
+-K-JAVA+BBDD
+-R-HTML+CSS+BOOTSRTAP
+
+-M-Publicación
+-K-Test código
+-S-Test-Debug
+-R-Publicidad+Redes
+-M-Conclusiones+Implementaciones futuras(aparte)

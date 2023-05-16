@@ -38,16 +38,21 @@ public class AccesosCtrl {
         modelo.addAttribute("listaaccesos", accessSrvc.listaAcces());
         return "lista-accesos";
     }
-    @GetMapping("/acceso-id")
+    @GetMapping("/acceso/{id}")
     public String accesoId (@PathVariable Long id, Model modelo){
         modelo.addAttribute("acceso_id", accessSrvc.buscaId(id));
-        return "acceso-id";
+        return "/listas/lista-pendientes";
     }
 
     @GetMapping("/lista-pendientes/{id}")
     public String listaPdtes(@PathVariable Long id, Model modelo){
        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
        return "/listas/lista-pendientes";
+    }
+    @GetMapping("/movieboxp/{id}")
+    public String pendMovie(@PathVariable Long id, Model modelo){
+        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
+        return "/moviebox";
     }
 
     @GetMapping("/empezar/{id}")
@@ -61,7 +66,7 @@ public class AccesosCtrl {
 
         // Si no hay ninguno, es la primera vez que el usuario empieza el contenido y hay que marcarlo. Para ello,
         // añadimos un nuevo registro a la tabla de accesos
-        accessSrvc.buscaUltimoAcceso(usu.getId(),id).ifPresentOrElse(
+        ultAccesoOpt.ifPresentOrElse(
                 acc -> {        // Ya existe un acceso previo de ese usuario a ese contenido. Se inicializa el reg.
                     if(acc.getTerminado()) {
                         acc.setTerminado(Boolean.FALSE);
@@ -86,7 +91,7 @@ public class AccesosCtrl {
         Usuario usu = usuSrvc.buscaPorNombre(usuID);
         // buscar el último acceso del usuario al contenido
         Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(),id);
-        accessSrvc.buscaUltimoAcceso(usu.getId(),id).ifPresentOrElse(
+        ultAccesoOpt.ifPresentOrElse(
                 acc -> {
                     acc.setFecha_fin(LocalDateTime.now());
                     acc.setTerminado(Boolean.TRUE);
