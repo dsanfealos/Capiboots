@@ -3975,6 +3975,7 @@ textarea.form-control-lg {
   .navbar-expand-lg .navbar-collapse {
     display: flex !important;
     flex-basis: auto;
+
   }
   .navbar-expand-lg .navbar-toggler {
     display: none;
@@ -7728,6 +7729,9 @@ textarea.form-control-lg {
 
 .p-5 {
   padding: 3rem !important;
+  font-family: "Calibri Light";
+  font-size: 20px;
+
 }
 
 .px-0 {
@@ -10879,11 +10883,13 @@ header.masthead .masthead-content {
 }
 
 header.masthead .masthead-content .masthead-heading {
-  font-size: 4rem;
+  font-size: 1rem;
+  font-family:"Calibri Light";
 }
 
 header.masthead .masthead-content .masthead-subheading {
-  font-size: 2rem;
+  font-size: 1rem;
+  font-family:"Calibri Light";
 }
 
 header.masthead .bg-circle {
@@ -11383,10 +11389,6 @@ button {
 }
 
 
-
-
-
-
 .navbar-nav .nav-item .nav-link:hover {
   text-decoration: underline;
 
@@ -11400,3 +11402,104 @@ button {
   text-decoration: underline;
   padding-top: 1px;
 }
+
+
+
+
+
+/* Definir la animación
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Aplicar la animación al texto
+.masthead-subheading p {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 4s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+/* Configuración adicional
+.masthead-subheading p:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.masthead-subheading p:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+
+*/
+
+.social-links-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.social-link {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.social-link:hover {
+  color: #ffa500;
+}
+
+
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.masthead-heading span {
+  display: inline-block;
+  animation: slide 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  opacity: 0;
+}
+
+.masthead-heading span:nth-child(2n) {
+  animation-delay: 0.1s;
+}
+
+.masthead-heading span:nth-child(3n) {
+  animation-delay: 0.2s;
+}
+
+.masthead-heading span:nth-child(4n) {
+  animation-delay: 0.3s;
+}
+
+.masthead-heading span:nth-child(5n) {
+  animation-delay: 0.4s;
+}
+
+.masthead-subheading p {
+  display: inline-block;
+  animation: slide 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+  opacity: 0;
+}
+
+.masthead-subheading p:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.masthead-subheading p:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
