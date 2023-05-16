@@ -152,6 +152,7 @@ public class ContenidosCtrl {
     //Lista de contenidos
     @GetMapping("/contenido/lista-contenidos")
     public String listaContenidos(Model modelo) {
+        modelo.addAttribute("listaseries",serieSrvc.listaSeri());
         modelo.addAttribute("listaContenidos", contenidosSrvc.listaCont());
         return "/listas/lista-contenidos";
     }
@@ -218,13 +219,13 @@ public class ContenidosCtrl {
 
     @GetMapping("/reproducir-s/{id}")
     public String reproducirSeries(@PathVariable Long id, Model modelo) {
-        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
+        Optional<Series> seri = serieSrvc.buscaId(id);
 
-        if (cont.isPresent()){
-            Contenidos cont1 = cont.get();
-            modelo.addAttribute("cont", cont1);
+        if (seri.isPresent()){
+            Series seri1 = seri.get();
+            modelo.addAttribute("serie", seri1);
         }
-        modelo.addAttribute("contenido", id);
+        modelo.addAttribute("serie", id);
         return "vistaReproductorSerie";
     }
 
@@ -253,5 +254,16 @@ public class ContenidosCtrl {
         return "contenido";
     }
 
+    @GetMapping("/serie/{id}")
+    public String contPpalSerie (@PathVariable Long id, Model modelo){
+        Optional<Series> seri = serieSrvc.buscaId(id);
 
+        if (seri.isPresent()){
+            Series seri1 = seri.get();
+            modelo.addAttribute("seri", seri1);
+        }
+        modelo.addAttribute("series", id);
+
+        return "contenido-serie";
+    }
 }

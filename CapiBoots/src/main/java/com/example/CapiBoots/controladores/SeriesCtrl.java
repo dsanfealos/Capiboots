@@ -33,7 +33,7 @@ public class SeriesCtrl {
     public String buscarSeri(@Param("keyword") String keyword , Model modelo){
         List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
         modelo.addAttribute("listaseries", buscaseri);
-        return "/listas/lista-series";
+        return "/listas/lista-contenidos";
     }
 
     @GetMapping("/series-id")
@@ -47,19 +47,19 @@ public class SeriesCtrl {
     @GetMapping("/serie/nueva-serie")
     public String nuevo(Model modelo){
         modelo.addAttribute("serie", new Series());
-        return "/forms/nueva-serie";
+        return "/forms/nuevo-contenido";
     }
 
     @PostMapping("/serie/guardar")
     public String guardar(Series seri){
         serieSrvc.guardar(seri);
-        return "redirect:/lista-series";
+        return "redirect:/lista-contenidos";
     }
 
     @GetMapping("/serie/borrar/{id}")
     public String borrar(@PathVariable Long id){
         serieSrvc.borrar(id);
-        return "redirect:/lista-series";
+        return "redirect:/lista-contenidos";
     }
 
     @GetMapping("/serie/editar/{id}")
@@ -72,19 +72,19 @@ public class SeriesCtrl {
             // Si no existe, redirigir a una página de error o mostrar un mensaje de error
             return "error";
         }
-        return "/forms/nueva-serie";
+        return "/forms/nuevo-contenido";
     }
 
-    @GetMapping("/serie/{id}")
-    public String seriePpal (@PathVariable Long id, Model modelo){
-        Optional<Series> seri = serieSrvc.buscaId(id);
-
-        if (seri.isPresent()){
-            Series seri1 = seri.get();
-            modelo.addAttribute("seri", seri1);
-        }
-        modelo.addAttribute("serie", id);
-        return "contenido-serie";
-    }
+//    @GetMapping("/serie/{id}")
+//    public String seriePpal (@PathVariable Long id, Model modelo){
+//        Optional<Series> serie = serieSrvc.buscaId(id);
+//
+//        if (serie.isPresent()){
+//            Series serie1 = serie.get();
+//            modelo.addAttribute("seri", serie1);
+//        }
+//        modelo.addAttribute("series", id);
+//        return "contenido-serie";
+//    }
 
 }

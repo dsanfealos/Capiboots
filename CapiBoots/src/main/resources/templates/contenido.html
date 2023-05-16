@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,7 +24,6 @@
                 height: 600px;
                 padding: 70px 0;
             }
-
         </style>
     </head>
     <body id="page-top">
@@ -32,29 +34,21 @@
     <header class="header-bg" th:style="${cont.imagenFondo}">   <!--Atento a que has cambiado cosas del CSS-->
         <div class="header-container">
             <div class="row">
-                <div class="col-md-6">
-                    <img class="header-movie-poster img-fluid" th:src="${cont.imagenLogo}" alt="Portada de la película" style="width: 200px; height: 250px;">
+<!--                <div class="col-md-6">-->
+                    <div class="col-3">
+                        <img class="header-movie-poster img-fluid" th:src="${cont.imagenLogo}" alt="Portada de la película" style="width: 200px; height: 250px;">
+                    </div>
 <!--                    <img class="header-movie-poster" src="/template_menus/assets/contenido/rocio.jpg" alt="Portada de la película" style="width: 200px; height: 250px;">-->
-                    <div class="header-movie-info">
+                    <div class="header-movie-info col-6">
                         <h1 class="header-movie-title" th:text="${cont.nombre}"></h1>
 <!--                        <h1 class="header-movie-title">Breaking Bad</h1>-->
-                        <div class="header-movie-details">
-                            <div class="btn-group">
-                                <a class="btn btn-primary btn-lg rounded-pill dropdown-toggle" href="#scroll">Reproducir</a>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary btn-lg rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Temporadas
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Temporada 1</a>
-                                    <a class="dropdown-item" href="#">Temporada 2</a>
-                                    <a class="dropdown-item" href="#">Temporada 3</a>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="header-movie-details col-3">
+                        <div class="btn-group">
+                            <a class="btn btn-primary btn-lg rounded-pill" th:href="@{/reproducir/{id}(id=${cont.id})}">Reproducir</a>
                         </div>
                     </div>
-                </div>
+<!--                </div>-->
             </div>
         </div>
     </header>
@@ -67,19 +61,7 @@
                     <div class="col-md-12">
                         <div class="p-5">
                             <h2> <i class="fas fa-info-circle"></i> Más información sobre el contenido </h2>
-
                             <p th:text="${cont.descripcion}"></p>
-<!--                            <p>Breaking Bad es una serie de televisión estadounidense creada y producida por Vince Gilligan. La trama gira en torno a Walter White, un profesor de química de secundaria que descubre que tiene cáncer de pulmón y decide fabricar metanfetamina para asegurar el futuro económico de su familia. La serie se desarrolla en Albuquerque, Nuevo México.</p>-->
-                            <h4>Reparto</h4>
-                            <ul>
-                                <li>Bryan Cranston como Walter White</li>
-                                <li>Aaron Paul como Jesse Pinkman</li>
-                                <li>Anna Gunn como Skyler White</li>
-                                <li>Dean Norris como Hank Schrader</li>
-                                <li>Betsy Brandt como Marie Schrader</li>
-                            </ul>
-                            <h4>Género y contenido</h4>
-                            <p>Breaking Bad es una serie de drama criminal. Su contenido incluye lenguaje fuerte, violencia, uso de drogas y temáticas adultas.</p>
                             <div class="bg-danger d-inline-block px-3 py-2 rounded mt-3">
                                 <h5 class="text-white m-0 btn-lg">Acción</h5>
                             </div>

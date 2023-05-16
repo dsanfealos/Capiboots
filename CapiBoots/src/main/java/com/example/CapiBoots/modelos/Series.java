@@ -32,4 +32,16 @@ import java.util.List;
 
     @OneToMany(mappedBy = "serie", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Temporada> temporadas;
+
+
+    private Boolean novedad = true;
+
+    @Column(name="imagen_logo", columnDefinition = "VARCHAR(225)")
+    private String imagenLogo;
+
+    @Column(name="imagen_fondo", columnDefinition = "VARCHAR(225)")
+    private String imagenFondo;
+
+    @Column(name="ruta_video", columnDefinition = "VARCHAR(225)")
+    private String rutaVideo;
 }

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -14,37 +17,44 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/template_menus/css/styles.css" rel="stylesheet" />
+        <style>
+            .header-bg {
+                background-size: cover;
+                background-position: center;
+                height: 600px;
+                padding: 70px 0;
+            }
+        </style>
     </head>
     <body id="page-top">
     <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
         <!-- Navigation-->
 
         <!-- Header-->
-    <header class="header-bg">
+    <header class="header-bg" th:style="${seri.imagenFondo}">
         <div class="header-container">
             <div class="row">
-                <div class="col-md-6">
-                    <img class="header-movie-poster" src="/template_menus/assets/contenido/rocio.jpg" alt="Portada de la película" style="width: 200px; height: 250px;">
-                    <div class="header-movie-info">
+
+                    <div class="col-3">
+                        <img class="header-movie-poster img-fluid" th:src="${seri.imagenLogo}" alt="Portada de la película" style="width: 200px; height: 250px;">
+                    </div>
+                    <div class="header-movie-info col-6">
                         <h1 class="header-movie-title" th:text="${seri.nombre}"></h1>
 <!--                        <h1 class="header-movie-title">Breaking Bad</h1>-->
-                        <div class="header-movie-details">
-                            <div class="btn-group">
-                                <a class="btn btn-primary btn-lg rounded-pill dropdown-toggle" href="#scroll">Reproducir</a>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary btn-lg rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Temporadas
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Temporada 1</a>
-                                    <a class="dropdown-item" href="#">Temporada 2</a>
-                                    <a class="dropdown-item" href="#">Temporada 3</a>
-                                </div>
+                    </div>
+                    <div class="header-movie-details col-3">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary btn-lg rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Temporadas
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Temporada 1</a>
+                                <a class="dropdown-item" href="#">Temporada 2</a>
+                                <a class="dropdown-item" href="#">Temporada 3</a>
                             </div>
                         </div>
                     </div>
-                </div>
+
             </div>
         </div>
     </header>
@@ -60,18 +70,44 @@
 
                             <p th:text="${seri.descripcion}"></p>
 <!--                            <p>Breaking Bad es una serie de televisión estadounidense creada y producida por Vince Gilligan. La trama gira en torno a Walter White, un profesor de química de secundaria que descubre que tiene cáncer de pulmón y decide fabricar metanfetamina para asegurar el futuro económico de su familia. La serie se desarrolla en Albuquerque, Nuevo México.</p>-->
-                            <h4>Reparto</h4>
-                            <ul>
-                                <li>Bryan Cranston como Walter White</li>
-                                <li>Aaron Paul como Jesse Pinkman</li>
-                                <li>Anna Gunn como Skyler White</li>
-                                <li>Dean Norris como Hank Schrader</li>
-                                <li>Betsy Brandt como Marie Schrader</li>
-                            </ul>
-                            <h4>Género y contenido</h4>
-                            <p>Breaking Bad es una serie de drama criminal. Su contenido incluye lenguaje fuerte, violencia, uso de drogas y temáticas adultas.</p>
+
                             <div class="bg-danger d-inline-block px-3 py-2 rounded mt-3">
                                 <h5 class="text-white m-0 btn-lg">Acción</h5>
+                            </div>
+                            <!--Tabs thymeleaf-->
+                            <div>
+                                <ul class="nav nav-tabs" id="tempoTab" role="tablist" >
+                                    <li class="nav-item" role="presentation" th:each="temporada : ${seri.temporadas}">
+                                        <button class="nav-link active" th:text="${temporada.nombre}" th:id="${temporada.id}" data-bs-toggle="tab" th:data-bs-target="'#' + ${temporada.id} + 'pane'" type="button" role="tab" th:aria-controls="${temporada.id} + 'pane'" aria-selected="true"></button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="tempoTabContent" th:each="temporada : ${seri.temporadas}">
+                                    <div class="tab-pane fade" th:id="${temporada.id} + 'pane'" role="tabpanel" th:aria-labelledby="${temporada.id}" tabindex="0" >sfewsf</div>
+                                </div>
+                            </div>
+                            <br><br><br>
+                            <!--Tabs manual-->
+                            <div>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">T1</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">T2</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">T3</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false">T4</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">Ehe...</div>
+                                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">Aha...</div>
+                                    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">Oho...</div>
+                                    <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">Woooow...</div>
+                                </div>
                             </div>
                         </div>
                     </div>

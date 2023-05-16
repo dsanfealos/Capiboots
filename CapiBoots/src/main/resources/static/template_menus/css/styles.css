@@ -11148,12 +11148,15 @@ picture p {
 .header-movie-title {
   font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 0;
-  margin-left: 250px;
+  position: relative;
+  top: 320px;
+  /*margin-bottom: 0;*/
+  /*margin-left: 0px;*/
 }
 
 .header-movie-details {
-  margin: 20px 0;
+  position: relative;
+  top: 250px;
 }
 
 .header-movie-genre-icon {
@@ -11179,17 +11182,10 @@ picture p {
   margin: 20px 0;
 }
 
-.header-movie-title {
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 0;
-  margin-left: 250px;
-}
 
 .btn-group {
-  margin-top: -50px;
-  margin-left: 300px;
-  margin-left: 250px;
+  position: relative;
+  top: 150px;
 }
 
 .btn-primary {

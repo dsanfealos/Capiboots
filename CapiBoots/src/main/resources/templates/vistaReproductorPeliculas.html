@@ -30,8 +30,9 @@
                 <div class="back-button-container">
                     <div class="back-button-container">
                         <div style="text-align: left; margin-left: -120px;">
-                            <button class="big-button"><i class="bi bi-arrow-left"></i></button>
-
+                            <a th:href="@{/contenido/{id}(id=${cont.id})}">
+                                <button class="big-button"><i class="bi bi-arrow-left"></i></button>
+                            </a>
                         </div>
 
                     </div>

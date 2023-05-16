@@ -2,11 +2,9 @@ package com.example.CapiBoots.controladores.file;
 
 
 import com.example.CapiBoots.controladores.ContenidosCtrl;
-import com.example.CapiBoots.modelos.Contenidos;
-import com.example.CapiBoots.modelos.FileInfo;
-import com.example.CapiBoots.modelos.FileDB;
-import com.example.CapiBoots.modelos.Usuario;
+import com.example.CapiBoots.modelos.*;
 import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
+import com.example.CapiBoots.servicios.SeriesSrvcImpls;
 import com.example.CapiBoots.servicios.file.DBFileStorageService;
 import com.example.CapiBoots.servicios.file.FileSystemStorageService;
 import com.example.CapiBoots.servicios.ifxUsuarioSrvc;
@@ -47,6 +45,9 @@ public class FileController {
 
     @Autowired
     private ContenidosSrvcImpls contenidosSrvc;
+
+    @Autowired
+    private SeriesSrvcImpls seriesSrcv;
 
     /**
      * Servicio de almacenamiento de archivos en la base de datos utilizado por el controlador.
@@ -140,6 +141,7 @@ public class FileController {
      * @param redirectAttributes los atributos que se van a utilizar para pasar información entre solicitudes
      * @return el nombre de la vista a la que se va a redirigir
      */
+    //Contenidos Contenido-Logo-Fondo
     @PostMapping("/contenido/nuevo-contenido/uploadToFileSystem/{id}")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
 
@@ -193,6 +195,73 @@ public class FileController {
 
 
         return "forms/subir-contenido";
+    }
+    //Series Serie-Logo-Fondo
+    @PostMapping("/serie/nueva-serie/uploadToFileSystem/{id}")
+    public String subirSerie(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
+
+        Optional<Series> seriOptional = seriesSrcv.buscaId(id);
+        if (seriOptional.isPresent()) {
+            Series seri = seriOptional.get();
+            modelo.addAttribute("seri", seri);
+            seri.setRutaVideo("/files/" + file.getOriginalFilename());
+            seriesSrcv.guardar(seri);
+        } else {
+            return "error";
+        }
+        //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
+        fileSystemStorageService.save(file);
+
+
+        return "forms/subir-serie";
+    }
+    @PostMapping("/serie/nueva-serie/subir-logo/{id}")
+    public String subirLogoSerie(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
+
+        Optional<Series> seriOptional = seriesSrcv.buscaId(id);
+        if (seriOptional.isPresent()) {
+            Series seri = seriOptional.get();
+            modelo.addAttribute("seri", seri);
+            seri.setImagenLogo("/files/" + file.getOriginalFilename());
+            seriesSrcv.guardar(seri);
+        } else {
+            return "error";
+        }
+        //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
+        fileSystemStorageService.save(file);
+
+
+        return "forms/subir-serie";
+    }
+    @PostMapping("/serie/nueva-serie/subir-fondo/{id}")
+    public String subirFondoSerie(@RequestParam("file") MultipartFile file, @PathVariable Long id, Model modelo) {
+
+        Optional<Series> seriOptional = seriesSrcv.buscaId(id);
+        if (seriOptional.isPresent()) {
+            Series seri = seriOptional.get();
+            modelo.addAttribute("seri", seri);
+            seri.setImagenFondo("background-image: url('/files/" + file.getOriginalFilename() + "');");
+            seriesSrcv.guardar(seri);
+        } else {
+            return "error";
+        }
+        //        Guardamos el archivo en el servicio de almacenamiento predeterminado.
+        fileSystemStorageService.save(file);
+
+
+        return "forms/subir-serie";
+    }
+
+    @GetMapping("/serie/nueva-serie/subir-archivo/{id}")
+    public String subirSe(@PathVariable Long id, Model modelo){
+
+        Optional<Series> seriOptional = seriesSrcv.buscaId(id);
+        if (seriOptional.isPresent()) {
+            modelo.addAttribute("seri", seriOptional.get());
+        } else {
+            return "error";
+        }
+        return "forms/subir-serie";
     }
 
     @GetMapping("/contenido/nuevo-contenido/subir-archivo/{id}")

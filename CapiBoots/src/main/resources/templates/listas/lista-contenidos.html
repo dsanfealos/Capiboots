@@ -18,6 +18,7 @@
   <title>Lista de Contenidos</title>
 </head>
 <body>
+<!--Lista de Contenidos-->
 <div>
   <a class="navbar-brand" th:href="@{/contenido/lista-contenidos}" style="font-size: 38px; color: black; font-weight: bold">
     <span>Lista de Contenidos</span>
@@ -55,6 +56,63 @@
     </tr>
     </tbody>
   </table>
+</div>
+<!--Lista de Series-->
+<div>
+  <div>
+    <div>
+      <a class="navbar-brand" th:href="@{//contenido/lista-contenidos}" style="font-size: 38px; color: black; font-weight: bold">
+        <span>Lista de Series</span>
+      </a>
+      <br>
+      <a th:href="@{/serie/nueva-serie}">Crear nueva serie</a>
+    </div>
+
+    <br>
+
+    <div>
+      <form th:action="@{/buscarseri}">
+        Filter:
+        <input type="text" name="keyword" required/>
+        &nbsp;
+        <input type="submit" value="Search"/>
+        &nbsp;
+        <input type="button" value="Clear"/>
+      </form>
+    </div>
+
+
+    <div>
+      <br><br><br>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="serie : ${listaseries}">
+          <td th:text="${serie.id}">ID</td>
+          <td th:text="${serie.nombre}">Nombre</td>
+          <td th:text="${serie.descripcion}">Descripción</td>
+          <td>
+            <!--Editar y Borrar-->
+            <!--En href escribimos el link del metodo del controlador que queremos que se ejecute-->
+            <a class="btn btn-primary" th:href="@{/serie/editar/{id}(id=${serie.id})}" >Editar</a>
+            <!---Subir Archivo-->
+            <a class="btn btn-success" th:href="@{/serie/nueva-serie/subir-archivo/{id}(id=${serie.id})}" >Subir Archivo</a>
+            <a onclick="return confirm('¿Estás seguro de que quieres borrar el contenido?')"
+               class="btn btn-outline-danger" th:href="@{/serie/borrar/{id}(id=${serie.id})}">Borrar</a>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
 </div>
 
 
