@@ -147,7 +147,7 @@ public class FileController {
         if (contOptional.isPresent()) {
             Contenidos cont1 = contOptional.get();
             modelo.addAttribute("contenido", cont1);
-            cont1.setRutaVideo("/videos/" + file.getOriginalFilename());
+            cont1.setRutaVideo("/files/" + file.getOriginalFilename());
             contenidosSrvc.guardar(cont1);
         } else {
             return "error";
@@ -165,7 +165,7 @@ public class FileController {
         if (contOptional.isPresent()) {
             Contenidos cont1 = contOptional.get();
             modelo.addAttribute("contenido", cont1);
-            cont1.setImagenLogo("/videos/" + file.getOriginalFilename());
+            cont1.setImagenLogo("/files/" + file.getOriginalFilename());
             contenidosSrvc.guardar(cont1);
         } else {
             return "error";
@@ -183,7 +183,7 @@ public class FileController {
         if (contOptional.isPresent()) {
             Contenidos cont1 = contOptional.get();
             modelo.addAttribute("contenido", cont1);
-            cont1.setImagenFondo("background-image: url('/videos/" + file.getOriginalFilename() + "');");
+            cont1.setImagenFondo("background-image: url('/files/" + file.getOriginalFilename() + "');");
             contenidosSrvc.guardar(cont1);
         } else {
             return "error";

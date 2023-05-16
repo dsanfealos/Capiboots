@@ -50,6 +50,7 @@
                             <div class="card">
                                 <a th:href="@{/contenido/{id}(id=${contenido.id})}">
                                     <div th:text="${contenido.id}" hidden="hidden"></div>
+                                    <img th:src="${contenido.imagenLogo}" class="img-fluid" alt="No se encuentra la imagen">
                                     <div th:text="${contenido.nombre}"></div>
                                 </a>
                             </div>
