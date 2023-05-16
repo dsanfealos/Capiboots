@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -39,7 +42,7 @@
             <p></p>
 
 
-                    <embed src="/template_menus/assets/vistaReproductor/principito.pdf" width="100%" height="900px" type='application/pdf' download="none" >
+                    <embed th:src="${cont.rutaVideo}" width="100%" height="900px" type='application/pdf'>
                 </div>
             </div>
 
