@@ -98,9 +98,16 @@
 								<div class="form-group">
 									<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Iniciar Sesión</button>
 									&nbsp;&nbsp;
-									<span>
-										<button><a th:href="@{/register}">Registrarse</a></button>
-									</span>
+
+									<!--	<button><a th:href="@{/register}">Registrarse</a></button>-->
+
+										<!--<button type="submit" class="btn btn-primary rounded submit p-3 px-5"><a th:href="@{/register}">Registrarse</a></button>-->
+
+  								<a th:href="@{/register}" class="btn btn-primary rounded submit p-3 px-5">Registrarse</a>
+
+
+
+
 								</div>
 								<a th:href="@{/forgot_password}">He olvidado mi contraseña</a>
 							</form>
