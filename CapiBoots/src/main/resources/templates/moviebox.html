@@ -1,297 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>MovieBox</title>
-    <link rel="icon" type="image/x-icon" href="/template_menus/assets/logos/favicon3.png" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/template_menus/css/styles.css" rel="stylesheet" />
-</head>
-<body id="page-top">
-<!-- Navigation-->
-<nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>MovieBox</title>
+        <link rel="icon" type="image/x-icon" href="/template_menus/assets/logos/favicon3.png" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/template_menus/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+
+    <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+        <!-- Navigation-->
 
 
-<!-- Header-->
-<header class="masthead text-center text-white">
-    <div class="masthead-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <!-- Carrousel de imágenes -->
-                    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="/template_menus/assets/peliculas/conjuro.jpg" alt="Image 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/template_menus/assets/peliculas/jurassic.jpg" alt="Image 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/template_menus/assets/peliculas/showman.jpg" alt="Image 3">
-                            </div>
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex flex-column justify-content-between">
-                    <!-- Texto -->
-                    <div>
-                        <div class="word-box mb-4">
-
-                            <h1>MovieBox</h1>
-                        </div>
-                        <h3 class="display-3 mb-4">Novedades:</h3>
-                        <h4 class="display-6 mb-4">Califica tus películas y compartelas con tus amigos.</h4>
-
-                        <div>
-                            <button type="button" class="btn btn-primary mb-3 grow" data-bs-toggle="modal" data-bs-target="#mimodal1">
-                                Categorías
-                            </button>
-                        </div>
-
-<!--                        <a class="btn btn-primary mb-3 grow" href="#">Categorías</a>-->
-                        <a class="btn btn-primary mt-3 grow" href="#">Todas las novedades</a>
-                    </div>
+        <!-- Header-->
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container px-5">
 
 
-                </div>
-            </div>
-        </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <!-- Carrousel de imágenes -->
+                            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                                    <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+                                    <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+                                </ol>
 
-    </div>
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
-</header>
-<div th:replace="bloques/bloques.html :: categorias" > </div>
-
-<!-- Content section 1-->
-<!-- Sección de Seguir Viendo-->
-<section class="py-5">
-    <div class="container-fluid px-5 my-5">
-        <!--Título de sección-->
-        <div class="row gx-5 justify-content-center">
-            <div class="col-lg-8 col-xl-6">
-                <div class="text-center">
-                    <h2 class="fw-bolder" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 42px; color: #e50914;">Seguir viendo</h2>
-                    <p class="lead fw-normal text-muted mb-5" style="font-size: 28px;">Continua las pelícilas que estabas viendo</p>
-                </div>
-            </div>
-        </div>
-        <!--Lista de pendientes test-->
-        <div id="micarousel3" class="carousel slide" data-bs-ride="carousel" data-bs-interval="30000">
-            <div class="carousel-inner">
-                <!--1ª sección-->
-                <div class="carousel-item active">
-                    <div class="row col-11 mx-auto gx-3">
-                        <div class="col-lg-2 mb-5 card shadow border-0 m-1 p-0" th:each="pendiente : ${pendientes}" style="background-color:#f72a2a; width: 241px; height: 400px">
-                                <img th:src="${pendiente.imagenLogo}" class="img-fluid p-0"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a th:text="${pendiente.nombre}" class="text-decoration-none text-light link-dark stretched-link" th:href="@{/contenido/{id}(id=${pendiente.id})}"></a>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="/template_menus/assets/peliculas/conjuro.jpg" alt="Image 1">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="/template_menus/assets/peliculas/jurassic.jpg" alt="Image 2">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="/template_menus/assets/peliculas/showman.jpg" alt="Image 3">
+                                    </div>
                                 </div>
+
+                                <!-- Controls -->
+                                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 d-flex flex-column justify-content-between">
+                            <!-- Texto -->
+                            <div>
+                                <h1 class="masthead-heading mb-0">
+                                    <span style="font-size: 52px;">M</span>
+                                    <span style="font-size: 52px;">O</span>
+                                    <span style="font-size: 52px;">V</span>
+                                    <span style="font-size: 52px;">I</span>
+                                    <span style="font-size: 52px;">E</span>
+                                    <span style="font-size: 52px;">B</span>
+                                    <span style="font-size: 52px;">O</span>
+                                    <span style="font-size: 52px;">X</span>
+                                </h1>
+
+
+                                <br>
+
+                                </div>
+                                <h2  style="font-family: 'Calibri Light', sans-serif;">Novedades:</h2>
+                                <h3 style="font-family: 'Calibri Light', sans-serif;">Califica tus peliculas y compartelas con tus amigos.</h3>
+                               <!-- <a class="btn btn-primary mb-3 grow" href="#">Categorías</a>-->
+
+                                <div>
+                                    <button type="button" class="btn btn-primary mb-1 grow" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Categorías
+                                    </button>
+                                </div>
+
+                                <a class="btn btn-primary mt-1 grow" href="#">Todas las novedades</a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+
+
+
             </div>
-            <!--Controles-->
-            <button class="carousel-control-prev" type="button" data-bs-target="#micarousel3" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-dark py-5 me-auto" aria-hidden="true"></span>
-                <span class="visually-hidden">Anterior</span>
-            </button>
+            <div class="bg-circle-1 bg-circle"></div>
+            <div class="bg-circle-2 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-4 bg-circle"></div>
+        <br>
+        </header>
+    <div th:replace="bloques/bloques.html :: categorias" > </div>
+        <!-- Content section 1-->
+        <!-- Sección de Seguir Viendo-->
+        <section class="py-5">
+            <div class="container-fluid px-5 my-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="text-center">
+                            <h2 class="fw-bolder" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 42px; color: #e50914;">Seguir viendo</h2>
+                            <p class="lead fw-normal text-muted mb-5" style="font-size: 28px;">Continua los libros que estabas leyendo</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="micarousel2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="30000">
+                    <div class="carousel-inner">
+                        <!--1ª sección-->
+                        <div class="carousel-item active">
+                            <div class="row col-11 mx-auto gx-3">
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
 
-            <button class="carousel-control-next" type="button" data-bs-target="#micarousel3" data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-dark py-5 ms-auto" aria-hidden="true"></span>
-                <span class="visually-hidden">Siguiente</span>
-            </button>
+                                        <img src="/template_menus/assets/libros/aliciapais.jpg" class="img-fluid" height="200"
+                                             width="700" alt="Alicia"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 1</h5></a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/DonQuijote.jpg" class="img-fluid" height="350"
+                                             width="600" alt="DonQuijote"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 2</h5></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/ElCodigoDaVinci.jpg" class="img-fluid" height="350"
+                                             width="600" alt="DaVinci"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 3</h5></a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/ElNombreDelViento.jpg" class="img-fluid" height="350"
+                                             width="600" alt="ElNombreDelViento"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 4</h5></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/elprincipito.jpg" class="img-fluid" height="350"
+                                             width="600" alt="ElPrincipito"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 5</h5></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/elsenyordelosanillos.jpg" class="img-fluid" height="350"
+                                             width="600" alt="ESDLA"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 6</h5></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--2ª sección-->
+                        <div class="carousel-item active">
+                            <div class="row col-11 mx-auto gx-3">
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/guardiancenteno.jpg" class="img-fluid" height="350"
+                                             width="600" alt="GuardianCenteno"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 7</h5></a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/HPFilosofal.jpg" class="img-fluid" height="350"
+                                             width="600" alt="HP"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 8</h5></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/IT.jpg" class="img-fluid" height="350" width="600" alt="IT"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 9</h5></a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/JuegosDelHambre.jpg" class="img-fluid" height="350"
+                                             width="600" alt="JDH"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 10</h5></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/narnia.jpg" class="img-fluid" height="350" width="600" alt="Narnia"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 11</h5></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 mb-5">
+                                    <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
+                                        <img src="/template_menus/assets/libros/PilaresDeLaTierra.jpg" class="img-fluid" height="350"
+                                             width="600" alt="PilaresTierra"/>
+                                        <div class="card-body p-4 mx-auto">
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 12</h5></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Controles-->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#micarousel2" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark py-5 me-auto" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#micarousel2" data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-dark py-5 ms-auto" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        </main>
+        <!-- Footer-->
+    <footer class="py-5 bg-black">
+        <div class="container px-5">
+            <p class="m-0 text-center text-white small">CAPIBOOTS &copy; 2023</p>
+            <div class="social-links-container text-center">
+                <a href="https://twitter.com/tu_usuario" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://github.com/CapiBoots/CapiBoots" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://instagram.com/tu_usuario" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+            </a>
         </div>
-
-
-        <!--Lista de pendientes org-->
-<!--        <div id="micarousel2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="30000">-->
-<!--            <div class="carousel-inner">-->
-<!--                &lt;!&ndash;1ª sección&ndash;&gt;-->
-<!--                <div class="carousel-item active">-->
-<!--                    <div class="row col-11 mx-auto gx-3">-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/ANHQV.jpg" class="img-fluid" height="350"-->
-<!--                                     width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 1</h5></a>-->
-
-<!--                                </div>-->
-
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/BRBA.jpg" class="img-fluid" height="350"-->
-<!--                                     width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 2</h5></a>-->
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/CuentoDeLaCriada.jpg"-->
-<!--                                     class="img-fluid" height="350" width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 3</h5></a>-->
-
-<!--                                </div>-->
-
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/Friends.jpg"-->
-<!--                                     class="img-fluid" height="350" width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 4</h5></a>-->
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/GOT.jpg" class="img-fluid" height="350"-->
-<!--                                     width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 5</h5></a>-->
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/HIMYM.jpg" class="img-fluid" height="350"-->
-<!--                                     width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 6</h5></a>-->
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                &lt;!&ndash;2ª sección&ndash;&gt;-->
-<!--                <div class="carousel-item active">-->
-<!--                    <div class="row col-11 mx-auto gx-3">-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/LosSimpsons.jpg"-->
-<!--                                     class="img-fluid" height="350" width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 7</h5></a>-->
-
-<!--                                </div>-->
-
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/OnePiece.jpg"-->
-<!--                                     class="img-fluid" height="350" width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 8</h5></a>-->
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/PeakyBlinders.jpg"-->
-<!--                                     class="img-fluid" height="350" width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 9</h5></a>-->
-
-<!--                                </div>-->
-
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/SouthPark.jpg"-->
-<!--                                     class="img-fluid" height="350" width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 10</h5></a>-->
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/StrangerThings.jpg"-->
-<!--                                     class="img-fluid" height="350" width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 11</h5></a>-->
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-2 mb-5">-->
-<!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-<!--                                <img src="/template_menus/assets/series/TheOffice.jpg"-->
-<!--                                     class="img-fluid" height="350" width="600"/>-->
-<!--                                <div class="card-body p-4 mx-auto">-->
-<!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 12</h5></a>-->
-
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;Controles&ndash;&gt;-->
-<!--            <button class="carousel-control-prev" type="button" data-bs-target="#micarousel2" data-bs-slide="prev">-->
-<!--                <span class="carousel-control-prev-icon bg-dark py-5 me-auto" aria-hidden="true"></span>-->
-<!--                <span class="visually-hidden">Anterior</span>-->
-<!--            </button>-->
-
-<!--            <button class="carousel-control-next" type="button" data-bs-target="#micarousel2" data-bs-slide="next">-->
-<!--                <span class="carousel-control-next-icon bg-dark py-5 ms-auto" aria-hidden="true"></span>-->
-<!--                <span class="visually-hidden">Siguiente</span>-->
-<!--            </button>-->
-<!--        </div>-->
-    </div>
-</section>
-</main>
-<!-- Footer-->
-<footer class="py-5 bg-black">
-    <div class="container px-5"><p class="m-0 text-center text-white small">Capiboots &copy; 2023</p></div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="/template_menus/js/scripts.js"></script>
-</body>
+        </div>
+    </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/template_menus/js/scripts.js"></script>
+    </body>
 </html>

@@ -14,23 +14,23 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Estilos personalizados -->
-  <link href="" type="text/css" rel="stylesheet">
+  <link href="/template_menus/css/styles.css" rel="stylesheet" />
 
   <title>Lista de Ficheros</title>
 </head>
-<body>
+<body >
 <!-- Cuerpo de la página -->
 <!--<div th:replace="fragments/header :: header">-->
   <!-- Se incluye el encabezado de la página mediante la inclusión del fragmento "header" -->
 </div>
-<div class="container">
+<div class="container" style="font-family: 'Calibri Light', sans-serif;">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" style="font-family: 'Calibri Light', sans-serif;">
 
       <!-- Tarjeta para subir archivos al FileSystem -->
       <div class="card mt-3">
         <div class="card-body">
-          <span class="card-title h5">Subir archivo al FileSystem</span>
+          <span class="card-title h5" style="font-family: 'Calibri Light', sans-serif;">Subir archivo al FileSystem</span>
           <form method="POST" enctype="multipart/form-data" th:action="@{/uploadToFileSystem}">
             <div class="input-group mb-3">
               <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
@@ -43,7 +43,7 @@
       <!-- Tarjeta para subir archivos personales al FileSystem -->
       <div class="card mt-3">
         <div class="card-body">
-          <span class="card-title h5">Subir archivo personal al FileSystem</span>
+          <span class="card-title h5" style="font-family: 'Calibri Light', sans-serif;">Subir archivo personal al FileSystem</span>
           <form method="POST" enctype="multipart/form-data" th:action="@{/uploadUserFileToFileSystem}">
             <div class="input-group mb-3">
               <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
@@ -57,7 +57,7 @@
       <!-- Tarjeta para subir archivos a la Base de Datos -->
       <div class="card mt-3">
         <div class="card-body">
-          <span class="card-title h5">Subir archivo a la base de datos</span>
+          <span class="card-title h5"style="font-family: 'Calibri Light', sans-serif;">Subir archivo a la base de datos</span>
           <form method="POST" enctype="multipart/form-data" th:action="@{/uploadToDatabase}">
             <div class="input-group mb-3">
               <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
@@ -71,7 +71,7 @@
     <!-- Tarjeta para subir archivos a la Base de Datos -->
     <div class="card mt-3">
       <div class="card-body">
-        <span class="card-title h5">Subir archivo personal a la base de datos</span>
+        <span class="card-title h5"style="font-family: 'Calibri Light', sans-serif;">Subir archivo personal a la base de datos</span>
         <form method="POST" enctype="multipart/form-data" th:action="@{/uploadUserFileToDatabase}">
           <div class="input-group mb-3">
             <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
@@ -86,7 +86,7 @@
     <!-- Tarjeta para subir archivos a la Base de Datos -->
     <div class="card mt-3">
       <div class="card-body">
-        <span class="card-title h5">Subir registro de archivo personal a la base de datos pero guardarlo en
+        <span class="card-title h5"style="font-family: 'Calibri Light', sans-serif;" >Subir registro de archivo personal a la base de datos pero guardarlo en
           FileSystem</span>
         <form method="POST" enctype="multipart/form-data" th:action="@{/uploadUserFileToDatabaseStoreInFileSystem}">
           <div class="input-group mb-3">
@@ -99,12 +99,12 @@
 
   </div>
 
-
+<br>
     <!-- Sección para mostrar la lista de archivos en la Base de Datos -->
     <div class="container">
       <div class="card mt-6">
         <div class="card-header">
-          <h5 class="card-title">Archivos disponibles en el filesystem</h5>
+          <h5 class="card-title"style="font-family: 'Calibri Light', sans-serif;" >Archivos disponibles en el filesystem</h5>
         </div>
         <div class="card-body">
           <div th:if="${not #lists.isEmpty(files)}">
@@ -130,16 +130,19 @@
           </div>
           <div th:if="${#lists.isEmpty(files)}" class="alert alert-info" role="alert">
             No hay archivos disponibles
+
           </div>
         </div>
       </div>
     </div>
+  <br>
 
     <!-- Sección para mostrar la lista de archivos en la Base de Datos -->
     <div class="container">
+      <br>
       <div class="card mt-6">
         <div class="card-header">
-          <h5 class="card-title">Archivos disponibles en la base de datos</h5>
+          <h5 class="card-title"style="font-family: 'Calibri Light', sans-serif;" >Archivos disponibles en la base de datos</h5>
         </div>
         <div class="card-body">
           <div th:if="${not #lists.isEmpty(DBfiles)}">
@@ -173,12 +176,12 @@
     </div>
     <!-- Sección para mostrar los archivos personales del usuario -->
 
-
+  <br>
   <!-- Sección para mostrar la lista de archivos personales en la Base de Datos -->
-  <div class="container">
+  <div class="container"style="font-family: 'Calibri Light', sans-serif;" >
     <div class="card mt-6">
       <div class="card-header">
-        <h5 class="card-title">Archivos Personales en la base de datos</h5>
+        <h5 class="card-title"style="font-family: 'Calibri Light', sans-serif;">Archivos Personales en la base de datos</h5>
       </div>
       <div class="card-body">
         <div th:if="${not #lists.isEmpty(dbUserFiles)}">
@@ -216,13 +219,14 @@
 
 
 
-
+  <br>
     <!-- Sección para mostrar la lista de Archivos de usuario en el filesystem -->
     <div class="container">
       <div class="card mt-6">
         <div class="card-header">
-          <h5 class="card-title">Archivos de usuario en el filesystem</h5>
+          <h5 class="card-title"style="font-family: 'Calibri Light', sans-serif;">Archivos de usuario en el filesystem</h5>
         </div>
+
         <div class="card-body">
           <div th:if="${not #lists.isEmpty(userFiles)}">
             <ul class="list-group">
@@ -249,7 +253,10 @@
             No hay archivos disponibles
           </div>
         </div>
+
       </div>
+      <br>
+      <br>
     </div>
   </div>
 </div>
