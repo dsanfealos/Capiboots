@@ -10967,22 +10967,26 @@ header.masthead .bg-circle-4 {
         transform:translateX(-8px)
     }
 }
-tool-tip{
-    position: absolute;
-    z-index:1;
-    pointer-events:none;
-    user-select:none;
-    box-shadow:0 0 10px;
-    padding: .5rem 1rem;
-    font-size: .8rem;
-    border-radius: 8px;
-
-    top:120%;
-    right:80.5%;
-
-    opacity: 0;
-    transition: opacity .3s ease;
+tool-tip {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: 0 0 10px;
+  padding: 0.25rem 1rem; /* Reducir el espacio vertical */
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #ffffff; /* Color de fondo del tooltip */
+  color: #000000; /* Color del texto del tooltip */
+  line-height: 1.2; /* Ajustar la altura de la línea de texto */
+  top: 120%;
+  right: 80.5%;
+  margin-bottom: -30px; /* Ajustar el margen inferior */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
+
+
 :has(> tool-tip){
     position:relative;
 }
