@@ -69,7 +69,7 @@ XXX-Subir archivos (Rocío)(Excepto File)
 -R-HTML+CSS+BOOTSRTAP
 
 -M-Publicación
--K-Test código
--S-Test-Debug
+-K-Test-Debug
+-S-Security
 -R-Publicidad+Redes
 -M-Conclusiones+Implementaciones futuras(aparte)
