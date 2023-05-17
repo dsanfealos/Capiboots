@@ -18,6 +18,12 @@
   <title>Lista de Contenidos</title>
 </head>
 <body>
+<main class="flex-shrink-0">
+
+  <!--Navegación-->
+  <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+
+</main>
 <!--Lista de Contenidos-->
 <div>
   <a class="navbar-brand" th:href="@{/contenido/lista-contenidos}" style="font-size: 38px; color: black; font-weight: bold">

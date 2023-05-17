@@ -2,6 +2,7 @@ package com.example.CapiBoots.controladores;
 
 import com.example.CapiBoots.dto.UsuarioDto;
 import com.example.CapiBoots.modelos.Contenidos;
+import com.example.CapiBoots.modelos.Rol;
 import com.example.CapiBoots.modelos.Usuario;
 import com.example.CapiBoots.servicios.AccesosSrvcImpls;
 import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
@@ -39,6 +40,14 @@ public class UsuarioCtrl {
         Usuario user =  usuSrvc.buscaPorNombre(usuID);
         modelo.addAttribute("usuario",user);
         modelo.addAttribute("userID", usuID);
+        Rol rol = user.getRoles().get(0);
+        if (rol.getId() == 1L){
+            String ad = "hidden";
+            modelo.addAttribute("ad",ad);
+        }else{
+            String ad = "false";
+            modelo.addAttribute("ad",ad);
+        }
         return "/administrarUsuario/ajustes";
     }
 

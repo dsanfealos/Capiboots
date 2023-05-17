@@ -14,13 +14,15 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Estilos personalizados -->
-  <link href="" type="text/css" rel="stylesheet">
+  <link href="/template_menus/css/styles.css" rel="stylesheet" />
 
   <title>Nuevo Logro</title>
 </head>
 <body>
 <div class="container mt-3">
-  <h2> Nuevo logro</h2>
+  <h2 class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00;">Nuevo logro</h2>
+  <br>
+  <br>
   <form th:action="@{/logro/guardar}" th:object="${logro}" method="post">
     <input type ="hidden" th:field="*{id}"/>
     <div class ="form-group">
@@ -51,7 +53,7 @@
                   <input type="text" class="form-control" id="fechaAlta" name = "fechaAlta"  th:field ="*{fechaAlta}" required>
                 </div>-->
 
-    <button type ="submit" class="btn btn-primary">Guardar</button>
+
 
 
 

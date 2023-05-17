@@ -13,13 +13,15 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Estilos personalizados -->
-  <link href="" type="text/css" rel="stylesheet">
+  <link href="/template_menus/css/styles.css" rel="stylesheet" />
 
   <title>Nuevo Pago</title>
 </head>
 <body>
 <div class="container mt-3">
-  <h2> Nueva Paguita</h2>
+  <h2 class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00;">Nueva Paguita</h2>
+  <br>
+  <br>
   <form th:action="@{/pagos/guardar}" th:object="${pagos}" method="post">
     <input type="hidden" th:field="*{id}">
     <div class="form-group">

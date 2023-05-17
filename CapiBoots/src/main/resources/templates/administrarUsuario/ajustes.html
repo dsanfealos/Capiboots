@@ -10,11 +10,13 @@
         <meta name="author" content="" />
         <title>Ajustes - Capiboots</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/template_inicio/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/template_menus/assets/logos/favicon3.png" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/template_home/css/inicio.css" rel="stylesheet" />
+        <link href="/template_menus/css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -26,6 +28,9 @@
         <section>
             <div class="row gx-3 justify-content-center">
                 <div class="col-lg-2">
+                    <br>
+                    <br>
+                    <br>
                     <div>
                         <img src="/template_menus/assets/series/OnePiece.jpg" height="300" alt="No tienes imagen de perfil o no es posible encontrarla."/>
                     </div>
@@ -76,20 +81,42 @@
                                 <div class="col-9">&nbsp;</div>
                                 <div class="col-3">
                                     <br>
-                                    <a class="btn btn-outline-primary" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>
+                                    <a class="btn btn-primary  grow" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>
+
                                 </div>
                             </div>
                         </div>
 
+                    <br>
+                    <a th:href="@{/contenido/lista-contenidos}"><button>Lista de Contenidos</button></a>
+                    <a th:href="@{/lista-usuarios}"><button>Lista de Usuarios</button></a>
 
                 </div>
             </div>
         </section>
+        <footer class="py-5 bg-black">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white small">CAPIBOOTS &copy; 2023</p>
+                <div class="social-links-container text-center">
+                    <a href="https://twitter.com/tu_usuario" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/CapiBoots/CapiBoots" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://instagram.com/tu_usuario" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
 
+                </a>
+            </div>
+            </div>
+        </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="/template_home/js/scripts.js"></script>
+        <script src="/template_menus/js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

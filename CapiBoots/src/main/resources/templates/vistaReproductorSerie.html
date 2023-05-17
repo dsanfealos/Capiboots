@@ -30,8 +30,9 @@
                 <div class="back-button-container">
                     <div class="back-button-container">
                         <div style="text-align: left; margin-left: -120px;">
-                            <button class="big-button"><i class="bi bi-arrow-left"></i></button>
-
+                            <a th:href="@{/temporada/{id}(id=${temp.id})}">
+                                <button class="big-button"><i class="bi bi-arrow-left"></i></button>
+                            </a>
                         </div>
 
                     </div>
@@ -47,9 +48,15 @@
             </div>
 
             <div class="player-controls">
-                <button class="player-control-btn"><i class="bi bi-caret-left"></i></button>
-                <button class="player-control-btn" ><i th:href="@{/contenido/{id}(id=${cont.id})}" class="bi bi-justify"></i></button>
-                <button class="player-control-btn"><i class="bi bi-caret-right"></i></button>
+                <a th:href="@{/reproducir-t/{id}(id=${cont.id} - 1)}">
+                    <button class="player-control-btn"><i class="bi bi-caret-left"></i></button>
+                </a>
+                <a th:href="@{/temporada/{id}(id=${temp.id})}">
+                    <button class="player-control-btn" ><i class="bi bi-justify"></i></button>
+                </a>
+                <a th:href="@{/reproducir-t/{id}(id=${cont.id} + 1)}">
+                    <button class="player-control-btn"><i class="bi bi-caret-right"></i></button>
+                </a>
             </div>
 
 

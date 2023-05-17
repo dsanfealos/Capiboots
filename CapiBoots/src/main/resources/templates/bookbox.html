@@ -10,6 +10,7 @@
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -22,8 +23,11 @@
 
 
         <!-- Header-->
-        <header class="masthead text-center text-white">
-            <div class="masthead-content">
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container px-5">
+
+
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
@@ -64,19 +68,32 @@
                         <div class="col-md-4 d-flex flex-column justify-content-between">
                             <!-- Texto -->
                             <div>
-                                <div class="word-box mb-4">
+                                <h1 class="masthead-heading mb-0">
+                                    <span>B</span>
+                                    <span>O</span>
+                                    <span>O</span>
+                                    <span>K</span>
+                                    <span>B</span>
+                                    <span>O</span>
+                                    <span>X</span>
 
-                                    <h1>BookBox</h1>
+                                </h1>
+
+                                <br>
+
                                 </div>
-                                <h3 class="display-3 mb-4">Novedades:</h3>
-                                <h4 class="display-6 mb-4">Califica tus lecturas y compartelas con tus amigos.</h4>
+                                <h2  style="font-family: 'Calibri Light', sans-serif;">Novedades:</h2>
+                                <h3 style="font-family: 'Calibri Light', sans-serif;">Califica tus lecturas y compartelas con tus amigos.</h3>
                                <!-- <a class="btn btn-primary mb-3 grow" href="#">Categorías</a>-->
-                                <div th:replace="bloques/bloques.html :: categorias" > </div>
-                                <a class="btn btn-primary mt-3 grow" href="#">Todas las novedades</a>
+
+                                <div>
+                                    <button type="button" class="btn btn-primary mb-1 grow" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                        Categorías
+                                    </button>
+                                </div>
+
+                                <a class="btn btn-primary mt-1 grow" href="#">Todas las novedades</a>
                             </div>
-
-
-
 
                         </div>
                     </div>
@@ -89,7 +106,9 @@
             <div class="bg-circle-2 bg-circle"></div>
             <div class="bg-circle-3 bg-circle"></div>
             <div class="bg-circle-4 bg-circle"></div>
+        <br>
         </header>
+    <div th:replace="bloques/bloques.html :: categorias" > </div>
         <!-- Content section 1-->
         <!-- Sección de Seguir Viendo-->
         <section class="py-5">
@@ -113,7 +132,7 @@
                                         <img src="/template_menus/assets/libros/aliciapais.jpg" class="img-fluid" height="200"
                                              width="600" alt="Alicia"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 1</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Alicia en el pais de las maravillas</h5></a>
 
                                         </div>
 
@@ -124,7 +143,7 @@
                                         <img src="/template_menus/assets/libros/DonQuijote.jpg" class="img-fluid" height="350"
                                              width="600" alt="DonQuijote"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 2</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Don Quijote</h5></a>
 
                                         </div>
                                     </div>
@@ -134,7 +153,7 @@
                                         <img src="/template_menus/assets/libros/ElCodigoDaVinci.jpg" class="img-fluid" height="350"
                                              width="600" alt="DaVinci"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 3</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">El Codigo Da Vinci</h5></a>
 
                                         </div>
 
@@ -145,7 +164,7 @@
                                         <img src="/template_menus/assets/libros/ElNombreDelViento.jpg" class="img-fluid" height="350"
                                              width="600" alt="ElNombreDelViento"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 4</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">El nombre del viento</h5></a>
 
                                         </div>
                                     </div>
@@ -155,7 +174,7 @@
                                         <img src="/template_menus/assets/libros/elprincipito.jpg" class="img-fluid" height="350"
                                              width="600" alt="ElPrincipito"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 5</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">El principito</h5></a>
 
                                         </div>
                                     </div>
@@ -165,7 +184,7 @@
                                         <img src="/template_menus/assets/libros/elsenyordelosanillos.jpg" class="img-fluid" height="350"
                                              width="600" alt="ESDLA"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 6</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">El senñor de los anillos</h5></a>
 
                                         </div>
                                     </div>
@@ -180,7 +199,7 @@
                                         <img src="/template_menus/assets/libros/guardiancenteno.jpg" class="img-fluid" height="350"
                                              width="600" alt="GuardianCenteno"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 7</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">El guardian entre el centeno</h5></a>
 
                                         </div>
 
@@ -191,7 +210,7 @@
                                         <img src="/template_menus/assets/libros/HPFilosofal.jpg" class="img-fluid" height="350"
                                              width="600" alt="HP"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 8</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Harry Potter</h5></a>
 
                                         </div>
                                     </div>
@@ -200,7 +219,7 @@
                                     <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
                                         <img src="/template_menus/assets/libros/IT.jpg" class="img-fluid" height="350" width="600" alt="IT"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 9</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">IT</h5></a>
 
                                         </div>
 
@@ -211,7 +230,7 @@
                                         <img src="/template_menus/assets/libros/JuegosDelHambre.jpg" class="img-fluid" height="350"
                                              width="600" alt="JDH"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 10</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Los juegos del hambre</h5></a>
 
                                         </div>
                                     </div>
@@ -220,7 +239,7 @@
                                     <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
                                         <img src="/template_menus/assets/libros/narnia.jpg" class="img-fluid" height="350" width="600" alt="Narnia"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 11</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Las cronicas de Narnia</h5></a>
 
                                         </div>
                                     </div>
@@ -230,7 +249,7 @@
                                         <img src="/template_menus/assets/libros/PilaresDeLaTierra.jpg" class="img-fluid" height="350"
                                              width="600" alt="PilaresTierra"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Libro 12</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Los pilares de la tierra</h5></a>
 
                                         </div>
                                     </div>
@@ -253,9 +272,25 @@
         </section>
         </main>
         <!-- Footer-->
-        <footer class="py-5 bg-black">
-            <div class="container px-5"><p class="m-0 text-center text-white small">Capiboots &copy; 2023</p></div>
-        </footer>
+    <footer class="py-5 bg-black">
+        <div class="container px-5">
+            <p class="m-0 text-center text-white small">CAPIBOOTS &copy; 2023</p>
+            <div class="social-links-container text-center">
+                <a href="https://twitter.com/tu_usuario" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://github.com/CapiBoots/CapiBoots" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://instagram.com/tu_usuario" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+            </a>
+        </div>
+        </div>
+    </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

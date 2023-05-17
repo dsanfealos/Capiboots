@@ -9,6 +9,7 @@
         <link rel="icon" type="image/x-icon" href="/template_menus/assets/logos/favicon3.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
@@ -23,8 +24,9 @@
         <!-- Header-->
         <header class="masthead text-center text-white">
             <div class="masthead-content">
-                <div class="container">
-                    <div class="row">
+                <div class="container px-5">
+
+                <div class="row">
                         <div class="col-md-8">
                             <!-- Carrousel de imágenes -->
                             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -62,30 +64,47 @@
                         <div class="col-md-4 d-flex flex-column justify-content-between">
                             <!-- Texto -->
                             <div>
-                                <div class="word-box mb-4">
+                                <h1 class="masthead-heading mb-0">
+                                    <span>S</span>
+                                    <span>H</span>
+                                    <span>O</span>
+                                    <span>W</span>
+                                    <span>B</span>
+                                    <span>O</span>
+                                    <span>X</span>
 
-                                    <h1>ShowBox</h1>
-                                </div>
-                                <h3 class="display-3 mb-4">Novedades:</h3>
-                                <h4 class="display-6 mb-4">Califica tus series y compartelas con tus amigos.</h4>
-                               <!-- <a class="btn btn-primary mb-3 grow" href="#">Categorías</a>-->
-                                <div th:replace="bloques/bloques.html :: categorias" > </div>
-                                <a class="btn btn-primary mt-3 grow" href="#">Todas las novedades</a>
+                                </h1>
 
-
+                                <br>
 
                             </div>
+                            <h2  style="font-family: 'Calibri Light', sans-serif;">Novedades:</h2>
+                            <h3 style="font-family: 'Calibri Light', sans-serif;">Califica tus series y compartelas con tus amigos.</h3>
+                            <!-- <a class="btn btn-primary mb-3 grow" href="#">Categorías</a>-->
 
+                            <div>
+                                <button type="button" class="btn btn-primary mb-1 grow" data-bs-toggle="modal" data-bs-target="#mimodal1">
+                                    Categorías
+                                </button>
+                            </div>
+
+                            <a class="btn btn-primary mt-1 grow" href="#">Todas las novedades</a>
                         </div>
-                    </div>
+
                 </div>
+                </div>
+            </div>
+
+
 
             </div>
             <div class="bg-circle-1 bg-circle"></div>
             <div class="bg-circle-2 bg-circle"></div>
             <div class="bg-circle-3 bg-circle"></div>
             <div class="bg-circle-4 bg-circle"></div>
+            <br>
         </header>
+        <div th:replace="bloques/bloques.html :: categorias" > </div>
         <!-- Content section 1-->
         <!-- Sección de Seguir Viendo-->
         <section class="py-5">
@@ -108,7 +127,7 @@
                                         <img src="/template_menus/assets/series/ANHQV.jpg" class="img-fluid" height="350"
                                              width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 1</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Aqui no hay quien viva</h5></a>
 
                                         </div>
 
@@ -119,7 +138,7 @@
                                         <img src="/template_menus/assets/series/BRBA.jpg" class="img-fluid" height="350"
                                              width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 2</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Breaking Bad</h5></a>
 
                                         </div>
                                     </div>
@@ -129,7 +148,7 @@
                                         <img src="/template_menus/assets/series/CuentoDeLaCriada.jpg"
                                              class="img-fluid" height="350" width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 3</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">El cuento de la criada</h5></a>
 
                                         </div>
 
@@ -140,7 +159,7 @@
                                         <img src="/template_menus/assets/series/Friends.jpg"
                                              class="img-fluid" height="350" width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 4</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Friends</h5></a>
 
                                         </div>
                                     </div>
@@ -150,7 +169,7 @@
                                         <img src="/template_menus/assets/series/GOT.jpg" class="img-fluid" height="350"
                                              width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 5</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Juego de tronos</h5></a>
 
                                         </div>
                                     </div>
@@ -160,7 +179,7 @@
                                         <img src="/template_menus/assets/series/HIMYM.jpg" class="img-fluid" height="350"
                                              width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 6</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Como conoci a vuestra madre</h5></a>
 
                                         </div>
                                     </div>
@@ -175,7 +194,7 @@
                                         <img src="/template_menus/assets/series/LosSimpsons.jpg"
                                              class="img-fluid" height="350" width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 7</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Los Simpsons</h5></a>
 
                                         </div>
 
@@ -186,7 +205,7 @@
                                         <img src="/template_menus/assets/series/OnePiece.jpg"
                                              class="img-fluid" height="350" width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 8</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">One piece</h5></a>
 
                                         </div>
                                     </div>
@@ -196,7 +215,7 @@
                                         <img src="/template_menus/assets/series/PeakyBlinders.jpg"
                                              class="img-fluid" height="350" width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 9</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Peaky Blinders</h5></a>
 
                                         </div>
 
@@ -207,7 +226,7 @@
                                         <img src="/template_menus/assets/series/SouthPark.jpg"
                                              class="img-fluid" height="350" width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 10</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">South Park</h5></a>
 
                                         </div>
                                     </div>
@@ -217,7 +236,7 @@
                                         <img src="/template_menus/assets/series/StrangerThings.jpg"
                                              class="img-fluid" height="350" width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 11</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Stranger Things</h5></a>
 
                                         </div>
                                     </div>
@@ -227,7 +246,7 @@
                                         <img src="/template_menus/assets/series/TheOffice.jpg"
                                              class="img-fluid" height="350" width="600"/>
                                         <div class="card-body p-4 mx-auto">
-                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Serie 12</h5></a>
+                                            <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">The Office</h5></a>
 
                                         </div>
                                     </div>
@@ -248,10 +267,27 @@
                 </div>
             </div>
         </section>
+        </section>
         </main>
         <!-- Footer-->
         <footer class="py-5 bg-black">
-            <div class="container px-5"><p class="m-0 text-center text-white small">Capiboots &copy; 2023</p></div>
+            <div class="container px-5">
+                <p class="m-0 text-center text-white small">CAPIBOOTS &copy; 2023</p>
+                <div class="social-links-container text-center">
+                    <a href="https://twitter.com/tu_usuario" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/CapiBoots/CapiBoots" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://instagram.com/tu_usuario" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+
+                </a>
+            </div>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

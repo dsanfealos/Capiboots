@@ -91,6 +91,15 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
         return contenidoRepo.findAll();
     }
 
+//    public List<Contenidos> buscaCap (Long idserie){
+//        List<Long> lista = new ArrayList<>();
+//        if (idserie != null) {
+//            lista = contenidoRepo.buscarPorCat(idserie);
+//            return lista;
+//        }
+//        return contenidoRepo.findAll();
+//    }
+
    //Pendientes
     //TODO: Introducir String en direccion href
     public Optional<Long> pendientes (Long id){
