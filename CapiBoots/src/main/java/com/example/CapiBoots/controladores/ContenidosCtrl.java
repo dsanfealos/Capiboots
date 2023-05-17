@@ -1,13 +1,8 @@
 package com.example.CapiBoots.controladores;
 
-import com.example.CapiBoots.modelos.Accesos;
-import com.example.CapiBoots.modelos.Contenidos;
-import com.example.CapiBoots.modelos.Series;
-import com.example.CapiBoots.modelos.Usuario;
-import com.example.CapiBoots.servicios.AccesosSrvcImpls;
-import com.example.CapiBoots.servicios.ContenidosSrvcImpls;
-import com.example.CapiBoots.servicios.SeriesSrvcImpls;
-import com.example.CapiBoots.servicios.UsuarioSrvcImpls;
+import com.example.CapiBoots.modelos.*;
+import com.example.CapiBoots.repositorios.ContenidosRepositorio;
+import com.example.CapiBoots.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -29,7 +24,13 @@ public class ContenidosCtrl {
     private ContenidosSrvcImpls contenidosSrvc;
 
     @Autowired
+    private ContenidosRepositorio contenidosRepo;
+
+    @Autowired
     private SeriesSrvcImpls serieSrvc;
+
+    @Autowired
+    private TemporadaSrvcImpls tempoSrvc;
 
     @Autowired
     private AccesosSrvcImpls accessSrvc;
@@ -171,6 +172,7 @@ public class ContenidosCtrl {
 
     @PostMapping("/contenido/guardar")
     public String guardarContenido(Contenidos contenido) {
+
         contenidosSrvc.guardar(contenido);
         return "redirect:/contenido/lista-contenidos";
     }
@@ -217,15 +219,16 @@ public class ContenidosCtrl {
         return "vistaReproductorPeliculas";
     }
 
-    @GetMapping("/reproducir-s/{id}")
+    @GetMapping("/reproducir-t/{id}")
     public String reproducirSeries(@PathVariable Long id, Model modelo) {
-        Optional<Series> seri = serieSrvc.buscaId(id);
+        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
 
-        if (seri.isPresent()){
-            Series seri1 = seri.get();
-            modelo.addAttribute("serie", seri1);
+        if (cont.isPresent()){
+            Contenidos cont1 = cont.get();
+            Temporada temp1 = cont1.getIdtemporada();
+            modelo.addAttribute("temp", temp1);
+            modelo.addAttribute("cont", cont1);
         }
-        modelo.addAttribute("serie", id);
         return "vistaReproductorSerie";
     }
 
@@ -253,7 +256,6 @@ public class ContenidosCtrl {
 
         return "contenido";
     }
-
     @GetMapping("/serie/{id}")
     public String contPpalSerie (@PathVariable Long id, Model modelo){
         Optional<Series> seri = serieSrvc.buscaId(id);
@@ -264,6 +266,30 @@ public class ContenidosCtrl {
         }
         modelo.addAttribute("series", id);
 
+        List<Temporada> listTempo = tempoSrvc.listaTempoPorSerie(id);
+        modelo.addAttribute("listaTempo", listTempo);
+
+//        List<Contenidos> listCon = contenidosRepo.findByIdtemporada(listTempo.);
+
+
         return "contenido-serie";
+    }
+
+    @GetMapping("/temporada/{id}")
+    public String contPpalSerieTempo (@PathVariable Long id, Model modelo){
+        Optional<Temporada> temp = tempoSrvc.buscaId(id);
+
+        if (temp.isPresent()){
+            Temporada temp1 = temp.get();
+            Series seri1 = temp1.getSerie();
+            modelo.addAttribute("temp", temp1);
+            modelo.addAttribute("seri", seri1);
+            List<Contenidos> listCon = contenidosRepo.findByIdtemporada(temp1);
+            modelo.addAttribute("listCon", listCon);
+        }
+        modelo.addAttribute("temporadaid", id);
+
+
+        return "contenido-serie-temporada";
     }
 }

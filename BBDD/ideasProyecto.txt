@@ -71,3 +71,6 @@ Para colocar en internet usar capa gratuita aws
 --------------------------------------------
 -Confluence o hacer power point normal
 -Estructura Tests Ejemplo
+------------------------------
+-Asignar categorías en nuevo-contenido
+-Visualizar Pdf/epub

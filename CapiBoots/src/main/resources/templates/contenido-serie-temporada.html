@@ -43,14 +43,14 @@
 <!--                        <h1 class="header-movie-title">Breaking Bad</h1>-->
                     </div>
                     <div class="header-movie-details col-3">
-                        <div class="btn-group" >
+                        <div class="btn-group">
                             <button type="button" class="btn btn-secondary btn-lg rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Temporadas
                             </button>
-                            <div class="dropdown-menu" >
-                                <div th:each="temporada : ${listaTempo}">
-                                    <a class="dropdown-item" th:href="@{/temporada/{id}(id=${temporada.id})}" th:text="${temporada.nombre}"></a>
-                                </div>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Temporada 1</a>
+                                <a class="dropdown-item" href="#">Temporada 2</a>
+                                <a class="dropdown-item" href="#">Temporada 3</a>
                             </div>
                         </div>
                     </div>
@@ -58,6 +58,7 @@
             </div>
         </div>
     </header>
+
 
     <!-- Content section 1-->
         <section id="scroll">
@@ -71,6 +72,33 @@
 <!--                            <p>Breaking Bad es una serie de televisión estadounidense creada y producida por Vince Gilligan. La trama gira en torno a Walter White, un profesor de química de secundaria que descubre que tiene cáncer de pulmón y decide fabricar metanfetamina para asegurar el futuro económico de su familia. La serie se desarrolla en Albuquerque, Nuevo México.</p>-->
 
                             <!--Capítulos-->
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>Título</th>
+                                    <th>&nbsp;</th>
+                                    <!--<th>Fecha Alta</th>-->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="capitulo :${listCon}" style="background-color: #4d5154">
+                                    <th>
+                                        <img th:src="${capitulo.imagenLogo}" height="70px" width="110px" alt="No se encuentra la imagen">
+                                    </th>
+
+                                    <td th:text="${capitulo.nombre}" style="padding-top: 25px; color: white"></td>
+                                    <td>
+                                        <a th:href="@{/reproducir-t/{id}(id=${capitulo.id})}">
+                                            <button type="button" class="btn btn-primary btn-lg rounded-pill" style="margin-top: 0px; margin-left: 300px">Reproducir</button>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>

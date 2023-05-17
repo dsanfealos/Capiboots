@@ -48,7 +48,7 @@ public class SecurityConfig {
                         .requestMatchers("*css", "*js").permitAll()
                         .requestMatchers("/registro/**", "/register/**","/forgot_password" ,"/reset_password","/signup", "/error", "/login", "/login/**").permitAll()
                         .requestMatchers("/template_menus/**", "/template_inicio/**", "/template_home/**", "/videos/**").permitAll()
-                        .requestMatchers("/reproducir/**").permitAll()
+                        .requestMatchers("/reproducir/**","/uploads/**","/files/**").permitAll()
                         .requestMatchers("/empieza/**").permitAll()
                         .requestMatchers("/termina/**").permitAll()
                         //Peticiones asociadas a las notificaciones y conexiones websocket
@@ -61,8 +61,8 @@ public class SecurityConfig {
                         // Peticiones permitidas sólo para usuarios autenticados
                         .requestMatchers("/chat","/videos","/favoritos" ,"/moviebox","/files/**","/upload","/userFiles/**","/databasefiles/**").authenticated()
                         .requestMatchers("/showbox","/bookbox", "/home", "/favoritos","/ajustes","/logros","/suscripcion","/forms/**","/busqueda", "/gestion", "/gestion/**","/busqueda/**" ).authenticated()
-                        .requestMatchers("/uploadUserFileToDatabase","/uploadUserFileToFileSystem","/uploadToFileSystem","/uploadToDatabase").authenticated()
-                        .requestMatchers("/ajustes/**","/contenido/**","/serie/**","/lista-pendientes/**","/acceso/**","/reproducir-l/**","/reproducir-s/**" ).authenticated()
+                        .requestMatchers("/uploadUserFileToDatabase","/uploadUserFileToFileSystem","/uploadToFileSystem","/uploadToDatabase","/temporada/**").authenticated()
+                        .requestMatchers("/ajustes/**","/contenido/**","/serie/**","/lista-pendientes/**","/acceso/**","/reproducir-l/**","/reproducir-t/**" ).authenticated()
 
 
 

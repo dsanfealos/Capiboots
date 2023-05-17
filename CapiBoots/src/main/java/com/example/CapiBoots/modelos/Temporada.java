@@ -18,7 +18,7 @@ public class Temporada {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
 
     @Column(name = "nombre")
     private String nombre;
