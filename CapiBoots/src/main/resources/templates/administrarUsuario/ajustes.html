@@ -82,8 +82,8 @@
                         </div>
 
                     <br>
-                    <a th:href="@{/contenido/lista-contenidos}"><button>Lista de Contenidos</button></a>
-                    <a th:href="@{/lista-usuarios}"><button>Lista de Usuarios</button></a>
+                    <a th:href="@{/contenido/lista-contenidos}" th:hidden="${ad}"><button>Lista de Contenidos</button></a>
+                    <a th:href="@{/lista-usuarios}" th:hidden="${ad}"><button>Lista de Usuarios</button></a>
 
                 </div>
             </div>

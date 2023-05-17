@@ -143,12 +143,10 @@ public class ContenidosCtrl {
     //Filtro de Categorias
     @GetMapping("/busqueda/categoria")
     public String filtroCat(@Param("keyword") String keyword, Model modelo) {
-
         List<Contenidos> buscacont = contenidosSrvc.filtroCategoria(keyword);
         modelo.addAttribute("listaContenidos", buscacont);
         return "busqueda";
     }
-
 
     //Lista de contenidos
     @GetMapping("/contenido/lista-contenidos")
@@ -160,19 +158,14 @@ public class ContenidosCtrl {
 
     //Crear, guardar, borrar y editar
     @GetMapping("/contenido/nuevo-contenido")
-    public String crearContenido(Model modelo) throws InterruptedException {
-        //Creamos contenido base
+    public String crearContenido(Model modelo){
         Contenidos cont = new Contenidos();
-        //Creamos otro contenido para darle novedades como activo
-
-        //Usamos un cont con novedades activo para crear contenido
         modelo.addAttribute("contenido", cont);
         return "/forms/nuevo-contenido";
     }
 
     @PostMapping("/contenido/guardar")
     public String guardarContenido(Contenidos contenido) {
-
         contenidosSrvc.guardar(contenido);
         return "redirect:/contenido/lista-contenidos";
     }
