@@ -12,14 +12,28 @@
 	<link rel="stylesheet" href="/template_menus/css/styles.css">
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	  <link rel="icon" type="image/x-icon" href="/template_menus/assets/logos/favicon3.png" />
+	  <!-- Font Awesome icons (free version)-->
+	  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+	  <!-- Google fonts-->
+	  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+	  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+	  <!-- Core theme CSS (includes Bootstrap)-->
+
 
   </head>
-  <body>
+  <body id="page-top">
 
+
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+  <div class="bg-circle-4 bg-circle"></div>
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
 	  <div class="container px-5">
-		  <a class="navbar-brand" href="/inicio" style="margin-left: 0px; margin-right: 30px;">Capiboots</a>
+		  <!-- <a class="navbar-brand" href="/inicio" style="margin-left: 0px; margin-right: 30px;">Capiboots</a>-->
+		  <a class="navbar-brand" href="#page-top" style="margin-left: -120px;">CAPIBOOTS</a>
 
 		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon"></span>
@@ -34,10 +48,10 @@
 					  <a class="nav-link" href="#!"></a>
 
 				  <li class="nav-item ml-4">
-				  	<a class="nav-link" href="#!">
-						<i class="fas fa-question-circle fa-lg"></i>
-					</a>
-			  </li>
+					  <a class="nav-link" href="#!">
+						  <i class="fas fa-question-circle fa-lg"></i>
+					  </a>
+				  </li>
 			  </ul>
 		  </div>
 	  </div>
@@ -47,13 +61,20 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Acceso a Capiboots</h2>
+					<br>
+					<h2 class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00;">Acceso a Capiboots</h2>
+
+
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-md-9 col-lg-7">
+				<div class="col-md-7">
 					<div class="card">
-						<div class="login-wrap p-4 p-md-5">
+						<div class="icon d-flex align-items-center justify-content-center" style="margin-top: -20px;">
+							<!-- Contenido de <div class="icon"> -->
+						</div>
+
+						<div class="login-wrap p-3 p-md-5">
 						<!--<div th:if="${param.error}">
 							<div class="alert alert-danger">Invalid Email or Password</div>
 						</div>-->
@@ -62,14 +83,14 @@
 						</div>
 
 						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="fa fa-user-o"></span>
+							<br>
 						</div>
-						<h3 class="text-center mb-4">Inicia sesión en tu cuenta</h3>
+						<h3 class="text-center mb-4"  style="font-family: Calibri Light;">Inicia sesión en tu cuenta</h3>
 						<br>
 						<div style="width: 400px" class="mx-auto">
 							<form th:action="@{/login}" class="form" th:method="post">
 								<div class="form-group">
-									<label for="username" class="control-label">Nombre de Usuario:</label>
+									<label for="username" class="control-label" style="margin-bottom: 25px;">Nombre de Usuario:</label>
 									<br>
 									<!--Escribimos "username" en el id y name para que SecurityConfig lo reconozca-->
 									<input type="text" id="username" name="username" class="form-control rounded-left" placeholder="..." required>
@@ -85,40 +106,50 @@
 										<input type="password" id="password" name="password" class="form-control rounded-left" placeholder="..." required>
 									</div>
 								</div>
+
 								<br>
-								<!--<div class="form-group d-md-flex">
-									<div class="w-50">
-										<label class="checkbox-wrap checkbox-primary">Remember Me
-											<input type="checkbox" checked>
-											<span class="checkmark"></span>
-										</label>
-									</div>
-									<br>
-								</div>-->
-								<div class="form-group">
-									<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Iniciar Sesión</button>
-									&nbsp;&nbsp;
 
-									<!--	<button><a th:href="@{/register}">Registrarse</a></button>-->
-
-										<!--<button type="submit" class="btn btn-primary rounded submit p-3 px-5"><a th:href="@{/register}">Registrarse</a></button>-->
-
-  								<a th:href="@{/register}" class="btn btn-primary rounded submit p-3 px-5">Registrarse</a>
-
-
-
-
+								<div class="form-group d-flex flex-column align-items-center">
+									<button type="submit" class="btn btn-primary grow">Iniciar Sesión</button>
+									<a th:href="@{/register}" class="btn btn-primary grow mt-2">Registrarse</a>
 								</div>
-								<a th:href="@{/forgot_password}">He olvidado mi contraseña</a>
-							</form>
+
+								<div class="text-center mt-3">
+									<a th:href="@{/forgot_password}">He olvidado mi contraseña</a>
+								</div>
+
+								<div class="icon d-flex align-items-center justify-content-center mt-3">
+									<!-- Icono u otro contenido -->
+								</div>
+
+
 						</div>
-						<br>
-					</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	  <br><br>
   </section>
+  <!-- Footer-->
+  <footer class="py-5 bg-black">
+	  <div class="container px-5">
+		  <p class="m-0 text-center text-white small">CAPIBOOTS &copy; 2023</p>
+		  <div class="social-links-container text-center">
+			  <a href="https://twitter.com/tu_usuario" class="social-link">
+				  <i class="fab fa-twitter"></i>
+			  </a>
+			  <a href="https://github.com/CapiBoots/CapiBoots" class="social-link">
+				  <i class="fab fa-github"></i>
+			  </a>
+			  <a href="https://instagram.com/tu_usuario" class="social-link">
+				  <i class="fab fa-instagram"></i>
+			  </a>
+		  </div>
+
+		  </a>
+	  </div>
+	  </div>
+  </footer>
   <script src="/template_menus/js/scripts.js"></script>
   </body>
 </html>
