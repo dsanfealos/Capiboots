@@ -14,50 +14,70 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Estilos personalizados -->
-  <link href="" type="text/css" rel="stylesheet">
+  <link href="/template_menus/css/styles.css" rel="stylesheet" />
 
   <title>Nuevo contenido</title>
 </head>
 <body>
 
-<div class="container mt-3">
-  <h2> Subir archivos al contenido</h2>
-    <!-- Subir contenido -->
-    <div class="form-group">
-      <span class="card-title h5">Subir contenido al FileSystem</span>
+<div class="container mt-3 d-flex flex-column align-items-start text-left">
+  <h2 class="heading-section" style="font-family: Calibri Light; margin-bottom: -25px; color: #ff6a00;">Subir archivos al contenido</h2>
+
+  <br>
+  <br>
+  <!-- Subir contenido -->
+  <div class="form-group">
+    <div class="form-group upload-container">
+      <span style="font-family: Calibri Light;" class="card-title h5">Subir contenido al FileSystem</span>
+
       <form method="POST" enctype="multipart/form-data" th:action="@{/contenido/nuevo-contenido/uploadToFileSystem/{id}(id=${contenido.id})}">
         <div class="input-group mb-3">
           <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
         </div>
-        <button type="submit" class="btn btn-primary">Subir</button>
+        <button type="submit" class="btn btn-primary mt-1">Subir</button>
       </form>
     </div>
-    <!-- Subir imagen fondo -->
-    <div class="form-group">
-      <span class="card-title h5">Subir imagen fondo al FileSystem</span>
-      <form method="POST" enctype="multipart/form-data" th:action="@{/contenido/nuevo-contenido/subir-fondo/{id}(id=${contenido.id})}">
-        <div class="input-group mb-3">
-          <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-        </div>
-        <button type="submit" class="btn btn-primary">Subir</button>
-      </form>
-    </div>
-    <!-- Subir imagen logo -->
-    <div class="form-group">
-      <span class="card-title h5">Subir imagen logo al FileSystem</span>
-      <form method="POST" enctype="multipart/form-data" th:action="@{/contenido/nuevo-contenido/subir-logo/{id}(id=${contenido.id})}">
-        <div class="input-group mb-3">
-          <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-        </div>
-        <button type="submit" class="btn btn-primary">Subir</button>
-      </form>
-    </div>
-  <a class="btn btn-success" th:href="@{/contenido/lista-contenidos}">Volver a la Lista</a>
 
-    <!--<div class ="form-group">
-      <label for="fechaAlta">Fecha de alta</label>
-      <input type="text" class="form-control" id="fechaAlta" name = "fechaAlta"  th:field ="*{fechaAlta}" required>
-    </div>-->
+
+    <!-- Subir imagen fondo -->
+  <div class="form-group">
+    <br>
+    <br>
+    <span style="font-family: Calibri Light;" class="card-title h5">Subir imagen fondo al FileSystem</span>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/contenido/nuevo-contenido/subir-fondo/{id}(id=${contenido.id})}">
+      <div class="input-group mb-3">
+        <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+      </div>
+      <button type="submit" class="btn btn-primary mt-1">Subir</button>
+    </form>
+  </div>
+
+  <!-- Subir imagen logo -->
+  <div class="form-group">
+    <br>
+    <br>
+    <span style="font-family: Calibri Light;" class="card-title h5">Subir imagen logo al FileSystem</span>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/contenido/nuevo-contenido/subir-logo/{id}(id=${contenido.id})}">
+      <div class="input-group mb-3">
+        <input name="file" type="file" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+      </div>
+      <button type="submit" class="btn btn-primary mt-1">Subir</button>
+    </form>
+  </div>
+
+  <br>
+  <br>
+
+  <a class="btn btn-success mt-1" th:href="@{/contenido/lista-contenidos}">Volver a la Lista</a>
+  <br>
+  <br>
+</div>
+
+
+<!--<div class ="form-group">
+  <label for="fechaAlta">Fecha de alta</label>
+  <input type="text" class="form-control" id="fechaAlta" name = "fechaAlta"  th:field ="*{fechaAlta}" required>
+</div>-->
 
 
 </div>

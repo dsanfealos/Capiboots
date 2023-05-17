@@ -11501,3 +11501,6 @@ button {
   animation-delay: 0.4s;
 }
 
+.upload-container {
+  width: 1050px; /* Ajusta el valor según tus necesidades */
+}
