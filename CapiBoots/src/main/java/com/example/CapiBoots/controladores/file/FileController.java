@@ -13,6 +13,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Optional;
 
@@ -122,16 +124,18 @@ public class FileController {
      */
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) throws IOException {
         //       Cargamos el archivo como un recurso a través del servicio de almacenamiento predeterminado.
         Resource file = fileSystemStorageService.loadAsResource(filename);
+        // Obtenermos el tipo del archivo para la var MIMETYPE
+        String mime = Files.probeContentType(file.getFile().toPath());
+
 
         //       Construimos una respuesta HTTP con el archivo a descargar en el cuerpo de la respuesta.
         //       También establecemos el encabezado "Content-Disposition" con el nombre de archivo para indicar que se debe descargar.
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,"inline; filename=\"" + file.getFilename() + "\"").contentType(MediaType.valueOf(mime)).body(file);
     }
+
 
 
     /**

@@ -59,7 +59,7 @@ public class SecurityConfig {
                         .requestMatchers("/usuario/**").hasRole("ADMIN")
 
                         // Peticiones permitidas sólo para usuarios autenticados
-                        .requestMatchers("/chat","/videos","/favoritos" ,"/moviebox","/files/**","/upload","/userFiles/**","/databasefiles/**").authenticated()
+                        .requestMatchers("/chat","/videos","/favoritos" ,"/moviebox","/upload","/userFiles/**","/databasefiles/**").authenticated()
                         .requestMatchers("/showbox","/bookbox", "/home", "/favoritos","/ajustes","/logros","/suscripcion","/forms/**","/busqueda", "/gestion", "/gestion/**","/busqueda/**" ).authenticated()
                         .requestMatchers("/uploadUserFileToDatabase","/uploadUserFileToFileSystem","/uploadToFileSystem","/uploadToDatabase","/temporada/**").authenticated()
                         .requestMatchers("/ajustes/**","/contenido/**","/serie/**","/lista-pendientes/**","/acceso/**","/reproducir-l/**","/reproducir-t/**" ).authenticated()

@@ -4,6 +4,7 @@ import com.example.CapiBoots.modelos.*;
 import com.example.CapiBoots.repositorios.ContenidosRepositorio;
 import com.example.CapiBoots.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -201,13 +205,17 @@ public class ContenidosCtrl {
     }
 
     @GetMapping("/reproducir/{id}")
-    public String reproducir(@PathVariable Long id, Model modelo) {
+    public String reproducir(@PathVariable Long id, Model modelo) throws IOException {
         Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
 
         if (cont.isPresent()){
             Contenidos cont1 = cont.get();
+
             modelo.addAttribute("cont", cont1);
         }
+
+        String  mime =  Files.probeContentType(new File(cont.get().getRutaVideo()).toPath());
+        modelo.addAttribute("mime", mime);
         modelo.addAttribute("contenido", id);
         return "vistaReproductorPeliculas";
     }
