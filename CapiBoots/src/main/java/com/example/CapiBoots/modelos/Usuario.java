@@ -73,12 +73,6 @@ public class Usuario {
     @Column(name = "soporte", columnDefinition = "VARCHAR(225)")
     private String soporte;
 
-    @ManyToMany // Many to Many entre Usuarios y Logros
-    @JoinTable(
-            name = "usuarios_logros",
-            joinColumns = @JoinColumn(name = "id_usuario"),
-            inverseJoinColumns = @JoinColumn(name = "id_logro"))
-    private List<Logro> logros;
 
     @ManyToMany // Many to Many entre Usuarios y Logros
     @JoinTable(
@@ -106,8 +100,6 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Accesos> accesos;
 
-    @OneToMany(mappedBy = "idPagador", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Pagos> pagos;
 
 
 }
