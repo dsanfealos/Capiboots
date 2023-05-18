@@ -41,11 +41,11 @@ public class UsuarioCtrl {
         modelo.addAttribute("usuario",user);
         modelo.addAttribute("userID", usuID);
         Rol rol = user.getRoles().get(0);
-        if (rol.getId() == 1L){
-            String ad = "hidden";
+        if (rol.getId() == 2L){
+            String ad = "false";
             modelo.addAttribute("ad",ad);
         }else{
-            String ad = "false";
+            String ad = "hidden";
             modelo.addAttribute("ad",ad);
         }
         return "/administrarUsuario/ajustes";

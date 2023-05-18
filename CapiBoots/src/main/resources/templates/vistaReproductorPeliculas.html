@@ -41,10 +41,18 @@
 
                 <p></p>
 
-                <video width="1000px" controls>
-                    <source th:src="${cont.rutaVideo}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <div th:if="${mime == 'video/mp4'}">
+                    <video width="1000px" controls>
+                        <source th:src="${cont.rutaVideo}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div th:unless="${mime == 'video/mp4'}">
+                    <a th:href="${cont.rutaVideo}">Click Aquí</a>
+                </div>
+
+
             </div>
 
 
