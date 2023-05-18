@@ -41,6 +41,12 @@
       <label for="idtemporada">idTemporada:</label>
       <input type="text" class="form-control" id="idtemporada" name="idtemporada" th:field="*{idtemporada}">
     </div>
+    <div>
+      <label for="categoria">Categorías:</label>
+      <select multiple type="text" class="form-control" id="categoria" name="categoria" th:field="*{categorias}">
+        <option th:each="cat : ${listacategorias}" th:value="${cat.getId()}" th:text="${cat.getNombre()}"></option>
+      </select>
+    </div>
 <!--    <div class="form-group">-->
 <!--      <label for="tipo">Tipo de contenido:</label>-->
 <!--      <select type="text" class="form-control" id="tipo" name="tipo" th:field="*{tipo}">-->

@@ -42,6 +42,8 @@ public class ContenidosCtrl {
     @Autowired
     private UsuarioSrvcImpls usuSrvc;
 
+    @Autowired
+    private CategoriasSrvcImpls catSrvc;
     @GetMapping("/guardarContenido")
     public String guardarContenido(Model modelo) {
         modelo.addAttribute("guardarContenidos", contenidosSrvc.guardarContenido());
@@ -165,6 +167,8 @@ public class ContenidosCtrl {
     public String crearContenido(Model modelo){
         Contenidos cont = new Contenidos();
         modelo.addAttribute("contenido", cont);
+        List<Categorias> listacat = catSrvc.listaCat();
+        modelo.addAttribute("listacategorias",listacat);
         return "/forms/nuevo-contenido";
     }
 
@@ -188,6 +192,8 @@ public class ContenidosCtrl {
         } else {
             return "error";
         }
+        List<Categorias> listacat = catSrvc.listaCat();
+        modelo.addAttribute("listacategorias",listacat);
         return "forms/nuevo-contenido";
     }
 
@@ -287,8 +293,11 @@ public class ContenidosCtrl {
             modelo.addAttribute("seri", seri1);
             List<Contenidos> listCon = contenidosRepo.findByIdtemporada(temp1);
             modelo.addAttribute("listCon", listCon);
+            List<Temporada> listTempo = tempoSrvc.listaTempoPorSerie(temp1.getSerie().getId());
+            modelo.addAttribute("listaTempo", listTempo);
         }
         modelo.addAttribute("temporadaid", id);
+
 
 
         return "contenido-serie-temporada";
