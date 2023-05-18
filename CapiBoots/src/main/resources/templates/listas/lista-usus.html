@@ -19,8 +19,14 @@
 </head>
 <body>
 <div>
+  <header class="bg-black">
+    <main class="flex-shrink-0">
 
-  <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+      <!--Navegación-->
+      <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+      <br><br><br>
+    </main>
+  </header>
   <br>
 
   <a class="navbar-brand" th:href="@{/lista-usuarios}" style="font-size: 38px; color: black; font-weight: bold">
