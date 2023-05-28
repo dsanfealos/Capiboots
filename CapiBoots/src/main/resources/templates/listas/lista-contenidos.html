@@ -13,7 +13,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Estilos personalizados -->
-  <link href="" type="text/css" rel="stylesheet">
+  <link href="/files/css/styles.css" type="text/css" rel="stylesheet">
 
   <title>Lista de Contenidos</title>
 </head>
@@ -54,7 +54,7 @@
       <td>
         <!--Editar y Borrar-->
         <!--En href escribimos el link del metodo del controlador que queremos que se ejecute-->
-        <a class="btn btn-primary" th:href="@{/contenido/editar/{id}(id=${contenido.id})}" >Editar</a>
+        <a class="btn btn-dark" th:href="@{/contenido/editar/{id}(id=${contenido.id})}" >Editar</a>
         <!---Subir Archivo-->
         <a class="btn btn-success" th:href="@{/contenido/nuevo-contenido/subir-archivo/{id}(id=${contenido.id})}" >Subir Archivo</a>
         <a onclick="return confirm('¿Estás seguro de que quieres borrar el contenido?')"

@@ -44,7 +44,7 @@ public class SecurityConfig {
 
                         // Peticiones permitidas para todos los usuarios
                         .requestMatchers("/inicio","/","").permitAll()
-                        .requestMatchers("/webjars/**", "/js/**","/css/**","/img/**","/fonts/**","/favicon.ico").permitAll()
+                        .requestMatchers("/webjars/**", "/static/files/js/**", "/static/files/css/**","/img/**","/fonts/**","/favicon.ico").permitAll()
                         .requestMatchers("*css", "*js").permitAll()
                         .requestMatchers("/registro/**", "/register/**","/forgot_password" ,"/reset_password","/signup", "/error", "/login", "/login/**").permitAll()
                         .requestMatchers("/template_menus/**", "/template_inicio/**", "/template_home/**", "/videos/**").permitAll()
