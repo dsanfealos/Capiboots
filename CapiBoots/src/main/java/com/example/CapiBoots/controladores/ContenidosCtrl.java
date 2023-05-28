@@ -4,20 +4,17 @@ import com.example.CapiBoots.modelos.*;
 import com.example.CapiBoots.repositorios.ContenidosRepositorio;
 import com.example.CapiBoots.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,7 +68,7 @@ public class ContenidosCtrl {
     @GetMapping("/showbox")
     public String Showbox(Model modelo) {
         modelo.addAttribute("titulo", "Showbox");
-        return "Showbox";
+        return "showbox";
     }
 
     @GetMapping("/bookbox")
