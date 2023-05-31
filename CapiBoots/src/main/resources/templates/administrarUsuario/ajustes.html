@@ -3,124 +3,122 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layout}">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Ajustes - Capiboots</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/files/assets/logos/favicon3.png" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+<head>
+    <th:block th:include="bloques/bloques.html :: head">
+    </th:block>
+    <title>Ajustes</title>
+</head>
 
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/files/css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+<body>
+<!-- Responsive navbar-->
+<nav th:replace="bloques/bloques.html :: navegacion"></nav>
 
-        <!-- Sección de datos de Usuario-->
+<!-- Sección de datos de Usuario-->
 
-        <br><br><br>
-        <section>
-            <div class="row gx-3 justify-content-center">
-                <div class="col-lg-2">
-                    <br>
-                    <br>
-                    <br>
-                    <div>
-                        <img src="/files/assets/series/OnePiece.jpg" height="300" alt="No tienes imagen de perfil o no es posible encontrarla."/>
+<br><br><br>
+<section>
+    <div class="row gx-3 justify-content-center">
+        <div class="col-lg-2">
+            <br>
+            <br>
+            <br>
+            <div>
+                <img src="/files/assets/series/OnePiece.jpg" height="300"
+                     alt="No tienes imagen de perfil o no es posible encontrarla."/>
+            </div>
+        </div>
+        <div class="col-lg-6 m-5">
+
+            <!--Nombre-->
+            <div class="form-group col-3">
+                <label>Nombre de Usuario: </label>
+                <input type="text" class="form-control" id="nombre" th:placeholder="${usuario.nombreUsuario}"
+                       disabled="disabled">
+                Roles: <br>
+                <div class="card">
+                    <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+                </div>
+            </div>
+
+            <!--Correo-->
+            <div class="col-5">
+                <label for="inputCorreo">Correo:</label>
+                <input type="text" class="form-control" id="inputCorreo" th:placeholder="${usuario.correo}"
+                       disabled="disabled">
+            </div>
+
+            <!--Género-->
+            <div class="form-group col-3">
+                <label>Género</label>
+
+                <div class="card">
+                    <input type="text" id="generoInput" name="generoInput" class="form-control" disabled="disabled"
+                           th:placeholder="${usuario.genero == 0 ? 'Hombre' : usuario.genero == 1 ? 'Mujer' : usuario.genero == 2 ? 'Otro' : 'NA'}"/>
+                </div>
+                <!--                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">-->
+            </div>
+
+            <!--Edad-->
+            <div class="form-group col-1">
+                <label for="edad">Edad</label>
+                <input type="text" class="form-control" id="edad" th:placeholder="${usuario.edad}" disabled="disabled">
+            </div>
+
+            <!--País-->
+            <div class="form-group col-2">
+                <label for="pais">País</label>
+                <input type="text" class="form-control" id="pais" th:placeholder="${usuario.pais}" disabled="disabled">
+            </div>
+
+            <div class="form-group col-md-5">
+                <div class="row">
+                    <div class="col-9">&nbsp;</div>
+                    <div class="col-3">
+                        <br>
+                        <a class="btn btn-primary  grow" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>
+
                     </div>
                 </div>
-                <div class="col-lg-6 m-5">
-
-                        <!--Nombre-->
-                        <div class="form-group col-3">
-                            <label>Nombre de Usuario: </label>
-                            <input type="text" class="form-control" id="nombre" th:placeholder="${usuario.nombreUsuario}" disabled="disabled">
-                            Roles: <br>
-                            <div class="card">
-                                <span sec:authentication ="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
-                            </div>
-                        </div>
-
-                        <!--Correo-->
-                        <div class="col-5">
-                            <label for="inputCorreo">Correo:</label>
-                            <input type="text" class="form-control" id="inputCorreo" th:placeholder="${usuario.correo}" disabled="disabled">
-                        </div>
-
-                        <!--Género-->
-                        <div class="form-group col-3">
-                            <label>Género</label>
-
-                            <div class="card">
-                                <input type="text" id="generoInput" name="generoInput" class="form-control" disabled="disabled"
-                                       th:placeholder="${usuario.genero == 0 ? 'Hombre' : usuario.genero == 1 ? 'Mujer' : usuario.genero == 2 ? 'Otro' : 'NA'}" />
-                            </div>
-<!--                            <input type="text" class="form-control" id="genero" th:placeholder="${usuario.genero}" disabled="disabled">-->
-                        </div>
-
-                        <!--Edad-->
-                        <div class="form-group col-1">
-                            <label for="edad">Edad</label>
-                            <input type="text" class="form-control" id="edad" th:placeholder="${usuario.edad}" disabled="disabled">
-                        </div>
-
-                        <!--País-->
-                        <div class="form-group col-2">
-                            <label for="pais">País</label>
-                            <input type="text" class="form-control" id="pais" th:placeholder="${usuario.pais}" disabled="disabled">
-                        </div>
-
-                        <div class="form-group col-md-5">
-                            <div class="row">
-                                <div class="col-9">&nbsp;</div>
-                                <div class="col-3">
-                                    <br>
-                                    <a class="btn btn-primary  grow" th:href="@{/ajustes/editar/{id}(id=${usuario.id})}">Editar</a>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    <br>
-                    <a th:href="@{/contenido/lista-contenidos}" th:hidden="${ad}"><button>Lista de Contenidos</button></a>
-                    <a th:href="@{/lista-usuarios}" th:hidden="${ad}"><button>Lista de Usuarios</button></a>
-
-                </div>
             </div>
-        </section>
-        <footer class="py-5 bg-black">
-            <div class="container px-5">
-                <p class="m-0 text-center text-white small">CAPIBOOTS &copy; 2023</p>
-                <div class="social-links-container text-center">
-                    <a href="https://twitter.com/tu_usuario" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://github.com/CapiBoots/CapiBoots" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://instagram.com/tu_usuario" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
 
-                </a>
-            </div>
-            </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/files/js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+            <br>
+            <a th:href="@{/contenido/lista-contenidos}" th:hidden="${ad}">
+                <button>Lista de Contenidos</button>
+            </a>
+            <a th:href="@{/lista-usuarios}" th:hidden="${ad}">
+                <button>Lista de Usuarios</button>
+            </a>
+
+        </div>
+    </div>
+</section>
+<footer class="py-5 bg-black">
+    <div class="container px-5">
+        <p class="m-0 text-center text-white small">CAPIBOOTS &copy; 2023</p>
+        <div class="social-links-container text-center">
+            <a href="https://twitter.com/tu_usuario" class="social-link">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://github.com/CapiBoots/CapiBoots" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://instagram.com/tu_usuario" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+
+        </a>
+    </div>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/files/js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
 </html>

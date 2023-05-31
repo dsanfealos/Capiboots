@@ -3,82 +3,69 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sd="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layout}">
-<head th:fragment="head">
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-  <!-- Estilos personalizados -->
-  <link href="" type="text/css" rel="stylesheet">
-
-  <title>Lista de Usuarios</title>
+<head>
+    <th:block th:include="bloques/bloques.html :: head">
+    </th:block>
+    <title>Lista de Usuarios</title>
 </head>
+
 <body>
-<div>
-  <header class="bg-black">
-    <main class="flex-shrink-0">
 
-      <!--Navegación-->
-      <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
-      <br><br><br>
-    </main>
-  </header>
-  <br>
+<!--Navegación-->
+<nav th:replace="bloques/bloques.html :: navegacion"></nav>
+<br><br><br>
+<br>
 
-  <a class="navbar-brand" th:href="@{/lista-usuarios}" style="font-size: 38px; color: black; font-weight: bold">
+<a class="navbar-brand" th:href="@{/lista-usuarios}" style="font-size: 38px; color: black; font-weight: bold">
     <span>Lista de Usuarios</span>
-  </a>
-  <br>
+</a>
+<br>
 
-  <!--Crear-->
-  <a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>
+<!--Crear-->
+<a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>
 
-  <!--Lista-->
-  <br><br><br>
-  <table class="table">
+<!--Lista-->
+<br><br><br>
+<table class="table">
     <thead>
     <tr>
-      <th>ID</th>
-      <th>Nombre de usuario</th>
-      <th>Edad</th>
-      <th>Género</th>
-      <th>Género</th>
-      <th>Correo</th>
-      <th>País</th>
+        <th>ID</th>
+        <th>Nombre de usuario</th>
+        <th>Edad</th>
+        <th>Género</th>
+        <th>Género</th>
+        <th>Correo</th>
+        <th>País</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="usuario : ${listausuarios}">
-      <td th:text="${usuario.id}">Id</td> <!--Se llama directamente a la función de un objeto sin haberlo definido antes con ${objeto.función}-->
-      <td th:text="${usuario.nombreUsuario}"></td>
-      <td th:text="${usuario.edad}"></td>
-      <td th:text="${usuario.genero}"></td>
-      <td th:switch="${usuario.genero}">
+        <td th:text="${usuario.id}">Id</td>
+        <!--Se llama directamente a la función de un objeto sin haberlo definido antes con ${objeto.función}-->
+        <td th:text="${usuario.nombreUsuario}"></td>
+        <td th:text="${usuario.edad}"></td>
+        <td th:text="${usuario.genero}"></td>
+        <td th:switch="${usuario.genero}">
 
-        <p th:case="0"> Hombre</p>
-        <p th:case="1"> Mujer</p>
-        <p th:case="2"> Otro</p>
-        <p th:case="3"> NA</p>
+            <p th:case="0"> Hombre</p>
+            <p th:case="1"> Mujer</p>
+            <p th:case="2"> Otro</p>
+            <p th:case="3"> NA</p>
 
-      </td>
-      <td th:text="${usuario.correo}">Correo</td>
-      <td th:text="${usuario.pais}">País</td>
-      <td>
-        <!--Editar y Borrar-->
-        <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
-        <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>
-        <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger" th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Borrar</a>
-      </td>
+        </td>
+        <td th:text="${usuario.correo}">Correo</td>
+        <td th:text="${usuario.pais}">País</td>
+        <td>
+            <!--Editar y Borrar-->
+            <!--En href escribimos el link del método (del controlador) que queremos activar, seguido de la id de nuestro objeto-->
+            <a class="btn btn-outline-primary" th:href="@{/usuario/editar/{id}(id=${usuario.id})}">Editar</a>
+            <a onclick="return confirm('¿Estás seguro?')" class="btn btn-outline-danger"
+               th:href="@{/usuario/borrar/{id}(id=${usuario.id})}">Borrar</a>
+        </td>
 
     </tr>
     </tbody>
-  </table>
-
-</div>
+</table>
 
 
 <!-- Optional JavaScript -->
