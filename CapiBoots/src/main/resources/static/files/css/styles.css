@@ -110,6 +110,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
+/*Esto es para que los h1-6 sean responsive*/
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 3.5rem !important;
@@ -155,7 +156,7 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-
+/*Esto crea una previsualización de una pestaña al pasar el cursor por encima*/
 abbr[title] {
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
@@ -9028,7 +9029,6 @@ picture p {
   border-radius: 0;
   color: black;
 }
-
 .btn-group .dropdown-item:hover {
   color: #ff6a00;
   background-color: #f9f9f9;
@@ -9037,11 +9037,6 @@ picture p {
 .btn-group .dropdown-toggle:focus {
   box-shadow: none;
 }
-
-
-
-
-
 .grow{
   transition: .5s, color .10s;
   -webkit-transition: .5s, color .10s;
@@ -9052,14 +9047,10 @@ picture p {
   -webkit-transform: scale3d(1.5, 1.5, 0.3);
   -moz-transform: scale3d(1.5, 1.5, 0.3);
 }
-
-
-
 .back-button-container {
   text-align: left;
   margin-left: 10px;
 }
-
 .back-button {
   display: inline-block;
   padding: 10px 20px;
@@ -9069,20 +9060,13 @@ picture p {
   border-radius: 5px;
   text-decoration: none;
 }
-
 .arrow {
   display: inline-block;
   margin-right: 10px;
 }
-
 .arrow i {
   font-size: 1.5em;
 }
-
-
-
-
-
 .dropdown {
   padding-right: 20px;
 }
@@ -9105,9 +9089,6 @@ button {
 .big-button i {
   color: white;
 }
-
-
-
 
 .player-controls {
   display: flex;
