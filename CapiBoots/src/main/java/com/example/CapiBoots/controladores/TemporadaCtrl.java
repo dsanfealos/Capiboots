@@ -18,17 +18,11 @@ public class TemporadaCtrl {
     @Autowired
     public TemporadaSrvcImpls tempoSrvc;
 
-    //Listas de Series
+    //Listas de Temporadas de cada serie
     @GetMapping("/lista-temporadas")
     public String listaSeries (Model modelo){
         modelo.addAttribute("listatemporadas",tempoSrvc.listaTempo());
         return "/listas/lista-temporadas"; //Usar búsqueda con el filtro "temporadas" activado
-    }
-
-    @GetMapping("/temporada-id")
-    public String seriePorId (@PathVariable Long id, Model modelo){
-        modelo.addAttribute("temporada_id",tempoSrvc.buscaId(id));
-        return "/listas/lista-temporadas";    //Usar búsqueda con el nombre obtenido por la id
     }
 
 

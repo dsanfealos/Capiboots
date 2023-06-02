@@ -22,9 +22,6 @@ public class Categorias {
     private Long id;
     @Column(name="nombre")
     private String nombre;
-   // @ManyToOne
-   //@JoinColumn(name="idMadre", nullable = false)
-   // private Categorias idmadre;
     @Column(name="descripcion", columnDefinition = "TEXT", length = 1024)
     private String descripcion;
     @Column(name="imagen", columnDefinition = "VARCHAR(100)")

@@ -27,32 +27,12 @@ public class AccesosCtrl {
     public AccesosSrvcImpls accessSrvc;
     @Autowired
     private UsuarioSrvcImpls usuSrvc;
-    /* Si ya utilizamos la clase <AccesosSrvcImpls>, esta no debería ser necesaria, puesto que <AccesosSrvcImpls>
-        publica -pone a disposición de los controladores- lo que corresponda de <AccesosRepositorio>
-    @Autowired
-    private AccesosRepositorio accesosRepositorio;
-    */
 
-    @GetMapping("/lista-accesos")
-    public String listaAccesos (Model modelo){
-        modelo.addAttribute("listaaccesos", accessSrvc.listaAcces());
-        return "lista-accesos";
-    }
-    @GetMapping("/acceso/{id}")
-    public String accesoId (@PathVariable Long id, Model modelo){
-        modelo.addAttribute("acceso_id", accessSrvc.buscaId(id));
-        return "/listas/lista-pendientes";
-    }
 
     @GetMapping("/lista-pendientes/{id}")
     public String listaPdtes(@PathVariable Long id, Model modelo){
        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
        return "/listas/lista-pendientes";
-    }
-    @GetMapping("/movieboxp/{id}")
-    public String pendMovie(@PathVariable Long id, Model modelo){
-        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
-        return "/moviebox";
     }
 
     @GetMapping("/empezar/{id}")

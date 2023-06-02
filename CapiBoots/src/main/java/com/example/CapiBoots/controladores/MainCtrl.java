@@ -12,9 +12,7 @@ public class MainCtrl {
 
     @GetMapping({"","/inicio"})
     public String inicio(Model modelo) {
-//        List<Contenidos> pdtes = accessSrvc.buscaPendientes(2L);
-//        modelo.addAttribute("pendientes", pdtes);
-        modelo.addAttribute("titulo", "Página de inicio de relaciones N:M");
+        modelo.addAttribute("titulo", "Bienvenid@ a CapiBoots");
         return "/inicio";
     }
 
@@ -23,5 +21,4 @@ public class MainCtrl {
         modelo.addAttribute("titulo", "Home");
         return "/home";
     }
-
 }

@@ -51,8 +51,6 @@ public class FileDB {
     @Column(name="data", nullable=false, columnDefinition="LONGBLOB")
     private byte[] data;
 
-//    @ManyToMany(mappedBy="filesDB")
-//    private List<User> users;
 
     public FileDB(String id, String fileName, String type, @NotEmpty byte[] data) {
         this.id = id;

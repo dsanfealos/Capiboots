@@ -26,7 +26,7 @@ public class SeriesCtrl {
     @GetMapping("/lista-series")
     public String listaSeries (Model modelo){
         modelo.addAttribute("listaseries",serieSrvc.listaSeri());
-        return "/listas/lista-series"; //Usar búsqueda con el filtro "series" activado
+        return "/listas/lista-series";
     }
 
     @GetMapping("/buscarseri")
@@ -34,12 +34,6 @@ public class SeriesCtrl {
         List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
         modelo.addAttribute("listaseries", buscaseri);
         return "/listas/lista-contenidos";
-    }
-
-    @GetMapping("/series-id")
-    public String seriePorId (@PathVariable Long id, Model modelo){
-        modelo.addAttribute("serie_id",serieSrvc.buscaId(id));
-        return "/listas/lista-series";    //Usar búsqueda con el nombre obtenido por la id
     }
 
     //Crear, Guardar, Borrar y Editar
@@ -74,17 +68,5 @@ public class SeriesCtrl {
         }
         return "/forms/nuevo-contenido";
     }
-
-//    @GetMapping("/serie/{id}")
-//    public String seriePpal (@PathVariable Long id, Model modelo){
-//        Optional<Series> serie = serieSrvc.buscaId(id);
-//
-//        if (serie.isPresent()){
-//            Series serie1 = serie.get();
-//            modelo.addAttribute("seri", serie1);
-//        }
-//        modelo.addAttribute("series", id);
-//        return "contenido-serie";
-//    }
 
 }

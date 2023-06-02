@@ -24,6 +24,18 @@
 <!--Crear-->
 <a th:href="@{/usuario/nuevo-usuario}">Crear nuevo usuario</a>
 
+<!--Búsqueda-->
+<div>
+    <form th:action="@{/buscarusus}">
+        Filter:
+        <input type="text" name="keyword" required/>
+        &nbsp;
+        <input type="submit" value="Search"/>
+        &nbsp;
+        <input type="button" value="Clear"/>
+    </form>
+</div>
+
 <!--Lista-->
 <br><br><br>
 <table class="table">

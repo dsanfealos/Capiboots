@@ -30,7 +30,7 @@ public class Contenidos {
     @ManyToOne
     @JoinColumn(name="idtemporada", nullable = true)
     private Temporada idtemporada;
-    @Column(name="FechaAlta", columnDefinition = "DEFAULT CURRENT_DATE()")
+    @Column(name="FechaAlta", columnDefinition = "DATETIME")
     private Date fechaAlta;
     @Column(columnDefinition = "default 1")
     private Boolean novedad = true;

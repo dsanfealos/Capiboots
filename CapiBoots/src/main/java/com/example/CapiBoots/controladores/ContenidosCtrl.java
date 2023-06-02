@@ -41,29 +41,6 @@ public class ContenidosCtrl {
 
     @Autowired
     private CategoriasSrvcImpls catSrvc;
-    @GetMapping("/guardarContenido")
-    public String guardarContenido(Model modelo) {
-        modelo.addAttribute("guardarContenidos", contenidosSrvc.guardarContenido());
-        return "guardarContenidos";
-    }
-
-    @GetMapping("/eliminarContenido")
-    public String eliminarContenido(Model modelo) {
-        modelo.addAttribute("eliminarContenidos", contenidosSrvc.eliminarContenido());
-        return "eliminarContenidos";
-    }
-
-    @GetMapping("/actualizarContenido")
-    public String actualizarContenido(Model modelo) {
-        modelo.addAttribute("actualizarContenidos", contenidosSrvc.actualizarContenido());
-        return "actualizarContenidos";
-    }
-
-    @GetMapping("/buscarContenido")
-    public String buscarContenido(Model modelo) {
-        modelo.addAttribute("buscarContenidos", contenidosSrvc.buscarContenido());
-        return "buscarContenidos";
-    }
 
     @GetMapping("/showbox")
     public String Showbox(Model modelo) {
@@ -73,17 +50,17 @@ public class ContenidosCtrl {
 
     @GetMapping("/bookbox")
     public String bookbox(Model modelo) {
-
         modelo.addAttribute("titulo", "BookBox");
         return "bookbox";
     }
 
     @GetMapping("/moviebox")
     public String showbox(Principal principal, Model modelo) {
+        //De esta forma, obtenemos el usuario en cuestión que está viendo Moviebox
         String usuID = principal.getName();
         Usuario user =  usuSrvc.buscaPorNombre(usuID);
         Long id = user.getId();
-        modelo.addAttribute("novedades",accessSrvc.buscaPendientes(id));
+        //Usando la ID del usuario, buscamos sus pendientes
         modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
         modelo.addAttribute("titulo", "Moviebox");
         return "moviebox";
@@ -91,46 +68,10 @@ public class ContenidosCtrl {
 
     @GetMapping("/favoritos")
     public String favoritos(Model modelo) {
-
         modelo.addAttribute("titulo", "Favoritos");
         return "favoritos";
     }
 
-    //ADMINISTRADOR//
-    @GetMapping("/gestion")
-    public String gestion(Model modelo) {
-
-        modelo.addAttribute("titulo", "Gestion");
-        return "gestion";
-
-    }
-
-    @GetMapping("/gestion/libros")
-    public String gestionLibros(Model modelo) {
-
-        modelo.addAttribute("titulo", "GestionLibros");
-        return "gestionLibros";
-
-    }
-
-    @GetMapping("/gestion/pelis")
-    public String gestionPelis(Model modelo) {
-
-        modelo.addAttribute("titulo", "GestionPelis");
-        return "pruebaGestion";
-
-    }
-
-    @GetMapping("/gestion/series")
-    public String gestionSeries(Model modelo) {
-
-        modelo.addAttribute("titulo", "GestionSeries");
-        return "gestionSeries";
-
-    }
-
-
-    //---------------------------------
 
     //Búsqueda
 
@@ -236,18 +177,6 @@ public class ContenidosCtrl {
         return "vistaReproductorSerie";
     }
 
-    @GetMapping("/reproducir-l/{id}")
-    public String reproducirLibros(@PathVariable Long id, Model modelo) {
-        Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
-
-        if (cont.isPresent()){
-            Contenidos cont1 = cont.get();
-            modelo.addAttribute("cont", cont1);
-        }
-        modelo.addAttribute("contenido", id);
-        return "vistaReproductorLibros";
-    }
-
     @GetMapping("/contenido/{id}")
     public String contPpal (@PathVariable Long id, Model modelo){
         Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
@@ -260,6 +189,7 @@ public class ContenidosCtrl {
 
         return "contenido";
     }
+
     @GetMapping("/serie/{id}")
     public String contPpalSerie (@PathVariable Long id, Model modelo){
         Optional<Series> seri = serieSrvc.buscaId(id);
@@ -272,10 +202,6 @@ public class ContenidosCtrl {
 
         List<Temporada> listTempo = tempoSrvc.listaTempoPorSerie(id);
         modelo.addAttribute("listaTempo", listTempo);
-
-//        List<Contenidos> listCon = contenidosRepo.findByIdtemporada(listTempo.);
-
-
         return "contenido-serie";
     }
 
@@ -294,9 +220,6 @@ public class ContenidosCtrl {
             modelo.addAttribute("listaTempo", listTempo);
         }
         modelo.addAttribute("temporadaid", id);
-
-
-
         return "contenido-serie-temporada";
     }
 }

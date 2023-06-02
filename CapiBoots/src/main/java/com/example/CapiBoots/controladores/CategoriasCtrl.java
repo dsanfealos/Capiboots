@@ -16,13 +16,8 @@ public class CategoriasCtrl {
     @Autowired
     public CategoriasSrvcImpls catSrvc;
 
-    @GetMapping("/categoria-id")
-    public String accesoId(@PathVariable Long id, Model modelo) {
-        modelo.addAttribute("categoria_id", catSrvc.buscaId(id));
-        return "categoria-id";
-    }
 
-    //lista
+    //Lista
     @GetMapping("/lista-categorias")
     public String listacategorias(Model modelo) {
         modelo.addAttribute("listacategorias", catSrvc.listaCat());
@@ -30,7 +25,7 @@ public class CategoriasCtrl {
 
     }
 
-//Crear, Guardar, Borrar y Editar
+    //Crear, Guardar, Borrar y Editar
 
     @GetMapping("/categorias/nueva-categoria")
     public String nuevo(Model modelo) {

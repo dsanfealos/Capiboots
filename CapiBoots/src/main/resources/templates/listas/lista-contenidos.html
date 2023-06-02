@@ -25,25 +25,26 @@
   </a>
   <br>
   <!--Crear-->
-  <a th:href="@{/contenido/nuevo-contenido}">Crear</a>
+  <a th:href="@{/contenido/nuevo-contenido}" class="btn" style="background-color: #0d6efd">
+    Crear un nuevo contenido
+  </a>
 
     <!--Listar-->
   <br><br><br>
-  <table class="table">
+  <table class="table ms-4">
     <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <!--<th>Fecha Alta</th>-->
+    <tr class="row">
+      <th class="col-1">ID</th>
+      <th class="col-2">Nombre</th>
+      <th class="col-6">Descripción</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="contenido : ${listaContenidos}">
-      <th th:text="${contenido.id}"></th>
-      <td th:text="${contenido.nombre}"></td>
-      <!--<td th:text="${contenido.fechaAlta}"></td>-->
-
-      <td>
+    <tr th:each="contenido : ${listaContenidos}" class="row">
+      <td th:text="${contenido.id}" class="col-1">ID</td>
+      <td th:text="${contenido.nombre}" class="col-2">Nombre</td>
+      <td th:text="${contenido.descripcion}" class="col-6">Descripción</td>
+      <td class="col-3">
         <!--Editar y Borrar-->
         <!--En href escribimos el link del metodo del controlador que queremos que se ejecute-->
         <a class="btn btn-dark" th:href="@{/contenido/editar/{id}(id=${contenido.id})}" >Editar</a>
@@ -61,11 +62,13 @@
 <div>
   <div>
     <div>
-      <a class="navbar-brand" th:href="@{//contenido/lista-contenidos}" style="font-size: 38px; color: black; font-weight: bold">
+      <a class="navbar-brand" th:href="@{/contenido/lista-contenidos}" style="font-size: 38px; color: black; font-weight: bold">
         <span>Lista de Series</span>
       </a>
       <br>
-      <a th:href="@{/serie/nueva-serie}">Crear nueva serie</a>
+      <a th:href="@{/serie/nueva-serie}">
+        <button type="button" class="btn" style="background-color: #0d6efd">Crear una nueva serie</button>
+      </a>
     </div>
 
     <br>
@@ -84,23 +87,23 @@
 
     <div>
       <br><br><br>
-      <table class="table">
+      <table class="table ms-4">
         <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Descripción</th>
+        <tr class="row">
+          <th class="col-1">ID</th>
+          <th class="col-2">Nombre</th>
+          <th class="col-6">Descripción</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="serie : ${listaseries}">
-          <td th:text="${serie.id}">ID</td>
-          <td th:text="${serie.nombre}">Nombre</td>
-          <td th:text="${serie.descripcion}">Descripción</td>
-          <td>
+        <tr th:each="serie : ${listaseries}" class="row">
+          <td th:text="${serie.id}" class="col-1">ID</td>
+          <td th:text="${serie.nombre}" class="col-2">Nombre</td>
+          <td th:text="${serie.descripcion}" class="col-6">Descripción</td>
+          <td class="col-3">
             <!--Editar y Borrar-->
             <!--En href escribimos el link del metodo del controlador que queremos que se ejecute-->
-            <a class="btn btn-primary" th:href="@{/serie/editar/{id}(id=${serie.id})}" >Editar</a>
+            <a class="btn btn-dark" th:href="@{/serie/editar/{id}(id=${serie.id})}" >Editar</a>
             <!---Subir Archivo-->
             <a class="btn btn-success" th:href="@{/serie/nueva-serie/subir-archivo/{id}(id=${serie.id})}" >Subir Archivo</a>
             <a onclick="return confirm('¿Estás seguro de que quieres borrar el contenido?')"
