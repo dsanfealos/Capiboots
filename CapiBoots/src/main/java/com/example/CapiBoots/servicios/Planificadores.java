@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Planificadores {
-
     @Autowired
-    private ContenidosRepositorio conRepo;
+    public ContenidosRepositorio conRepo;
 
+    //Para volver novedades = false tras 7 días
     @Scheduled   // falta indicar la planificación. Consultar la librería awaitility
     public void quitaNovedades(){
         conRepo.quitaNovedades();

@@ -8,19 +8,11 @@ import java.util.Optional;
 
 public interface ifxContenidosSrvc {
 
-
     Optional<Contenidos> buscarContenidoId(Long id);
     List<Contenidos> buscaCont(String keyword);
-    public Contenidos guardarContenido();
-    public Contenidos  eliminarContenido();
-    public Contenidos actualizarContenido();
-    public Contenidos  buscarContenido();
 
     List<Contenidos> listaCont();
 
     public Contenidos guardar(Contenidos contenido);
-
-    Object listaNovedades();
-
 
 }

@@ -28,24 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-
-
-//    @Override
-//    public UserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException {
-//        // Buscar el usuario por su email utilizando el UserRepository
-//        Usuario user = userRepository.findByNombreUsuario(nombre);
-//
-//        // Si el usuario es encontrado, crear una instancia de UserDetails utilizando los datos del usuario
-//        if (user != null) {
-//            return new org.springframework.security.core.userdetails.User(user.getNombreUsuario(),
-//                    user.getClave(),
-//                    mapRolesToAuthorities(user.getRoles())); // mapRolesToAuthorities es una función auxiliar que se define más abajo
-//        }else{
-//            // Si el usuario no es encontrado, lanzar una excepción UsernameNotFoundException
-//            throw new UsernameNotFoundException("Invalid username or password.");
-//        }
-//    }
-
+    //Enlazamos los datos del usuario logueado con el CustomUserDetails para poder usar dichos datos
     @Override
     public CustomUserDetails loadUserByUsername(String nombre) throws UsernameNotFoundException {
     // Buscar el usuario por su email utilizando el UserRepository

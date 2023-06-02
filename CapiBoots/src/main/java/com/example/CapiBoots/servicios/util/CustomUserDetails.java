@@ -15,7 +15,6 @@ public class CustomUserDetails extends Usuario implements UserDetails {
     private String username;
     private String password;
 
-//    private String name;
     private String email;
 
     private Byte gender;
@@ -30,13 +29,13 @@ public class CustomUserDetails extends Usuario implements UserDetails {
      *
      * @param username    the username
      * @param password    the password
-     * @param name        the name
      * @param authorities the authorities
      */
+    //Creamos un constructor de un UserDetails con nuestros parámetros de Usuario necesarios
+    //Los parámetros seleccionados se pueden conseguir del usuario que ha iniciado sesión
     public CustomUserDetails(String username, String password, String email, Byte gender, Integer age, String country, Collection<? extends GrantedAuthority> authorities) {
         this.username = username;
         this.password = password;
-//        this.name = name;
         this.email = email;
         this.gender = gender;
         this.age = age;
@@ -64,19 +63,6 @@ public class CustomUserDetails extends Usuario implements UserDetails {
         return this.username;
     }
 
-
-//
-//    public Byte getGender() {
-//        return gender;
-//    }
-//
-//    public Integer getAge() {
-//        return age;
-//    }
-//
-//    public String getCountry() {
-//        return country;
-//    }
 
     @Override
     public boolean isAccountNonExpired() {

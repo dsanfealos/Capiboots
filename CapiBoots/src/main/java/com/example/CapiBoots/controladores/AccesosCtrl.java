@@ -28,13 +28,14 @@ public class AccesosCtrl {
     @Autowired
     private UsuarioSrvcImpls usuSrvc;
 
-
+    //Lista
     @GetMapping("/lista-pendientes/{id}")
     public String listaPdtes(@PathVariable Long id, Model modelo){
        modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
        return "/listas/lista-pendientes";
     }
 
+    //Interuptores "empezar" y "terminar" para pendientes
     @GetMapping("/empezar/{id}")
     @ResponseStatus(value = HttpStatus.OK)  // indica que la respuesta tendrá un status OK y no hay que devolver nada
     public void empezar(@PathVariable Long id, Principal principal, Model modelo){

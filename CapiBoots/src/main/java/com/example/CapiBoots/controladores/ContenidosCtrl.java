@@ -42,6 +42,8 @@ public class ContenidosCtrl {
     @Autowired
     private CategoriasSrvcImpls catSrvc;
 
+    //Direcciones de showbox, bookbox y moviebox. Aplicamos pendientes a cada uno.
+
     @GetMapping("/showbox")
     public String Showbox(Model modelo) {
         modelo.addAttribute("titulo", "Showbox");
@@ -66,17 +68,11 @@ public class ContenidosCtrl {
         return "moviebox";
     }
 
-    @GetMapping("/favoritos")
-    public String favoritos(Model modelo) {
-        modelo.addAttribute("titulo", "Favoritos");
-        return "favoritos";
-    }
-
-
-    //Búsqueda
-
+    //Búsqueda (contenido + series)
     @GetMapping("/busqueda")
     public String busqueda(@Param("keyword") String keyword, Model modelo) {
+        //Utilizamos el servicio y el atributo por separado, ya que
+        // contenido(libros, películas y capítulos) está en una tabla distinta a series
         List<Series> buscaseri = serieSrvc.buscaSeri(keyword);
         List<Contenidos> buscacont = contenidosSrvc.buscaCont(keyword);
         modelo.addAttribute("listaseries", buscaseri);
@@ -135,19 +131,21 @@ public class ContenidosCtrl {
         return "forms/nuevo-contenido";
     }
 
+    //Listado de pendientes
     @GetMapping("/contenido/lista-pendientes")
     public String listaPendientes(Model modelo) {
         modelo.addAttribute("listaPendientes", contenidosSrvc.listaPend());
         return "/listas/lista-pendientes";
     }
 
-    // Marcar como visualizado
+    //Contenido/Serie pendiente específico
     @GetMapping("/pendientes/{id}")
     public String pendientes(@PathVariable Long id, Model modelo) {
         modelo.addAttribute("pendientes", contenidosSrvc.pendientes(id));
         return "redirect:/contenido/lista-contenidos";
     }
 
+    //Reproductor de Contenido (películas y libros)
     @GetMapping("/reproducir/{id}")
     public String reproducir(@PathVariable Long id, Model modelo) throws IOException {
         Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
@@ -164,6 +162,7 @@ public class ContenidosCtrl {
         return "vistaReproductorPeliculas";
     }
 
+    //Reproductor para capítulos
     @GetMapping("/reproducir-t/{id}")
     public String reproducirSeries(@PathVariable Long id, Model modelo) {
         Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
@@ -177,6 +176,7 @@ public class ContenidosCtrl {
         return "vistaReproductorSerie";
     }
 
+    //Presentación de Película o Libro
     @GetMapping("/contenido/{id}")
     public String contPpal (@PathVariable Long id, Model modelo){
         Optional<Contenidos> cont = contenidosSrvc.buscarContenidoId(id);
@@ -190,6 +190,7 @@ public class ContenidosCtrl {
         return "contenido";
     }
 
+    //Presentación de Serie
     @GetMapping("/serie/{id}")
     public String contPpalSerie (@PathVariable Long id, Model modelo){
         Optional<Series> seri = serieSrvc.buscaId(id);
@@ -205,6 +206,7 @@ public class ContenidosCtrl {
         return "contenido-serie";
     }
 
+    //Mostrar una Temporada de esa Serie
     @GetMapping("/temporada/{id}")
     public String contPpalSerieTempo (@PathVariable Long id, Model modelo){
         Optional<Temporada> temp = tempoSrvc.buscaId(id);

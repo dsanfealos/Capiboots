@@ -20,7 +20,7 @@ public class SeriesSrvcImpls implements ifxSeriesSrvc{
         return serierepo.findById(id);
     }
 
-    //Buscador por palabra clave
+    //Búsqueda
     @Override
     public List<Series> buscaSeri(String keyword) {
         List<Series> lista = new ArrayList<>();

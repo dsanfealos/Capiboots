@@ -10,7 +10,8 @@ import java.util.List;
 
 public interface SeriesRepositorio extends JpaRepository<Series, Long> {
 
-
+    //Búsqueda de Series
+    //Seleccionar todas las series donde el nombre sea el seleccionado
     @Query("SELECT s FROM Series s WHERE s.nombre LIKE %?1%")
-    public List<Series> buscarTodos(String keyword);
+    List<Series> buscarTodos(String keyword);
 }

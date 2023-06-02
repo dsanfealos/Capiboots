@@ -13,76 +13,50 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ContenidosSrvcImpls implements ifxContenidosSrvc{
+public class ContenidosSrvcImpls implements ifxContenidosSrvc {
     @Autowired
     public ContenidosRepositorio contenidoRepo;
 
-    @Autowired
-    public CategoriasRepositorios catRepo;
-
+    //Buscar por ID
     @Override
     public Optional<Contenidos> buscarContenidoId(Long id) {
         return contenidoRepo.findById(id);
     }
-
-    @Override
-    public Contenidos guardarContenido() {
-        return null;
-    }
-
-    @Override
-    public Contenidos eliminarContenido() {
-        return null;
-    }
-
-    @Override
-    public Contenidos actualizarContenido() {
-        return null;
-    }
-
-    @Override
-    public Contenidos buscarContenido() {
-        return null;
-    }
-
-
 
     //Listar
     @Override
     public List<Contenidos> listaCont() {
         return contenidoRepo.findAll();
     }
-    //Guardar
+
+    //Guardar y Borrar
     @Override
     public Contenidos guardar(Contenidos contenido) {
         return contenidoRepo.save(contenido);
     }
 
-    @Override
-    public Object listaNovedades() {
-        return null;
-    }
-
-    //Borrar
-    public void borrar(Long id){
+    public void borrar(Long id) {
         contenidoRepo.deleteById(id);
     }
 
+    //Lista Pendientes
     public Object listaPend() {
         return null;
     }
 
-    //Búsqueda
+    //Búsqueda libros y películas
     @Override
-    public List<Contenidos> buscaCont (String keyword){
+    public List<Contenidos> buscaCont(String keyword) {
         List<Contenidos> lista = new ArrayList<>();
-        if (keyword != null){
+        if (keyword != null) {
             lista = contenidoRepo.buscarTodos(keyword);
             return lista;
-    }
+        }
         return contenidoRepo.findAll();
     }
-   public List<Contenidos> filtroCategoria (String keyword){
+
+    //Filtro de Categorías
+    public List<Contenidos> filtroCategoria(String keyword) {
         List<Contenidos> lista = new ArrayList<>();
         if (keyword != null) {
             lista = contenidoRepo.buscarPorCat(keyword);
@@ -91,18 +65,10 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
         return contenidoRepo.findAll();
     }
 
-//    public List<Contenidos> buscaCap (Long idserie){
-//        List<Long> lista = new ArrayList<>();
-//        if (idserie != null) {
-//            lista = contenidoRepo.buscarPorCat(idserie);
-//            return lista;
-//        }
-//        return contenidoRepo.findAll();
-//    }
 
-   //Pendientes
+    //Pendientes
     //TODO: Introducir String en direccion href
-    public Optional<Long> pendientes (Long id){
+    public Optional<Long> pendientes(Long id) {
         //Contenidos contNuevo = new Contenidos();
         //buscarContenidoId(id);
         // Como utilizamos el operador ternario (también llamado Edison) y utilizamos Optional (que puede ser nulo),
@@ -120,20 +86,20 @@ public class ContenidosSrvcImpls implements ifxContenidosSrvc{
     }
 
     //Novedades
-    public Contenidos novedades (Contenidos contNuevo) throws InterruptedException {
+    public Contenidos novedades(Contenidos contNuevo) throws InterruptedException {
 
         contNuevo.setNovedad(true);
         System.out.println("He llegado" + contNuevo.getNovedad());
-//        contenidoRepo.save(contNuevo);
         return contNuevo;
     }
 
-    //Campos extra
+    //Botones de Pendientes
     public Boolean contEmpezado(boolean a) {
 
 
         return a;
     }
+
     public Boolean contTerminado(boolean b) {
         return b;
     }

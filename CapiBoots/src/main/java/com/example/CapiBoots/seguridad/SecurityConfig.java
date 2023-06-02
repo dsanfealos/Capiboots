@@ -24,7 +24,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    //Configuramos el autenticador diciéndole que usamos el userDetailsService y el codificador de contraseña
+    //Configuramos el autentificador diciéndole que usamos el userDetailsService y el codificador de contraseña
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -58,7 +58,7 @@ public class SecurityConfig {
                         .requestMatchers("/lista-usuarios","/lista-series","/lista-temporadas","/lista-categorias","/lista-comentarios","/lista-contenidos","/lista-logro").hasRole("ADMIN")
                         .requestMatchers("/usuario/**").hasRole("ADMIN")
 
-                        // Peticiones permitidas sólo para usuarios autenticados
+                        // Peticiones permitidas solo para usuarios autenticados
                         .requestMatchers("/chat","/videos","/favoritos" ,"/moviebox","/upload","/userFiles/**","/databasefiles/**").authenticated()
                         .requestMatchers("/showbox","/bookbox", "/home", "/favoritos","/ajustes","/logros","/suscripcion","/forms/**","/busqueda", "/gestion", "/gestion/**","/busqueda/**" ).authenticated()
                         .requestMatchers("/uploadUserFileToDatabase","/uploadUserFileToFileSystem","/uploadToFileSystem","/uploadToDatabase","/temporada/**").authenticated()

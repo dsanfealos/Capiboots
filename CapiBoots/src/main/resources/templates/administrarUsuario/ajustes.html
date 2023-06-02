@@ -34,6 +34,7 @@
                 <label>Nombre de Usuario: </label>
                 <input type="text" class="form-control" id="nombre" th:placeholder="${usuario.nombreUsuario}"
                        disabled="disabled">
+                <!--Rol-->
                 Roles: <br>
                 <div class="card">
                     <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
@@ -80,13 +81,15 @@
                     </div>
                 </div>
             </div>
-
+            <br><br>
+            <h4>Modo Administrador:</h4>
             <br>
-            <a th:href="@{/contenido/lista-contenidos}" th:hidden="${ad}">
-                <button>Lista de Contenidos</button>
+            <a th:href="@{/contenido/lista-contenidos}" th:hidden="${ad}" class="btn btn-dark">
+                Lista de Contenidos
             </a>
-            <a th:href="@{/lista-usuarios}" th:hidden="${ad}">
-                <button>Lista de Usuarios</button>
+            &nbsp;
+            <a th:href="@{/lista-usuarios}" th:hidden="${ad}" class="btn btn-dark">
+                Lista de Usuarios
             </a>
 
         </div>

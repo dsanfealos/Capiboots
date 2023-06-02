@@ -20,6 +20,7 @@ public class AccesosSrvcImpls implements ifxAccesosSrvc{
         return accessrepo.findById(id).orElse(null);
     }
 
+    //Guardar
     public Accesos guardar(Accesos acceso) {
         return accessrepo.save(acceso);
     }
@@ -33,11 +34,13 @@ public class AccesosSrvcImpls implements ifxAccesosSrvc{
         return ult;
     }
 
+    //Lista
     @Override
     public Optional<List<Accesos>> listaAcces() {
         return Optional.ofNullable(accessrepo.findAll());
     }
 
+    //Búsqueda de pendientes
     @Override
     public List<Contenidos> buscaPendientes(Long usu) {
         return accessrepo.buscarPendientes(usu);

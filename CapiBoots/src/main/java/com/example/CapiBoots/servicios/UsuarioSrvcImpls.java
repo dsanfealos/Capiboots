@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
 
     @Autowired
-    private UsuarioRepositorio usurepo;
+    public UsuarioRepositorio usurepo;
 
-
+    //Formas de obtener el Usuario por sus datos
     @Override
     public Optional<Usuario> buscaId(Long id) {
         return usurepo.findById(id);
@@ -38,7 +38,7 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
     }
 
 
-    //Buscador por palabra clave
+    //Búsqueda
     @Override
     public List<Usuario> buscaUsus(String keyword) {
         if (keyword != null) {
@@ -54,10 +54,7 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
     }
 
 
-
-
-    //Guardar y Borrar porque Crear/Editar se definen en el controlador.
-
+    //Guardar desde ajustes, sin usar el DTO
     public Usuario guardarUs(Usuario user){
         user.setClave(passwordEncoder.encode(user.getClave()));
         Rol rol = roleRepository.findByName(defaultUserRole);
@@ -69,7 +66,7 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
         return usurepo.save(user);
     }
 
-
+    //Guardar desde registro, usando DTO
     public void guardar(UsuarioDto userDto) {
 
         //Guarda los datos del Dto en la entidad Usuario, codificando la clave y asignando un rol.
@@ -89,7 +86,7 @@ public class UsuarioSrvcImpls implements ifxUsuarioSrvc{
         user.setRoles(List.of(rol));
         usurepo.save(user);
     }
-
+    //Borrar
     public void borrar(Long id) {
         usurepo.deleteById(id);
     }

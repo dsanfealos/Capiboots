@@ -29,7 +29,7 @@ public class TemporadaSrvcImpls implements ifxTemporadaSrvc{
         return temporepo.findAll();
     }
 
-    //Guardar y Borrar porque Crear/Editar se definen en el controlador.
+    //Guardar y Borrar
 
     @Override
     public Temporada guardar(Temporada tempo) {

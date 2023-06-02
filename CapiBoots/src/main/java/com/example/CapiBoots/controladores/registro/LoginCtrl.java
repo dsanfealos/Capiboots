@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginCtrl {
 
+    //Cargamos la vista de login
     @GetMapping("/login")
     public String login() {
         return "/administrarUsuario/login";
     }
 
-// Login form with error
+    //Volvemos "loginError" true cuando no se cumplen los campos requeridos
     @GetMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);

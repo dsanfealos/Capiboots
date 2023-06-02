@@ -29,7 +29,7 @@ public class RegistroCtrl {
     }
 
 
-// Guardamos el usuario con el form del html de registro
+    // Guardamos el usuario en registro
     @PostMapping("/register/save")
     public String registration(@Valid @ModelAttribute("user") UsuarioDto userDto, BindingResult result,
                                Model model){

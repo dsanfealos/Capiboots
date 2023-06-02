@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainCtrl {
 
-
+    //Inicio Pre-Login
     @GetMapping({"","/inicio"})
     public String inicio(Model modelo) {
         modelo.addAttribute("titulo", "Bienvenid@ a CapiBoots");
         return "/inicio";
     }
 
+    //Inicio Post-Login
     @GetMapping("/home")
     public String Home(Model modelo) {
         modelo.addAttribute("titulo", "Home");

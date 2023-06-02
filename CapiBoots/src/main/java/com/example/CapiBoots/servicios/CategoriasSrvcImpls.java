@@ -16,11 +16,13 @@ public class CategoriasSrvcImpls implements ifxCategoriasSrvc {
     public Optional<Categorias> buscaId(Long id) {
         return catrepo.findById(id);
     }
+    //Lista
     @Override
     public List<Categorias> listaCat() {
         return catrepo.findAll();
     }
 
+    //Guardar y borrar
     @Override
     public Categorias guardar(Categorias cat) {
         return catrepo.save(cat);
