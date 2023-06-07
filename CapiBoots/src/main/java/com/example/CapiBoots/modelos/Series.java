@@ -33,7 +33,7 @@ import java.util.List;
     @OneToMany(mappedBy = "serie", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Temporada> temporadas;
 
-
+    @Column(name = "Novedad", columnDefinition = "tinyint(1) default 1")
     private Boolean novedad = true;
 
     @Column(name="imagen_logo", columnDefinition = "VARCHAR(225)")

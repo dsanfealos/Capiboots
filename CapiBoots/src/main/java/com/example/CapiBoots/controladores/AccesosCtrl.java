@@ -42,13 +42,13 @@ public class AccesosCtrl {
         String nombre = principal.getName();
         Usuario usu = usuSrvc.buscaPorNombre(nombre);
 
-        // buscar el último acceso del usuario al contenido
+        // buscar el último acceso del usuario al contenido (usu_id, cont_id)
         Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(),id);
 
         // Si no hay ninguno, es la primera vez que el usuario empieza el contenido y hay que marcarlo. Para ello,
         // añadimos un nuevo registro a la tabla de accesos
         ultAccesoOpt.ifPresentOrElse(
-                acc -> {        // Ya existe un acceso previo de ese usuario a ese contenido. Se inicializa el reg.
+                acc -> {        // Ya existe un acceso previo de ese usuario a ese contenido. Se vuelve a poner terminado = false.
                     if(acc.getTerminado()) {
                         acc.setTerminado(Boolean.FALSE);
                         acc.setFecha_fin(null);
@@ -58,6 +58,7 @@ public class AccesosCtrl {
                 () -> {         // No existe acceso previo. Se crea un nuevo registro.
                     Accesos nuevoAcceso = new Accesos();
                     nuevoAcceso.setUsuario(usu);
+                    //TODO Repetir para añadir contenido?
                     accessSrvc.guardar(nuevoAcceso);
                 }
         );
@@ -67,8 +68,8 @@ public class AccesosCtrl {
     public String terminar(@PathVariable Long id, Principal ppal, Model modelo) {
 
         // localizamos el usuario
-        String usuID = ppal.getName();
-        Usuario usu = usuSrvc.buscaPorNombre(usuID);
+        String nombre = ppal.getName();
+        Usuario usu = usuSrvc.buscaPorNombre(nombre);
         // buscar el último acceso del usuario al contenido
         Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(),id);
         ultAccesoOpt.ifPresentOrElse(
