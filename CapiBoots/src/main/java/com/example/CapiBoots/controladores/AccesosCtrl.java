@@ -39,8 +39,8 @@ public class AccesosCtrl {
     @GetMapping("/empezar/{id}")
     @ResponseStatus(value = HttpStatus.OK)  // indica que la respuesta tendrá un status OK y no hay que devolver nada
     public void empezar(@PathVariable Long id, Principal principal, Model modelo){
-        String usuID = principal.getName();
-        Usuario usu = usuSrvc.buscaPorNombre(usuID);
+        String nombre = principal.getName();
+        Usuario usu = usuSrvc.buscaPorNombre(nombre);
 
         // buscar el último acceso del usuario al contenido
         Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(),id);
@@ -52,7 +52,6 @@ public class AccesosCtrl {
                     if(acc.getTerminado()) {
                         acc.setTerminado(Boolean.FALSE);
                         acc.setFecha_fin(null);
-                        acc.setFecha_inicio(LocalDateTime.now());
                         accessSrvc.guardar(acc);
                     }
                 },

@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.auditing.CurrentDateTimeProvider;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -32,8 +34,8 @@ public class Contenidos {
     private Temporada idtemporada;
     @Column(name="FechaAlta", columnDefinition = "DATETIME")
     private Date fechaAlta;
-    @Column(columnDefinition = "default 1")
-    private Boolean novedad = true;
+    @Column(name = "Novedad", columnDefinition = "tinyint(1) default 1")
+    private Boolean novedad;
 
     @Column(name="imagen_logo", columnDefinition = "VARCHAR(225)")
     private String imagenLogo;

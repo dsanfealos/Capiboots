@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name="accesos")
@@ -20,10 +21,9 @@ public class Accesos{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
-    @Column(name = "fecha_inicio", columnDefinition = "DATETIME")
-    @Convert(converter = TimeConverter.class)
-    protected LocalDateTime fecha_inicio;
+    
+    @Column(name="fecha_inicio", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Date fecha_inicio;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
