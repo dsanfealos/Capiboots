@@ -37,6 +37,6 @@ public class Accesos{
     @Column(name = "fecha_fin", columnDefinition = "DATETIME")
     private LocalDateTime fecha_fin;
 
-    @Column(name = "Terminado")
-    private Boolean terminado = false;
+    @Column(name = "Terminado", columnDefinition = "TINYINT(1) DEFAULT 0")
+    private Boolean terminado;
 }

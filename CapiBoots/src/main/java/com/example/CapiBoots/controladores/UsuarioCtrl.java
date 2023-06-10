@@ -121,10 +121,4 @@ public class UsuarioCtrl {
         return "/forms/editar-usuario-ajustes";
     }
 
-
-    //Validación cuando se ha hecho login
-    @GetMapping("/")
-    String index(Principal principal) {
-        return principal != null ? "home" : "inicio";
-    }
 }

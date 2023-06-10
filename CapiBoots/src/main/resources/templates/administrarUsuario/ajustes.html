@@ -82,7 +82,7 @@
                 </div>
             </div>
             <br><br>
-            <h4>Modo Administrador:</h4>
+            <h4 th:hidden="${ad}">Modo Administrador:</h4>
             <br>
             <a th:href="@{/contenido/lista-contenidos}" th:hidden="${ad}" class="btn btn-dark">
                 Lista de Contenidos

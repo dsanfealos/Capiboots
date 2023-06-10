@@ -30,7 +30,10 @@ public class AccesosSrvcImpls implements ifxAccesosSrvc{
         // obtenemos la lista de todos los accesos del usuario al contenido indicado
         List<Accesos> lista = accessrepo.buscarAccesos(usu, cont);
         // Obtenemos el último de la lista como Optional, ya que puede no existir (y ser nulo)
-        Optional<Accesos> ult = Optional.ofNullable(lista.get(lista.size()-1));
+        Optional<Accesos> ult = null;
+        if (lista.size() > 0){
+            ult = Optional.ofNullable(lista.get(lista.size()-1));
+        }
         return ult;
     }
 

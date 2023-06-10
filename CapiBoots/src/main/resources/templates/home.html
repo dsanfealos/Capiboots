@@ -8,7 +8,7 @@
 
 <body id="page-top">
 <!-- Navigation-->
-<nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+<nav th:replace="bloques/bloques.html :: navegacion"></nav>
 
 <!--<header class="masthead text-center text-white" style="background: white;">-->
 <!--    <div class="masthead-content">-->
@@ -17,18 +17,18 @@
     <div class="masthead-content">
         <div class="container px-5">
             <h1 class="masthead-heading mb-0"></h1>
-                <span>N</span>
-                <span>o</span>
-                <span>v</span>
-                <span>e</span>
-                <span>d</span>
-                <span>a</span>
-                <span>d</span>
-                <span>e</span>
-                <span>s</span>
-                <br>
+            <span>N</span>
+            <span>o</span>
+            <span>v</span>
+            <span>e</span>
+            <span>d</span>
+            <span>a</span>
+            <span>d</span>
+            <span>e</span>
+            <span>s</span>
+            <br>
             <h3 style="color: white;">Aquí podrás ver las últimas novedades añadidas a la plataforma !</h3>
-                <br>
+            <br>
 
         </div>
         <div class="container">
@@ -46,12 +46,14 @@
                                 <img class="d-block w-100" src="/files/assets/peliculas/showman.jpg" alt="Imagen 3">
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                                data-bs-slide="prev">
                             <span class="carousel-control-prev-icon ms-3" aria-hidden="true"></span>
                             <span class="visually-hidden">Anterior</span>
                         </button>
 
-                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+                                data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Siguiente</span>
                         </button>
@@ -61,9 +63,9 @@
             </div>
         </div>
 
-            </div>
+    </div>
 
-        </div>
+    </div>
 
     </div>
 
@@ -77,163 +79,66 @@
 <!-- Content section 1-->
 <!-- Sección de Seguir Viendo-->
 <section class="py-5">
-
-
-
     <div class="container-fluid px-5 my-5">
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-8 col-xl-6">
                 <div class="text-center">
-                    <h2 class="fw-bolder" style="font-family: 'Calibri Light', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 42px; color: #e50914;">Seguir viendo</h2>
-                    <p class="lead fw-normal text-muted mb-5" style="font-size: 28px; font-family: 'Calibri Light', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Continúa donde lo dejaste</p>
+                    <h2 class="fw-bolder"
+                        style="font-family: 'Calibri Light', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 42px; color: #e50914;">
+                        Seguir viendo</h2>
+                    <p class="lead fw-normal text-muted mb-5"
+                       style="font-size: 28px; font-family: 'Calibri Light', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        Continúa donde lo dejaste</p>
 
                 </div>
             </div>
         </div>
-        <div id="micarousel2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="30000">
+        <!--Pendientes-->
+        <div id="pend" class="carousel slide row col-10 mx-auto" data-bs-ride="carousel" data-bs-interval="30000">
             <div class="carousel-inner">
                 <!--1ª sección-->
                 <div class="carousel-item active">
-                    <div class="row col-11 mx-auto gx-3">
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/ANHQV.jpg" class="img-fluid" height="350"
-                                     width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Aqui no hay quien viva</h5></a>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/BRBA.jpg" class="img-fluid" height="350"
-                                     width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Breaking Bad</h5></a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/CuentoDeLaCriada.jpg"
-                                     class="img-fluid" height="350" width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">El cuento de la criada</h5></a>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/Friends.jpg"
-                                     class="img-fluid" height="350" width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Friends</h5></a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/GOT.jpg" class="img-fluid" height="350"
-                                     width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Juego de tronos</h5></a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/HIMYM.jpg" class="img-fluid" height="350"
-                                     width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Como conoci a vuestra madre</h5></a>
-
+                    <div class="row col-11 mx-auto">
+                        <div class="col-lg-3 mb-5" th:each="pendiente :${pendientes}">
+                            <div class="card shadow border-0" style="background-color:#f72a2a;">
+                                <img th:src="${pendiente.imagenLogo}" class="img-fluid rounded-top"
+                                     style="height: 385px"
+                                     alt="No se encuentra la imagen"/>
+                                <div class="card-body p-3 mx-auto">
+                                    <a class="text-decoration-none text-light link-dark stretched-link"
+                                       th:href="@{/contenido/{id}(id=${pendiente.id})}">
+                                        <h5 class="card-title mb-3" style="height: 40px"
+                                            th:text="${pendiente.nombre}"></h5>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--2ª sección-->
+                <!--TODO Dividir en 2 secciones los pendientes, máximo 6 por sección-->
                 <div class="carousel-item active">
                     <div class="row col-11 mx-auto gx-3">
                         <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/LosSimpsons.jpg"
-                                     class="img-fluid" height="350" width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Los Simpsons</h5></a>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/OnePiece.jpg"
-                                     class="img-fluid" height="350" width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">One piece</h5></a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/PeakyBlinders.jpg"
-                                     class="img-fluid" height="350" width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Peaky Blinders</h5></a>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/SouthPark.jpg"
-                                     class="img-fluid" height="350" width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">South Park</h5></a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/StrangerThings.jpg"
-                                     class="img-fluid" height="350" width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Stranger Things</h5></a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 mb-5">
-                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">
-                                <img src="/files/assets/series/TheOffice.jpg"
-                                     class="img-fluid" height="350" width="600"/>
-                                <div class="card-body p-4 mx-auto">
-                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!"><h5 class="card-title mb-3">The Office</h5></a>
-
-                                </div>
-                            </div>
+                            <!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
+                            <!--                                <img src="/files/assets/libros/guardiancenteno.jpg" class="img-fluid" height="350" width="600" alt="GuardianCenteno"/>-->
+                            <!--                                <div class="card-body p-4 mx-auto">-->
+                            <!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!">-->
+                            <!--                                        <h5 class="card-title mb-3">Libro 7</h5>-->
+                            <!--                                    </a>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
             </div>
             <!--Controles-->
-            <button class="carousel-control-prev" type="button" data-bs-target="#micarousel2" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#pend" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-dark py-5 me-auto" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
 
-            <button class="carousel-control-next" type="button" data-bs-target="#micarousel2" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#pend" data-bs-slide="next">
                 <span class="carousel-control-next-icon bg-dark py-5 ms-auto" aria-hidden="true"></span>
                 <span class="visually-hidden">Siguiente</span>
             </button>

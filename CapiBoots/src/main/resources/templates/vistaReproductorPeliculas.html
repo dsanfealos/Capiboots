@@ -37,8 +37,18 @@
                 </video>
             </div>
 
-            <div th:unless="${mime == 'video/mp4'}">
+            <div th:if="${mime == 'application/pdf'}">
                 <a th:href="${cont.rutaVideo}">Click Aquí</a>
+            </div>
+
+            <div th:if="${mime == null}">
+                <div class="alert alert-danger">No se encuentra el archivo.</div>
+            </div>
+
+            <div>
+                Botones
+                <a class="btn btn-success" th:href="@{/empezar/{id}(id=${cont.id})}">Empezar</a>
+                <a class="btn btn-danger" th:href="@{/terminar/{id}(id=${cont.id})}">Terminar</a>
             </div>
 
 

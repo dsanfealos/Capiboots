@@ -45,7 +45,7 @@ public class ContenidosCtrl {
     //Direcciones de showbox, bookbox y moviebox. Aplicamos pendientes a cada uno.
 
     @GetMapping("/showbox")
-    public String Showbox(Model modelo) {
+    public String showbox(Model modelo) {
         modelo.addAttribute("titulo", "Showbox");
         return "showbox";
     }
@@ -57,7 +57,7 @@ public class ContenidosCtrl {
     }
 
     @GetMapping("/moviebox")
-    public String showbox(Principal principal, Model modelo) {
+    public String moviebox(Principal principal, Model modelo) {
         //De esta forma, obtenemos el usuario en cuestión que está viendo Moviebox
         String usuID = principal.getName();
         Usuario user =  usuSrvc.buscaPorNombre(usuID);
@@ -108,6 +108,7 @@ public class ContenidosCtrl {
 
     @PostMapping("/contenido/guardar")
     public String guardarContenido(Contenidos contenido) {
+        contenido.setNovedad(Boolean.TRUE);
         contenidosSrvc.guardar(contenido);
         return "redirect:/contenido/lista-contenidos";
     }
@@ -155,9 +156,10 @@ public class ContenidosCtrl {
 
             modelo.addAttribute("cont", cont1);
         }
-
-        String  mime =  Files.probeContentType(new File(cont.get().getRutaVideo()).toPath());
-        modelo.addAttribute("mime", mime);
+        if (cont.get().getRutaVideo() != null){
+            String  mime =  Files.probeContentType(new File(cont.get().getRutaVideo()).toPath());
+            modelo.addAttribute("mime", mime);
+        }
         modelo.addAttribute("contenido", id);
         return "vistaReproductorPeliculas";
     }

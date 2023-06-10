@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `accesos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `accesos` (
-  `fecha_inicio` datetime(6) NOT NULL,
-  `fecha_fin` datetime(6) DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `fecha_fin` datetime DEFAULT NULL,
+  `fecha_inicio` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `terminado` bit(1) DEFAULT NULL,
   `id_contenido` bigint NOT NULL,
   `id_usuario` bigint NOT NULL,
-  `terminado` bit(1) DEFAULT NULL,
-  `id` bigint NOT NULL,
-  PRIMARY KEY (`fecha_inicio`),
+  PRIMARY KEY (`id`),
   KEY `FK4k0p34bi26q7sddh30ho8fcap` (`id_contenido`),
   KEY `FKn80td9i3g8h96b7dxdbmyesn6` (`id_usuario`),
   CONSTRAINT `FK4k0p34bi26q7sddh30ho8fcap` FOREIGN KEY (`id_contenido`) REFERENCES `contenidos` (`id`),
@@ -70,37 +70,6 @@ LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
 INSERT INTO `categorias` VALUES (1,'',NULL,'Libros'),(2,'',NULL,'Peliculas'),(3,'',NULL,'Series'),(4,NULL,NULL,'Accion'),(5,NULL,NULL,'CienciaFiccion'),(6,NULL,NULL,'Comedia'),(7,NULL,NULL,'Documental'),(8,NULL,NULL,'Drama'),(9,NULL,NULL,'Fantasia'),(10,NULL,NULL,'Infantil'),(11,NULL,NULL,'Misterio'),(12,NULL,NULL,'Romance'),(13,NULL,NULL,'Terror'),(14,NULL,NULL,'Thriller');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `comentarios`
---
-
-DROP TABLE IF EXISTS `comentarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comentarios` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `texto` text CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci,
-  `tipo_spoiler` tinyint DEFAULT NULL,
-  `id_contenido` bigint DEFAULT NULL,
-  `id_comentario` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK51woj1x8xyh6bpxqhq8ixmlw0` (`id_contenido`),
-  KEY `FKe7k4wjypv26bw2k8tc83x5kod` (`id_comentario`),
-  CONSTRAINT `FK51woj1x8xyh6bpxqhq8ixmlw0` FOREIGN KEY (`id_contenido`) REFERENCES `contenidos` (`id`),
-  CONSTRAINT `FKe7k4wjypv26bw2k8tc83x5kod` FOREIGN KEY (`id_comentario`) REFERENCES `comentarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `comentarios`
---
-
-LOCK TABLES `comentarios` WRITE;
-/*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
-INSERT INTO `comentarios` VALUES (3,'Ned muere',1,NULL,NULL),(4,'Ned vive',0,NULL,NULL);
-/*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -174,10 +143,10 @@ DROP TABLE IF EXISTS `files`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `files` (
-  `id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
+  `id` varchar(255) COLLATE utf8mb3_spanish2_ci NOT NULL,
   `data` longblob NOT NULL,
-  `file_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `file_name` varchar(255) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -189,90 +158,6 @@ CREATE TABLE `files` (
 LOCK TABLES `files` WRITE;
 /*!40000 ALTER TABLE `files` DISABLE KEYS */;
 /*!40000 ALTER TABLE `files` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `logro`
---
-
-DROP TABLE IF EXISTS `logro`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `logro` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `minimo` int NOT NULL,
-  `nombre` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `tipologro` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci NOT NULL,
-  `idcontenido` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKsft0p9egca1su6js69hilhyit` (`idcontenido`),
-  CONSTRAINT `FKsft0p9egca1su6js69hilhyit` FOREIGN KEY (`idcontenido`) REFERENCES `contenidos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `logro`
---
-
-LOCK TABLES `logro` WRITE;
-/*!40000 ALTER TABLE `logro` DISABLE KEYS */;
-INSERT INTO `logro` VALUES (2,'Ver la saga',8,'Potterhead','Pelicula',NULL);
-/*!40000 ALTER TABLE `logro` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `medio`
---
-
-DROP TABLE IF EXISTS `medio`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `medio` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `nombre_completo` varchar(150) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `tipo` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `medio`
---
-
-LOCK TABLES `medio` WRITE;
-/*!40000 ALTER TABLE `medio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `medio` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pagos`
---
-
-DROP TABLE IF EXISTS `pagos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pagos` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `fecha` date DEFAULT NULL,
-  `importe` float DEFAULT NULL,
-  `id_pagador` bigint NOT NULL,
-  `id_medio` bigint NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKgdbv48c511hcnjwjsdvbwfrqj` (`id_pagador`),
-  KEY `FKs5drlxxecqkg29kho2tyrrv3y` (`id_medio`),
-  CONSTRAINT `FKgdbv48c511hcnjwjsdvbwfrqj` FOREIGN KEY (`id_pagador`) REFERENCES `usuarios` (`id`),
-  CONSTRAINT `FKs5drlxxecqkg29kho2tyrrv3y` FOREIGN KEY (`id_medio`) REFERENCES `medio` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pagos`
---
-
-LOCK TABLES `pagos` WRITE;
-/*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -337,10 +222,10 @@ CREATE TABLE `series` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(225) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   `nombre` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `imagen_fondo` varchar(225) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `imagen_logo` varchar(225) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
-  `novedad` bit(1) DEFAULT NULL,
-  `ruta_video` varchar(225) COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `imagen_fondo` varchar(225) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `imagen_logo` varchar(225) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
+  `novedad` tinyint(1) DEFAULT '1',
+  `ruta_video` varchar(225) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish2_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -419,34 +304,8 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,NULL,NULL,NULL,NULL,'Mikasa123!',NULL,'karim.m.rachidi@gmail.com',28,NULL,NULL,0,'KarimRach','España',NULL,NULL,NULL),(2,NULL,NULL,NULL,NULL,'$2a$10$mpnu.0rX5svOLejg9/EMe.hAfxoRsi1HeI4PgCI3XNDLEH6ISxg7y',NULL,'rachiplays@gmail.com',28,NULL,NULL,0,'Karim','Marruecos',NULL,NULL,NULL),(3,NULL,NULL,NULL,NULL,'$2a$10$grlmR42jj0N.9SftG3U6BO4ylTdrbMUZMzX5noVbsIVFvMKIuslHu',NULL,'usuprueba@gmail.com',12,NULL,NULL,1,'usuprueba','Bosnia',NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,'$2a$10$Cyex4uACo34P1Gsl6DcmA.7qjs4TzZdWoP.w0JUiX5PdkfjEZcrda',NULL,'ajo@gmail.com',32,NULL,NULL,1,'Cebolla','Mónaco',NULL,NULL,NULL),(5,NULL,NULL,NULL,NULL,'$2a$10$e87JEfSW7UwQ8hyQvyd4d.xTfnY4AySzvua8KP2J4KMDknUd5wV8K',NULL,'juanuser@gmail.com',31,NULL,NULL,0,'JuanUser','Nepal',NULL,NULL,NULL),(6,NULL,NULL,NULL,NULL,'$2a$10$ixWb9BXgGRL6s3LyE3Ncj.kgMBWCkQX.Ri1DWef39.cZPg1uvffEG',NULL,'userprueba@gmail.com',54,NULL,NULL,2,'UserPrueba1','Bélgica',NULL,NULL,NULL);
+INSERT INTO `usuarios` VALUES (1,NULL,NULL,NULL,NULL,'Mikasa123!',NULL,'karim.m.rachidi@gmail.com',28,NULL,NULL,0,'KarimRach','España',NULL,NULL,NULL),(2,NULL,NULL,NULL,NULL,'$2a$10$mpnu.0rX5svOLejg9/EMe.hAfxoRsi1HeI4PgCI3XNDLEH6ISxg7y',NULL,'rachiplays@gmail.com',28,NULL,NULL,0,'Karim','Marruecos',NULL,NULL,NULL),(3,NULL,NULL,NULL,NULL,'$2a$10$grlmR42jj0N.9SftG3U6BO4ylTdrbMUZMzX5noVbsIVFvMKIuslHu',NULL,'usuprueba@gmail.com',12,NULL,NULL,1,'usuprueba','Bosnia',NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,'$2a$10$54Iu1DTaQET3HYK.aWY3ge0VNaijhfnjd66NQfjcbFHW/uCiUBW1i',NULL,'ajo@gmail.com',32,NULL,NULL,2,'Cebolla','México',NULL,NULL,NULL),(5,NULL,NULL,NULL,NULL,'$2a$10$e87JEfSW7UwQ8hyQvyd4d.xTfnY4AySzvua8KP2J4KMDknUd5wV8K',NULL,'juanuser@gmail.com',31,NULL,NULL,0,'JuanUser','Nepal',NULL,NULL,NULL),(6,NULL,NULL,NULL,NULL,'$2a$10$ixWb9BXgGRL6s3LyE3Ncj.kgMBWCkQX.Ri1DWef39.cZPg1uvffEG',NULL,'userprueba@gmail.com',54,NULL,NULL,2,'UserPrueba1','Bélgica',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuarios_logros`
---
-
-DROP TABLE IF EXISTS `usuarios_logros`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuarios_logros` (
-  `id_usuario` bigint NOT NULL,
-  `id_logro` int NOT NULL,
-  KEY `FKekrgbtl6q02g3gymy992tjb5y` (`id_logro`),
-  KEY `FK2470t7gvf6nwvmnkcd6llneac` (`id_usuario`),
-  CONSTRAINT `FK2470t7gvf6nwvmnkcd6llneac` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
-  CONSTRAINT `FKekrgbtl6q02g3gymy992tjb5y` FOREIGN KEY (`id_logro`) REFERENCES `logro` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish2_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuarios_logros`
---
-
-LOCK TABLES `usuarios_logros` WRITE;
-/*!40000 ALTER TABLE `usuarios_logros` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuarios_logros` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -472,7 +331,7 @@ CREATE TABLE `usuarios_roles` (
 
 LOCK TABLES `usuarios_roles` WRITE;
 /*!40000 ALTER TABLE `usuarios_roles` DISABLE KEYS */;
-INSERT INTO `usuarios_roles` VALUES (2,1),(3,2),(4,2),(5,3),(6,3);
+INSERT INTO `usuarios_roles` VALUES (2,1),(3,2),(5,3),(6,3),(4,2);
 /*!40000 ALTER TABLE `usuarios_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -485,4 +344,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-17 20:59:20
+-- Dump completed on 2023-06-08 14:01:57

@@ -1,9 +1,6 @@
 package com.example.CapiBoots.repositorios;
 
-import com.example.CapiBoots.modelos.Categorias;
-import com.example.CapiBoots.modelos.Contenidos;
-import com.example.CapiBoots.modelos.Series;
-import com.example.CapiBoots.modelos.Temporada;
+import com.example.CapiBoots.modelos.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -34,4 +31,5 @@ public interface ContenidosRepositorio extends JpaRepository<Contenidos, Long> {
     //Capítulos
     //Buscar por el id de temporada (sólo un conjunto de caps lo compartirá)
     List<Contenidos> findByIdtemporada(Temporada idtemporada);
+
 }
