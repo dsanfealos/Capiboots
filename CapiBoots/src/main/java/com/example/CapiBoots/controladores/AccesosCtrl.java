@@ -31,41 +31,46 @@ public class AccesosCtrl {
     @Autowired
     public AccesosSrvcImpls accessSrvc;
     @Autowired
-    private UsuarioSrvcImpls usuSrvc;
+    public UsuarioSrvcImpls usuSrvc;
 
     @Autowired
-    private ContenidosSrvcImpls contSrvc;
+    public ContenidosSrvcImpls contSrvc;
 
     //Lista
-    @GetMapping("/lista-pendientes/{id}")
-    public String listaPdtes(@PathVariable Long id, Model modelo){
-       modelo.addAttribute("pendientes",accessSrvc.buscaPendientes(id));
-       return "/listas/lista-pendientes";
+    @GetMapping("/lista-pendientes")
+    public String listaPdtes(Principal principal, Model modelo) {
+        String usuID = principal.getName();
+        Usuario user = usuSrvc.buscaPorNombre(usuID);
+        Long id = user.getId();
+        //Usando la ID del usuario, buscamos sus pendientes
+        modelo.addAttribute("pendientes", accessSrvc.buscaPendientes(id));
+        modelo.addAttribute("titulo", "Seguir Viendo");
+        return "/listas/lista-pendientes";
     }
 
     //Interuptores "empezar" y "terminar" para pendientes
     @GetMapping("/empezar/{id}")
 //    @ResponseStatus(value = HttpStatus.OK)  // indica que la respuesta tendrá un status OK y no hay que devolver nada
-    public String empezar(@PathVariable Long id, Principal principal, Model modelo){
+    public String empezar(@PathVariable Long id, Principal principal, Model modelo) {
         String nombre = principal.getName();
         Usuario usu = usuSrvc.buscaPorNombre(nombre);
         Optional<Contenidos> contOpt = contSrvc.buscarContenidoId(id);
         Contenidos cont = contOpt.get();
 
         // buscar el último acceso del usuario al contenido (usu_id, cont_id)
-        Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(),id);
+        Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(), id);
 
         // Si no hay ninguno, es la primera vez que el usuario empieza el contenido y hay que marcarlo. Para ello,
         // añadimos un nuevo registro a la tabla de accesos
-        if (ultAccesoOpt != null){
+        if (ultAccesoOpt != null) {
             // Ya existe un acceso previo de ese usuario a ese contenido, y terminado = true.
             // Se vuelve a poner terminado = false
-            if(ultAccesoOpt.get().getTerminado()) {
+            if (ultAccesoOpt.get().getTerminado()) {
                 ultAccesoOpt.get().setTerminado(Boolean.FALSE);
                 ultAccesoOpt.get().setFecha_fin(null);
                 accessSrvc.guardar(ultAccesoOpt.get());
             }
-        }else{
+        } else {
             // No existe acceso previo. Se crea un nuevo registro.
             Accesos nuevoAcceso = new Accesos();
             Date ahora = new Date(System.currentTimeMillis());
@@ -73,7 +78,6 @@ public class AccesosCtrl {
             nuevoAcceso.setUsuario(usu);
             nuevoAcceso.setContenido(cont);
             nuevoAcceso.setTerminado(Boolean.FALSE);
-            //TODO Repetir para añadir contenido?
             accessSrvc.guardar(nuevoAcceso);
         }
         return "redirect:/reproducir/{id}";
@@ -85,14 +89,11 @@ public class AccesosCtrl {
         // localizamos el usuario
         String nombre = ppal.getName();
         Usuario usu = usuSrvc.buscaPorNombre(nombre);
-        //Obtenemos el contenido
-        Optional<Contenidos> contOpt = contSrvc.buscarContenidoId(id);
-        Contenidos cont = contOpt.get();
 
         // buscar el último acceso del usuario al contenido
-        Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(),id);
+        Optional<Accesos> ultAccesoOpt = accessSrvc.buscaUltimoAcceso(usu.getId(), id);
 
-        if (ultAccesoOpt != null){
+        if (ultAccesoOpt != null) {
             // Ya existe un acceso previo de ese usuario a ese contenido, y terminado = true.
             // Se vuelve a poner terminado = false
             ultAccesoOpt.get().setFecha_fin(LocalDateTime.now());

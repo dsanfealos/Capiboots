@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+  <th:block th:include="bloques/bloques.html :: head">
+  </th:block>
+  <title>Lista de Contenidos</title>
+
+</head>
+<body>
+<header>
+<main class="flex-shrink-0">
+
+  <!--Navegación-->
+  <nav th:replace="bloques/bloques.html :: navegacion"> </nav>
+<br><br><br>
+</main>
+</header>
+<!--Lista de Contenidos-->
+<div>
+  <a class="navbar-brand" th:href="@{/contenido/lista-contenidos}" style="font-size: 38px; color: black; font-weight: bold">
+    <span>Seguir viendo:</span>
+  </a>
+  <br>
+    <!--Listar-->
+  <br><br><br>
+  <table class="table ms-4">
+    <thead>
+    <tr class="row">
+      <th class="col-1">&nbsp;</th>
+      <th class="col-2">Nombre</th>
+      <th class="col-6">Descripción</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pendiente :${pendientes}" class="row">
+      <td class="col-1">
+        <img th:src="${pendiente.imagenLogo}" alt="No hay archivo">
+      </td>
+      <td th:text="${pendiente.nombre}" class="col-2" th:href="@{/contenido/{id}(id=${pendiente.id})}"></td>
+      <td th:text="${pendiente.descripcion}" class="col-6"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Optional JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+</body>
+</html>

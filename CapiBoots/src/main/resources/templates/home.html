@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <th:block th:include="bloques/bloques.html :: head">
     </th:block>
@@ -65,10 +65,6 @@
 
     </div>
 
-    </div>
-
-    </div>
-
     <div class="bg-circle-1 bg-circle"></div>
     <div class="bg-circle-2 bg-circle"></div>
     <div class="bg-circle-3 bg-circle"></div>
@@ -89,7 +85,8 @@
                     <p class="lead fw-normal text-muted mb-5"
                        style="font-size: 28px; font-family: 'Calibri Light', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                         Continúa donde lo dejaste</p>
-
+                    <a class="btn btn-dark" th:href="@{/lista-pendientes}">Verlos Todos</a>
+                    <br><br>
                 </div>
             </div>
         </div>
@@ -97,6 +94,7 @@
         <div id="pend" class="carousel slide row col-10 mx-auto" data-bs-ride="carousel" data-bs-interval="30000">
             <div class="carousel-inner">
                 <!--1ª sección-->
+                <!--TODO Consultar https://stackoverflow.com/questions/59246255/thymeleaf-table-rows-divide-in-separate-pages-->
                 <div class="carousel-item active">
                     <div class="row col-11 mx-auto">
                         <div class="col-lg-3 mb-5" th:each="pendiente :${pendientes}">
@@ -116,7 +114,7 @@
                     </div>
                 </div>
                 <!--2ª sección-->
-                <!--TODO Dividir en 2 secciones los pendientes, máximo 6 por sección-->
+                <!--TODO Dividir en 2 secciones los pendientes, máximo 4 por sección-->
                 <div class="carousel-item active">
                     <div class="row col-11 mx-auto gx-3">
                         <div class="col-lg-2 mb-5">

@@ -55,7 +55,7 @@ public class SecurityConfig {
                         .requestMatchers("/gs-guide-websocket/**").permitAll()
                         // Peticiones permitidas sólo para usuarios con rol ADMIN
                         .requestMatchers("/admin/**","/nuevo-usuario","/nuevo-logro","/nuevo-contenido","/nuevo-comentario","/nueva-temporada","/nueva-serie","/nueva-categoria").hasRole("ADMIN")
-                        .requestMatchers("/lista-usuarios","/lista-series","/lista-temporadas","/lista-categorias","/lista-comentarios","/lista-contenidos","/lista-logro").hasRole("ADMIN")
+                        .requestMatchers("/lista-usuarios","/lista-series","/lista-temporadas","/lista-categorias","/lista-comentarios","/lista-contenidos","/lista-pendientes").hasRole("ADMIN")
                         .requestMatchers("/usuario/**").hasRole("ADMIN")
 
                         // Peticiones permitidas solo para usuarios autenticados
