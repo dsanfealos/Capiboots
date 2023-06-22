@@ -94,10 +94,9 @@
         <div id="pend" class="carousel slide row col-10 mx-auto" data-bs-ride="carousel" data-bs-interval="30000">
             <div class="carousel-inner">
                 <!--1ª sección-->
-                <!--TODO Consultar https://stackoverflow.com/questions/59246255/thymeleaf-table-rows-divide-in-separate-pages-->
                 <div class="carousel-item active">
                     <div class="row col-11 mx-auto">
-                        <div class="col-lg-3 mb-5" th:each="pendiente :${pendientes}">
+                        <div class="col-lg-3 mb-5" th:each="pendiente :${pend1}">
                             <div class="card shadow border-0" style="background-color:#f72a2a;">
                                 <img th:src="${pendiente.imagenLogo}" class="img-fluid rounded-top"
                                      style="height: 385px"
@@ -114,18 +113,40 @@
                     </div>
                 </div>
                 <!--2ª sección-->
-                <!--TODO Dividir en 2 secciones los pendientes, máximo 4 por sección-->
-                <div class="carousel-item active">
-                    <div class="row col-11 mx-auto gx-3">
-                        <div class="col-lg-2 mb-5">
-                            <!--                            <div class="card h-100 shadow border-0" style="background-color:#f72a2a;">-->
-                            <!--                                <img src="/files/assets/libros/guardiancenteno.jpg" class="img-fluid" height="350" width="600" alt="GuardianCenteno"/>-->
-                            <!--                                <div class="card-body p-4 mx-auto">-->
-                            <!--                                    <a class="text-decoration-none text-light link-dark stretched-link" href="#!">-->
-                            <!--                                        <h5 class="card-title mb-3">Libro 7</h5>-->
-                            <!--                                    </a>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
+                <div class="carousel-item">
+                    <div class="row col-11 mx-auto">
+                        <div class="col-lg-3 mb-5" th:each="pendiente :${pend2}">
+                            <div class="card shadow border-0" style="background-color:#f72a2a;">
+                                <img th:src="${pendiente.imagenLogo}" class="img-fluid rounded-top"
+                                     style="height: 385px"
+                                     alt="No se encuentra la imagen"/>
+                                <div class="card-body p-3 mx-auto">
+                                    <a class="text-decoration-none text-light link-dark stretched-link"
+                                       th:href="@{/contenido/{id}(id=${pendiente.id})}">
+                                        <h5 class="card-title mb-3" style="height: 40px"
+                                            th:text="${pendiente.nombre}"></h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--3ª sección-->
+                <div class="carousel-item">
+                    <div class="row col-11 mx-auto">
+                        <div class="col-lg-3 mb-5" th:each="pendiente :${pend3}">
+                            <div class="card shadow border-0" style="background-color:#f72a2a;">
+                                <img th:src="${pendiente.imagenLogo}" class="img-fluid rounded-top"
+                                     style="height: 385px"
+                                     alt="No se encuentra la imagen"/>
+                                <div class="card-body p-3 mx-auto">
+                                    <a class="text-decoration-none text-light link-dark stretched-link"
+                                       th:href="@{/contenido/{id}(id=${pendiente.id})}">
+                                        <h5 class="card-title mb-3" style="height: 40px"
+                                            th:text="${pendiente.nombre}"></h5>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
